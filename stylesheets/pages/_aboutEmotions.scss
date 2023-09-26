@@ -1,0 +1,42 @@
+.aboutEmotions {
+    .nav-btn {
+        .btn-gray-400 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: not-allowed;
+            border-radius: 100px;
+            padding: 4px 16px;
+            background-color: $gray-400;
+            color: $gray-600;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .btn-gray-500:hover {
+            background-color: $gray-400;
+        }
+        .btn-outline-main {
+            border: 2px solid $main;
+            color: $main;
+        }
+        .btn-outline-main:hover {
+            color: $white;
+        }
+    }
+
+    p {
+        font-size: 18px;
+    }
+
+    .emoImg {
+        span {
+            color: $gray-600;
+        }
+    }
+
+    .quote {
+        font-size: 14px;
+        color: $gray-500;
+        font-weight: 400;
+    }
+}

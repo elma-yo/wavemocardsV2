@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!-- 手機版網頁 CSS Reset 螢幕解析度 Reset -->
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+        <title>浪潮情緒卡｜認識情緒</title>
+        <!-- Bootstrap icon -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+        <!-- Bootstrap css -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+        <link rel="stylesheet" href="./stylesheets/all.css">
+    </head>
+    <body>
+        <header class="header h-logined fixed-top">
+            <div class="container py-16 d-flex justify-content-between align-items-center">
+                <h1>
+                    <a href="home.html" data-bs-toggle="tooltip" data-bs-placement="bottom" title="回到首頁">浪潮情緒卡</a>
+                </h1>
+                <div class="d-lg-none position-relative">
+                    <button class="px-8 py-4 btn btn-outline-main rounded-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        <i class="bi bi-list"></i>
+                    </button>
+                    <div class="collapse" style="position: absolute; right: 0; top: 40px;" id="collapseExample">
+                        <div class="p-0 card card-body rounded-2 border-2 border-main-tint01" style="width: 160px;">
+                            <ul>
+                                <li>
+                                    <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="aboutEmotions.html">認識情緒</a>
+                                </li>
+                                <li>
+                                    <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="findMyEmotions.html">探索情緒</a>
+                                </li>
+                                <li>
+                                    <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="myRecords.html">我的紀錄</a>
+                                </li>
+                                <!-- <li>
+                                    <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="sharedByOthers.html">他人的分享</a>
+                                </li> -->
+                                <li>
+                                    <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="account.html">我的帳戶</a>
+                                </li>
+                                <li>
+                                    <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="#">登出</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <ul class="d-none d-lg-flex justify-content-between align-items-center mb-0 ps-0">
+                    <li>
+                        <a href="aboutEmotions.html" class="px-4 py-8" data-bs-toggle="tooltip" data-bs-placement="bottom" title="認識情緒與情緒卡">認識情緒</a>
+                    </li>
+                    <li class="ms-16">
+                        <a href="findMyEmotions.html" class="px-4 py-8" data-bs-toggle="tooltip" data-bs-placement="bottom" title="選擇情緒卡與紀錄情緒">探索情緒</a>
+                    </li>
+                    <li class="ms-16">
+                        <a href="myRecords.html" class="px-4 py-8" data-bs-toggle="tooltip" data-bs-placement="bottom" title="觀看我的紀錄與分析">我的紀錄</a>
+                    </li>
+                    <!-- <li class="ms-16">
+                        <a href="sharedByOthers.html" class="px-4 py-8" data-bs-toggle="tooltip" data-bs-placement="bottom" title="觀看他人分享的情緒紀錄">他人的分享</a> -->
+                    </li>
+                    <li class="ms-16">
+                        <a href="account.html" class="profile" data-bs-toggle="tooltip" data-bs-placement="bottom" title="管理我的帳戶">
+                            <i class="bi bi-person-fill"></i>
+                            <i class="bi bi-person-fill-gear"></i>
+                        </a>
+                    </li>
+                    <li class="ms-16">
+                        <a href="#" class="logout" data-bs-toggle="tooltip" data-bs-placement="bottom" title="登出">
+                            <i class="bi bi-door-closed-fill"></i>
+                            <i class="bi bi-door-open-fill"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+
+        <div class="aboutEmotions pt-112" id="top">
+            <div class="container pb-16">
+                <!-- 標題 -->
+                <div class="mb-16 pb-8 border-2 border-bottom border-main-tint02 d-flex justify-content-between align-items-center">
+                    <h2 class="fs-3">認識情緒</h2>
+                    <div class="nav-btn d-flex justify-content-end">
+                        <div class="btn-disable">關於情緒</div>
+                        <a class="ms-16 btn btn-outline-main c-btn" href="emoCards.html">情緒卡</a>
+                    </div>
+                </div>
+                
+                <div class="introduction py-16">
+                    <div class="mb-56">
+                        <h2 class="mb-12">什麼是情緒？</h2>
+                        <p id="whatIsEmotion">
+                            情緒英文是emotion，代表流動在我們身體的能量。當我們受到刺激，引發出內心感受、身體反應、想法與行動，就是情緒。例如某人踏進後巷時，遇到一隻看來很兇惡的狗（刺激），覺得十分害怕，擔心自己被咬傷（內心感受和想法），不禁心跳加速和顫抖（身體反應），最終決定急步繞路離開（行動）。
+                        </p>
+                    </div>
+                    <div class="mb-56">
+                        <h2 class="mb-12">6大基本情緒</h2>
+                        <div class="mb-12 d-md-flex justify-content-center">
+                            <div class="emoImg mb-20 mb-md-0 me-md-32 d-flex flex-column align-items-center">
+                                <img class="mb-4" src="./images/aboutEmotions/aboutEmo_happy.svg" alt="happy">
+                                <span>快樂</span>
+                            </div>
+                            <div class="emoImg mb-20 mb-md-0 me-md-32 d-flex flex-column align-items-center">
+                                <img class="mb-4" src="./images/aboutEmotions/aboutEmo_sadness.svg" alt="sadness">
+                                <span>悲傷</span>
+                            </div>
+                            <div class="emoImg mb-20 mb-md-0 me-md-32 d-flex flex-column align-items-center">
+                                <img class="mb-4" src="./images/aboutEmotions/aboutEmo_fear.svg" alt="fear">
+                                <span>恐懼</span>
+                            </div>
+                            <div class="emoImg mb-20 mb-md-0 me-md-32 d-flex flex-column align-items-center">
+                                <img class="mb-4" src="./images/aboutEmotions/aboutEmo_hate.svg" alt="hate">
+                                <span>厭惡</span>
+                            </div>
+                            <div class="emoImg mb-20 mb-md-0 me-md-32 d-flex flex-column align-items-center">
+                                <img class="mb-4" src="./images/aboutEmotions/aboutEmo_anger.svg" alt="anger">
+                                <span>憤怒</span>
+                            </div>
+                            <div class="emoImg mb-20 mb-md-0 me-md-32 d-flex flex-column align-items-center">
+                                <img class="mb-4" src="./images/aboutEmotions/aboutEmo_amazing.svg" alt="amazing">
+                                <span>驚訝</span>
+                            </div>
+                        </div>
+                        <p id="sixBasicEmotions">
+                            博物學家達爾文提及過人類有六種基本情緒，包括快樂（happiness）、悲傷（sadness）、恐懼（fear）、厭惡（disgust）、憤怒（anger）和驚訝（surprise），屬於有助人類提高生存機會的本能情緒。其他複雜情緒如興奮、委屈、自卑、妒忌、內疚、寂寞等，則是由基本情緒混合衍生而成，並且經過學習與社會化之後產生。
+                        </p>
+                    </div>
+                    <div class="mb-56">
+                        <h2 class="mb-12">情緒無分好與壞</h2>
+                        <p id="goodOrBad">
+                            一般人習慣將情緒分為正負面，覺得快樂屬於正面情緒，悲傷、憤怒、恐懼則對人有害。其實情緒無分好與壞，每一種情緒都有其獨特意義。例如對於陌生環境感到恐懼不安，反映著對安全感的渴求，提醒我們遠離危險。悲傷時脆弱流淚，則可吸引關顧與扶持，促進人際聯繫。
+                        </p>
+                    </div>
+                    <div class="mb-56">
+                        <h2 class="mb-12">情緒的健康之道</h2>
+                        <p id="healthyEmotion">
+                            假如對情緒存在偏見，否定和壓抑自己的真正感覺，明明傷心卻扮開心，明明生氣卻默默忍受，很容易令身心健康出現問題。所謂情緒健康，不代表要時刻保持愉快心情，而是要有能力覺察自己的不同情緒，了解內心需要，並以健康恰當的方式去表達和調適，讓心靈回復平靜。
+                        </p>
+                    </div>
+                    <div class="text-end mb-64">
+                        <a class="quote" href="https://wmc.hkfyg.org.hk/emo1" target="_blank">
+                            引用文章來源：香港青年協會｜全健空間（九龍）
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- 浮動按鈕 -->
+        <div class="me-12 mb-12 floatButton">
+            <a href="#top" type="button" class="btn btn-main-tint01 rounded-circle shadow d-flex flex-column justify-content-center align-items-center">
+                <img class="d-none d-md-block" src="./images/backToTop.svg" alt="top">
+                <span class="text-white fs-9 fs-md-10 fw-bold">TOP</span>
+            </a>
+        </div>
+
+        <footer class="footer py-48">
+            <div class="container">
+                <div class="d-flex flex-column flex-lg-row align-items-center align-items-lg-start">
+                    <!-- logo -->
+                    <div class="footer-img mb-48 mb-lg-0 me-lg-96">
+                        <img class="w-100" src="./images/logo_footer.svg" alt="logo">
+                    </div>
+                    <!-- Developers -->
+                    <div class="footer-text-box mb-48 mb-lg-0 me-lg-56">
+                        <h3 class="mb-16 fs-5">開發團隊</h3>
+                        <ul>
+                            <li class="mb-8">
+                                <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/shu-ping-yu-238655268/"  target="_blank">
+                                    <span>Project Manager</span>
+                                    <span class="mt-4 d-block text-end">Shu-Ping Yu</span>
+                                </a>
+                            </li>
+                            <li class="mb-8">
+                                <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/shu-ping-yu-238655268/"  target="_blank">
+                                    <span>Product Designer</span>
+                                    <span class="mt-4 d-block text-end">Shu-Ping Yu</span>
+                                </a>
+                            </li>
+                            <li class="mb-8">
+                                <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/shu-ping-yu-238655268/" target="_blank">
+                                    <span>Front-End Engineer</span>
+                                    <span class="mt-4 d-block text-end">Shu-Ping Yu</span>
+                                </a>
+                            </li>
+                            <li class="mb-8">
+                                <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/%E5%81%89%E5%87%B1-%E6%9E%97-668aaa204/" target="_blank">
+                                    <span>Front-End Consultant</span>
+                                    <span class="mt-4 d-block text-end">Wei-Kai Lin</span>
+                                </a>
+                            </li>
+                            <li class="mb-8">
+                                <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/techleon/" target="_blank">
+                                    <span>Database Developer</span>
+                                    <span class="mt-4 d-block text-end">Leon Wu</span>
+                                </a>
+                            </li>
+                            <li class="mb-8">
+                                <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/techleon/" target="_blank">
+                                    <span>Back-End Developer</span>
+                                    <span class="mt-4 d-block text-end">Leon Wu</span>
+                                </a>
+                            </li>
+                            <li class="mb-8">
+                                <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/techleon/" target="_blank">
+                                    <span>System Designer</span>
+                                    <span class="mt-4 d-block text-end">Leon Wu</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="d-lg-flex justify-content-between" href="https://a8607125167.wixsite.com/mysite/about"  target="_blank">
+                                    <span>Illustrator</span>
+                                    <span class="mt-4 d-block text-end">Yi-Wen Fang</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Contact -->
+                    <div class="footer-text-box mb-48 mb-lg-0 me-lg-56">
+                        <a href="mailto:info@wavemocards.com">
+                            <h3 class="mb-16 fs-5">聯絡我們</h3>
+                            <span>info@wavemocards.com</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!--  Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+        <!-- toolTips on header -->
+        <script src="./js/toolTips.js"></script>
+    </body>
+</html>

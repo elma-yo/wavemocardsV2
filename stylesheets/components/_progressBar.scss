@@ -1,0 +1,44 @@
+.progressBar {
+    width: 35%;
+    .p-num {
+        margin-bottom: 2px;
+        width: 24px;
+        height: 24px;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: auto;
+    }
+    
+    .btn-outline-main-tint01 {
+        color: $main-tint01;
+        border: 1.5px solid $main-tint01;
+        background-color: $white;
+    }
+    .btn-outline-gray-450 {
+        color: $gray-450;
+        border: 1px solid $gray-450;
+        background-color: $white;
+    }
+    .btn-main-tint01 {
+        color: $main-dark;
+        border: 1.5px solid $main-tint01;
+        cursor: auto;
+    }
+    .btn-main-tint01:hover {
+        background-color: $main-tint01;
+    }
+    .p-text {
+        font-size: 14px;
+        font-weight: 400;
+    }
+}
+@media(max-width:992px){
+    .progressBar {
+        width: 45%;
+    }
+}
+@media(max-width:576px){
+    .progressBar {
+        width: 85%;
+    }
+}

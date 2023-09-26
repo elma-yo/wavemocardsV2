@@ -1,0 +1,209 @@
+// 分類卡 & 小卡
+.class-card {
+    min-width: 236px;
+    max-width: 236px;
+    height: 140px;
+    display: flex;
+    margin-bottom: 16px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 12px;
+    p {
+        width: 50%;
+        padding: 0 8px;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    .img-box {
+        width: 50%;
+        border-radius: 50%;
+        overflow:hidden;
+    }
+    img {
+        width: 100%;
+        transform:scale(1,1);
+        transition: all .25s ease-out;
+    }
+}
+.class-card:hover {
+    padding: 8px;
+    p {
+        width: 40%;
+        font-size: 32px;
+        padding: 0;
+    }
+    .img-box {
+        width: 55%;
+    }
+    img {
+        transform:scale(1.2,1.2);
+    }
+}
+// 分類卡 & 小卡 在各類情緒被hover的border變色
+.class-card-happy, .class-card-expectation, .class-card-relived, .class-card-unstable, .class-card-amazed, .class-card-sadness, .class-card-hate, .class-card-anger, .class-card-others {
+    border: 0;
+}
+.class-card-happy:hover {
+    border: 4px solid #EBD175;
+}
+.class-card-expectation:hover {
+    border: 4px solid #EAB27E;
+}
+.class-card-relived:hover {
+    border: 4px solid #B0CC8B;
+}
+.class-card-unstable:hover {
+    border: 4px solid #D7B3B3;
+}
+.class-card-amazed:hover {
+    border: 4px solid #969DD7;
+}
+.class-card-sadness:hover {
+    border: 4px solid #A2C5D6;
+}
+.class-card-hate:hover {
+    border: 4px solid #C1B1A4;
+}
+.class-card-anger:hover {
+    border: 4px solid #D19292;
+}
+.class-card-others:hover {
+    border: 4px solid #CBCBCB;
+}
+
+// 大卡
+.c-modal-xl-card {
+    max-width: 664px;
+    .modal-content {
+        margin: 0;
+        padding: 0;
+        border: none;
+        border-radius: 16px;
+    }
+    .modal-body {
+        padding: 40px 40px;
+    }
+    .img {
+        width: 45%;
+    }
+    .title {
+        padding-bottom: 4px;
+        border-bottom: 2px solid $gray-700;
+    }
+    h2 {
+        font-size: 40px;
+        font-weight: bold;
+        color: $gray-900;
+    }
+    a {
+        font-size: 32px;
+        color: $gray-600;
+    }
+    a:hover {
+        color: $gray-900;
+    }
+    h3 {
+        font-size: 24px;
+        font-weight: bold;
+    }
+    p {
+        font-size: 20px;
+    }
+}
+
+// 展開頁 各類情緒的表頭
+.emoCardsHead {
+    max-height: 140px;
+    margin-right: 8px;
+    padding: 0 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    color: $gray-900;
+    span {
+        font-size: 20px;
+    }
+}
+.emoCardHeadHappy {
+    background-color: rgba(255, 229, 137, .5);
+}
+.emoCardHeadHappy:hover {
+    background-color: rgba(255, 229, 137, .8);
+}
+.emoCardHeadExpectation {
+    background-color: rgba(248, 193, 143, .5);
+}
+.emoCardHeadExpectation:hover {
+    background-color: rgba(248, 193, 143, .8);
+}
+.emoCardHeadRelived {
+    background-color: rgba(206, 229, 175, .5);
+}
+.emoCardHeadRelived:hover {
+    background-color: rgba(206, 229, 175, .8);
+}
+.emoCardHeadUnstable {
+    background-color: rgba(224, 202, 202, .5);
+}
+.emoCardHeadUnstable:hover {
+    background-color: rgba(224, 202, 202, .8);
+}
+.emoCardHeadAmazed {
+    background-color: rgba(180, 185, 231, .5);
+}
+.emoCardHeadAmazed:hover {
+    background-color: rgba(180, 185, 231, .8);
+}
+.emoCardHeadSadness {
+    background-color: rgba(207, 225, 233, .5);
+}
+.emoCardHeadSadness:hover {
+    background-color: rgba(207, 225, 233, .8);
+}
+.emoCardHeadHate {
+    background-color: rgba(214, 202, 192, .5);
+}
+.emoCardHeadHate:hover {
+    background-color: rgba(214, 202, 192, .8);
+}
+.emoCardHeadAnger {
+    background-color: rgba(224, 174, 174, .5);
+}
+.emoCardHeadAnger:hover {
+    background-color: rgba(224, 174, 174, .8);
+}
+.emoCardHeadOthers {
+    background-color: rgba(235, 235, 235, .5);
+}
+.emoCardHeadOthers:hover {
+    background-color: rgba(235, 235, 235, .8);
+}
+
+// 找尋我的情緒｜未分類大卡
+.free-cards {
+    height: 272px;
+}
+.free-card {
+    min-width: 480px;
+    padding: 36px;
+    border-radius: 12px;
+    p {
+        width: 50%;
+        margin-right: 16px;
+        font-size: 64px;
+        font-weight: bold;
+    }
+    .img-box {
+        width: 50%;
+        border-radius: 50%;
+        overflow:hidden;
+    }
+    img {
+        width: 100%;
+        transform:scale(1,1);
+        transition: all .25s ease-out;
+    }
+}

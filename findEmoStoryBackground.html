@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- 手機版網頁 CSS Reset 螢幕解析度 Reset -->
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <title>浪潮情緒卡｜找尋我的情緒｜我的情緒故事-背景篇</title>
+    <!-- Bootstrap icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- Bootstrap css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="./stylesheets/all.css">
+</head>
+<body>
+    <div class="" id="top"></div>
+    <header class="header h-logined mb-12">
+        <div class="container py-16 d-flex justify-content-between align-items-center">
+            <h1>
+                <a href="home.html" data-bs-toggle="tooltip" data-bs-placement="bottom" title="回到首頁">浪潮情緒卡</a>
+            </h1>
+            <div class="d-lg-none position-relative">
+                <button class="px-8 py-4 btn btn-outline-main rounded-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    <i class="bi bi-list"></i>
+                </button>
+                <div class="collapse" style="position: absolute; right: 0; top: 40px; z-index: 10000;" id="collapseExample">
+                    <div class="p-0 card card-body rounded-2 border-2 border-main-tint01" style="width: 160px;">
+                        <ul>
+                            <li>
+                                <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="aboutEmotions.html">認識情緒</a>
+                            </li>
+                            <li>
+                                <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="findMyEmotions.html">探索情緒</a>
+                            </li>
+                            <li>
+                                <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="myRecords.html">我的紀錄</a>
+                            </li>
+                            <!-- <li>
+                                <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="sharedByOthers.html">他人的分享</a>
+                            </li> -->
+                            <li>
+                                <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="account.html">我的帳戶</a>
+                            </li>
+                            <li>
+                                <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="#">登出</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <ul class="d-none d-lg-flex justify-content-between align-items-center mb-0 ps-0">
+                <li>
+                    <a href="aboutEmotions.html" class="px-4 py-8" data-bs-toggle="tooltip" data-bs-placement="bottom" title="認識情緒與情緒卡">認識情緒</a>
+                </li>
+                <li class="ms-16">
+                    <a href="findMyEmotions.html" class="px-4 py-8" data-bs-toggle="tooltip" data-bs-placement="bottom" title="選擇情緒卡與紀錄情緒">探索情緒</a>
+                </li>
+                <li class="ms-16">
+                    <a href="myRecords.html" class="px-4 py-8" data-bs-toggle="tooltip" data-bs-placement="bottom" title="觀看我的紀錄與分析">我的紀錄</a>
+                </li>
+                <!-- <li class="ms-16">
+                    <a href="sharedByOthers.html" class="px-4 py-8" data-bs-toggle="tooltip" data-bs-placement="bottom" title="觀看他人分享的情緒紀錄">他人的分享</a> -->
+                </li>
+                <li class="ms-16">
+                    <a href="account.html" class="profile" data-bs-toggle="tooltip" data-bs-placement="bottom" title="管理我的帳戶">
+                        <i class="bi bi-person-fill"></i>
+                        <i class="bi bi-person-fill-gear"></i>
+                    </a>
+                </li>
+                <li class="ms-16">
+                    <a href="#" class="logout" data-bs-toggle="tooltip" data-bs-placement="bottom" title="登出">
+                        <i class="bi bi-door-closed-fill"></i>
+                        <i class="bi bi-door-open-fill"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <div class="sticky-top pb-8 bg-white">
+            <div class="container">
+                <!-- process bar -->
+                <div class="d-flex mb-20 pt-20 justify-content-center justify-content-sm-end">
+                    <div class="progressBar mb-8 px-12">
+                        <div class="position-relative m-4">
+                            <div class="progress bg-gray-300" style="height: 2px;">
+                                <div class="progress-bar bg-main-tint01" role="progressbar" style="width: 40%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <a class="p-num position-absolute top-0 start-0 translate-middle btn btn-sm btn-main-tint01 rounded-pill d-flex justify-content-center align-items-center" id="tooltip" href="findEmoCardsHolder.html" data-bs-toggle="tooltip" data-bs-placement="bottom" title="我的情緒卡夾">
+                                <span class="d-block" style="cursor: pointer;">1</span>
+                            </a>
+                            <a class="p-num position-absolute top-0 start-20 translate-middle btn btn-sm btn-main-tint01 rounded-pill d-flex justify-content-center align-items-center" id="tooltip" href="findEmoStrength1st.html" data-bs-toggle="tooltip" data-bs-placement="bottom" title="1st情緒強度">
+                                <span class="d-block" style="cursor: pointer;">2</span>
+                            </a>
+                            <div class="p-num position-absolute top-0 start-40 translate-middle btn btn-sm btn-outline-main-tint01 border-2 rounded-pill d-flex justify-content-center align-items-center" data-bs-toggle="tooltip" data-bs-placement="bottom" title="背景篇">
+                                <span class="d-block">3</span>
+                            </div>
+                            <div class="p-num position-absolute top-0 start-60 translate-middle btn btn-sm btn-outline-gray-450 rounded-pill d-flex justify-content-center align-items-center" data-bs-toggle="tooltip" data-bs-placement="bottom" title="行動篇">
+                                <span class="d-block">4</span>
+                            </div>
+                            <div class="p-num position-absolute top-0 start-80 translate-middle btn btn-sm btn-outline-gray-450 rounded-pill d-flex justify-content-center align-items-center" data-bs-toggle="tooltip" data-bs-placement="bottom" title="2nd情緒強度">
+                                <span class="d-block">5</span>
+                            </div>
+                            <div class="p-num position-absolute top-0 start-100 translate-middle btn btn-sm btn-outline-gray-450 rounded-pill d-flex justify-content-center align-items-center" data-bs-toggle="tooltip" data-bs-placement="bottom" title="感謝自我">
+                                <span class="d-block">6</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- title bar -->
+                <div class="pb-8 px-12 px-sm-0 border-2 border-bottom border-main-tint02 d-flex justify-content-between align-items-center">
+                    <h2 class="fs-3 d-none d-md-block">我的情緒故事｜背景篇</h2>
+                    <h2 class="fs-3 d-md-none d-flex flex-column">
+                        <span class="d-block">我的情緒故事</span>
+                        <span>背景篇</span>
+                    </h2>
+                    <div class="nav-btn d-flex justify-content-end">
+                        <button type="button" class="ms-16 px-md-24 btn btn-outline-main-tint01 c-btn c-btn-outline-main-tint01 text-nowrap d-flex justify-content-center align-items-center" id="btnBack">上一步</button>
+                        <button type="button" class="ms-16 px-md-24 btn btn-main c-btn text-nowrap d-flex justify-content-center align-items-center" id="btnNext">下一步
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <ul  class="ms-4 mt-12 mb-24 px-12 px-sm-0 text-gray-550 fs-7">
+                <li class="d-sm-none mb-4">謝謝親愛的ＯＯ，</li>
+                <li class="d-sm-none mb-4">真誠地感受自己的情緒。</li>
+                <li class="d-none d-sm-block mb-4">謝謝親愛的ＯＯ，真誠地感受自己的情緒。</li>
+                <li>接下來，想邀請你慢慢地潛入自己的情緒故事中，找尋自己情緒的源頭。</li>
+            </ul>
+
+            <form action="#" method="post">
+                <!-- 第一題 -->
+                <div class="container">
+                    <div class="mb-24 row align-items-center">
+                        <div class="col-md-8 col-lg-9 mb-24 mb-md-0 bg-main-tint03 rounded">
+                            <label for="whatHappened" id="WhatHappenedLabel" class="py-12 px-4">
+                                <p class="mb-8 text-main fw-500 fs-6">
+                                    邀請你輕輕地闔上雙眼，在吸氣與吐氣之間，慢慢地回想，在感受到「 ＸＸ 、 ＸＸ 、 ＸＸ 」的情緒之前，發生了什麼事情呢？
+                                </p>
+                                <p class="text-gray-550 fs-7">
+                                    請在下欄中，試著寫下你覺得可能是讓你有這些情緒的原因或是事情、背景故事等。
+                                </p>
+                            </label>
+                            <textarea class="w-100 mb-12 p-12 border rounded border-gray-500 text-gray-900" id="whatHappened" name="whatHappened"></textarea>
+                        </div>
+                        <div class="col-md-4 col-lg-3 d-flex justify-content-md-end">
+                            <img class="d-block" src="./images/emoStory/lime-diving.svg" alt="a man is diving">
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <!-- 圖片引用來源 -->
+            <div class="text-md-end mb-64 px-12 px-sm-0">
+                <span class="text-gray-500 fs-11">
+                    Illustration by <a class="link-gray-500" href="https://icons8.com/illustrations/author/iAdLsFJOKDrk" target="_blank">Tanya Krasutska</a> from <a class="link-gray-500" href="https://icons8.com/illustrations" target="_blank">Ouch!</a>
+                </span>
+            </div>
+        </div>
+    </main>
+
+    <!-- 浮動按鈕 -->
+    <div class="me-12 mb-12 floatButton">
+        <a href="#top" type="button" class="btn btn-main-tint01 rounded-circle shadow d-flex flex-column justify-content-center align-items-center">
+            <img class="d-none d-md-block" src="./images/backToTop.svg" alt="top">
+            <span class="text-white fs-9 fs-md-10 fw-bold">TOP</span>
+        </a>
+    </div>
+
+    <footer class="footer py-48">
+        <div class="container">
+            <div class="d-flex flex-column flex-lg-row align-items-center align-items-lg-start">
+                <!-- logo -->
+                <div class="footer-img mb-48 mb-lg-0 me-lg-96">
+                    <img class="w-100" src="./images/logo_footer.svg" alt="logo">
+                </div>
+                <!-- Developers -->
+                <div class="footer-text-box mb-48 mb-lg-0 me-lg-56">
+                    <h3 class="mb-16 fs-5">開發團隊</h3>
+                    <ul>
+                        <li class="mb-8">
+                            <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/shu-ping-yu-238655268/"  target="_blank">
+                                <span>Project Manager</span>
+                                <span class="mt-4 d-block text-end">Shu-Ping Yu</span>
+                            </a>
+                        </li>
+                        <li class="mb-8">
+                            <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/shu-ping-yu-238655268/"  target="_blank">
+                                <span>Product Designer</span>
+                                <span class="mt-4 d-block text-end">Shu-Ping Yu</span>
+                            </a>
+                        </li>
+                        <li class="mb-8">
+                            <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/shu-ping-yu-238655268/" target="_blank">
+                                <span>Front-End Engineer</span>
+                                <span class="mt-4 d-block text-end">Shu-Ping Yu</span>
+                            </a>
+                        </li>
+                        <li class="mb-8">
+                            <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/%E5%81%89%E5%87%B1-%E6%9E%97-668aaa204/" target="_blank">
+                                <span>Front-End Consultant</span>
+                                <span class="mt-4 d-block text-end">Wei-Kai Lin</span>
+                            </a>
+                        </li>
+                        <li class="mb-8">
+                            <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/techleon/" target="_blank">
+                                <span>Database Developer</span>
+                                <span class="mt-4 d-block text-end">Leon Wu</span>
+                            </a>
+                        </li>
+                        <li class="mb-8">
+                            <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/techleon/" target="_blank">
+                                <span>Back-End Developer</span>
+                                <span class="mt-4 d-block text-end">Leon Wu</span>
+                            </a>
+                        </li>
+                        <li class="mb-8">
+                            <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/techleon/" target="_blank">
+                                <span>System Designer</span>
+                                <span class="mt-4 d-block text-end">Leon Wu</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="d-lg-flex justify-content-between" href="https://a8607125167.wixsite.com/mysite/about"  target="_blank">
+                                <span>Illustrator</span>
+                                <span class="mt-4 d-block text-end">Yi-Wen Fang</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Contact -->
+                <div class="footer-text-box mb-48 mb-lg-0 me-lg-56">
+                    <a href="mailto:info@wavemocards.com">
+                        <h3 class="mb-16 fs-5">聯絡我們</h3>
+                        <span>info@wavemocards.com</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!--  Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <!-- axios CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <!-- toolTips on header -->
+    <script src="./js/toolTips.js"></script>
+    <script type="text/javascript" src="./js/textarea.js"></script>
+    <script>
+        const btnBack = document.querySelector('#btnBack');
+        const btnNext = document.querySelector('#btnNext');
+        const WhatHappenedLabel = document.querySelector('#WhatHappenedLabel');
+        const whatHappened = document.querySelector('#whatHappened');
+        const tooltips = document.querySelectorAll('#tooltip');
+        // 預防頁面跳轉
+        window.onbeforeunload = function () {
+            return "Are you really sure?";
+        }
+        tooltips.forEach(function(tooltip, i){
+            tooltip.addEventListener('click',function(){
+                window.onbeforeunload = false;
+            })
+        })
+        // 取得local storage 資料
+        let storageData;
+        let storageCards;
+        let getAddedCards = localStorage.getItem("addedCards");
+        storageData=JSON.parse(getAddedCards);
+        storageCards=storageData[0].cards;
+
+        // 確認 有無 whatHappened 的資料，有的話寫入textarea
+        if(storageData.length>1){
+            if(storageData[1].whatHappened!=""||storageData[1].whatHappened!=undefined){
+                whatHappened.value=storageData[1].whatHappened;
+            }
+        }
+
+        // 將情緒名詞寫入文句中
+        axios.get("https://api.wavemocards.com/emoinfo/cards/")
+        .then(function(response){
+            let aryData = Object.values(response.data);
+            let strLabel = "";
+            let cardsNum = storageCards.length;
+            let cardNames = [];
+            storageCards.forEach(function(card, i){
+                cardNames.push(card.name);
+            })
+            if(cardsNum==1){
+                strLabel = `
+                <p class="mb-8 text-main fw-500 fs-6">
+                    邀請你輕輕地闔上雙眼，在吸氣與吐氣之間，慢慢地回想，在感受到「<span class="px-2">${cardNames[0]}</span>」的情緒之前，發生了什麼事情呢？
+                </p>
+                <p class="text-gray-550 fs-7">
+                    請在下欄中，試著寫下你覺得可能是讓你有這些情緒的原因或是事情、背景故事等。
+                </p>`;
+            } else if (cardsNum==2){
+                strLabel = `
+                <p class="mb-8 text-main fw-500 fs-6">
+                    邀請你輕輕地闔上雙眼，在吸氣與吐氣之間，慢慢地回想，在感受到「<span class="px-2">${cardNames[0]}</span>、<span class="px-2">${cardNames[1]}</span>」的情緒之前，發生了什麼事情呢？
+                </p>
+                <p class="text-gray-550 fs-7">
+                    請在下欄中，試著寫下你覺得可能是讓你有這些情緒的原因或是事情、背景故事等。
+                </p>`;
+            } else {
+                strLabel = `
+                <p class="mb-8 text-main fw-500 fs-6">
+                    邀請你輕輕地闔上雙眼，在吸氣與吐氣之間，慢慢地回想，在感受到「<span class="px-2">${cardNames[0]}</span>、<span class="px-2">${cardNames[1]}</span>、<span class="px-2">${cardNames[2]}</span>」的情緒之前，發生了什麼事情呢？
+                </p>
+                <p class="text-gray-550 fs-7">
+                    請在下欄中，試著寫下你覺得可能是讓你有這些情緒的原因或是事情、背景故事等。
+                </p>`;
+            }
+            WhatHappenedLabel.innerHTML = strLabel;
+        })
+        // 點擊上一步時，將資料寫入local storage中
+        btnBack.addEventListener("click", function(){
+            let value = whatHappened.value;
+            if(storageData[1]==undefined){
+                storageData.push({whatHappened:value});
+            } else {
+                storageData[1].whatHappened=value;
+            }
+            let stringAddedCard = JSON.stringify(storageData);
+            localStorage.setItem("addedCards", stringAddedCard);
+            window.onbeforeunload = false;
+            location.href = "findEmoStrength1st.html";
+        })
+        // 點擊下一步時，將資料寫入 local storage中
+        btnNext.addEventListener("click", function(){
+            let value = whatHappened.value;
+            if(storageData[1]==undefined){
+                storageData.push({whatHappened:value});
+            } else {
+                storageData[1].whatHappened=value;
+            }
+            let stringAddedCard = JSON.stringify(storageData);
+            localStorage.setItem("addedCards", stringAddedCard);
+            window.onbeforeunload = false;
+            location.href = "findEmoStoryAction.html";
+        })
+        
+    </script>
+  </body>
+</html>

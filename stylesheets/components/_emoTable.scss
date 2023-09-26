@@ -1,0 +1,124 @@
+.emoTableHead {
+    min-height: 52px;
+    max-height: 52px;
+    min-width: 62px;
+    max-width: 70px;
+}
+.emoTableHeadFind {
+    min-height: 47px;
+    max-height: 47px;
+    min-width: 66px;
+}
+.btn-emoTable {
+    border-radius: 4px;
+    font-size: 20px;
+}
+.btn-emoTableAdd {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-image: url(../images/plus-btn-table.svg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+.btn-emoTableAdd:hover {
+    background-image: url(../images/plus-btn-hover.svg);
+}
+.opacity-happy {
+    background-color: rgba(255, 229, 127, .2);
+    border: 3px solid rgba(255, 229, 127, .05);
+}
+.opacity-happy:hover {
+    background-color: rgba(255, 229, 127, .5);
+    border: 3px solid $happy;
+}
+.opacity-expectation {
+    background-color: rgba(248, 193, 143, .2);
+    border: 3px solid rgba(248, 193, 143, .05);
+}
+.opacity-expectation:hover {
+    background-color: rgba(248, 193, 143, .5);
+    border: 3px solid $expectation;
+}
+.opacity-relived {
+    background-color: rgba(206, 229, 175, .2);
+    border: 3px solid rgba(206, 229, 175, .05);
+}
+.opacity-relived:hover {
+    background-color: rgba(206, 229, 175, .5);
+    border: 3px solid $relived;
+}
+.opacity-unstable {
+    background-color: rgba(193, 161, 161, .15);
+    border: 3px solid rgba(193, 161, 161, .05);
+}
+.opacity-unstable:hover {
+    background-color: rgba(193, 161, 161, .4);
+    border: 3px solid $unstable;
+}
+.opacity-amazed {
+    background-color: rgba(180, 185, 231, .2);
+    border: 3px solid rgba(180, 185, 231, .05);
+}
+.opacity-amazed:hover {
+    background-color: rgba(180, 185, 231, .5);
+    border: 3px solid $amazed;
+}
+.opacity-sadness {
+    background-color: rgba(197, 211, 232, .3);
+    border: 3px solid rgba(197, 211, 232, .05);
+}
+.opacity-sadness:hover {
+    background-color: rgba(197, 211, 232, .55);
+    border: 3px solid $sadness;
+}
+.opacity-hate {
+    background-color: rgba(214, 202, 192, .2);
+    border: 3px solid rgba(214, 202, 192, .05);
+}
+.opacity-hate:hover {
+    background-color: rgba(214, 202, 192, .5);
+    border: 3px solid $hate;
+}
+.opacity-anger {
+    background-color: rgba(224, 174, 174, .2);
+    border: 3px solid rgba(224, 174, 174, .05);
+}
+.opacity-anger:hover {
+    background-color: rgba(224, 174, 174, .5);
+    border: 3px solid $anger;
+}
+.opacity-others {
+    background-color: rgba(235, 235, 235, .4);
+    border: 3px solid rgba(235, 235, 235, .05);
+}
+.opacity-others:hover {
+    background-color: rgba(235, 235, 235, .7);
+    border: 3px solid $others;
+}
+@media(max-width:992px){
+    .emoTableHead {
+        max-width: 26px;
+        min-width: 26px;
+    }
+    .emoTableHeadFind {
+        min-height: 35px;
+        max-height: 35px;
+        max-width: 58px;
+        min-width: 58px;
+    }
+    .btn-emoTable {
+        line-height: 1.2;
+        font-size: 14px;
+    }
+}
+@media(max-width:768px){
+    .emoTableHeadFind {
+        min-height: 42px;
+        max-height: 42px;
+        max-width: 26px;
+        min-width: 26px;
+    }
+}

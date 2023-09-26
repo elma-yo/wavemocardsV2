@@ -1,0 +1,39 @@
+.h-logined {
+    li {
+        a {
+            color: $gray-550;
+        }
+        a:hover {
+            color: $main;
+        }
+        .profile, .logout {
+            font-size: 24px;
+        }
+    }
+    .profile {
+        .bi-person-fill-gear {
+            display: none;
+        }
+    }
+    .profile:hover {
+        .bi-person-fill {
+            display: none;
+        }
+        .bi-person-fill-gear {
+            display: block;
+        }
+    }
+    .logout {
+        .bi-door-open-fill {
+            display: none;
+        }
+    }
+    .logout:hover {
+        .bi-door-closed-fill {
+            display: none;
+        }
+        .bi-door-open-fill {
+            display: block;
+        }
+    }
+}

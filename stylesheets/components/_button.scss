@@ -1,0 +1,301 @@
+// c -> Customization
+.c-btn {
+    border-radius: 100px;
+    padding: 4px 16px;
+    color: $white;
+    font-size: 16px;
+    font-weight: 400;
+}
+.c-btn:hover {
+    color: $white;
+    font-weight: bold;
+    box-shadow: 2px 2px 4px rgba(112, 132, 136, 0.5);
+}
+
+.c-btn-xl {
+    padding: 12px 32px;
+    border: 4px solid $white;
+    font-size: 32px;
+}
+.c-btn-xl:hover {
+    background-color: #cc8d8d;
+    border: 6px solid $white;
+    box-shadow: 6px 6px 12px rgba(69, 70, 71, 0.5);
+    color: $white;
+}
+
+.c-btn-outline-main {
+    border: 2px solid $main;
+    border-radius: 100px;
+    padding: 4px 16px;
+    background-color: $white;
+    color: $main;
+    font-size: 16px;
+    font-weight: bold;
+}
+.c-btn-outline-main:hover {
+    color: $white;
+    box-shadow: 2px 2px 4px rgba(112, 132, 136, 0.5);
+}
+
+.c-btn-outline-main-tint01 {
+    border: 2px solid $main-tint01;
+    border-radius: 100px;
+    padding: 4px 16px;
+    background-color: $white;
+    color: $main;
+    font-size: 16px;
+    font-weight: bold;
+}
+.c-btn-outline-main-tint01:hover {
+    background-color: $main-tint01;
+    color: $main-dark02;
+    box-shadow: 2px 2px 4px rgba(112, 132, 136, 0.5);
+}
+
+.c-btn-outline-pink {
+    border: 2px solid $pink;
+    border-radius: 100px;
+    padding: 4px 16px;
+    color: $pink;
+    font-size: 16px;
+    font-weight: bold;
+}
+.c-btn-outline-pink:hover {
+    color: $white;
+    box-shadow: 2px 2px 4px rgba(112, 132, 136, 0.5);
+}
+.c-btn-outline-pink-tint01 {
+    border: 3px solid $pink-tint02;
+    background-color: $white;
+    padding: 6px 22px;
+    border-radius: 100px;
+    color: $pink-tint01;
+    font-size: 16px;
+    font-weight: bold;
+}
+.c-btn-outline-pink-tint01:hover {
+    background-color: $pink-tint02;
+    color: $white;
+    box-shadow: 2px 2px 4px rgba(112, 132, 136, 0.5);
+}
+.c-btn-outline-pink-tint02-tooltip {
+    border: 2px solid $pink-tint02;
+    background-color: $white;
+    border-radius: 100px;
+    color: $pink-tint02;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+// float button
+.floatButton {
+    width: 60px;
+    opacity: 85%;
+    position: fixed; 
+    right: 0; 
+    bottom: 0; 
+    z-index: 1030;
+    a {
+        width: 60px; 
+        height: 60px;
+    }
+}
+@media(max-width:768px){
+    .floatButton {
+        width: 48px;
+        a {
+            width: 48px;
+            height: 48px;
+        }
+    }
+}
+
+// Be used in aboutEmotions, emotionCardsClassified
+.btn-disable {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: not-allowed;
+    border-radius: 100px;
+    padding: 4px 12px;
+    background-color: $gray-300;
+    border: 2px solid $gray-300;
+    color: $gray-500;
+    font-size: 16px;
+    font-weight: bold;
+}
+.nav-btn {
+    .btn-gray-500:hover {
+        background-color: $gray-400;
+    }
+    .btn-outline-main {
+        border: 2px solid $main;
+        color: $main;
+    }
+    .btn-outline-main:hover {
+        color: $white;
+    }
+}
+
+// 找尋我的情緒頁 按鈕
+.btn-find {
+    border: 4px solid $main;
+    background-color: $white;
+    color: $main;
+    font-size: 36px;
+    // padding: 24px 28px;
+    // img {
+    //     min-width: 80%;
+    //     transform:scale(1,1);
+    //     transition: all .5s ease-out;
+    // }
+    // .hover {
+    //     display: none;
+    // }
+}
+.btn-find:hover {
+    box-shadow: 0px 6px 16px rgba($gray-550, .5);
+    // border: 8px solid $main;
+    background-color: $main;
+    color: $white;
+    transition: 0.5s;
+    // .default {
+    //     display: none;
+    // }
+    // .hover {
+    //     display: block;
+    // }
+    // img {
+    //     transform:scale(1.2,1.2);
+    // }
+}
+
+// 我的情緒卡夾
+.btn-goToMyCards {
+    display: flex;
+    align-items: center;
+    .bi-folder2-open {
+        display: none;
+    }
+}
+.btn-goToMyCards:hover {
+    .bi-folder2 {
+        display: none;
+    }
+    .bi-folder2-open {
+        display: block;
+    }
+}
+
+// 卡片的新增按鈕
+.btn-add-card-m {
+    display: block;
+    width: 36px;
+    height: 36px;
+    background-image: url(../images/plus-btn.svg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+.btn-add-card-xl {
+    display: block;
+    width: 64px;
+    height: 64px;
+    background-image: url(../images/plus-btn-100.svg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+.btn-add-card-m:hover, .btn-add-card-xl:hover {
+    background-image: url(../images/plus-btn-hover.svg);
+}
+
+// 移除卡片 的按鈕
+.btn-delete-card-m {
+    display: block;
+    width: 36px;
+    height: 36px;
+    background-image: url(../images/cross-btn.svg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+.btn-delete-card-xl {
+    display: block;
+    width: 64px;
+    height: 64px;
+    background-image: url(../images/cross-btn.svg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+.btn-delete-card-m:hover, .btn-delete-card-xl:hover {
+    background-image: url(../images/cross-btn-hover.svg);
+}
+
+// 自由探索 ＯＸ按鈕
+.btn-free {
+    background-color: rgba($white, 0);
+    border: none;
+}
+.btn-free-cross-hover {
+    display: none;
+}
+.btn-free-cross:hover {
+    .btn-free-cross-default {
+        display: none;
+    }
+    .btn-free-cross-hover {
+        display: block;
+    }
+}
+.btn-free-circle-hover {
+    display: none;
+}
+.btn-free-circle:hover {
+    .btn-free-circle-default {
+        display: none;
+    }
+    .btn-free-circle-hover {
+        display: block;
+    }
+}
+
+// 紀錄頁 分享、刪除 按鈕
+.c-btn-icon {
+    padding: 4px 12px;
+    background-color: $white;
+    color: $main;
+}
+.c-btn-icon:hover {
+    background-color: $main-tint01;
+    color: $white;
+    box-shadow: 2px 2px 4px rgba(112, 132, 136, 0.5);
+}
+
+// 共享紀錄 他人的分享 情緒故事按鈕
+.btn-emoStory {
+    color: $gray-900;
+}
+.btn-emoStory:hover {
+    padding: 0 4%;
+    border-radius: 50rem;
+    background-color: $main-tint02;
+    color: $gray-900;
+}
+@media(max-width:768px){
+    .btn-find {
+        background-color: $main;
+        color: $white;
+    }
+}
+@media(max-width:576px){
+    .c-btn {
+        padding: 4px 8px;
+    }
+}

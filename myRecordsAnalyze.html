@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!-- 手機版網頁 CSS Reset 螢幕解析度 Reset -->
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+        <title>浪潮情緒卡｜我的紀錄｜分析</title>
+        <!-- Bootstrap icon -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+        <!-- Bootstrap css -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+        <link rel="stylesheet" href="./stylesheets/all.css">
+    </head>
+    <body>
+        <header class="header h-logined fixed-top">
+            <div class="container py-16 d-flex justify-content-between align-items-center">
+                <h1>
+                    <a href="home.html" data-bs-toggle="tooltip" data-bs-placement="bottom" title="回到首頁">浪潮情緒卡</a>
+                </h1>
+                <div class="d-lg-none position-relative">
+                    <button class="px-8 py-4 btn btn-outline-main rounded-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        <i class="bi bi-list"></i>
+                    </button>
+                    <div class="collapse" style="position: absolute; right: 0; top: 40px;" id="collapseExample">
+                        <div class="p-0 card card-body rounded-2 border-2 border-main-tint01" style="width: 160px;">
+                            <ul>
+                                <li>
+                                    <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="aboutEmotions.html">認識情緒</a>
+                                </li>
+                                <li>
+                                    <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="findMyEmotions.html">探索情緒</a>
+                                </li>
+                                <li>
+                                    <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="myRecords.html">我的紀錄</a>
+                                </li>
+                                <!-- <li>
+                                    <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="sharedByOthers.html">他人的分享</a>
+                                </li> -->
+                                <li>
+                                    <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="account.html">我的帳戶</a>
+                                </li>
+                                <li>
+                                    <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="#">登出</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <ul class="d-none d-lg-flex justify-content-between align-items-center mb-0 ps-0">
+                    <li>
+                        <a href="aboutEmotions.html" class="px-4 py-8" data-bs-toggle="tooltip" data-bs-placement="bottom" title="認識情緒與情緒卡">認識情緒</a>
+                    </li>
+                    <li class="ms-16">
+                        <a href="findMyEmotions.html" class="px-4 py-8" data-bs-toggle="tooltip" data-bs-placement="bottom" title="選擇情緒卡與紀錄情緒">探索情緒</a>
+                    </li>
+                    <li class="ms-16">
+                        <a href="myRecords.html" class="px-4 py-8" data-bs-toggle="tooltip" data-bs-placement="bottom" title="觀看我的紀錄與分析">我的紀錄</a>
+                    </li>
+                    <!-- <li class="ms-16">
+                        <a href="sharedByOthers.html" class="px-4 py-8" data-bs-toggle="tooltip" data-bs-placement="bottom" title="觀看他人分享的情緒紀錄">他人的分享</a> -->
+                    </li>
+                    <li class="ms-16">
+                        <a href="account.html" class="profile" data-bs-toggle="tooltip" data-bs-placement="bottom" title="管理我的帳戶">
+                            <i class="bi bi-person-fill"></i>
+                            <i class="bi bi-person-fill-gear"></i>
+                        </a>
+                    </li>
+                    <li class="ms-16">
+                        <a href="#" class="logout" data-bs-toggle="tooltip" data-bs-placement="bottom" title="登出">
+                            <i class="bi bi-door-closed-fill"></i>
+                            <i class="bi bi-door-open-fill"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+
+        <main>
+            <div class="container py-16 pt-112" id="top">
+                <!-- 標題 -->
+                <div class="mb-20 pb-8 px-12 px-sm-0 border-2 border-bottom border-main-tint02 d-flex justify-content-between align-items-center">
+                    <h2 class="fs-3">我的紀錄｜分析</h2>
+                    <div class="nav-btn d-flex justify-content-end">
+                        <a class="btn btn-outline-main c-btn" href="myRecords.html">紀錄</a>
+                        <div class="ms-16 btn-disable text-nowrap">分析</div>
+                    </div>
+                </div>
+                
+                
+                <!-- 搜尋條 & 分享 -->
+                <form action="" method="get">
+                    <!-- 搜尋條 -->
+                    <div class="mb-24 px-12 px-sm-0 d-flex flex-column flex-md-row justify-content-sm-between align-items-center" id="areaSearch">
+                        <div class="box-analyze d-flex flex-column flex-md-row align-items-center">
+                            <div class="box-date-analyze d-flex flex-column flex-sm-row align-items-center mb-16 mb-md-0">
+                                <input type="date" class="input-date-analyze d-block px-2 px-sm-16 py-6 border border-main-tint02 border-2 rounded-pill text-main-tint01 text-center">
+                                <span class="mx-8 text-main-tint01">～</span>
+                                <input type="date" class="input-date-analyze d-block me-md-12 px-2 px-sm-16 py-6 border border-main-tint02 border-2 rounded-pill text-main-tint01 text-center">
+                            </div>
+                            <div class="box-btn-analyze">
+                                <button type="submit" class="w-100 btn btn-main c-btn px-24 py-8 border-0 text-nowrap" id="btnAnalyze">分析</button>
+                            </div>
+                        </div>
+                        <!-- 分享 -->
+                        <div class="d-none box-btn-analyze d-flex justify-content-end" id="btnDownload">
+                            <button class="mt-12 mt-md-0 rounded-pill border-0 fs-4 c-btn-icon">
+                                <i class="bi bi-box-arrow-down"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- 圖表區 -->
+                <div class="d-none px-12 px-sm-0 d-flex flex-column flex-lg-row justify-content-lg-between align-items-center align-items-lg-stretch mb-48" id="areaGraph">
+                    <div class="box-47 mb-36 mb-lg-0">
+                        <h3 class="mb-8 py-4 fs-5 fw-bold text-main border-bottom border-main-tint02">情緒類組次數</h3>
+                        <p class="mb-24 text-gray-550">下圖為您在此期間記錄的情緒卡，在以下分類中所出現的次數的長條圖。</p>
+                        <div class="py-8 d-flex justify-content-center align-items-center">
+                            <!-- 暫時用假資料 -->
+                            <img src="./images/fakeCharts/BarChart.svg" alt="bar chart">
+                        </div>
+                    </div>
+                    <div class="box-47">
+                        <h3 class="mb-8 py-4 fs-5 fw-bold text-main border-bottom border-main-tint02">情緒類組比例</h3>
+                        <p class="mb-24 text-gray-550">下圖為您在此期間記錄的情緒卡，在以下分類中所出現的次數比例的圖餅圖。</p>
+                        <div class="py-8 d-flex justify-content-center align-items-center">
+                            <!-- 暫時用假資料 -->
+                            <img src="./images/fakeCharts/PieChart.svg" alt="pie chart">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 插畫 -->
+                <div class="px-12 px-sm-0 d-flex justify-content-end">
+                    <img src="./images/lime-analyze.svg" alt="analyze">
+                </div>
+                <!-- 圖片引用來源 -->
+                <div class="px-12 px-sm-0 text-end mb-48">
+                    <span class="text-gray-500 fs-11">
+                        Illustration by <a class="link-gray-500" href="https://icons8.com/illustrations/author/iAdLsFJOKDrk" target="_blank">Tanya Krasutska</a> from <a class="link-gray-500" href="https://icons8.com/illustrations" target="_blank">Ouch!</a>
+                    </span>
+                </div>
+            </div>
+        </main>
+        
+        <!-- 浮動按鈕 -->
+        <div class="me-12 mb-12 floatButton">
+            <a href="#top" type="button" class="btn btn-main-tint01 rounded-circle shadow d-flex flex-column justify-content-center align-items-center">
+                <img class="d-none d-md-block" src="./images/backToTop.svg" alt="top">
+                <span class="text-white fs-9 fs-md-10 fw-bold">TOP</span>
+            </a>
+        </div>
+        
+        <footer class="footer py-48">
+            <div class="container">
+                <div class="d-flex flex-column flex-lg-row align-items-center align-items-lg-start">
+                    <!-- logo -->
+                    <div class="footer-img mb-48 mb-lg-0 me-lg-96">
+                        <img class="w-100" src="./images/logo_footer.svg" alt="logo">
+                    </div>
+                    <!-- Developers -->
+                    <div class="footer-text-box mb-48 mb-lg-0 me-lg-56">
+                        <h3 class="mb-16 fs-5">開發團隊</h3>
+                        <ul>
+                            <li class="mb-8">
+                                <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/shu-ping-yu-238655268/"  target="_blank">
+                                    <span>Project Manager</span>
+                                    <span class="mt-4 d-block text-end">Shu-Ping Yu</span>
+                                </a>
+                            </li>
+                            <li class="mb-8">
+                                <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/shu-ping-yu-238655268/"  target="_blank">
+                                    <span>Product Designer</span>
+                                    <span class="mt-4 d-block text-end">Shu-Ping Yu</span>
+                                </a>
+                            </li>
+                            <li class="mb-8">
+                                <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/shu-ping-yu-238655268/" target="_blank">
+                                    <span>Front-End Engineer</span>
+                                    <span class="mt-4 d-block text-end">Shu-Ping Yu</span>
+                                </a>
+                            </li>
+                            <li class="mb-8">
+                                <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/%E5%81%89%E5%87%B1-%E6%9E%97-668aaa204/" target="_blank">
+                                    <span>Front-End Consultant</span>
+                                    <span class="mt-4 d-block text-end">Wei-Kai Lin</span>
+                                </a>
+                            </li>
+                            <li class="mb-8">
+                                <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/techleon/" target="_blank">
+                                    <span>Database Developer</span>
+                                    <span class="mt-4 d-block text-end">Leon Wu</span>
+                                </a>
+                            </li>
+                            <li class="mb-8">
+                                <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/techleon/" target="_blank">
+                                    <span>Back-End Developer</span>
+                                    <span class="mt-4 d-block text-end">Leon Wu</span>
+                                </a>
+                            </li>
+                            <li class="mb-8">
+                                <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/techleon/" target="_blank">
+                                    <span>System Designer</span>
+                                    <span class="mt-4 d-block text-end">Leon Wu</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="d-lg-flex justify-content-between" href="https://a8607125167.wixsite.com/mysite/about"  target="_blank">
+                                    <span>Illustrator</span>
+                                    <span class="mt-4 d-block text-end">Yi-Wen Fang</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Contact -->
+                    <div class="footer-text-box mb-48 mb-lg-0 me-lg-56">
+                        <a href="mailto:info@wavemocards.com">
+                            <h3 class="mb-16 fs-5">聯絡我們</h3>
+                            <span>info@wavemocards.com</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!--  Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+        <!-- axios CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+        <!-- toolTips on header -->
+        <script src="./js/toolTips.js"></script>
+        <script>
+            const btnAnalyze = document.querySelector('#btnAnalyze');
+            const btnDownload = document.querySelector('#btnDownload');
+            const areaSearch = document.querySelector('#areaSearch');
+            const areaGraph = document.querySelector('#areaGraph');
+
+            btnAnalyze.addEventListener('click', function(){
+                event.preventDefault();
+                btnDownload.classList.remove('d-none');
+                areaGraph.classList.remove('d-none');
+                areaSearch.classList.remove('mb-24');
+                areaSearch.classList.add('mb-md-24');
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- 手機版網頁 CSS Reset 螢幕解析度 Reset -->
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <title>浪潮情緒卡｜探索情緒</title>
+    <!-- Bootstrap icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- Bootstrap css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="./stylesheets/all.css">
+  </head>
+  <body>
+    <header class="header h-logined fixed-top">
+      <div class="container py-16 d-flex justify-content-between align-items-center">
+          <h1>
+              <a href="home.html" data-bs-toggle="tooltip" data-bs-placement="bottom" title="回到首頁">浪潮情緒卡</a>
+          </h1>
+          <div class="d-lg-none position-relative">
+              <button class="px-8 py-4 btn btn-outline-main rounded-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                  <i class="bi bi-list"></i>
+              </button>
+              <div class="collapse" style="position: absolute; right: 0; top: 40px;" id="collapseExample">
+                  <div class="p-0 card card-body rounded-2 border-2 border-main-tint01" style="width: 160px;">
+                      <ul>
+                          <li>
+                              <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="aboutEmotions.html">認識情緒</a>
+                          </li>
+                          <li>
+                              <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="findMyEmotions.html">探索情緒</a>
+                          </li>
+                          <li>
+                              <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="myRecords.html">我的紀錄</a>
+                          </li>
+                          <!-- <li>
+                              <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="sharedByOthers.html">他人的分享</a>
+                          </li> -->
+                          <li>
+                              <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="account.html">我的帳戶</a>
+                          </li>
+                          <li>
+                              <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="#">登出</a>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+          <ul class="d-none d-lg-flex justify-content-between align-items-center mb-0 ps-0">
+              <li>
+                  <a href="aboutEmotions.html" class="px-4 py-8" data-bs-toggle="tooltip" data-bs-placement="bottom" title="認識情緒與情緒卡">認識情緒</a>
+              </li>
+              <li class="ms-16">
+                  <a href="findMyEmotions.html" class="px-4 py-8" data-bs-toggle="tooltip" data-bs-placement="bottom" title="選擇情緒卡與紀錄情緒">探索情緒</a>
+              </li>
+              <li class="ms-16">
+                  <a href="myRecords.html" class="px-4 py-8" data-bs-toggle="tooltip" data-bs-placement="bottom" title="觀看我的紀錄與分析">我的紀錄</a>
+              </li>
+              <!-- <li class="ms-16">
+                  <a href="sharedByOthers.html" class="px-4 py-8" data-bs-toggle="tooltip" data-bs-placement="bottom" title="觀看他人分享的情緒紀錄">他人的分享</a> -->
+              </li>
+              <li class="ms-16">
+                  <a href="account.html" class="profile" data-bs-toggle="tooltip" data-bs-placement="bottom" title="管理我的帳戶">
+                      <i class="bi bi-person-fill"></i>
+                      <i class="bi bi-person-fill-gear"></i>
+                  </a>
+              </li>
+              <li class="ms-16">
+                  <a href="#" class="logout" data-bs-toggle="tooltip" data-bs-placement="bottom" title="登出">
+                      <i class="bi bi-door-closed-fill"></i>
+                      <i class="bi bi-door-open-fill"></i>
+                  </a>
+              </li>
+          </ul>
+      </div>
+    </header>
+
+    <main>
+      <div class="container py-16 pt-112" id="top">
+          <!-- 標題欄 -->
+          <div class="mb-16 pb-8 border-2 border-bottom border-main-tint02 d-flex justify-content-between">
+            <h2 class="fs-3">探索情緒</h2>
+          </div>
+  
+          <div class="row align-items-center">
+            <!-- 導覽說明 -->
+            <div class="col-md-8 mb-24 mb-md-0">
+              <div class="h-100 px-36 py-24 bg-main-tint03 rounded-4 fs-6 text-gray-700 d-flex flex-column justify-content-center">
+                <p class="mb-md-12">你在情緒的世界裡迷航了嗎？</p>
+                <p class="mb-md-12">沒關係，讓我們一起在浪潮情緒卡中，探索自己的情緒。</p>
+                <p class="mb-md-12">邀請你先閉上眼睛，<span class="text-main fw-bold">深呼吸</span>，再慢慢地吐氣。</p>
+                <p class="mb-md-12">在吸氣與吐氣的過程，<span class="text-main fw-bold">慢慢地感受自己的身體與心靈的狀態</span>。</p>
+                <p>如果準備好了的話，<span class="text-main fw-bold">請點擊「開始探索」</span>。</p>
+              </div>
+            </div>
+            
+            <!-- 分類探索 -->
+            <div class="d-md-none mt-md-24 d-flex justify-content-center">
+              <button type="button" class="w-75 mt-8 mb-4 px-56 py-24 btn-find d-flex justify-content-center align-items-center rounded-pill text-nowrap fw-bold" id="btnStart">
+                開始探索
+              </button>
+            </div>
+            <div class="col-md-4 pt-36 d-flex flex-column align-items-center">
+              <!-- <a class="d-block mt-8 mb-4 px-56 py-40 btn-find d-flex justify-content-between align-items-center rounded-pill" href="findEmoClassifiedExpand.html">
+                開始探索
+              </a> -->
+              <!-- <a class="mt-8 w-75 btn-find d-flex justify-content-between align-items-center rounded-pill" href="findEmoClassified.html">
+                <h2 class="w-50 me-36 text-nowrap text-center text-main fs-2">開始探索</h2>
+                <div style="width: 50%;">
+                  <img src="../assets/images/findEmoClassified.svg" alt="分類探索">
+                </div>
+              </a> -->
+              <img src="./images/lime-Breath.svg" alt="breath">
+              
+            </div>
+            <div class="d-none d-md-flex mt-24 justify-content-center">
+              <button type="button" class="w-75 mt-8 mb-4 px-56 py-24 btn-find d-flex justify-content-center align-items-center rounded-pill fw-bold" id="btnStart">
+                開始探索
+              </button>
+            </div>
+          </div>
+          <!-- 圖片引用來源 -->
+          <div class="mt-4 mb-72 mt-md-72 mb-md-8 d-flex justify-content-center text-gray-500 fs-11">
+            Illustration by <a class="link-gray-500" href="https://icons8.com/illustrations/author/iAdLsFJOKDrk" target="_blank">Tanya Krasutska</a> from <a class="link-gray-500" href="https://icons8.com/illustrations" target="_blank">Ouch!</a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <%- include('./layout/floatButton') -%>
+    
+    <%- include('./layout/footer'); -%>
+
+    <%- include('./layout/baseJs'); -%>
+  </body>
+  <script>
+    const btnStarts = document.querySelectorAll('#btnStart');
+    btnStarts.forEach(function(btnStart, i){
+      btnStart.addEventListener("click", function(){
+        localStorage.removeItem("addedCards");
+        localStorage.removeItem("btnName");
+        location.href = "findEmoCards.html";
+      })
+    })
+  </script>
+</html>

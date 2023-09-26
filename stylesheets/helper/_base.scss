@@ -1,0 +1,74 @@
+// 1~14行 將高度不夠高的頁面撐開，避免底部留白
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex-grow: 1;
+}
+
+body {
+    line-height: 1.5;
+}
+
+img {
+    vertical-align: middle;
+	max-width: 100%;
+	height: auto;
+}
+
+a {
+    text-decoration: none;
+    font-weight: 500;
+}
+
+ul {
+	list-style: none;
+}
+
+h2 {
+    font-size: 28px;
+    color: $main;
+    font-weight: bold;
+}
+
+textarea {
+    min-height: 170px;
+}
+
+// date 文字的顏色透明度
+input[type="date"]::-webkit-datetime-edit {
+    opacity: 0.8;
+}
+// date icon的顏色透明度
+input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0.6;
+}
+/* date 年月份「斜線」 */
+input[type="date"]::-webkit-datetime-edit-text {
+    color: $gray-500; 
+    padding: 6px;
+}
+
+$font-family-sans-serif:
+    Roboto,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    "Helvetica Neue",
+    "Noto Sans",
+    "Liberation Sans",
+    Arial,
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji";
+
+$line-height-base: 1.2;
+$line-height-lg: 1.5;
