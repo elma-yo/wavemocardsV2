@@ -11,6 +11,35 @@
         <!-- Bootstrap css -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
         <link rel="stylesheet" href="./stylesheets/all.css">
+        <style>
+            .clickMeToLogin {
+                position: relative;
+                text-align: center;
+                font-weight: bold;
+                color: #85C5D6;
+            }
+            .clickMeToLogin::before {
+                width: 24%;
+                height: 2px;
+                position: absolute;
+                top: 50%;
+                left: 0;
+                content: "";
+                background-color: #B1DBE5;
+            }
+            .clickMeToLogin::after {
+                position: absolute;
+                content: "";
+                width: 24%;
+                height: 2px;
+                top: 50%;
+                right: 0;
+                background-color: #B1DBE5;
+            }
+            .clickMeToLogin:hover {
+                color: #3C9DAE;
+            }
+        </style>
     </head>
     <body>
         <header class="header sticky-top">
@@ -59,7 +88,7 @@
 
             <div class="box-50 py-32 px-24 d-flex flex-column align-items-center">
                 <div class="form-signUp-login">
-                    <div class="mb-8 text-pink d-flex flex-column align-items-center fs-88">
+                    <div class="mb-8 text-pink d-flex flex-column align-items-center" style="font-size: 88px;">
                         <i class="bi bi-person-circle"></i>
                     </div>
                     <h2 class="mb-32 fs-3 text-pink">註冊</h2>
@@ -84,10 +113,6 @@
                         </div>
                         <!-- email驗證結果 -->
                         <div class="d-none d-sm-block mt-4 ms-24 fs-9" id="emailCmt"></div>
-                        <!-- bs的資料驗證回饋 -->
-                        <!-- <div class="invalid-feedback">
-                            請輸入正確的 e-mail 帳號
-                        </div> -->
                     </div>
                     <!-- passWord -->
                     <div class="mb-16">
@@ -113,10 +138,6 @@
                                     <!-- <li class="ms-16">至少包含<span class="fw-bold"> 1 個特殊字符 </span>（例如！、@、#、$、%等）。</li> -->
                                 </ol>
                             </div>
-                            </div>
-                        <!-- error msg -->
-                        <div class="invalid-feedback">
-                            請設定符合密碼規則的密碼
                         </div>
                     </div>
                     <!-- passWord 2 -->
@@ -136,9 +157,6 @@
                         </label>
                         <input type="text" class="form-control rounded-pill px-20" id="account" placeholder="wavemocards" required>
                         <div class="mt-4 ms-12 ms-sm-24 fs-9" id="accountCmt"></div>
-                        <!-- <div class="invalid-feedback">
-                            只能輸入英文和數字
-                        </div> -->
                     </div>
                     <!-- lastName & firstName -->
                     <div class="mb-20 row">
@@ -149,9 +167,6 @@
                             </label>
                             <input type="text" class="form-control rounded-pill px-20" id="lastName" placeholder="陳" required>
                             <div class="mt-4 ms-12 ms-sm-24 fs-9" id="lastNameCmt"></div>
-                            <!-- <div class="invalid-feedback">
-                                請輸入您的姓氏
-                            </div> -->
                         </div>
                         <div class="col-6">
                             <label for="firstName" class="form-label d-flex justify-content-between">
@@ -160,50 +175,42 @@
                             </label>
                             <input type="text" class="form-control rounded-pill px-20" id="firstName" placeholder="浪潮" required>
                             <div class="mt-4 ms-12 ms-sm-24 fs-9" id="firstNameCmt"></div>
-                            <!-- <div class="invalid-feedback">
-                                請輸入您的名字
-                            </div> -->
                         </div>
                     </div>
                     <div class="mb-24 row">
                         <div class="col-6">
                             <label for="birthday" class="form-label d-flex justify-content-between">
                                 生日
-                                <span class="text-pink-tint02 fs-9">*必填</span>
+                                <!-- <span class="text-pink-tint02 fs-9">*必填</span> -->
                             </label>
                             <input type="date" class="form-control rounded-pill px-20" id="birthday" required>
                             <div class="mt-4 ms-12 ms-sm-24 fs-9" id="birthdayCmt"></div>
-                            <!-- <div class="invalid-feedback">
-                                請輸入您的生日年月日
-                            </div> -->
                         </div>
                         <div class="col-6">
                             <label for="title" class="form-label d-flex justify-content-between">
                                 身份
                             </label>
                             <select class="form-select px-20 rounded-pill" aria-label="Default select example" id="title">
-                                <option value="學生">學生</option>
-                                <option value="教師">教師</option>
-                                <option value="教師">輔導教師</option>
+                                <option value="Student">學生</option>
+                                <option value="Teacher">教師</option>
+                                <!-- <option value="教師">輔導教師</option>
                                 <option value="諮商師">諮商師</option>
-                                <option value="醫生">醫生</option>
-                                <option value="其他">其他</option>
+                                <option value="醫生">醫生</option> -->
+                                <option value="Null">其他</option>
                             </select>
                         </div>
                     </div>
                     <div class="mb-32">
                         <input type="checkbox" id="agree" required>
-                                <span class="ms-4">
+                                <label class="ms-4" for="agree">
                                     我已經詳讀並同意
                                     <button type="button" class="bg-white border-0 link-main fs-8 fw-normal" data-bs-toggle="modal" data-bs-target="#staticBackdrop">隱私權保護政策</button>。
-                                </span>
+                                </label>
                         <!-- error msg -->
-                        <div class="invalid-feedback">
-                            勾選後才能註冊
-                        </div>
+                        <div class="mt-4 ms-12 ms-sm-24 fs-9" id="agreeCmt"></div>
                     </div>
                     <button class="w-100 mb-32 py-8 btn btn-pink c-btn" id="btnSubmit" type="button">註冊</button>
-                    <a class="mb-16 d-block click-me clickMeToLogin" href="login.html">已經有帳號了嗎？ 點我登入</a>
+                    <a class="mb-16 d-block clickMeToLogin" href="login.html">已經有帳號了嗎？ 點我登入</a>
                 </div>
             </div>
         </main>
@@ -346,9 +353,9 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content rounded-4">
                     <div class="modal-body d-flex flex-column align-items-center px-48 py-36">
-                        <p id="modalNeedAgreeTitle" class="fs-4 fw-bold">提醒</p>
+                        <p id="modalNeedAgreeTitle" class="fs-4 fw-bold text-pink">提醒</p>
                         <p id="modalNeedAgreeText2" class="mt-12 fs-7 text-gray-700">
-                            若您欲註冊本站會員，必須勾選「我已經詳讀並同意 隱私權保護政策」。
+                            若您欲註冊本站會員，<span class="text-pink">必須勾選「我已經詳讀並同意 隱私權保護政策」</span>。
                         </p>
                         <p id="modalNeedAgreeText3" class="mt-12 fs-7 text-gray-700">
                             勾選後，代表您已詳讀並同意本網站之隱私權保護政策。
@@ -407,11 +414,16 @@
             const pwdCmt = document.querySelector('#pwdCmt');
             const pwd2Cmt = document.querySelector('#pwd2Cmt');
             const account = document.querySelector('#account');
+            const accountCmt = document.querySelector('#accountCmt');
             const lastName = document.querySelector('#lastName');
+            const lastNameCmt = document.querySelector('#lastNameCmt');
             const firstName = document.querySelector('#firstName');
+            const firstNameCmt = document.querySelector('#firstNameCmt');
             const birthday = document.querySelector('#birthday');
+            const birthdayCmt = document.querySelector('#birthdayCmt');
             const title = document.querySelector('#title');
             const agree = document.querySelector('#agree');
+            const agreeCmt = document.querySelector('#agreeCmt');
             const btnSubmit = document.querySelector('#btnSubmit');
             const modalResult = document.querySelector('#modalResult');
             const modalResultText = document.querySelector('#modalResultText');
@@ -423,8 +435,10 @@
 
             // 驗證 email 
             let emailVerified = false;
+            let emailValue;
+            let finalEmail;
             btnVerify.addEventListener('click', function(){
-                let emailValue = email.value;
+                emailValue = email.value;
                 // 前端驗證 email 是否符合格式
                 if(emailValue==""){
                     emailCmt.forEach(function(cmt, index){
@@ -440,45 +454,15 @@
                         })
                     } else {
                         // post email
-                        // get 是否驗證成功，成功的話 emailVerified = true;
-                        if(emailVerified==true) {
-                            emailCmt.forEach(function(cmt, index){
-                                cmt.innerHTML = `<i class="me-4 bi bi-check-circle-fill"></i><span>驗證成功，您可使用此Email</span>`;
-                                cmt.classList.remove("text-pink");
-                                cmt.classList.add("text-main");
-                            })
-                            btnVerify.classList.add('d-none');
-                        } else {
-                            emailCmt.forEach(function(cmt, index){
-                                cmt.textContent = "驗證失敗，該Email已被註冊，請使用其他的Email";
-                                cmt.classList.add("text-pink");
-                            })
-                        }
-                    }
-                }
-            })
-            //  修改後確認
-            if (emailVerified==true){
-                email.addEventListener("keyup", function(){
-                    let emailValue = email.value;
-                    // 前端驗證 email 是否符合格式
-                    if(emailValue==""){
-                        emailCmt.forEach(function(cmt, index){
-                            cmt.textContent = "請先輸入Email";
-                            cmt.classList.add("text-pink");
-                        })
-                        btnVerify.classList.remove('d-none');
-                    } else {
-                        let correct = IsEmail(emailValue);
-                        if (correct==false) {
-                            emailCmt.forEach(function(cmt, index){
-                                cmt.textContent = "請輸入正確的 Email 格式";
-                                cmt.classList.add("text-pink");
-                            })
-                            btnVerify.classList.remove('d-none');
-                        } else {
-                            // post email
-                            // get 是否驗證成功，成功的話 emailVerified = true;
+                        let postData = {"email": emailValue}
+                        axios.post("https://api.wavemocards.com/user/email", postData)
+                        .then(function(response){
+                            if (response.data.message!=true) {
+                                emailVerified=true;
+                                finalEmail = emailValue;
+                            } else {
+                                emailVerified=false;
+                            }
                             if(emailVerified==true) {
                                 emailCmt.forEach(function(cmt, index){
                                     cmt.innerHTML = `<i class="me-4 bi bi-check-circle-fill"></i><span>驗證成功，您可使用此Email</span>`;
@@ -490,13 +474,37 @@
                                 emailCmt.forEach(function(cmt, index){
                                     cmt.textContent = "驗證失敗，該Email已被註冊，請使用其他的Email";
                                     cmt.classList.add("text-pink");
-                                    btnVerify.classList.remove('d-none');
                                 })
                             }
-                        }
+                            //  若使用者有修改 email 須重新驗證
+                            if (emailVerified==true){
+                                email.addEventListener("keyup", function(){
+                                    emailValue = email.value;
+                                    if(finalEmail!=emailValue){
+                                        btnVerify.classList.remove('d-none');
+                                        emailVerified = false;
+                                        emailCmt.forEach(function(cmt, index){
+                                            cmt.textContent = "您的Email已更改，請重新驗證";
+                                            cmt.classList.add("text-pink");
+                                        })
+                                    }
+                                })
+                                email.addEventListener("click", function(){
+                                    emailValue = email.value;
+                                    if(finalEmail!=emailValue){
+                                        btnVerify.classList.remove('d-none');
+                                        emailVerified = false;
+                                        emailCmt.forEach(function(cmt, index){
+                                            cmt.textContent = "您的Email已更改，請重新驗證";
+                                            cmt.classList.add("text-pink");
+                                        })
+                                    }
+                                })
+                            }
+                        })
                     }
-                })
-            }
+                }
+            })
             function IsEmail(email) {
                 var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
                 if(!regex.test(email)) {
@@ -546,7 +554,7 @@
                 // 5-20個字符，只能是字母、數字、底線，不能以下劃線開頭和結尾
                 let regex = /^[a-zA-Z\d]\w{3,19}[a-zA-Z\d]$/;
                 if(!regex.test(account.value)){
-                    accountCmt.textContent = "請符合以下規定：5~20字，只能使用英文字母、數字、底線。";
+                    accountCmt.textContent = "帳號規定：5~20字，只能使用英文字母、數字、底線，且開頭不可為底線。";
                     accountCmt.style.color = "#C37979";
                     accountCorrect = false;
                 } else {
@@ -558,22 +566,36 @@
             })
 
             // 驗證 姓、名 是否有填寫
+            lastNameCorrect = false;
             lastName.addEventListener("keyup", function(){
                 if(lastName.value=="") {
                     lastNameCmt.textContent = "此欄為必填";
                     lastNameCmt.style.color = "#C37979";
+                    lastNameCorrect = false;
+                } else if(lastName.value.length<2) {
+                    lastNameCmt.textContent = "最少填入 1 個中文字，或 2 個英文字母";
+                    lastNameCmt.style.color = "#C37979";
+                    lastNameCorrect = false;
                 } else {
                     lastNameCmt.innerHTML = `<i class="bi bi-check-circle-fill"></i>`;
                     lastNameCmt.style.color = "#3C9DAE";
+                    lastNameCorrect = true;
                 }
             })
+            let firstNameCorrect = false;
             firstName.addEventListener("keyup", function(){
                 if(firstName.value=="") {
                     firstNameCmt.textContent = "此欄為必填";
                     firstNameCmt.style.color = "#C37979";
-                } else {
+                    firstNameCorrect = false;
+                } else if(firstName.value.length<2){
+                    firstNameCmt.textContent = "最少填入 1 個中文字，或 2 個英文字母";
+                    firstNameCmt.style.color = "#C37979";
+                    firstNameCorrect = false;
+                }else {
                     firstNameCmt.innerHTML = `<i class="bi bi-check-circle-fill"></i>`;
                     firstNameCmt.style.color = "#3C9DAE";
+                    firstNameCorrect = true;
                 }
             })
 
@@ -584,83 +606,155 @@
             let date = date_now.getDate() < 10 ? "0"+date_now.getDate() : date_now.getDate(); // 取得今天日期
             birthday.setAttribute("max", year+"-"+month+"-"+date); // 設置生日input標籤的max值
             // 在滑鼠離開後 驗證生日是否已選填
-            birthday.addEventListener("mouseout", function(){
-                if(birthday.value=="") {
-                    birthdayCmt.textContent = "此欄為必填";
-                    birthdayCmt.style.color = "#C37979";
+            // birthday.addEventListener("mouseout", function(){
+            //     if(birthday.value=="") {
+            //         birthdayCmt.textContent = "此欄為必填";
+            //         birthdayCmt.style.color = "#C37979";
+            //     } else {
+            //         birthdayCmt.innerHTML = `<i class="bi bi-check-circle-fill"></i>`;
+            //         birthdayCmt.style.color = "#3C9DAE";
+            //     }
+            // })
+
+            // 是否已勾選 我同意
+            let agreeChecked = false;
+            let checkedNum = 0;
+            agree.addEventListener("click", function(){
+                checkedNum++;
+                if(checkedNum%2!=0){
+                    agreeChecked = true;
+                    agreeCmt.innerHTML = `<i class="bi bi-check-circle-fill"></i>`;
+                    agreeCmt.style.color = "#3C9DAE";
                 } else {
-                    birthdayCmt.innerHTML = `<i class="bi bi-check-circle-fill"></i>`;
-                    birthdayCmt.style.color = "#3C9DAE"
+                    agreeChecked = false;
+                    agreeCmt.textContent = "您必須勾選同意才能進行註冊";
+                    agreeCmt.style.color = "#C37979";
                 }
             })
 
-            // 是否已勾選 我同意
-            agree.addEventListener("click", function(){
-                console.log(agree.checked);
-            })
-
             // 註冊內容驗證
+            let btnSubmitClickNum = 0;
             btnSubmit.addEventListener('click', function(){
-                let success = false;
-                // 驗證是否已填寫所有必填內容
-                if(emailVerified==true &&  pwdCorrect==true && pwd2Correct==true && accountCorrect==true && lastName.value!="" && firstName.value!="" && birthday.value!="" && agree.checked==true){
-                    // post 給後端確認
-                    // get 後端回傳資料，確認是否成功
-                    if(success==true){
-                        window.onbeforeunload = false;
-                        modalResultText.classList.add("text-main");
-                        btnSubmit.setAttribute("data-bs-toggle", "modal");
-                        btnSubmit.setAttribute("data-bs-target", "#modalResult");
-                        btnSubmit.click(); // 設定該按鈕被點擊
+                btnSubmitClickNum++;
+                if(btnSubmitClickNum%2!=0){
+                    // 驗證是否已填寫所有必填內容
+                    if(emailVerified==true &&  pwdCorrect==true && pwd2Correct==true && accountCorrect==true && lastNameCorrect==true && firstNameCorrect==true && agreeChecked==true){
+                        let postData;
+                        if(birthday.value==""){
+                            postData = {
+                                "email": email.value,
+                                "first_name": firstName.value,
+                                "last_name": lastName.value,
+                                "password": pwd2.value,
+                                "title": title.value,
+                                "user_name": account.value
+                            };
+                        } else {
+                            postData = {
+                                "day_of_birth": birthday.value,
+                                "email": email.value,
+                                "first_name": firstName.value,
+                                "last_name": lastName.value,
+                                "password": pwd2.value,
+                                "title": title.value,
+                                "user_name": account.value
+                            };
+                        }
+                        // post 給後端確認
+                        axios.post("https://api.wavemocards.com/user/signup", postData)
+                        .then(function(response){
+                            if(response.data.data == "The user already exists! new user created."){
+                                // 註冊失敗 帳號已被使用
+                                modalResultText.textContent = "註冊失敗";
+                                modalResultText.classList.add("text-pink");
+                                modalResultText2.classList.remove("d-none");
+                                modalResultText3.classList.remove("d-none");
+                                modalResultText2.innerHTML = `很抱歉，您所使用的<span class="px-2 text-pink">帳號，已經被註冊過了</span>，請使用其他帳號。`;
+                                modalResultImg.src="./images/emoCards/58.svg";
+                                modalResultLink.classList.add("d-none");
+                                modalResultClose.classList.remove('d-none');
+                                btnSubmit.setAttribute("data-bs-toggle", "modal");
+                                btnSubmit.setAttribute("data-bs-target", "#modalResult");
+                            } else if (response.data.data == "1 new user created."){
+                                // 註冊成功
+                                window.onbeforeunload = false;
+                                modalResultText.classList.add("text-main");
+                                modalResultImg.src="./images/emoCards/5.svg";
+                                btnSubmit.setAttribute("data-bs-toggle", "modal");
+                                btnSubmit.setAttribute("data-bs-target", "#modalResult");
+                                btnSubmit.click(); // 設定該按鈕被點擊
+                            } else {
+                                // 註冊失敗，其他原因
+                                modalResultText.textContent = "註冊失敗";
+                                modalResultText.classList.add("text-pink");
+                                modalResultText2.classList.remove("d-none");
+                                modalResultText3.classList.remove("d-none");
+                                modalResultText2.textContent = `很抱歉，本次註冊失敗，請嘗試重新註冊。`;
+                                modalResultImg.src="./images/emoCards/58.svg";
+                                modalResultLink.classList.add("d-none");
+                                modalResultClose.classList.remove('d-none');
+                                btnSubmit.setAttribute("data-bs-toggle", "modal");
+                                btnSubmit.setAttribute("data-bs-target", "#modalResult");
+                                btnSubmit.click();
+                            }
+                        })
+                        .catch(function(err){
+                            console.log(err);
+                            modalResultText.textContent = "註冊失敗";
+                            modalResultText.classList.add("text-pink");
+                            modalResultText2.classList.remove("d-none");
+                            modalResultText3.classList.remove("d-none");
+                            modalResultText2.textContent = `很抱歉，本次註冊失敗，請嘗試重新註冊。`;
+                            modalResultImg.src="./images/emoCards/58.svg";
+                            modalResultLink.classList.add("d-none");
+                            modalResultClose.classList.remove('d-none');
+                            btnSubmit.setAttribute("data-bs-toggle", "modal");
+                            btnSubmit.setAttribute("data-bs-target", "#modalResult");
+                            btnSubmit.click();
+                        })
                     } else {
-                        modalResultText.textContent = "註冊失敗";
-                        modalResultText.classList.add("text-pink");
-                        modalResultText2.classList.remove("d-none");
-                        modalResultText3.classList.remove("d-none");
-                        modalResultText2.textContent = `很抱歉，您填寫的內容可能有誤，請重新註冊`;
-                        modalResultImg.src="./images/emoCards/58.svg";
-                        modalResultLink.classList.add("d-none");
-                        modalResultClose.classList.remove('d-none');
-                        btnSubmit.setAttribute("data-bs-toggle", "modal");
-                        btnSubmit.setAttribute("data-bs-target", "#modalResult");
-                        btnSubmit.click();
-                    }
-                } else {
-                    if (emailVerified!=true) {
+                        if (emailVerified!=true) {
                         emailCmt.forEach(function(cmt, index){
                             cmt.textContent = "請 驗證 您的email是否正確";
                             cmt.classList.add("text-pink");
                         })
                         btnVerify.classList.remove('d-none');
-                    }
-                    if (pwdCorrect!=true) {
-                        pwdCmt.textContent = "您的密碼不符合密碼規則，請重設密碼";
-                        pwdCmt.style.color = "#C37979";
-                    }
-                    if (pwd2Correct!=true) {
-                        pwd2Cmt.textContent = "您尚未完成二次確認密碼，請再次填寫相同密碼";
-                        pwd2Cmt.style.color = "#C37979";
-                    }
-                    if (accountCorrect!=true) {
-                        accountCmt.textContent = "請設定帳號，並符合以下規定：5~20字，只能使用英文字母、數字、底線。";
-                        accountCmt.style.color = "#C37979";
-                    }
-                    if (lastName.value=="") {
-                        lastNameCmt.textContent = "此欄為必填";
-                        lastNameCmt.style.color = "#C37979";
-                    }
-                    if (firstName.value=="") {
-                        firstNameCmt.textContent = "此欄為必填";
-                        firstNameCmt.style.color = "#C37979";
-                    }
-                    if (birthday.value=="") {
-                        birthdayCmt.textContent = "此選填您的生日";
-                        birthdayCmt.style.color = "#C37979";
-                    }
-                    if (agree.checked!=true){
-                        btnSubmit.setAttribute("data-bs-toggle", "modal");
-                        btnSubmit.setAttribute("data-bs-target", "#modalNeedAgree");
-                        btnSubmit.click();
+                        }
+                        if (pwdCorrect!=true) {
+                            pwdCmt.textContent = "您的密碼不符合密碼規則，請重設密碼";
+                            pwdCmt.style.color = "#C37979";
+                        }
+                        if (pwd2Correct!=true) {
+                            pwd2Cmt.textContent = "您尚未完成二次確認密碼，請再次填寫相同密碼";
+                            pwd2Cmt.style.color = "#C37979";
+                        }
+                        if (accountCorrect!=true) {
+                            accountCmt.textContent = "請設定帳號，並符合以下規定：5~20字，只能使用英文字母、數字、底線。";
+                            accountCmt.style.color = "#C37979";
+                        }
+                        if (lastName.value=="") {
+                            lastNameCmt.textContent = "此欄為必填";
+                            lastNameCmt.style.color = "#C37979";
+                        } else if (lastName.length<2){
+                            lastNameCmt.textContent = "最少填入 1 個中文字，或 2 個英文字母";
+                            lastNameCmt.style.color = "#C37979";
+                        }
+                        if (firstName.value=="") {
+                            firstNameCmt.textContent = "此欄為必填";
+                            firstNameCmt.style.color = "#C37979";
+                        } else if (firstName.length<2){
+                            firstNameCmt.textContent = "最少填入 1 個中文字，或 2 個英文字母";
+                            firstNameCmt.style.color = "#C37979";
+                        }
+                        // if (birthday.value=="") {
+                        //     birthdayCmt.textContent = "此選填您的生日";
+                        //     birthdayCmt.style.color = "#C37979";
+                        // }
+                        if (agreeChecked!=true){
+                            agreeCmt.textContent = "您必須勾選同意才能進行註冊";
+                            agreeCmt.style.color = "#C37979";
+                        }
+                        btnSubmitClickNum=0;
                     }
                 }
             })

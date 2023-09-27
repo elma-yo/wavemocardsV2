@@ -22144,6 +22144,10 @@ input[type=date]::-webkit-datetime-edit-text {
   font-weight: bold;
 }
 
+.btn-hover-main-tint02:hover {
+  background-color: #B1DBE5;
+}
+
 .floatButton {
   width: 60px;
   opacity: 85%;
@@ -22782,11 +22786,29 @@ label {
 }
 
 .clickMeToLogin {
+  position: relative;
+  text-align: center;
+  font-weight: bold;
   color: #85C5D6;
 }
 
-.clickMeToLogin::before, .clickMeToLogin::after {
+.clickMeToLogin::before {
   width: 28%;
+  height: 2px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  content: "";
+  background-color: #B1DBE5;
+}
+
+.clickMeToLogin::after {
+  position: absolute;
+  content: "";
+  width: 28%;
+  height: 2px;
+  top: 50%;
+  right: 0;
   background-color: #B1DBE5;
 }
 
@@ -23057,10 +23079,10 @@ input[type=search]::placeholder {
   white-space: nowrap;
 }
 
-.h-logined li a {
+.h-logined li a, .h-logined li button {
   color: #818181;
 }
-.h-logined li a:hover {
+.h-logined li a:hover, .h-logined li button:hover {
   color: #3C9DAE;
 }
 .h-logined li .profile, .h-logined li .logout {
@@ -23137,7 +23159,7 @@ input[type=search]::placeholder {
   background-size: cover;
 }
 .homepage h2, .homepage .h2 {
-  font-size: 128px;
+  font-size: 120px;
 }
 @media (max-width: 767px) {
   .homepage {

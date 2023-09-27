@@ -1,9 +1,9 @@
 .h-logined {
     li {
-        a {
+        a, button {
             color: $gray-550;
         }
-        a:hover {
+        a:hover, button:hover {
             color: $main;
         }
         .profile, .logout {

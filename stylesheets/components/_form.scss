@@ -58,10 +58,27 @@ label {
     color: $pink;
 }
 .clickMeToLogin {
+    position: relative;
+    text-align: center;
+    font-weight: bold;
     color: $main-tint01;
 }
-.clickMeToLogin::before, .clickMeToLogin::after {
+.clickMeToLogin::before {
     width: 28%;
+    height: 2px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    content: "";
+    background-color: $main-tint02;
+}
+.clickMeToLogin::after {
+    position: absolute;
+    content: "";
+    width: 28%;
+    height: 2px;
+    top: 50%;
+    right: 0;
     background-color: $main-tint02;
 }
 .clickMeToLogin:hover {

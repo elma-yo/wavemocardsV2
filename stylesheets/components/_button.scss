@@ -88,6 +88,11 @@
     font-weight: bold;
 }
 
+// header 漢堡選單的選項
+.btn-hover-main-tint02:hover {
+    background-color: $main-tint02;
+}
+
 // float button
 .floatButton {
     width: 60px;
