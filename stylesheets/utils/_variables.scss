@@ -1291,10 +1291,10 @@ $pagination-hover-bg:               rgba($main-tint02, .5 );//$gray-200 !default
 $pagination-hover-border-color:     0;//$gray-300 !default;
 
 $pagination-active-color:           $component-active-color !default;
-$pagination-active-bg:              $main;//$component-active-bg !default;
+$pagination-active-bg:              $main-tint01;//$component-active-bg !default;
 $pagination-active-border-color:    $pagination-active-bg !default;
 
-$pagination-disabled-color:         $gray-600 !default;
+$pagination-disabled-color:         $gray-500 !default;
 $pagination-disabled-bg:            $white !default;
 $pagination-disabled-border-color:  $gray-300 !default;
 

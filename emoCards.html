@@ -531,26 +531,6 @@
       axios.get("https://api.wavemocards.com/emoinfo/cards/")
       .then(function(response){
         let aryData = Object.values(response.data); // 轉成「陣列」
-        let strCardsHappy = "";
-        let strCardsExpectation = "";
-        let strCardsRelived = "";
-        let strCardsUnstable = "";
-        let strCardsAmazed = "";
-        let strCardsSadness = "";
-        let strCardsHate = "";
-        let strCardsAnger = "";
-        let strCardsOthers = "";
-        let strTableHappy = "";
-        let strTableExpectation = "";
-        let strTableRelived = "";
-        let strTableUnstable = "";
-        let strTableAmazed = "";
-        let strTableSadness = "";
-        let strTableHate = "";
-        let strTableAnger = "";
-        let strTableOthers = "";
-        let strModal = "";
-        let emo;
 
         // 展開卡 & 大卡
         initCards()

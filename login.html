@@ -189,6 +189,7 @@
                             // 登入成功
                             token = response.data.access_token;
                             localStorage.setItem("token", token);
+                            localStorage.setItem("account", account.value);
                             // document.cookie = `token=${token}`;
                             // document.cookie = `token=${token}; max-age=10; path=/`;
                             window.onbeforeunload = false;

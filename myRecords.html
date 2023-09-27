@@ -16,7 +16,7 @@
     <header class="header h-logined fixed-top">
       <div class="container py-16 d-flex justify-content-between align-items-center">
           <h1>
-              <a href="home.html" data-bs-toggle="tooltip" data-bs-placement="bottom" title="回到首頁">浪潮情緒卡</a>
+              <a href="index.html" data-bs-toggle="tooltip" data-bs-placement="bottom" title="回到首頁">浪潮情緒卡</a>
           </h1>
           <div class="d-lg-none position-relative">
               <button class="px-8 py-4 btn btn-outline-main rounded-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -41,7 +41,7 @@
                               <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="account.html">我的帳戶</a>
                           </li>
                           <li>
-                              <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="#">登出</a>
+                            <div class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" data-bs-toggle="modal" data-bs-target="#modalLogout" style="cursor: pointer;">登出</div>
                           </li>
                       </ul>
                   </div>
@@ -67,10 +67,10 @@
                   </a>
               </li>
               <li class="ms-16">
-                  <a href="#" class="logout" data-bs-toggle="tooltip" data-bs-placement="bottom" title="登出">
-                      <i class="bi bi-door-closed-fill"></i>
-                      <i class="bi bi-door-open-fill"></i>
-                  </a>
+                <button type="button" class="logout btn p-0 border-0" id="btnLogout" data-bs-toggle="tooltip" data-bs-placement="bottom" title="登出">
+                    <i class="bi bi-door-closed-fill"></i>
+                    <i class="bi bi-door-open-fill"></i>
+                </button>
               </li>
           </ul>
       </div>
@@ -130,8 +130,8 @@
               <th scope="col" class="text-nowrap">情緒故事</th>
             </tr>
           </thead>
-          <tbody>
-            <tr class="text-center">
+          <tbody id="tbody">
+            <!-- <tr class="text-center">
               <th scope="row" class="align-middle">
                 <input type="checkbox" id="checkBox">
               </th>
@@ -143,9 +143,8 @@
                 <span class="d-none d-sm-inline">・</span>
                 <span>安心 3</span>
               </td>
-              <!-- <td>2次</td> -->
               <td class="align-middle">
-                <a class="link-main" href="myRecordsEmoStory.html">由此進入</a>
+                <button type="button" class="link-main p-0 border-0 fw-bold" style="background-color: rgba(255, 255, 255, 0)">由此進入</button>
               </td>
             </tr>
             <tr class="text-center table-main-tint03">
@@ -160,7 +159,6 @@
                 <span class="d-none d-sm-inline">・</span>
                 <span>安心 3</span>
               </td>
-              <!-- <td>2次</td> -->
               <td class="align-middle">
                 <a class="link-main" href="myRecordsEmoStory.html">由此進入</a>
               </td>
@@ -177,30 +175,31 @@
                 <span class="d-none d-sm-inline">・</span>
                 <span>安心 3</span>
               </td>
-              <!-- <td>2次</td> -->
               <td class="align-middle">
                 <a class="link-main" href="myRecordsEmoStory.html">由此進入</a>
               </td>
-            </tr>
+            </tr> -->
           </tbody>
         </table>
   
         <!-- 分頁 -->
-        <div class="mb-64 d-flex justify-content-center justify-content-md-end pt-24" id="top">
+        <div class="mb-64 d-flex justify-content-center justify-content-md-end pt-24">
           <nav aria-label="Page navigation example">
             <ul class="pagination">
-              <li class="page-item disabled me-8 me-md-4">
-                <span class="page-link rounded-pill" href="#" aria-label="Previous">
+              <li class="page-item me-8" id="liBackPage">
+                <button type="button" class="page-link rounded-pill" aria-label="Previous" id="btnBackPage">
                   <span aria-hidden="true">&laquo;</span>
-                </span>
+                </button>
               </li>
-              <li class="page-item me-8 me-md-4"><span class="page-link rounded-pill active" href="#">1</span></li>
-              <li class="page-item me-8 me-md-4"><a class="page-link rounded-pill" href="#">2</a></li>
-              <li class="page-item me-8 me-md-4"><a class="page-link rounded-pill" href="#">3</a></li>
-              <li class="page-item me-8 me-md-4">
-                <a class="page-link rounded-pill" href="#" aria-label="Next">
+              <ul class="pagination" id="pageId">
+                <li class="page-item me-8"><span class="page-link rounded-pill active">1</span></li>
+                <li class="page-item me-8"><a class="page-link rounded-pill">2</a></li>
+                <li class="page-item me-8"><a class="page-link rounded-pill">3</a></li>
+              </ul>
+              <li class="page-item me-8" id="liNextPage">
+                <button type="button" class="page-link rounded-pill" aria-label="Next" id="btnNextPage">
                   <span aria-hidden="true">&raquo;</span>
-                </a>
+                </button>
               </li>
             </ul>
           </nav>
@@ -288,6 +287,25 @@
         </div>
     </footer>
 
+    <!-- 確認登出 Modal -->
+    <div class="modal fade" id="modalLogout" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content rounded-4">
+              <div class="modal-body d-flex flex-column align-items-center px-48 pt-24 pb-16">
+                  <p id="modalLogoutTitle" class="mb-12 fs-3 fw-bold text-pink">確定要登出嗎？</p>
+                  <div style="width: 45%;">
+                      <img class="w-100 pt-24 pb-2" src="./images/sureToDelete.svg" alt="img" id="modalLogoutImg">
+                  </div>
+                  <span class="text-gray-400 fs-11">Illustration by <a class="link-gray-400" href="https://blush.design/artists/RyUTVuP8G4QeAAEEQgug/pablo-stanley">Pablo Stanley</a> from <a class="link-gray-400" href="https://blush.design/">blush design</a></span>
+              </div>
+              <div class="modal-footer d-flex justify-content-center">
+                  <button type="button" id="modalLogoutClose" class="me-16 c-btn-outline-pink-tint01 fs-6" data-bs-dismiss="modal">取消</button>
+                  <button type="button" id="modalLogoutSure" class="btn btn-pink c-btn px-24 py-8 link-white fs-6 rounded-pill">確定登出</button>
+              </div>
+          </div>
+      </div>
+    </div>
+
     <!--  Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
@@ -295,7 +313,9 @@
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     <!-- toolTips on header -->
     <script src="./js/toolTips.js"></script>
+    <script src="./js/pages/logout.js"></script>
     <script>
+      // 響應式 刪除按鈕 位置
       const body = document.querySelector('#body');
       const checkBoxes = document.querySelectorAll('#checkBox');
       const btnTrash = document.querySelector('#btnTrash');
@@ -318,6 +338,281 @@
           })
         })
       }
+
+      // table 資料
+      const tbody = document.querySelector('#tbody');
+      // 抓全部資料出來
+      const token = localStorage.getItem("token");
+      const account = localStorage.getItem("account");
+      let aryData;
+      // 分頁
+      const pageId = document.querySelector("#pageId");
+      const liBackPage = document.querySelector('#liBackPage');
+      const btnBackPage = document.querySelector('#btnBackPage');
+      const liNextPage = document.querySelector('#liNextPage');
+      const btnNextPage = document.querySelector('#btnNextPage');
+
+      axios.get("https://api.wavemocards.com/emoinfo/cards/")
+      .then(function(response){
+        aryData = Object.values(response.data);
+      })
+      
+      axios.get(`https://api.wavemocards.com/emotions?user_name=${account}&limit=30`,
+      { headers: {"Authorization": `Bearer ${token}`} })
+      .then (function(response){
+        let allData = response.data;
+        
+        
+        // 處理分頁
+        pagination(allData, "1", aryData);
+        
+        // btnPage 換頁監聽事件
+        btnPages = document.querySelectorAll("#btnPage");
+        btnPages.forEach(function(btnPage, i){
+          btnPage.addEventListener("click", function(){
+            console.log("click");
+            let goPage = btnPage.childNodes[0].textContent;
+            pagination(allData, goPage, aryData);
+          })
+        })
+      })
+      .catch(function(error){
+        console.log(error);
+      })
+
+      function pagination(allData, goPage, aryData) {
+        const dataTotal = allData.length;
+        // 要顯示在畫面上的資料數量，預設每一頁只顯示五筆資料。
+        const perPage = 10;
+        // page 按鈕總數量公式 總資料數量 / 每一頁要顯示的資料
+        // 這邊要注意，因為有可能會出現餘數，所以要無條件進位。
+        const pageTotal = Math.ceil(dataTotal / perPage);
+        console.log(`全部資料:${dataTotal} 每一頁顯示:${perPage}筆 總頁數:${pageTotal}`);
+
+        // 當前頁碼 預設為 第1頁
+        let currentPage = goPage;  
+        // 當"當前頁數"比"總頁數"大的時候，"當前頁數"就等於"總頁數"
+        if (currentPage > pageTotal) {
+          currentPage = pageTotal;
+        }
+        const minData = (currentPage * perPage) - perPage + 1 ;
+        const maxData = (currentPage * perPage) ;
+        // 先建立新陣列
+        const pageData = [];
+        allData.forEach((item, index) => {
+          // 獲取陣列索引，但因為索引是從 0 開始所以要 +1。
+          const num = index + 1;
+          // 當 num 比 minData 大且又小於 maxData 就push進去新陣列。
+          if ( num >= minData && num <= maxData) {
+            pageData.push(item);
+          }
+        })
+        // 因為要將分頁相關資訊傳到另一個 function 做處理，所以將 page 相關所需要的東西改用物件傳遞。
+        // 用物件方式來傳遞資料
+        const page = {
+          pageTotal,
+          currentPage,
+          hasPage: currentPage > 1,
+          hasNext: currentPage < pageTotal,
+        }
+        // 預設當前所在的頁碼為1
+        // let pageNo = 1;
+        displayData(allData, aryData);
+        pageBtn(page);
+      }
+      function displayData(allData, aryData) {
+        let strTable="";
+        allData.forEach(function(data, i){
+          let time = data.create_time;
+          let date = time[0]+time[1]+time[2]+time[3]+time[4]+time[5]+time[6]+time[7]+time[8]+time[9];
+          let recordId = data.emo_ID;
+          let cardId_1 = data.emotion_card_1;
+          let cardId_2 = data.emotion_card_2;
+          let cardId_3 = data.emotion_card_3;
+          let card_1_strength1st = data.before_emo_level_1;
+          let card_2_strength1st = data.before_emo_level_2;
+          let card_3_strength1st = data.before_emo_level_3;
+          let card_1_strength2nd = data.after_emo_level_1;
+          let card_2_strength2nd = data.after_emo_level_2;
+          let card_3_strength2nd = data.after_emo_level_3;
+          let background = data.story;
+          let action = data.actions;
+          let result = data.results;
+          let feeling = data.feelings;
+          let isItYourExcept = data.expect;
+          let nextAction = data.reaction;
+          
+          let card_1_Name;
+          let card_2_Name;
+          let card_3_Name;
+          
+          aryData.forEach(function(data, i){
+            let dataName = data.name;
+            let dataId = data.ID;
+            if(dataId == cardId_1){
+              card_1_Name = dataName;
+            }
+            if(dataId == cardId_2){
+              card_2_Name = dataName;
+            }
+            if(dataId == cardId_3){
+              card_3_Name = dataName;
+            }
+          })
+          if(i%2!=0){
+            if(card_2_Name==undefined && card_3_Name==undefined){
+              let content = `<tr class="text-center  table-main-tint03">
+                  <th scope="row" class="align-middle">
+                    <input type="checkbox" id="checkBox" name="${recordId}">
+                  </th>
+                  <td class="align-middle">${date}</td>
+                  <td class="d-flex flex-column flex-sm-row justify-content-center align-items-center align-middle">
+                    <span>${card_1_Name} ${card_1_strength1st}</span>
+                  </td>
+                  <!-- <td>2人</td> -->
+                  <td class="align-middle">
+                    <button type="button" class="link-main p-0 border-0 fw-bold" style="background-color: rgba(255, 255, 255, 0)">
+                      由此進入
+                      <div class="d-none">${recordId}</div>
+                    </button>
+                  </td>
+                </tr>`;
+              strTable+=content;
+            } else if (card_3_Name==undefined) {
+              let content = `<tr class="text-center  table-main-tint03">
+                  <th scope="row" class="align-middle">
+                    <input type="checkbox" id="checkBox" name="${recordId}">
+                  </th>
+                  <td class="align-middle">${date}</td>
+                  <td class="d-flex flex-column flex-sm-row justify-content-center align-items-center align-middle">
+                    <span>${card_1_Name} ${card_1_strength1st}</span>
+                    <span class="d-none d-sm-inline">・</span>
+                    <span>${card_2_Name} ${card_2_strength1st}</span>
+                  </td>
+                  <!-- <td>2人</td> -->
+                  <td class="align-middle">
+                    <button type="button" class="link-main p-0 border-0 fw-bold" style="background-color: rgba(255, 255, 255, 0)">
+                      由此進入
+                      <div class="d-none">${recordId}</div>
+                    </button>
+                  </td>
+                </tr>`;
+              strTable+=content;
+            } else {
+              let content = `<tr class="text-center  table-main-tint03">
+                  <th scope="row" class="align-middle">
+                    <input type="checkbox" id="checkBox" name="${recordId}">
+                  </th>
+                  <td class="align-middle">${date}</td>
+                  <td class="d-flex flex-column flex-sm-row justify-content-center align-items-center align-middle">
+                    <span>${card_1_Name} ${card_1_strength1st}</span>
+                    <span class="d-none d-sm-inline">・</span>
+                    <span>${card_2_Name} ${card_2_strength1st}</span>
+                    <span class="d-none d-sm-inline">・</span>
+                    <span>${card_3_Name} ${card_3_strength1st}</span>
+                  </td>
+                  <!-- <td>2人</td> -->
+                  <td class="align-middle">
+                    <button type="button" class="link-main p-0 border-0 fw-bold" style="background-color: rgba(255, 255, 255, 0)">
+                      由此進入
+                      <div class="d-none">${recordId}</div>
+                    </button>
+                  </td>
+                </tr>`;
+                strTable+=content;
+            }
+          } else {
+            if(card_2_Name==undefined && card_3_Name==undefined){
+              let content = `<tr class="text-center">
+                  <th scope="row" class="align-middle">
+                    <input type="checkbox" id="checkBox" name="${recordId}">
+                  </th>
+                  <td class="align-middle">${date}</td>
+                  <td class="d-flex flex-column flex-sm-row justify-content-center align-items-center align-middle">
+                    <span>${card_1_Name} ${card_1_strength1st}</span>
+                  </td>
+                  <!-- <td>2人</td> -->
+                  <td class="align-middle">
+                    <button type="button" class="link-main p-0 border-0 fw-bold" style="background-color: rgba(255, 255, 255, 0)">
+                      由此進入
+                      <div class="d-none">${recordId}</div>
+                    </button>
+                  </td>
+                </tr>`;
+              strTable+=content;
+            } else if (card_3_Name==undefined) {
+              let content = `<tr class="text-center">
+                  <th scope="row" class="align-middle">
+                    <input type="checkbox" id="checkBox" name="${recordId}">
+                  </th>
+                  <td class="align-middle">${date}</td>
+                  <td class="d-flex flex-column flex-sm-row justify-content-center align-items-center align-middle">
+                    <span>${card_1_Name} ${card_1_strength1st}</span>
+                    <span class="d-none d-sm-inline">・</span>
+                    <span>${card_2_Name} ${card_2_strength1st}</span>
+                  </td>
+                  <!-- <td>2人</td> -->
+                  <td class="align-middle">
+                    <button type="button" class="link-main p-0 border-0 fw-bold" style="background-color: rgba(255, 255, 255, 0)">
+                      由此進入
+                      <div class="d-none">${recordId}</div>
+                    </button>
+                  </td>
+                </tr>`;
+              strTable+=content;
+            } else {
+              let content = `<tr class="text-center">
+                  <th scope="row" class="align-middle">
+                    <input type="checkbox" id="checkBox" name="${recordId}">
+                  </th>
+                  <td class="align-middle">${date}</td>
+                  <td class="d-flex flex-column flex-sm-row justify-content-center align-items-center align-middle">
+                    <span>${card_1_Name} ${card_1_strength1st}</span>
+                    <span class="d-none d-sm-inline">・</span>
+                    <span>${card_2_Name} ${card_2_strength1st}</span>
+                    <span class="d-none d-sm-inline">・</span>
+                    <span>${card_3_Name} ${card_3_strength1st}</span>
+                  </td>
+                  <!-- <td>2人</td> -->
+                  <td class="align-middle">
+                    <button type="button" class="link-main p-0 border-0 fw-bold" style="background-color: rgba(255, 255, 255, 0)">
+                      由此進入
+                      <div class="d-none">${recordId}</div>
+                    </button>
+                  </td>
+                </tr>`;
+                strTable+=content;
+            }
+          }
+          tbody.innerHTML = strTable;
+        })
+      }
+      function pageBtn (page){
+        let str = "";
+        const pageTotal = page.pageTotal;
+        const currentPage = page.currentPage;
+        
+        for(let i = 1; i <= pageTotal; i++){
+          if(i==currentPage){
+            str +=`<li class="page-item me-8" id="btnPage"><span class="page-link rounded-pill active">${i}</span></li>`;
+          } else {
+            str +=`<li class="page-item me-8 cursor-pointer" id="btnPage"><a class="page-link rounded-pill">${i}</a></li>`;
+          }
+        }
+        pageId.innerHTML = str;
+        // 若為最後10頁，則將 btnNextPage 隱藏
+        if(currentPage>=(pageTotal-10)){
+          liNextPage.classList.add("cursor-disable");
+          btnNextPage.classList.add("disabled");
+        }
+        if(currentPage<=10){
+          btnBackPage.classList.add("disabled");
+          liBackPage.classList.add("cursor-disable");
+        } else {
+          btnBackPage.classList.remove("d-none");
+        }
+      }
+      
     </script>
   </body>
 </html>
