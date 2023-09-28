@@ -117,7 +117,7 @@
                     </h2>
                     <div class="nav-btn d-flex justify-content-end">
                         <button type="button" class="ms-16 px-md-24 btn btn-outline-main-tint01 c-btn c-btn-outline-main-tint01 text-nowrap d-flex justify-content-center align-items-center" id="btnBack">上一步</button>
-                        <button type="submit" class="ms-16 px-md-24 btn btn-main c-btn text-nowrap d-flex justify-content-center align-items-center" id="btnSave">儲存紀錄</button>
+                        <button type="submit" class="ms-16 px-md-24 btn btn-main c-btn text-nowrap d-flex justify-content-center align-items-center" id="btnSave" data-bs-toggle="modal" data-bs-target="#modalMakeSure">儲存紀錄</button>
                     </div>
                 </div>
             </div>
@@ -239,6 +239,7 @@
                 <div class="modal-footer d-flex justify-content-center">
                     <button type="button" id="modalResultClose" class="me-16 btn btn-outline-main-tint01 c-btn c-btn-outline-main-tint01 px-24 py-8 fs-6" data-bs-dismiss="modal">返回</button>
                     <button type="button" id="modalResultSure" class="btn btn-main c-btn px-24 py-8 link-white fs-6 rounded-pill">確定完成</button>
+                    <button type="button" id="modalInvisible" class="d-none" data-bs-toggle="modal" data-bs-target="#modalSaveResult"></button>
                 </div>
             </div>
         </div>
@@ -308,6 +309,7 @@
         const modalSaveResultImg = document.querySelector('#modalSaveResultImg');
         const modalSaveResultClose = document.querySelector('#modalSaveResultClose');
         const modalResultLink = document.querySelector('#modalResultLink');
+        const modalInvisible = document.querySelector('#modalInvisible');
         // 預防頁面跳轉
         window.onbeforeunload = function () {
             return "Are you really sure?";
@@ -548,29 +550,93 @@
                 storageData[0].cards=storageCards;
                 let stringAddedCard = JSON.stringify(storageData);
                 localStorage.setItem("addedCards", stringAddedCard);
-                // 確認是否要送出資料，若想再修改請點返回編輯，反之則送出
-                btnSave.setAttribute("data-bs-toggle", "modal");
-                btnSave.setAttribute("data-bs-target", "#modalMakeSure");
-                btnSave.click();
-                // 點擊 確定儲存 後的動作
-                modalResultSure.addEventListener("click", function(){
-                    modalResultClose.click();
-                    // 確認資料是否儲存成功（與後端確認）
-                    let saveResult = true;
-                        // post 資料給後端
-                        // get 資料儲存成功or失敗
-                    if(saveResult==false){
-                        modalSaveResultTitle.classList.add("text-pink");
-                        modalSaveResultTitle.classList.remove("text-main");
-                        modalSaveResultTitle.textContent = "儲存失敗";
-                        modalSaveResultErrMsg.classList.remove("d-none");
-                        modalSaveResultImg.src = "./images/addCardFail.svg";
-                        modalSaveResultClose.classList.remove("d-none");
-                        modalResultLink.classList.add("d-none");
-                        modalResultSure.setAttribute("data-bs-toggle", "modal");
-                        modalResultSure.setAttribute("data-bs-target", "#modalSaveResult");
-                        modalResultSure.click();
-                    } else {
+            })
+            
+            // 點擊 確定儲存 後的動作
+            modalResultSure.addEventListener("click", function(){
+                modalResultClose.click();
+                // post 資料 給後端
+                let token = localStorage.getItem("token");
+                let account = localStorage.getItem("account");
+                let cardsNum = storageData[0].cards.length;
+                let card_1_Id;
+                let card_2_Id;
+                let card_3_Id;
+                let before_emo_level_1;
+                let before_emo_level_2;
+                let before_emo_level_3;
+                let after_emo_level_1;
+                let after_emo_level_2;
+                let after_emo_level_3;
+                let background = storageData[1].whatHappened;
+                let action = storageData[1].whatIDid;
+                let actionResult = storageData[1].actionResult;
+                let feeling = storageData[1].feeling;
+                let isGoodResult = storageData[1].isGoodResult;
+                let betterAction = storageData[1].betterAction;
+                
+                if(cardsNum==1){
+                    card_1_Id = storageData[0].cards[0].ID;
+                    before_emo_level_1 = parseInt(storageData[0].cards[0].strength1);
+                } else if (cardsNum==2) {
+                    card_1_Id = storageData[0].cards[0].ID;
+                    card_2_Id = storageData[0].cards[1].ID;
+                    before_emo_level_1 = parseInt(storageData[0].cards[0].strength1);
+                    before_emo_level_2 = parseInt(storageData[0].cards[1].strength1);
+                } else if (cardsNum==3) {
+                    card_1_Id = storageData[0].cards[0].ID;
+                    card_2_Id = storageData[0].cards[1].ID;
+                    card_3_Id = storageData[0].cards[2].ID;
+                    before_emo_level_1 = parseInt(storageData[0].cards[0].strength1);
+                    before_emo_level_2 = parseInt(storageData[0].cards[1].strength1);
+                    before_emo_level_3 = parseInt(storageData[0].cards[2].strength1);
+                }
+                if(storageData[0].cards[0].strength2!=undefined){
+                    after_emo_level_1 = parseInt(storageData[0].cards[0].strength2);
+                }
+                if(cardsNum==2 && storageData[0].cards[1].strength2!=undefined){
+                    after_emo_level_2 = parseInt(storageData[0].cards[1].strength2);
+                }
+                if(cardsNum==3 && storageData[0].cards[2].strength2!=undefined){
+                    after_emo_level_3 = parseInt(storageData[0].cards[2].strength2);
+                }
+
+                let postData = {
+                    "user_name": account,
+                    "emotion_card_1": card_1_Id,
+                    "before_emo_level_1": before_emo_level_1,
+                    "story": background,
+                    "actions": action,
+                    "results": actionResult,
+                    "feelings": feeling,
+                    "reaction": betterAction,
+                };
+                if(cardsNum==2){
+                    postData.emotion_card_2 = card_2_Id;
+                    postData.before_emo_level_2 = before_emo_level_2;
+                }
+                if(cardsNum==3){
+                    postData.emotion_card_3 = card_3_Id;
+                    postData.before_emo_level_3 = before_emo_level_3;
+                }
+                if(after_emo_level_1!=undefined){
+                    postData.after_emo_level_1 = after_emo_level_1;
+                }
+                if(after_emo_level_2!=undefined){
+                    postData.after_emo_level_2 = after_emo_level_2;
+                }
+                if(after_emo_level_3!=undefined){
+                    postData.after_emo_level_3 = after_emo_level_3;
+                }
+                if (storageData[1].isGoodResult!=""){
+                    isGoodResult = parseInt(storageData[1].isGoodResult);
+                    postData.expect=isGoodResult;
+                }
+                axios.post("https://api.wavemocards.com/emotions/add",
+                postData, { headers: {"Authorization": `Bearer ${token}`} })
+                .then (function(response){
+                    if (response.data.data == "1 emo has been added.") {
+                        // 資料儲存成功
                         localStorage.removeItem("addedCards");
                         modalSaveResultTitle.classList.add("text-main");
                         modalSaveResultTitle.classList.remove("text-pink");
@@ -579,10 +645,28 @@
                         modalSaveResultImg.src = "./images/addCardSuccess.svg";
                         modalSaveResultClose.classList.add("d-none");
                         modalResultLink.classList.remove("d-none");
-                        modalResultSure.setAttribute("data-bs-toggle", "modal");
-                        modalResultSure.setAttribute("data-bs-target", "#modalSaveResult");
-                        modalResultSure.click();
+                        modalInvisible.click();
+                    } else {
+                        modalSaveResultTitle.classList.add("text-pink");
+                        modalSaveResultTitle.classList.remove("text-main");
+                        modalSaveResultTitle.textContent = "儲存失敗";
+                        modalSaveResultErrMsg.classList.remove("d-none");
+                        modalSaveResultImg.src = "./images/addCardFail.svg";
+                        modalSaveResultClose.classList.remove("d-none");
+                        modalResultLink.classList.add("d-none");
+                        modalInvisible.click();
                     }
+                })
+                .catch(function(error){
+                    console.log(error);
+                    modalSaveResultTitle.classList.add("text-pink");
+                    modalSaveResultTitle.classList.remove("text-main");
+                    modalSaveResultTitle.textContent = "儲存失敗";
+                    modalSaveResultErrMsg.classList.remove("d-none");
+                    modalSaveResultImg.src = "./images/addCardFail.svg";
+                    modalSaveResultClose.classList.remove("d-none");
+                    modalResultLink.classList.add("d-none");
+                    modalInvisible.click();
                 })
             })
         })

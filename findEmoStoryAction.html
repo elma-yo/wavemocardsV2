@@ -390,7 +390,6 @@
             let getAddedCards = localStorage.getItem("addedCards");
             storageData=JSON.parse(getAddedCards);
             storageCards=storageData[0].cards;
-            console.log(storageData);
             // 確認 有無 whatHappened 的資料，有的話寫入textarea
             if(storageData[1].whatIDid!="" && storageData[1].whatIDid!=undefined){
                 whatIDid.value=storageData[1].whatIDid;

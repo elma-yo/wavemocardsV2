@@ -566,7 +566,7 @@
             })
 
             // 驗證 姓、名 是否有填寫
-            lastNameCorrect = false;
+            let lastNameCorrect = false;
             lastName.addEventListener("keyup", function(){
                 if(lastName.value=="") {
                     lastNameCmt.textContent = "此欄為必填";
