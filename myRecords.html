@@ -153,6 +153,10 @@
             </ul>
           </nav>
         </div>
+        <!-- 顯示 查無資料 modal 用的 隱藏button -->
+        <button type="button" class="d-none" id="btnSearchResult" data-bs-toggle="modal" data-bs-target="#modalSearch"></button>
+        <!-- 顯示 查無資料 modal 用的 隱藏button -->
+        <button type="button" class="d-none" id="btnMakeSureToDelete" data-bs-toggle="modal" data-bs-target="#modalDelete"></button>
       </div>
     </main>
     
@@ -255,6 +259,67 @@
       </div>
     </div>
 
+    <!-- 搜尋結果-查無資料 Modal -->
+    <div class="modal fade" id="modalSearch" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content rounded-4">
+              <div class="modal-body d-flex flex-column align-items-center px-48 pt-24 pb-16">
+                  <p id="modalSearchTitle" class="mb-12 fs-3 fw-bold text-pink">查無資料</p>
+                  <p id="modalSearchText" class="mb-12 fs-7 text-gray-700">很抱歉，沒有資料與您所輸入的查詢內容相符合。</p>
+                  <div style="width: 45%;">
+                      <img class="w-100 pt-24 pb-2" src="./images/emoCards/58.svg" alt="img" id="modalSearchImg">
+                  </div>
+                  <span class="text-gray-400 fs-11">Illustration by <a class="link-gray-400" href="https://blush.design/artists/RyUTVuP8G4QeAAEEQgug/pablo-stanley">Pablo Stanley</a> from <a class="link-gray-400" href="https://blush.design/">blush design</a></span>
+              </div>
+              <div class="modal-footer d-flex justify-content-center">
+                  <button type="button" id="modalSearchClose" class="me-16 c-btn-outline-pink-tint01 fs-6" data-bs-dismiss="modal">我知道了</button>
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <!-- 確認刪除 Modal -->
+    <div class="modal fade" id="modalDelete" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content rounded-4">
+              <div class="modal-body d-flex flex-column align-items-center px-48 pt-24 pb-16">
+                  <p id="modalDeleteTitle" class="mb-12 fs-3 fw-bold text-pink">確定要刪除嗎？</p>
+                  <p id="modalDeleteText" class="mb-12 fs-7 text-gray-700"></p>
+                  <div style="width: 45%;">
+                      <img class="w-100 pt-24 pb-2" src="./images/sureToDelete.svg" alt="img" id="modalDeleteImg">
+                  </div>
+                  <span class="text-gray-400 fs-11">Illustration by <a class="link-gray-400" href="https://blush.design/artists/RyUTVuP8G4QeAAEEQgug/pablo-stanley">Pablo Stanley</a> from <a class="link-gray-400" href="https://blush.design/">blush design</a></span>
+              </div>
+              <div class="modal-footer d-flex justify-content-center">
+                  <button type="button" id="modalDeleteClose" class="me-16 c-btn-outline-pink-tint01 fs-6" data-bs-dismiss="modal">取消</button>
+                  <button type="button" id="modalDeleteSure" class="btn btn-pink c-btn px-24 py-8 link-white fs-6 rounded-pill" data-bs-target="#modalDeleteResult" data-bs-toggle="modal">確定刪除</button>
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <!-- 刪除 成功/失敗 Modal -->
+    <div class="modal fade" id="modalDeleteResult" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4">
+            <div class="modal-body d-flex flex-column align-items-center px-48 py-36">
+                <p id="modalDeleteResultTitle" class="fs-4 fw-bold">刪除成功</p>
+                <p id="modalDeleteResultText" class="d-none mt-12 fs-7 text-gray-700">請重新嘗試刪除資料。</p>
+                <p id="modalDeleteResultText2" class="d-none mt-12 fs-7 text-gray-700">
+                    若無法排除問題，請 
+                    <a class="link-pink" href="mailto:info@wavemocards.com">與我們聯繫</a>
+                </p>
+                <div style="width: 45%; height: 45%;">
+                    <img class="w-100" src="./images/addCardSuccess.svg" alt="興奮" id="modalDeleteResultImg">
+                </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button type="button" id="modalDeleteResultClose" class="btn c-btn px-36 py-8 link-white fs-6 fw-bold" data-bs-dismiss="modal">我知道了</button>
+            </div>
+        </div>
+      </div>
+  </div>
+
     <!--  Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
@@ -264,36 +329,13 @@
     <script src="./js/toolTips.js"></script>
     <script src="./js/pages/logout.js"></script>
     <script>
-      // 響應式 刪除按鈕 位置
-      const body = document.querySelector('#body');
-      const checkBoxes = document.querySelectorAll('#checkBox');
-      const btnTrash = document.querySelector('#btnTrash');
-      if(body.style.width<='768px'){
-        let checkedNum = 0;
-        checkBoxes.forEach(function(checkBox,index){
-          checkBox.addEventListener('click', function(){
-            if(checkBox.checked){
-              checkedNum++;
-            } else if (checkBox.checked == false) {
-              checkedNum--;
-            }
-            if(checkedNum!=0){
-              btnTrash.classList.remove("d-none");
-              btnTrash.classList.add("d-block");
-            } else {
-              btnTrash.classList.remove("d-block");
-              btnTrash.classList.add("d-none");
-            }
-          })
-        })
-      }
-
       // 搜尋區域
       // 處理搜尋內容
       const dateStart = document.querySelector("#dateStart");
       const dateEnd = document.querySelector("#dateEnd");
       const searchText = document.querySelector("#searchText");
       const btnSearch = document.querySelector("#btnSearch");
+      const btnSearchResult = document.querySelector('#btnSearchResult');
       let dateStartValue;
       let dateEndValue;
       let searchValue;
@@ -339,13 +381,37 @@
       const liNextPage = document.querySelector('#liNextPage');
       const btnNextPage = document.querySelector('#btnNextPage');
 
+      btnSearch.addEventListener("click", function(){
+        // 處理 搜尋日期
+        dateStartValue = dateStart.value;
+        dateEndValue = dateEnd.value;
+        if(dateStartValue=="" && dateEndValue=="" && searchValue==""){
+          return
+        }
+        startYear = parseInt(dateStartValue[0]+dateStartValue[1]+dateStartValue[2]+dateStartValue[3]);
+        startMonth = parseInt(dateStartValue[5]+dateStartValue[6]);
+        startDay = parseInt(dateStartValue[8]+dateStartValue[9]);
+        if(dateEndValue!=""){
+          endYear = parseInt(dateEndValue[0]+dateEndValue[1]+dateEndValue[2]+dateEndValue[3]);
+          endMonth = parseInt(dateEndValue[5]+dateEndValue[6]);
+          endDay = parseInt(dateEndValue[8]+dateEndValue[9]);
+        }
+        // 處理 關鍵字
+        searchValue = searchText.value.trim();  // 將串前後空白刪除
+        arySearchText = searchValue.split(' '); // 將關鍵字區隔，並放入陣列中
+        // 確定關鍵字不是空白
+        // 將資料印到畫面中
+        pagination(dateEndValue, startYear, startMonth, startDay, endYear, endMonth, endDay, arySearchText, "1", aryData);
+
+      })
+
       axios.get("https://api.wavemocards.com/emoinfo/cards/")
       .then(function(response){
         aryData = Object.values(response.data);
         // 處理分頁 與 table 資料顯示
         pagination(dateEndValue, startYear, startMonth, startDay, endYear, endMonth, endDay, arySearchText, "1", aryData);
-        
       })
+
       function pagination(dateEndValue, startYear, startMonth, startDay, endYear, endMonth, endDay, arySearchText, goPage, aryData) {
         axios.get(`https://api.wavemocards.com/emotions?user_name=${account}&limit=30`,
         { headers: {"Authorization": `Bearer ${token}`} })
@@ -426,6 +492,10 @@
               resultData.push(data);
             }
           })
+          
+          if (resultData==""){
+            btnSearchResult.click();
+          }
 
           const dataTotal = resultData.length;
           // 要顯示在畫面上的資料數量，預設每一頁只顯示五筆資料。
@@ -473,6 +543,88 @@
               if(e.target.nodeName !== 'A') return;
               let goPage = btnPage.childNodes[0].textContent;
               pagination(dateEndValue, startYear, startMonth, startDay, endYear, endMonth, endDay, goPage, aryData);
+            })
+          })
+
+          // 響應式 刪除按鈕 位置
+          const body = document.querySelector('#body');
+          const checkBoxes = document.querySelectorAll('#checkBox');
+          const btnTrash = document.querySelector('#btnTrash');
+          const modalDeleteText = document.querySelector('#modalDeleteText');
+          const btnMakeSureToDelete = document.querySelector('#btnMakeSureToDelete');
+          const modalDeleteSure = document.querySelector('#modalDeleteSure');
+          const modalDeleteClose = document.querySelector('#modalDeleteClose');
+          const modalDeleteResultTitle = document.querySelector('#modalDeleteResultTitle');
+          const modalDeleteResultText = document.querySelector('#modalDeleteResultText');
+          const modalDeleteResultText2 = document.querySelector('#modalDeleteResultText2');
+          const modalDeleteResultImg = document.querySelector('#modalDeleteResultImg');
+          const modalDeleteResultClose = document.querySelector('#modalDeleteResultClose');
+          if(body.style.width<='768px'){
+            let checkedNum = 0;
+            checkBoxes.forEach(function(checkBox,index){
+              checkBox.addEventListener('click', function(){
+                if(checkBox.checked){
+                  checkedNum++;
+                } else if (checkBox.checked == false) {
+                  checkedNum--;
+                }
+                if(checkedNum!=0){
+                  btnTrash.classList.remove("d-none");
+                  btnTrash.classList.add("d-block");
+                } else {
+                  btnTrash.classList.remove("d-block");
+                  btnTrash.classList.add("d-none");
+                }
+              })
+            })
+          }
+          
+          let recordIds = [];
+          btnTrash.addEventListener("click", function(){
+            let deleteNum = 0;
+            checkBoxes.forEach(function(box, i){
+              if(box.checked==true){
+                recordIds.push(box.name);
+              }
+            })
+            deleteNum = recordIds.length;
+            if(deleteNum!=0){
+              modalDeleteText.innerHTML = `<span>您選擇刪除<span class="px-2 text-pink">${deleteNum}筆</span>資料，刪除後便<span class="ps-2 text-pink">不可再復原</span>，確定要刪除嗎？</span>`;
+              btnMakeSureToDelete.click();
+            }
+          })
+          modalDeleteSure.addEventListener("click", function(){
+            modalDeleteClose.click();
+            recordIds.forEach(function(id, i){
+              axios.delete(`https://api.wavemocards.com/emotions/delete/${id}`,
+              { headers: {"Authorization": `Bearer ${token}`} })
+              .then (function(response){
+                if(response.data.message==`The emotion recard ${id} was deleted.`) {
+                  modalDeleteResultTitle.textContent = "刪除成功";
+                  modalDeleteResultText.classList.add("d-none");
+                  modalDeleteResultText2.classList.add("d-none");
+                  modalDeleteResultImg.src = "./images/addCardSuccess.svg";
+                  modalDeleteResultClose.classList.add("btn-main");
+                  modalDeleteResultClose.classList.remove("btn-pink");
+                  pagination(dateEndValue, startYear, startMonth, startDay, endYear, endMonth, endDay, arySearchText, goPage, aryData);
+                } else {
+                  modalDeleteResultTitle.textContent = "刪除失敗";
+                  modalDeleteResultText.classList.remove("d-none");
+                  modalDeleteResultText2.classList.remove("d-none");
+                  modalDeleteResultImg.src = "./images/addCardFail.svg";
+                  modalDeleteResultClose.classList.add("btn-pink");
+                  modalDeleteResultClose.classList.remove("btn-main");
+                }
+              })
+              .catch(function(error){
+                modalDeleteResultTitle.textContent = "刪除失敗";
+                modalDeleteResultText.classList.remove("d-none");
+                modalDeleteResultText2.classList.remove("d-none");
+                modalDeleteResultImg.src = "./images/addCardFail.svg";
+                modalDeleteResultClose.classList.add("btn-pink");
+                modalDeleteResultClose.classList.remove("btn-main");
+                console.log(error);
+              })
             })
           })
         })
@@ -673,29 +825,6 @@
         }
       }
       
-      btnSearch.addEventListener("click", function(){
-        // 處理 搜尋日期
-        dateStartValue = dateStart.value;
-        dateEndValue = dateEnd.value;
-        if(dateStartValue=="" && dateEndValue=="" && searchValue==""){
-          return
-        }
-        startYear = parseInt(dateStartValue[0]+dateStartValue[1]+dateStartValue[2]+dateStartValue[3]);
-        startMonth = parseInt(dateStartValue[5]+dateStartValue[6]);
-        startDay = parseInt(dateStartValue[8]+dateStartValue[9]);
-        if(dateEndValue!=""){
-          endYear = parseInt(dateEndValue[0]+dateEndValue[1]+dateEndValue[2]+dateEndValue[3]);
-          endMonth = parseInt(dateEndValue[5]+dateEndValue[6]);
-          endDay = parseInt(dateEndValue[8]+dateEndValue[9]);
-        }
-        // 處理 關鍵字
-        searchValue = searchText.value.trim();  // 將串前後空白刪除
-        arySearchText = searchValue.split(' '); // 將關鍵字區隔，並放入陣列中
-        // 確定關鍵字不是空白
-        // 將資料印到畫面中
-        pagination(dateEndValue, startYear, startMonth, startDay, endYear, endMonth, endDay, arySearchText, "1", aryData);
-      })
-      
       // 查核是否符合關鍵字
       function matchText(arySearchText, card_1_Name, card_2_Name, card_3_Name, card_1_strength1st, card_2_strength1st, card_3_strength1st, card_1_strength2nd, card_2_strength2nd, card_3_strength2nd, background, action, result, feeling, isItYourExcept, nextAction, resultData, data){
         arySearchText.forEach(function(text, i){
@@ -759,6 +888,8 @@
           }
         })
       }
+    
+      
     </script>
   </body>
 </html>
