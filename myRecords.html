@@ -102,7 +102,7 @@
               <input type="date" class="input-date-analyze d-block me-lg-12 px-2 px-sm-16 py-6 border border-main-tint02 border-2 rounded-pill text-main-tint01 text-center" id="dateEnd" data-bs-toggle="tooltip" data-bs-placement="bottom" title="請先填入第一個日期" disabled>
             </div>
             <div class="box-searchBar d-flex flex-column flex-sm-row align-items-center">
-              <input type="search" class="search-bar mb-16 mb-sm-0 me-sm-8 py-12 border border-main-tint02 border-2 rounded-pill" placeholder="請輸入關鍵字，以「空格」做區隔" id="searchText">
+              <input type="search" class="search-bar mb-16 mb-sm-0 me-sm-8 py-12 border border-main-tint02 border-2 rounded-pill" style="background: white url('./images/Search.svg') no-repeat 16px 6px;" placeholder="請輸入關鍵字，以「空格」做區隔" id="searchText">
               <button type="button" class="box-btn-search btn btn-main c-btn px-24 py-8 border-0 text-nowrap" id="btnSearch">搜尋</button>
             </div>
           </div>
@@ -345,7 +345,7 @@
       let endYear;
       let endMonth;
       let endDay;
-      let arySearchText;
+      let arySearchText=[];
 
       // 1st日期 不可選填今日以後
       let date_now = new Date(); // 取得目前時間
@@ -380,52 +380,29 @@
       const btnBackPage = document.querySelector('#btnBackPage');
       const liNextPage = document.querySelector('#liNextPage');
       const btnNextPage = document.querySelector('#btnNextPage');
-
-      btnSearch.addEventListener("click", function(){
-        // 處理 搜尋日期
-        dateStartValue = dateStart.value;
-        dateEndValue = dateEnd.value;
-        if(dateStartValue=="" && dateEndValue=="" && searchValue==""){
-          return
-        }
-        startYear = parseInt(dateStartValue[0]+dateStartValue[1]+dateStartValue[2]+dateStartValue[3]);
-        startMonth = parseInt(dateStartValue[5]+dateStartValue[6]);
-        startDay = parseInt(dateStartValue[8]+dateStartValue[9]);
-        if(dateEndValue!=""){
-          endYear = parseInt(dateEndValue[0]+dateEndValue[1]+dateEndValue[2]+dateEndValue[3]);
-          endMonth = parseInt(dateEndValue[5]+dateEndValue[6]);
-          endDay = parseInt(dateEndValue[8]+dateEndValue[9]);
-        }
-        // 處理 關鍵字
-        searchValue = searchText.value.trim();  // 將串前後空白刪除
-        arySearchText = searchValue.split(' '); // 將關鍵字區隔，並放入陣列中
-        // 確定關鍵字不是空白
-        // 將資料印到畫面中
-        pagination(dateEndValue, startYear, startMonth, startDay, endYear, endMonth, endDay, arySearchText, "1", aryData);
-
-      })
+      let resultData = [];
 
       axios.get("https://api.wavemocards.com/emoinfo/cards/")
       .then(function(response){
         aryData = Object.values(response.data);
+
         // 處理分頁 與 table 資料顯示
-        pagination(dateEndValue, startYear, startMonth, startDay, endYear, endMonth, endDay, arySearchText, "1", aryData);
+        pagination(resultData, dateEndValue, startYear, startMonth, startDay, endYear, endMonth, endDay, arySearchText, "1", aryData);
       })
 
-      function pagination(dateEndValue, startYear, startMonth, startDay, endYear, endMonth, endDay, arySearchText, goPage, aryData) {
+      function pagination(resultData, dateEndValue, startYear, startMonth, startDay, endYear, endMonth, endDay, arySearchText, goPage, aryData) {
         axios.get(`https://api.wavemocards.com/emotions?user_name=${account}&limit=30`,
         { headers: {"Authorization": `Bearer ${token}`} })
         .then (function(response){
           let allData = response.data;
-          let resultData = [];
-
+          resultData = [];
           allData.forEach(function(data, i){
             let cardId_1 = data.emotion_card_1;
             let cardId_2 = data.emotion_card_2;
             let cardId_3 = data.emotion_card_3;
-            let card_1_Name;
-            let card_2_Name;
-            let card_3_Name;
+            let card_1_Name = "";
+            let card_2_Name = "";
+            let card_3_Name = "";
             let card_1_strength1st = data.before_emo_level_1;
             let card_2_strength1st = data.before_emo_level_2;
             let card_3_strength1st = data.before_emo_level_3;
@@ -464,29 +441,28 @@
             let month = time[5]+time[6];
             let day = time[8]+time[9];
             // 將符合日期限制的資料裝進 resultData
-            if(startYear!=undefined){
+            if(startYear!==undefined){
               // 確定有輸入時間的狀態
-              if (dateEndValue=="") {
-                if (year>=startYear && month>=startMonth && day>=startDay){
-                  // 確認有關鍵字
-                  if(arySearchText!=undefined && arySearchText[0]!=""){
-                    // 核對關鍵字
-                    matchText(arySearchText, card_1_Name, card_2_Name, card_3_Name, card_1_strength1st, card_2_strength1st, card_3_strength1st, card_1_strength2nd, card_2_strength2nd, card_3_strength2nd, background, action, result, feeling, isItYourExcept, nextAction, resultData, data)
-                  } else {
-                    resultData.push(data);
-                  }
+              if (dateEndValue=="" && year>=startYear && month>=startMonth && day>=startDay) {
+                // 確認有關鍵字
+                if(arySearchText!=""){
+                  // 核對關鍵字
+                  matchText(arySearchText, card_1_Name, card_2_Name, card_3_Name, card_1_strength1st, card_2_strength1st, card_3_strength1st, card_1_strength2nd, card_2_strength2nd, card_3_strength2nd, background, action, result, feeling, isItYourExcept, nextAction, resultData, data)
+                } else {
+                  resultData.push(data);
                 }
-              } else {
-                if (year>=startYear && month>=startMonth && day>=startDay && year<=endYear && month<=endMonth && day<=endDay){
-                  // 確認有關鍵字
-                  if(arySearchText!=undefined && arySearchText[0]!=""){
-                    // 核對關鍵字
-                    matchText(arySearchText, card_1_Name, card_2_Name, card_3_Name, card_1_strength1st, card_2_strength1st, card_3_strength1st, card_1_strength2nd, card_2_strength2nd, card_3_strength2nd, background, action, result, feeling, isItYourExcept, nextAction, resultData, data)
-                  } else {
-                    resultData.push(data);
-                  }
+              } else if (year>=startYear && month>=startMonth && day>=startDay && year<=endYear && month<=endMonth && day<=endDay){
+                // 確認有關鍵字
+                if(arySearchText!=""){
+                  // 核對關鍵字
+                  matchText(arySearchText, card_1_Name, card_2_Name, card_3_Name, card_1_strength1st, card_2_strength1st, card_3_strength1st, card_1_strength2nd, card_2_strength2nd, card_3_strength2nd, background, action, result, feeling, isItYourExcept, nextAction, resultData, data)
+                } else {
+                  resultData.push(data);
                 }
               }
+            } else if(arySearchText.length>0) {
+              // 沒有輸入時間，但有輸入關鍵字
+              matchText(arySearchText, card_1_Name, card_2_Name, card_3_Name, card_1_strength1st, card_2_strength1st, card_3_strength1st, card_1_strength2nd, card_2_strength2nd, card_3_strength2nd, background, action, result, feeling, isItYourExcept, nextAction, resultData, data)
             } else {
               // 沒有輸入時間的狀態，就將全部資料放進 resultData
               resultData.push(data);
@@ -536,14 +512,45 @@
           // let pageNo = 1;
           displayData(recordPageData, aryData);
           pageBtn(page);
+
           // btnPage 換頁監聽事件
           btnPages = document.querySelectorAll("#btnPage");
           btnPages.forEach(function(btnPage, i){
             btnPage.addEventListener("click", function(e){
               if(e.target.nodeName !== 'A') return;
               let goPage = btnPage.childNodes[0].textContent;
-              pagination(dateEndValue, startYear, startMonth, startDay, endYear, endMonth, endDay, goPage, aryData);
+              pagination(resultData, dateEndValue, startYear, startMonth, startDay, endYear, endMonth, endDay, arySearchText, goPage, aryData);
             })
+          })
+
+          // 搜尋 的監聽事件
+          let clickNum = 0;
+          btnSearch.addEventListener("click", function(){
+            clickNum++;
+            if(clickNum>0 && clickNum<=1){
+              // 處理 搜尋日期
+              dateStartValue = dateStart.value;
+              dateEndValue = dateEnd.value;
+              // if(dateStartValue=="" && dateEndValue=="" && searchValue==""){
+              //   return
+              // }
+              if(dateStartValue!=""){
+                startYear = parseInt(dateStartValue[0]+dateStartValue[1]+dateStartValue[2]+dateStartValue[3]);
+                startMonth = parseInt(dateStartValue[5]+dateStartValue[6]);
+                startDay = parseInt(dateStartValue[8]+dateStartValue[9]);
+              }
+              if(dateEndValue!=""){
+                endYear = parseInt(dateEndValue[0]+dateEndValue[1]+dateEndValue[2]+dateEndValue[3]);
+                endMonth = parseInt(dateEndValue[5]+dateEndValue[6]);
+                endDay = parseInt(dateEndValue[8]+dateEndValue[9]);
+              }
+              // 處理 關鍵字
+              searchValue = searchText.value.trim();  // 將串前後空白刪除
+              arySearchText = searchValue.split(' '); // 將關鍵字區隔，並放入陣列中
+              // 確定關鍵字不是空白
+              // 將資料印到畫面中
+              pagination(resultData, dateEndValue, startYear, startMonth, startDay, endYear, endMonth, endDay, arySearchText, "1", aryData);
+            }
           })
 
           // 響應式 刪除按鈕 位置
@@ -581,6 +588,7 @@
           
           let recordIds = [];
           btnTrash.addEventListener("click", function(){
+            recordIds = [];
             let deleteNum = 0;
             checkBoxes.forEach(function(box, i){
               if(box.checked==true){
@@ -606,7 +614,7 @@
                   modalDeleteResultImg.src = "./images/addCardSuccess.svg";
                   modalDeleteResultClose.classList.add("btn-main");
                   modalDeleteResultClose.classList.remove("btn-pink");
-                  pagination(dateEndValue, startYear, startMonth, startDay, endYear, endMonth, endDay, arySearchText, goPage, aryData);
+                  pagination(resultData, dateEndValue, startYear, startMonth, startDay, endYear, endMonth, endDay, arySearchText, goPage, aryData);
                 } else {
                   modalDeleteResultTitle.textContent = "刪除失敗";
                   modalDeleteResultText.classList.remove("d-none");
@@ -835,54 +843,53 @@
           }
           let matchCardName_3 = null
           if(card_3_Name!=undefined){
-            let matchCardName_3 = card_3_Name.match(text);
+            matchCardName_3 = card_3_Name.match(text);
           }
           let matchCard_1_Strength1st = card_1_strength1st.toString().match(text);
           let matchCard_2_Strength1st = null
           if(card_2_strength1st!=null){
-            let matchCard_2_Strength1st = card_2_strength1st.toString().match(text);
+            matchCard_2_Strength1st = card_2_strength1st.toString().match(text);
           }
           let matchCard_3_Strength1st = null
           if(card_3_strength1st!=null){
-            let matchCard_3_Strength1st = card_3_strength1st.toString().match(text);
+            matchCard_3_Strength1st = card_3_strength1st.toString().match(text);
           }
           let matchCard_1_strength2nd = null
           if(card_1_strength2nd!=null){
-            let matchCard_1_strength2nd = card_1_strength2nd.toString().match(text);
+            matchCard_1_strength2nd = card_1_strength2nd.toString().match(text);
           }
           let matchCard_2_Strength2nd = null
           if(card_2_strength2nd!=null){
-            let matchCard_2_Strength2nd = card_2_strength2nd.toString().match(text);
+            matchCard_2_Strength2nd = card_2_strength2nd.toString().match(text);
           }
           let matchCard_3_Strength2nd = null
           if(card_3_strength2nd!=null){
-            let matchCard_3_Strength2nd = card_3_strength2nd.toString().match(text);
+            matchCard_3_Strength2nd = card_3_strength2nd.toString().match(text);
           }
           let matchBackground = null
           if (background!=""){
-            let matchBackground = background.match(text);
+            matchBackground = background.match(text);
           }
           let matchAction = null
           if (action!=""){
-            let matchAction = action.match(text);
+            matchAction = action.match(text);
           }
           let matchResult = null
           if (result!=""){
-            let matchResult = result.match(text);
+            matchResult = result.match(text);
           }
           let matchFeeling = null
           if (feeling!=""){
-            let matchFeeling = feeling.match(text);
+            matchFeeling = feeling.match(text);
           }
           let matchIsItYourExcept = null
           if (isItYourExcept!=""){
-            let matchIsItYourExcept = isItYourExcept.match(text);
+            matchIsItYourExcept = isItYourExcept.match(text);
           }
           let matchNextAction = null
           if (nextAction!=""){
-            let matchNextAction = nextAction.match(text);
+            matchNextAction = nextAction.match(text);
           }
-
           if (matchCardName_1!=null || matchCardName_2!=null || matchCardName_3!=null || matchCard_1_Strength1st!=null || matchCard_2_Strength1st!=null || matchCard_3_Strength1st!=null || matchCard_1_strength2nd!=null || matchCard_2_Strength2nd!=null || matchCard_3_Strength2nd!=null || matchBackground!=null || matchAction!=null || matchResult!=null || matchFeeling!=null || matchIsItYourExcept!=null || matchNextAction!=null){
             resultData.push(data);
           }

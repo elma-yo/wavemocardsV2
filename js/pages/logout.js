@@ -8,5 +8,5 @@ btnLogout.addEventListener("click", function(){
 })
 modalLogoutSure.addEventListener("click", function(){
     localStorage.clear();
-    location.href= "index.html";
+    location.href= "login.html";
 })
