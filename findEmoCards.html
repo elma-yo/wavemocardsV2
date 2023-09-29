@@ -980,6 +980,9 @@
                                                         <img class="w-100" src="./images/emoCards/${dataId}.svg" alt="${dataName}">
                                                     </div>
                                                 </div>
+                                                <div class="modal-footer d-none">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnCloseBigCard">${dataId}</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -1014,6 +1017,9 @@
                                                     <div class="d-none d-sm-block box-bigCard-img">
                                                         <img class="w-100" src="./images/emoCards/${dataId}.svg" alt="${dataName}">
                                                     </div>
+                                                </div>
+                                                <div class="modal-footer d-none">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnCloseBigCard">${dataId}</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -1131,11 +1137,16 @@
                             let stringAddedCard = JSON.stringify(storageData);
                             // 將 aryAddedCards 存入 localStorage 中
                             localStorage.setItem("addedCards", stringAddedCard);
+                            const btnCloseBigCards = document.querySelectorAll("#btnCloseBigCard");
+                            btnCloseBigCards.forEach(function(btn, i){
+                                if(btn.childNodes[0].textContent==id){
+                                    btn.click();
+                                }
+                            })
                         }
                     })
                 })
             })
-
             // 防止頁面移轉
             window.onbeforeunload = function () {
                 return "Are you really sure?";

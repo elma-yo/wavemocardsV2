@@ -247,15 +247,44 @@
     <script src="./js/pages/logout.js"></script>
     <script>
         // 追蹤頁面足跡
-        let pageLocation = "findEmoOthers.html";
+        let pageLocation = "findEmo09_Others.html";
         localStorage.setItem("location", pageLocation);
         
         const cards = document.querySelector('#othersCards');
         const listModal = document.querySelector('.listModal');
 
+        // 卡片加入成功/失敗 Modal
+        const modalResult = document.querySelector('#modalResult');
+        const modalResultTitle = document.querySelector('#modalResultTitle');
+        const modalResultErr = document.querySelector('#modalResultErr');
+        const modalResultText1 = document.querySelector('#modalResultText1');
+        const modalResultText2 = document.querySelector('#modalResultText2');
+        const modalResultLink = document.querySelector('#modalResultLink');
+        const modalResultClose = document.querySelector('#modalResultClose');
+
+        // 建立已被加入卡片的 id array
+        let getAddedCards = localStorage.getItem("addedCards");
+        let aryAddedId = [];
+        if(getAddedCards!=null){
+            let storageData=JSON.parse(getAddedCards); // 將 string 資料轉為 array 資料
+            let storageCards=storageData[0].cards;
+            storageCards.forEach(function(card, index){
+                aryAddedId.push(card.ID);
+            })
+        }
+
         axios.get("https://api.wavemocards.com/emoinfo/cards/")
             .then(function(response){
                 let aryData = Object.values(response.data);
+
+                // 將已經被加入的卡片，寫入 added屬性 並為 true
+                aryData.forEach(function(data, i){
+                    aryAddedId.forEach(function(id, e){
+                        if (id==data.ID){
+                            data.added = true;
+                        }
+                    })
+                })
 
                 // 展開卡 & 大卡
                 initCards()
@@ -270,25 +299,40 @@
                         let dataExample = data.example;
                         if(data.category == "其他"){
                             emo = "others";
-                            let contentCards = `
-                                <div class="position-relative me-48 mb-24">
-                                    <button type="button" class="position-absolute top-0 start-100 translate-middle rounded-circle border-0 btn-add-card-m" id="btnAdd"><div class="d-none">${data.ID}</div></button>
-                                    <button type="button" class="class-card mb-12 bg-${emo} link-gray-900 class-card-${emo}" data-bs-toggle="modal" data-bs-target="#emo${i}">
+                            if(data.added==true){
+                                let contentCards = `
+                                <div class="position-relative me-sm-44 mb-28">
+                                    <button type="button" class="class-card mb-12 bg-${emo} link-gray-900 class-card-${emo} opacity-50" data-bs-toggle="modal" data-bs-target="#emo${i}" id="emoCard">
                                         <p>${dataName[0]}&nbsp;${dataName[1]}</p>
                                         <div class="img-box">
-                                            <img src="./images/emoCards/${dataId}.svg" alt="${dataName }">
+                                            <img src="./images/emoCards/${dataId}.svg" alt="${dataName}">
                                         </div>
+                                        <div class="d-none">${dataId}</div>
                                     </button>
                                 </div>`;
-                            strCards+=contentCards;
+                                strCards+=contentCards;
+                            } else {
+                                let contentCards = `
+                                <div class="position-relative me-sm-44 mb-28">
+                                    <button type="button" class="position-absolute top-0 start-100 translate-middle rounded-circle border-0 btn-add-card-m" id="btnAdd"><div class="d-none">${dataId}</div></button>
+                                    <button type="button" class="class-card mb-12 bg-${emo} link-gray-900 class-card-${emo}" data-bs-toggle="modal" data-bs-target="#emo${i}" id="emoCard">
+                                        <p>${dataName[0]}&nbsp;${dataName[1]}</p>
+                                        <div class="img-box">
+                                            <img src="./images/emoCards/${dataId}.svg" alt="${dataName}">
+                                        </div>
+                                        <div class="d-none">${dataId}</div>
+                                    </button>
+                                </div>`;
+                                strCards+=contentCards;
+                            }
 
-                            let contentModal = `
-                                <li>
+                            if (data.added==true){
+                            let contentModel = `
+                                <li class="bg-white">
                                     <div class="modal fade px-32" id="emo${i}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered c-modal-xl-card">
                                             <div class="modal-content bg-${emo} my-36">
-                                                <div class="modal-body d-sm-flex justify-content-between align-items-center position-relative">
-                                                    <button type="button" class="position-absolute top-0 start-100 translate-middle rounded-circle border-0 btn-add-card-xl" id="btnAdd"><div class="d-none">${dataId}</div></button>
+                                                <div class="modal-body d-sm-flex justify-content-between align-items-center position-relative opacity-75">
                                                     <div class="box-bigCard-text">
                                                         <div class="d-flex d-md-none w-100 justify-content-center">
                                                             <div class="d-sm-none box-bigCard-img mb-8">
@@ -311,16 +355,61 @@
                                                         <img class="w-100" src="./images/emoCards/${dataId}.svg" alt="${dataName}">
                                                     </div>
                                                 </div>
+                                                <div class="modal-footer d-none">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnCloseBigCard">${dataId}</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </li>`;
-                            strModal+=contentModal;
+                                strModal+=contentModel;
+                            } else {
+                                let contentModel = `
+                                    <li>
+                                        <div class="modal fade px-32" id="emo${i}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered c-modal-xl-card">
+                                                <div class="modal-content bg-${emo} my-36">
+                                                    <div class="modal-body d-sm-flex justify-content-between align-items-center position-relative"  id="emoModal">
+                                                        <button type="button" class="position-absolute top-0 start-100 translate-middle rounded-circle border-0 btn-add-card-xl" id="btnAdd"><div class="d-none">${dataId}</div></button>
+                                                        <div class="box-bigCard-text">
+                                                            <div class="d-flex d-md-none w-100 justify-content-center">
+                                                                <div class="d-sm-none box-bigCard-img mb-8">
+                                                                    <img class="w-100" src="./images/emoCards/${dataId}.svg" alt="${dataName}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="title w-100 mb-20 d-flex justify-content-center justify-content-sm-between  align-items-end">
+                                                                <h2>${dataName}</h2>
+                                                            </div>
+                                                            <div class="mb-16">
+                                                                <h3 class="mb-4">意思：</h3>
+                                                                <p>${dataDescription}</p>
+                                                            </div>
+                                                            <div>
+                                                                <h3 class="mb-4">例句：</h3>
+                                                                <p>${dataExample}</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-none d-sm-block box-bigCard-img">
+                                                            <img class="w-100" src="./images/emoCards/${dataId}.svg" alt="${dataName}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer d-none">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnCloseBigCard">${dataId}</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>`;
+                                strModal+=contentModel;
+                            }
                         }
                     })
                     cards.innerHTML = strCards;
                     listModal.innerHTML = strModal;
                 }
+
+                const emoCards = document.querySelectorAll('#emoCard');
+                const emoModals = document.querySelectorAll('#emoModal');
 
                 // 點擊卡片+按鈕事件
                 const btnAdds = document.querySelectorAll('#btnAdd');
@@ -334,60 +423,82 @@
 
                         // 取得 localStorage stringAddedCards 的資料
                         let storageData; // local storage 全部的資料
-                    let storageCards; // 存放 local storage 中的 card 資料
-                    let getAddedCards = localStorage.getItem("addedCards");
-                    let hadThisCard; // 判別是否已有此卡
-                    if(getAddedCards!=null){
-                        storageData=JSON.parse(getAddedCards); // 將 string 資料轉為 array 資料
-                        storageCards=storageData[0].cards;
-                        // 檢查此卡片是否已被放入 localStorage
-                        storageCards.forEach(function(card, index){
-                        if(cardInfo.ID==card.ID){
-                            hadThisCard = true;
+                        let storageCards; // 存放 local storage 中的 card 資料
+                        let getAddedCards = localStorage.getItem("addedCards");
+                        let hadThisCard; // 判別是否已有此卡
+                        if(getAddedCards!=null){
+                            storageData=JSON.parse(getAddedCards); // 將 string 資料轉為 array 資料
+                            storageCards=storageData[0].cards;
+                            // 檢查此卡片是否已被放入 localStorage
+                            storageCards.forEach(function(card, index){
+                            if(cardInfo.ID==card.ID){
+                                hadThisCard = true;
+                            }
+                        })
+                        } else {
+                            // storageCards 尚未被定義，因此 定義成array格式，後續才能將卡片資料新增進入array中
+                            storageData=[{cards:[]}];
+                            storageCards=storageData[0].cards;
+                        }
+                        if(hadThisCard==true){
+                            // 失敗 Modal
+                            modalResultTitle.textContent = "已有此卡囉！";
+                            modalResultTitle.classList.add("text-pink");
+                            modalResultErr.classList.remove("d-none");
+                            modalResultText2.classList.add("d-none");
+                            modalResultImg.src="./images/addCardFail.svg";
+                            modalResultLink.classList.add("d-none");
+                            modalResultClose.classList.remove("btn-outline-main-tint01", "c-btn-outline-main-tint01");
+                            modalResultClose.classList.add("btn-outline-pink", "c-btn-outline-pink");
+                            btnAdd.setAttribute("data-bs-toggle", "modal");
+                            btnAdd.setAttribute("data-bs-target", "#modalResult");
+                            btnAdd.click();
+                        } else {
+                            // 成功 Modal
+                            modalResultTitle.textContent = "成功";
+                            modalResultTitle.classList.remove("text-pink");
+                            modalResultTitle.classList.add("text-main");
+                            modalResultErr.classList.add("d-none");
+                            modalResultText2.classList.remove("d-none");
+                            modalResultImg.src="./images/addCardSuccess.svg";
+                            modalResultLink.classList.remove("d-none");
+                            modalResultClose.classList.remove("btn-outline-pink", "c-btn-outline-pink");
+                            modalResultClose.classList.add("btn-outline-main-tint01", "c-btn-outline-main-tint01");
+                            btnAdd.setAttribute("data-bs-toggle", "modal");
+                            btnAdd.setAttribute("data-bs-target", "#modalResult");
+                            btnAdd.classList.add("d-none");
+                            aryData.forEach(function(data, i){
+                                let dataId = data.ID;
+                                if(dataId==id){
+                                    emoCards.forEach(function(card, i){
+                                        if(card.childNodes[5].textContent == id){
+                                            card.classList.add("opacity-50");
+                                        }
+                                    })
+                                    emoModals.forEach(function(modal, i){
+                                        if(modal.childNodes[1].textContent == id){
+                                            modal.childNodes[1].classList.add("d-none");
+                                            modal.classList.add("opacity-75");
+                                        }
+                                    })
+                                }
+                            })
+                            btnAdd.click(); // 設定該按鈕被點擊
+                            storageCards.push(cardInfo);
+                            storageData[0].cards=storageCards;
+                            // 將資料 轉為 string 資料
+                            let stringAddedCard = JSON.stringify(storageData);
+                            // 將 aryAddedCards 存入 localStorage 中
+                            localStorage.setItem("addedCards", stringAddedCard);
+                            const btnCloseBigCards = document.querySelectorAll("#btnCloseBigCard");
+                            btnCloseBigCards.forEach(function(btn, i){
+                                if(btn.childNodes[0].textContent==id){
+                                    btn.click();
+                                }
+                            })
                         }
                     })
-                    } else {
-                        // storageCards 尚未被定義，因此 定義成array格式，後續才能將卡片資料新增進入array中
-                        storageData=[{cards:[]}];
-                        storageCards=storageData[0].cards;
-                    }
-                    if(hadThisCard==true){
-                        // 失敗 Modal
-                        modalResultTitle.textContent = "已有此卡囉！";
-                        modalResultTitle.classList.add("text-pink");
-                        modalResultErr.classList.remove("d-none");
-                        modalResultText2.classList.add("d-none");
-                        modalResultImg.src="./images/addCardFail.svg";
-                        modalResultLink.classList.add("d-none");
-                        modalResultClose.classList.remove("btn-outline-main-tint01", "c-btn-outline-main-tint01");
-                        modalResultClose.classList.add("btn-outline-pink", "c-btn-outline-pink");
-                        btnAdd.setAttribute("data-bs-toggle", "modal");
-                        btnAdd.setAttribute("data-bs-target", "#modalResult");
-                        btnAdd.click();
-                    } else {
-                        // 成功 Modal
-                        modalResultTitle.textContent = "成功";
-                        modalResultTitle.classList.remove("text-pink");
-                        modalResultTitle.classList.add("text-main");
-                        modalResultErr.classList.add("d-none");
-                        modalResultText2.classList.remove("d-none");
-                        modalResultImg.src="./images/addCardSuccess.svg";
-                        modalResultLink.classList.remove("d-none");
-                        modalResultClose.classList.remove("btn-outline-pink", "c-btn-outline-pink");
-                        modalResultClose.classList.add("btn-outline-main-tint01", "c-btn-outline-main-tint01");
-                        btnAdd.setAttribute("data-bs-toggle", "modal");
-                        btnAdd.setAttribute("data-bs-target", "#modalResult");
-                        btnAdd.click(); // 設定該按鈕被點擊
-                        storageCards.push(cardInfo);
-                        storageData[0].cards=storageCards;
-                        // 將資料 轉為 string 資料
-                        let stringAddedCard = JSON.stringify(storageData);
-                        // 將 aryAddedCards 存入 localStorage 中
-                        localStorage.setItem("addedCards", stringAddedCard);
-                    }
-                    })
                 })
-
                 // 防止頁面移轉
                 window.onbeforeunload = function () {
                     return "Are you really sure?";

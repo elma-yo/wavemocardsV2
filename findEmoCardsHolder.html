@@ -385,7 +385,7 @@
 
                         if(cardName.length>2){
                             let contentCards = `
-                            <div class="position-relative me-36 mb-20" id="cardBox"">
+                            <div class="position-relative me-sm-44 mb-28" id="cardBox"">
                                 <button type="button" class="position-absolute top-0 start-100 translate-middle rounded-circle border-0 btn-delete-card-m" id="btnDelete" data-bs-toggle="modal" data-bs-target="#modalDelete"><div class="d-none">${cardId}</div></button>
                                 <button type="button" class="class-card mb-12 bg-${emo} link-gray-900 class-card-${emo}" data-bs-toggle="modal" data-bs-target="#emo${i}">
                                     <p>${cardName}</p>
@@ -397,7 +397,7 @@
                             strCards+=contentCards;
                         } else {
                             let contentCards = `
-                                <div class="position-relative me-36 mb-20" id="cardBox">
+                                <div class="position-relative me-sm-44 mb-28" id="cardBox">
                                     <button type="button" class="position-absolute top-0 start-100 translate-middle rounded-circle border-0 btn-delete-card-m" id="btnDelete" data-bs-toggle="modal" data-bs-target="#modalDelete"><div class="d-none">${cardId}</div></button>
                                     <button type="button" class="class-card mb-12 bg-${emo} link-gray-900 class-card-${emo}" data-bs-toggle="modal" data-bs-target="#emo${i}">
                                         <p>${cardName[0]}&nbsp;${cardName[1]}</p>
