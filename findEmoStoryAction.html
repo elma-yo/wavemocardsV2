@@ -193,21 +193,21 @@
                                         <input type="radio" class="d-none" name="isGoodResult" id="isGoodResultYes" value="0">
                                         <label for="isGoodResultYes" class="emoStoryLabel me-16 fs-7" id="isGoodResultLabel">
                                             是
-                                            <div class="d-none">0</div>
+                                            <div class="d-none">1</div>
                                         </label>
                                     </div>
                                     <div>
                                         <input type="radio" class="d-none" name="isGoodResult" id="isGoodResultNo" value="1">
                                         <label for="isGoodResultNo" class="emoStoryLabel me-16 fs-7" id="isGoodResultLabel">
                                             否
-                                            <div class="d-none">1</div>
+                                            <div class="d-none">2</div>
                                         </label>
                                     </div>
                                     <div>
                                         <input type="radio" class="d-none" name="isGoodResult" id="isGoodResultNotSure" value="null">
                                         <label for="isGoodResultNotSure" class="emoStoryLabel fs-7" id="isGoodResultLabel">
                                             不清楚
-                                            <div class="d-none">null</div>
+                                            <div class="d-none">3</div>
                                         </label>
                                     </div>
                                 </div>
@@ -412,7 +412,7 @@
             if(storageData[1].betterAction!="" && storageData[1].betterAction!=undefined){
                 betterAction.value=storageData[1].betterAction;
             }
-
+            
             // 將情緒名詞寫入文句中
             axios.get("https://api.wavemocards.com/emoinfo/cards/")
             .then(function(response){

@@ -77,86 +77,269 @@
     </header>
   
     <main>
-      <div class="container py-16 pt-112" id="top">
+      <!-- 我的紀錄 - 紀錄一覽表 -->
+      <div class="" id="areaRecordsTable">
+          <div class="container py-16 pt-112" id="top">
+            <!-- 標題 -->
+            <div class="mb-20 pb-8 px-12 px-sm-0 border-2 border-bottom border-main-tint02 d-flex justify-content-between align-items-center">
+              <h2 class="fs-3">我的紀錄</h2>
+                <div class="nav-btn d-flex justify-content-end">
+                    <div class="btn-disable">紀錄</div>
+                    <a class="ms-16 btn btn-outline-main c-btn px-16" href="myRecordsAnalyze.html">分析</a>
+                </div>
+            </div>
+            <!-- 搜尋條 & 分享、刪除 -->
+            <div class="w-100 mb-12 mb-md-24 px-12 px-sm-4 d-flex flex-column flex-md-row justify-content-between align-items-end  align-items-lg-center">
+              <!-- 搜尋條 -->
+              <div class="w-100 d-flex flex-column flex-lg-row align-items-lg-center">
+                <!-- <div class="box-dates d-flex align-items-center mb-16 mb-md-0">
+                  <input type="date" class="d-block input-date me-4 me-md-8 px-16 py-6 border border-main-tint02 border-2 rounded-pill text-main-tint01">
+                  <span class="me-4 me-md-8 text-main-tint01">～</span>
+                  <input type="date" class="d-block input-date me-md-12 px-16 py-6 border border-main-tint02 border-2 rounded-pill text-main-tint01">
+                </div> -->
+                <div class="box-date d-flex flex-column flex-sm-row align-items-center mb-16 mb-lg-0">
+                  <input type="date" class="input-date-analyze d-block px-2 px-sm-16 py-6 border border-main-tint02 border-2 rounded-pill text-main-tint01 text-center" id="dateStart">
+                  <span class="mx-8 text-main-tint01">～</span>
+                  <input type="date" class="input-date-analyze d-block me-lg-12 px-2 px-sm-16 py-6 border border-main-tint02 border-2 rounded-pill text-main-tint01 text-center" id="dateEnd" data-bs-toggle="tooltip" data-bs-placement="bottom" title="請先填入第一個日期" disabled>
+                </div>
+                <div class="box-searchBar d-flex flex-column flex-sm-row align-items-center">
+                  <input type="search" class="search-bar mb-16 mb-sm-0 me-sm-8 py-12 border border-main-tint02 border-2 rounded-pill" style="background: white url('./images/Search.svg') no-repeat 16px 6px;" placeholder="請輸入關鍵字，以「空格」做區隔" id="searchText">
+                  <button type="button" class="box-btn-search btn btn-main c-btn px-24 py-8 border-0 text-nowrap" id="btnSearch">搜尋</button>
+                </div>
+              </div>
+              <!-- 分享、刪除 -->
+              <!-- <div class="d-flex align-items-center"> -->
+                <button class="d-none d-md-block rounded-pill border-0 fs-5 c-btn-icon" id="btnTrash">
+                  <i class="bi bi-trash3"></i>
+                </button>
+                <!-- <button class="rounded-pill border-0 fs-5 c-btn-icon">
+                  <i class="bi bi-share"></i>
+                </button> -->
+              <!-- </div> -->
+            </div>
+            <!-- Table -->
+            <table class="mb-24 px-12 px-sm-0 table table-hover c-table-border overflow-auto">
+              <thead>
+                <tr class="table-main-tint01 text-center">
+                  <th scope="col"></th>
+                  <th scope="col" class="text-nowrap">日期</th>
+                  <th scope="col" class="text-nowrap">情緒與強度</th>
+                  <!-- <th scope="col">分享人數</th> -->
+                  <th scope="col" class="text-nowrap">情緒故事</th>
+                </tr>
+              </thead>
+              <tbody id="tbody"></tbody>
+            </table>
+            <!-- 分頁 -->
+            <div class="mb-64 d-flex justify-content-center justify-content-md-end pt-24">
+              <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li class="page-item me-8" id="liBackPage">
+                    <button type="button" class="page-link rounded-pill" aria-label="Previous" id="btnBackPage">
+                      <span aria-hidden="true">&laquo;</span>
+                    </button>
+                  </li>
+                  <ul class="pagination" id="pageId">
+                    <li class="page-item me-8"><span class="page-link rounded-pill active">1</span></li>
+                    <li class="page-item me-8"><a class="page-link rounded-pill">2</a></li>
+                    <li class="page-item me-8"><a class="page-link rounded-pill">3</a></li>
+                  </ul>
+                  <li class="page-item me-8" id="liNextPage">
+                    <button type="button" class="page-link rounded-pill" aria-label="Next" id="btnNextPage">
+                      <span aria-hidden="true">&raquo;</span>
+                    </button>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            <!-- 顯示 查無資料 modal 用的 隱藏button -->
+            <button type="button" class="d-none" id="btnSearchResult" data-bs-toggle="modal" data-bs-target="#modalSearch"></button>
+            <!-- 顯示 查無資料 modal 用的 隱藏button -->
+            <button type="button" class="d-none" id="btnMakeSureToDelete" data-bs-toggle="modal" data-bs-target="#modalDelete"></button>
+        </div>
+      </div>
+
+      <!-- 我的紀錄 - 情緒故事 -->
+      <div class="d-none" id="areaEmoStory">
         <!-- 標題 -->
-        <div class="mb-20 pb-8 px-12 px-sm-0 border-2 border-bottom border-main-tint02 d-flex justify-content-between align-items-center">
-          <h2 class="fs-3">我的紀錄</h2>
-            <div class="nav-btn d-flex justify-content-end">
-                <div class="btn-disable">紀錄</div>
-                <a class="ms-16 btn btn-outline-main c-btn px-16" href="myRecordsAnalyze.html">分析</a>
-            </div>
-        </div>
-        
-        <!-- 搜尋條 & 分享、刪除 -->
-        <div class="w-100 mb-12 mb-md-24 px-12 px-sm-4 d-flex flex-column flex-md-row justify-content-between align-items-end  align-items-lg-center">
-          <!-- 搜尋條 -->
-          <div class="w-100 d-flex flex-column flex-lg-row align-items-lg-center">
-            <!-- <div class="box-dates d-flex align-items-center mb-16 mb-md-0">
-              <input type="date" class="d-block input-date me-4 me-md-8 px-16 py-6 border border-main-tint02 border-2 rounded-pill text-main-tint01">
-              <span class="me-4 me-md-8 text-main-tint01">～</span>
-              <input type="date" class="d-block input-date me-md-12 px-16 py-6 border border-main-tint02 border-2 rounded-pill text-main-tint01">
-            </div> -->
-            <div class="box-date d-flex flex-column flex-sm-row align-items-center mb-16 mb-lg-0">
-              <input type="date" class="input-date-analyze d-block px-2 px-sm-16 py-6 border border-main-tint02 border-2 rounded-pill text-main-tint01 text-center" id="dateStart">
-              <span class="mx-8 text-main-tint01">～</span>
-              <input type="date" class="input-date-analyze d-block me-lg-12 px-2 px-sm-16 py-6 border border-main-tint02 border-2 rounded-pill text-main-tint01 text-center" id="dateEnd" data-bs-toggle="tooltip" data-bs-placement="bottom" title="請先填入第一個日期" disabled>
-            </div>
-            <div class="box-searchBar d-flex flex-column flex-sm-row align-items-center">
-              <input type="search" class="search-bar mb-16 mb-sm-0 me-sm-8 py-12 border border-main-tint02 border-2 rounded-pill" style="background: white url('./images/Search.svg') no-repeat 16px 6px;" placeholder="請輸入關鍵字，以「空格」做區隔" id="searchText">
-              <button type="button" class="box-btn-search btn btn-main c-btn px-24 py-8 border-0 text-nowrap" id="btnSearch">搜尋</button>
-            </div>
+        <div class="sticky-top pb-8 bg-white">
+          <div class="container pt-16">
+              <div class="mb-20 pb-8 px-12 px-sm-0 border-2 border-bottom border-main-tint02 d-flex justify-content-between align-items-center">
+                  <h2 class="fs-3 d-none d-md-block">我的紀錄｜情緒故事</h2>
+                  <h2 class="fs-3 d-md-none d-flex flex-column">
+                      <span class="d-block">我的紀錄</span>
+                      <span>情緒故事</span>
+                  </h2>
+                  <div class="nav-btn d-flex justify-content-end align-items-center">
+                      <button class="rounded-pill border-0 fs-5 c-btn-icon" id="btnDelete">
+                          <i class="bi bi-trash3"></i>
+                      </button>
+                      <a class="ms-12 btn btn-outline-main c-btn d-flex justify-content-center align-items-center" id="btnBack" href="myRecords.html">返回</a>
+                      <!-- <a class="ms-16 btn btn-outline-main c-btn" href="#shared">分享清單</a> -->
+                      <!-- <a class="ms-16 btn btn-main c-btn d-flex justify-content-center align-items-center" href="myRecordsEmoStoryModify.html">編輯</a> -->
+                      <button class="d-none ms-16 btn btn-outline-main c-btn" id="btnCancel" type="button">取消</button>
+                      <button class="ms-16 btn btn-outline-main c-btn" id="btnModify" type="button">編輯</button>
+                      <input type="submit" class="d-none ms-16 btn btn-main c-btn" id="btnSave" value="儲存"></button>
+                  </div>
+              </div>
+              <!-- 分享、刪除 -->
+              <!-- <div class="d-flex justify-content-end align-items-center">
+                  <button class="me-16 rounded-pill border-0 fs-5 c-btn-icon">
+                  <i class="bi bi-trash3"></i>
+                  </button>
+                  <button class="rounded-pill border-0 fs-5 c-btn-icon">
+                  <i class="bi bi-share"></i>
+                  </button>
+              </div> -->
           </div>
-          <!-- 分享、刪除 -->
-          <!-- <div class="d-flex align-items-center"> -->
-            <button class="d-none d-md-block rounded-pill border-0 fs-5 c-btn-icon" id="btnTrash">
-              <i class="bi bi-trash3"></i>
-            </button>
-            <!-- <button class="rounded-pill border-0 fs-5 c-btn-icon">
-              <i class="bi bi-share"></i>
-            </button> -->
-          <!-- </div> -->
         </div>
-  
-        <!-- Table -->
-        <table class="mb-24 px-12 px-sm-0 table table-hover c-table-border overflow-auto">
-          <thead>
-            <tr class="table-main-tint01 text-center">
-              <th scope="col"></th>
-              <th scope="col" class="text-nowrap">日期</th>
-              <th scope="col" class="text-nowrap">情緒與強度</th>
-              <!-- <th scope="col">分享人數</th> -->
-              <th scope="col" class="text-nowrap">情緒故事</th>
-            </tr>
-          </thead>
-          <tbody id="tbody"></tbody>
-        </table>
-  
-        <!-- 分頁 -->
-        <div class="mb-64 d-flex justify-content-center justify-content-md-end pt-24">
-          <nav aria-label="Page navigation example">
-            <ul class="pagination">
-              <li class="page-item me-8" id="liBackPage">
-                <button type="button" class="page-link rounded-pill" aria-label="Previous" id="btnBackPage">
-                  <span aria-hidden="true">&laquo;</span>
+
+        <div class="container">
+            <!-- 第 1 區 日期與情緒 -->
+            <div class="row mb-16 mb-md-8 px-12 px-sm-0">
+                <div class="col-lg-3">
+                    <div class="px-12 py-8 bg-main text-white rounded-1 text-nowrap fs-7">日期</div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="px-12 py-8 text-nowrap fs-7 rounded-1 bg-content-gray-200">2023 / 03 / 14</div>
+                </div>
+            </div>
+            <div class="row mb-16 mb-md-8 px-12 px-sm-0">
+                <div class="col-lg-3">
+                    <div class="px-12 py-8 bg-main text-white rounded-1 text-nowrap fs-7">情緒強度｜第一次</div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="px-12 py-8 bg-gray-200 rounded-1 fs-7">快樂 5・幸福 4・安心 3</div>
+                </div>
+            </div>
+            <div class="row mb-24 px-12 px-sm-0">
+                <div class="col-lg-3">
+                    <div class="px-12 py-8 bg-main text-white rounded-1 text-nowrap fs-7">情緒強度｜第二次</div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="px-12 py-8 fs-7 rounded-1 bg-content-gray-200">快樂 5・幸福 4・安心 3</div>
+                </div>
+            </div>
+            <!-- 第 2 區 情緒故事｜背景篇 -->
+            <div class="row mb-16 px-12 px-sm-0">
+                <div class="px-8 py-4 border border-start-0 border-end-0 border-top-0 border-2 border-main-tint02 text-main fw-bold fs-4">情緒故事｜背景篇</div>
+            </div>
+            <div class="row mb-24 px-12 px-sm-0 align-items-md-stretch">
+                <div class="col-lg-3 h-100">
+                    <div class="h-100 px-12 py-8 d-flex align-items-center bg-main-tint02 rounded-1 fs-7">情緒的背景</div>
+                </div>
+                <div class="col-lg-9" id="background">
+                    <div class="px-12 py-8 fs-7 rounded-1 bg-content-gray-200">同學誇獎我總是很貼心，做事也很細心。說我是她很重要的朋友。</div>
+                </div>
+                <div class="d-none col-lg-9" id="formBackground">
+                    <div class="px-12 fs-7">
+                        <textarea class="w-100 py-8 ps-8 border border-main-tint02 rounded-1" value="同學誇獎我總是很貼心，做事也很細心。說我是她很重要的朋友。"></textarea>
+                    </div>
+                </div>
+            </div>
+            <!-- 第 3 區 情緒故事｜行動篇 -->
+            <div class="row mb-16 px-12 px-sm-0">
+                <div class="col px-8 py-4 border border-start-0 border-end-0 border-top-0 border-2 border-main-tint02 text-main fw-bold fs-4">情緒故事｜行動篇</div>
+            </div>
+            <div class="row mb-16 mb-md-8 px-12 px-sm-0 align-items-md-stretch">
+                <div class="col-lg-3">
+                    <div class="px-12 py-8 d-flex align-items-center bg-main-tint02 rounded-1 fs-7">情緒後做的反應</div>
+                </div>
+                <div class="col-lg-9" id="action">
+                    <div class="px-12 py-8 fs-7 rounded-1 bg-content-gray-200">我很開心地跑去和同學Ｂ說。</div>
+                </div>
+                <div class="d-none col-lg-9" id="formAction">
+                    <div class="px-12 fs-7">
+                        <textarea class="w-100 py-8 ps-8 border border-main-tint02 rounded-1" value="我很開心地跑去和同學Ｂ說。"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-16 mb-md-8 px-12 px-sm-0 align-items-md-stretch">
+                <div class="col-lg-3">
+                    <div class="px-12 py-8 d-flex align-items-center bg-main-tint02 rounded-1 fs-7">反應後的結果</div>
+                </div>
+                <div class="col-lg-9" id="result">
+                    <div class="px-12 py-8 bg-gray-200 rounded-1 fs-7">同學Ｂ聽完後很開心地說他也要跟我們一起出去玩！</div>
+                </div>
+                <div class="d-none col-lg-9" id="formResult">
+                    <div class="px-12 fs-7">
+                        <textarea class="w-100 py-8 ps-8 border border-main-tint02 rounded-1" value="同學Ｂ聽完後很開心地說他也要跟我們一起出去玩！"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-16 mb-md-8 px-12 px-sm-0 align-items-md-stretch">
+                <div class="col-lg-3">
+                    <div class="px-12 py-8 d-flex align-items-center bg-main-tint02 rounded-1 fs-7">結果帶給我的感受</div>
+                </div>
+                <div class="col-lg-9" id="feeling">
+                    <div class="px-12 py-8 fs-7 rounded-1 bg-content-gray-200">我很開心！</div>
+                </div>
+                <div class="d-none col-lg-9" id="formFeeling">
+                    <div class="px-12 fs-7">
+                        <textarea class="w-100 py-8 ps-8 border border-main-tint02 rounded-1" value="我很開心！"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-16 mb-md-8 px-12 px-sm-0 align-items-md-stretch">
+                <div class="col-lg-3">
+                    <div class="px-12 py-8 d-flex align-items-center bg-main-tint02 rounded-1 fs-7">結果是否是我所期待的？</div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="h-100 px-12 py-8 bg-gray-200 rounded-1 fs-7 d-flex align-items-center">是</div>
+                </div>
+            </div>
+            <div class="row mb-72 px-12 px-sm-0 align-items-md-stretch">
+                <div class="col-lg-3">
+                    <div class="px-12 py-8 d-flex flex-column justify-content-center bg-main-tint02 rounded-1 fs-7">
+                        <p>下次可以怎麼做？</p>
+                        <p>以及我想肯定自己的地方</p>
+                    </div>
+                </div>
+                <div class="col-lg-9" id="next">
+                    <div class="h-100 px-12 py-8 rounded-1 fs-7 bg-content-gray-200 d-flex align-items-center"></div>
+                </div>
+                <div class="d-none col-lg-9" id="formNext">
+                    <div class="px-12 fs-7">
+                        <textarea class="w-100 py-8 ps-8 border border-main-tint02 rounded-1" value=""></textarea>
+                    </div>
+                </div>
+            </div>
+            <!-- 第 4 區 分享清單 -->
+            <!-- <div class="mb-24 pt-32 pb-8 d-flex justify-content-between align-items-center border-2 border-bottom border-main-tint02" id="shared">
+                <h2 class="fs-3">我的紀錄｜分享清單</h2> 
+                <button class="me-16 rounded-pill border-0 fs-5 c-btn-icon">
+                    <i class="bi bi-trash3"></i>
                 </button>
-              </li>
-              <ul class="pagination" id="pageId">
-                <li class="page-item me-8"><span class="page-link rounded-pill active">1</span></li>
-                <li class="page-item me-8"><a class="page-link rounded-pill">2</a></li>
-                <li class="page-item me-8"><a class="page-link rounded-pill">3</a></li>
-              </ul>
-              <li class="page-item me-8" id="liNextPage">
-                <button type="button" class="page-link rounded-pill" aria-label="Next" id="btnNextPage">
-                  <span aria-hidden="true">&raquo;</span>
-                </button>
-              </li>
-            </ul>
-          </nav>
+            </div>
+            <table class="mb-24 table table-hover c-table-border">
+                <thead>
+                    <tr class="table-main-tint01 text-center">
+                        <th scope="col"></th>
+                        <th scope="col">日期</th>
+                        <th scope="col">對象</th>
+                        <th scope="col">身份</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="text-center">
+                        <th scope="row">
+                        <input type="checkbox" id="">
+                        </th>
+                        <td>2023 / 03 / 14</td>
+                        <td>陳鳳香</td>
+                        <td>教師</td>
+                    </tr>
+                    <tr class="text-center table-main-tint03">
+                        <th scope="row">
+                        <input type="checkbox" id="">
+                        </th>
+                        <td>2023 / 03 / 15</td>
+                        <td>林凱翔</td>
+                        <td>學生</td>
+                    </tr>
+                </tbody>
+            </table> -->
         </div>
-        <!-- 顯示 查無資料 modal 用的 隱藏button -->
-        <button type="button" class="d-none" id="btnSearchResult" data-bs-toggle="modal" data-bs-target="#modalSearch"></button>
-        <!-- 顯示 查無資料 modal 用的 隱藏button -->
-        <button type="button" class="d-none" id="btnMakeSureToDelete" data-bs-toggle="modal" data-bs-target="#modalDelete"></button>
       </div>
     </main>
     
@@ -414,11 +597,11 @@
             let result = data.results;
             let feeling = data.feelings;
             let isItYourExcept
-            if(data.expect==0){
+            if(data.expect==1){
               isItYourExcept = "是";
-            } else if (data.expect==1) {
+            } else if (data.expect==2) {
               isItYourExcept = "否";
-            } else {
+            } else if (data.expect==3) {
               isItYourExcept = "不清楚";
             }
             let nextAction = data.reaction;
@@ -635,6 +818,16 @@
               })
             })
           })
+
+          // 監聽 由此進入 按鈕點擊事件
+          const btnEmoStories = document.querySelectorAll("#btnEmoStory");
+          btnEmoStories.forEach(function(btn, i){
+            let recordId = btn.childNodes[1].textContent;
+            btn.addEventListener("click", function(){
+
+            })
+            
+          })
         })
         .catch(function(error){
           console.log(error);
@@ -691,7 +884,7 @@
                   </td>
                   <!-- <td>2人</td> -->
                   <td class="align-middle">
-                    <button type="button" class="link-main p-0 border-0 fw-bold" style="background-color: rgba(255, 255, 255, 0)">
+                    <button type="button" id="btnEmoStory" class="link-main p-0 border-0 fw-bold" style="background-color: rgba(255, 255, 255, 0)">
                       由此進入
                       <div class="d-none">${recordId}</div>
                     </button>
@@ -711,7 +904,7 @@
                   </td>
                   <!-- <td>2人</td> -->
                   <td class="align-middle">
-                    <button type="button" class="link-main p-0 border-0 fw-bold" style="background-color: rgba(255, 255, 255, 0)">
+                    <button type="button" id="btnEmoStory" class="link-main p-0 border-0 fw-bold" style="background-color: rgba(255, 255, 255, 0)">
                       由此進入
                       <div class="d-none">${recordId}</div>
                     </button>
@@ -733,7 +926,7 @@
                   </td>
                   <!-- <td>2人</td> -->
                   <td class="align-middle">
-                    <button type="button" class="link-main p-0 border-0 fw-bold" style="background-color: rgba(255, 255, 255, 0)">
+                    <button type="button" id="btnEmoStory" class="link-main p-0 border-0 fw-bold" style="background-color: rgba(255, 255, 255, 0)">
                       由此進入
                       <div class="d-none">${recordId}</div>
                     </button>
@@ -753,7 +946,7 @@
                   </td>
                   <!-- <td>2人</td> -->
                   <td class="align-middle">
-                    <button type="button" class="link-main p-0 border-0 fw-bold" style="background-color: rgba(255, 255, 255, 0)">
+                    <button type="button" id="btnEmoStory" class="link-main p-0 border-0 fw-bold" style="background-color: rgba(255, 255, 255, 0)">
                       由此進入
                       <div class="d-none">${recordId}</div>
                     </button>
@@ -773,7 +966,7 @@
                   </td>
                   <!-- <td>2人</td> -->
                   <td class="align-middle">
-                    <button type="button" class="link-main p-0 border-0 fw-bold" style="background-color: rgba(255, 255, 255, 0)">
+                    <button type="button" id="btnEmoStory" class="link-main p-0 border-0 fw-bold" style="background-color: rgba(255, 255, 255, 0)">
                       由此進入
                       <div class="d-none">${recordId}</div>
                     </button>
@@ -795,7 +988,7 @@
                   </td>
                   <!-- <td>2人</td> -->
                   <td class="align-middle">
-                    <button type="button" class="link-main p-0 border-0 fw-bold" style="background-color: rgba(255, 255, 255, 0)">
+                    <button type="button" id="btnEmoStory" class="link-main p-0 border-0 fw-bold" style="background-color: rgba(255, 255, 255, 0)">
                       由此進入
                       <div class="d-none">${recordId}</div>
                     </button>

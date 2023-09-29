@@ -546,6 +546,7 @@
 
             // 點擊下一步時，確認是要送出，並將更新後的資料寫入localStorage
             btnSave.addEventListener("click", function(){
+                console.log(storageData)
                 // 將資料 轉為 string 資料，並將 aryAddedCards 存入 localStorage 中
                 storageData[0].cards=storageCards;
                 let stringAddedCard = JSON.stringify(storageData);
@@ -572,7 +573,7 @@
                 let action = storageData[1].whatIDid;
                 let actionResult = storageData[1].actionResult;
                 let feeling = storageData[1].feeling;
-                let isGoodResult = storageData[1].isGoodResult;
+                let isGoodResult = parseInt(storageData[1].isGoodResult);
                 let betterAction = storageData[1].betterAction;
                 
                 if(cardsNum==1){
@@ -632,10 +633,12 @@
                     isGoodResult = parseInt(storageData[1].isGoodResult);
                     postData.expect=isGoodResult;
                 }
+                console.log(postData)
                 axios.post("https://api.wavemocards.com/emotions/add",
                 postData, { headers: {"Authorization": `Bearer ${token}`} })
                 .then (function(response){
-                    if (response.data.data == "1 emo has been added.") {
+                    console.log(response.data.message)
+                    if (response.data.message == "The emotion was added successfully.") {
                         // 資料儲存成功
                         localStorage.removeItem("addedCards");
                         modalSaveResultTitle.classList.add("text-main");
