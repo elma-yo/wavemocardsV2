@@ -13,72 +13,71 @@
     <link rel="stylesheet" href="./stylesheets/all.css">
   </head>
   <body id="body">
-    <header class="header h-logined fixed-top">
-      <div class="container py-16 d-flex justify-content-between align-items-center">
-          <h1>
-              <a href="index.html" data-bs-toggle="tooltip" data-bs-placement="bottom" title="回到首頁">浪潮情緒卡</a>
-          </h1>
-          <div class="d-lg-none position-relative">
-              <button class="px-8 py-4 btn btn-outline-main rounded-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                  <i class="bi bi-list"></i>
-              </button>
-              <div class="collapse" style="position: absolute; right: 0; top: 40px;" id="collapseExample">
-                  <div class="p-0 card card-body rounded-2 border-2 border-main-tint01" style="width: 160px;">
-                      <ul>
-                          <li>
-                              <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="aboutEmotions.html">認識情緒</a>
-                          </li>
-                          <li>
-                              <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="findMyEmotions.html">探索情緒</a>
-                          </li>
-                          <li>
-                              <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="myRecords.html">我的紀錄</a>
-                          </li>
-                          <!-- <li>
-                              <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="sharedByOthers.html">他人的分享</a>
-                          </li> -->
-                          <li>
-                              <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="account.html">我的帳戶</a>
-                          </li>
-                          <li>
-                            <div class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" data-bs-toggle="modal" data-bs-target="#modalLogout" style="cursor: pointer;">登出</div>
-                          </li>
-                      </ul>
+    <!-- 我的紀錄 - 紀錄一覽表 -->
+    <div class="" id="areaRecordsTable">
+        <header class="header h-logined fixed-top">
+          <div class="container py-16 d-flex justify-content-between align-items-center">
+              <h1>
+                  <a href="index.html" data-bs-toggle="tooltip" data-bs-placement="bottom" title="回到首頁">浪潮情緒卡</a>
+              </h1>
+              <div class="d-lg-none position-relative">
+                  <button class="px-8 py-4 btn btn-outline-main rounded-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                      <i class="bi bi-list"></i>
+                  </button>
+                  <div class="collapse" style="position: absolute; right: 0; top: 40px;" id="collapseExample">
+                      <div class="p-0 card card-body rounded-2 border-2 border-main-tint01" style="width: 160px;">
+                          <ul>
+                              <li>
+                                  <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="aboutEmotions.html">認識情緒</a>
+                              </li>
+                              <li>
+                                  <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="findMyEmotions.html">探索情緒</a>
+                              </li>
+                              <li>
+                                  <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="myRecords.html">我的紀錄</a>
+                              </li>
+                              <!-- <li>
+                                  <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="sharedByOthers.html">他人的分享</a>
+                              </li> -->
+                              <li>
+                                  <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="account.html">我的帳戶</a>
+                              </li>
+                              <li>
+                                <div class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" data-bs-toggle="modal" data-bs-target="#modalLogout" style="cursor: pointer;">登出</div>
+                              </li>
+                          </ul>
+                      </div>
                   </div>
               </div>
+              <ul class="d-none d-lg-flex justify-content-between align-items-center mb-0 ps-0">
+                  <li>
+                      <a href="aboutEmotions.html" class="px-4 py-8" data-bs-toggle="tooltip" data-bs-placement="bottom" title="認識情緒與情緒卡">認識情緒</a>
+                  </li>
+                  <li class="ms-16">
+                      <a href="findMyEmotions.html" class="px-4 py-8" data-bs-toggle="tooltip" data-bs-placement="bottom" title="選擇情緒卡與紀錄情緒">探索情緒</a>
+                  </li>
+                  <li class="ms-16">
+                      <a href="myRecords.html" class="px-4 py-8" data-bs-toggle="tooltip" data-bs-placement="bottom" title="觀看我的紀錄與分析">我的紀錄</a>
+                  </li>
+                  <!-- <li class="ms-16">
+                      <a href="sharedByOthers.html" class="px-4 py-8" data-bs-toggle="tooltip" data-bs-placement="bottom" title="觀看他人分享的情緒紀錄">他人的分享</a> -->
+                  </li>
+                  <li class="ms-16">
+                      <a href="account.html" class="profile" data-bs-toggle="tooltip" data-bs-placement="bottom" title="管理我的帳戶">
+                          <i class="bi bi-person-fill"></i>
+                          <i class="bi bi-person-fill-gear"></i>
+                      </a>
+                  </li>
+                  <li class="ms-16">
+                    <a class="logout btn p-0 border-0" id="btnLogout" data-bs-toggle="tooltip" data-bs-placement="bottom" title="登出">
+                        <i class="bi bi-door-closed-fill"></i>
+                        <i class="bi bi-door-open-fill"></i>
+                    </a>
+                  </li>
+              </ul>
           </div>
-          <ul class="d-none d-lg-flex justify-content-between align-items-center mb-0 ps-0">
-              <li>
-                  <a href="aboutEmotions.html" class="px-4 py-8" data-bs-toggle="tooltip" data-bs-placement="bottom" title="認識情緒與情緒卡">認識情緒</a>
-              </li>
-              <li class="ms-16">
-                  <a href="findMyEmotions.html" class="px-4 py-8" data-bs-toggle="tooltip" data-bs-placement="bottom" title="選擇情緒卡與紀錄情緒">探索情緒</a>
-              </li>
-              <li class="ms-16">
-                  <a href="myRecords.html" class="px-4 py-8" data-bs-toggle="tooltip" data-bs-placement="bottom" title="觀看我的紀錄與分析">我的紀錄</a>
-              </li>
-              <!-- <li class="ms-16">
-                  <a href="sharedByOthers.html" class="px-4 py-8" data-bs-toggle="tooltip" data-bs-placement="bottom" title="觀看他人分享的情緒紀錄">他人的分享</a> -->
-              </li>
-              <li class="ms-16">
-                  <a href="account.html" class="profile" data-bs-toggle="tooltip" data-bs-placement="bottom" title="管理我的帳戶">
-                      <i class="bi bi-person-fill"></i>
-                      <i class="bi bi-person-fill-gear"></i>
-                  </a>
-              </li>
-              <li class="ms-16">
-                <a class="logout btn p-0 border-0" id="btnLogout" data-bs-toggle="tooltip" data-bs-placement="bottom" title="登出">
-                    <i class="bi bi-door-closed-fill"></i>
-                    <i class="bi bi-door-open-fill"></i>
-                </a>
-              </li>
-          </ul>
-      </div>
-    </header>
-  
-    <main>
-      <!-- 我的紀錄 - 紀錄一覽表 -->
-      <div class="" id="areaRecordsTable">
+        </header>
+        <main>
           <div class="container py-16 pt-112" id="top">
             <!-- 標題 -->
             <div class="mb-20 pb-8 px-12 px-sm-0 border-2 border-bottom border-main-tint02 d-flex justify-content-between align-items-center">
@@ -156,192 +155,258 @@
             <button type="button" class="d-none" id="btnSearchResult" data-bs-toggle="modal" data-bs-target="#modalSearch"></button>
             <!-- 顯示 查無資料 modal 用的 隱藏button -->
             <button type="button" class="d-none" id="btnMakeSureToDelete" data-bs-toggle="modal" data-bs-target="#modalDelete"></button>
-        </div>
+          </div>
+        </main>
       </div>
 
-      <!-- 我的紀錄 - 情緒故事 -->
-      <div class="d-none" id="areaEmoStory">
-        <!-- 標題 -->
-        <div class="sticky-top pb-8 bg-white">
-          <div class="container pt-16">
-              <div class="mb-20 pb-8 px-12 px-sm-0 border-2 border-bottom border-main-tint02 d-flex justify-content-between align-items-center">
-                  <h2 class="fs-3 d-none d-md-block">我的紀錄｜情緒故事</h2>
-                  <h2 class="fs-3 d-md-none d-flex flex-column">
-                      <span class="d-block">我的紀錄</span>
-                      <span>情緒故事</span>
-                  </h2>
-                  <div class="nav-btn d-flex justify-content-end align-items-center">
-                      <button class="rounded-pill border-0 fs-5 c-btn-icon" id="btnDelete">
-                          <i class="bi bi-trash3"></i>
-                      </button>
-                      <a class="ms-12 btn btn-outline-main c-btn d-flex justify-content-center align-items-center" id="btnBack" href="myRecords.html">返回</a>
-                      <!-- <a class="ms-16 btn btn-outline-main c-btn" href="#shared">分享清單</a> -->
-                      <!-- <a class="ms-16 btn btn-main c-btn d-flex justify-content-center align-items-center" href="myRecordsEmoStoryModify.html">編輯</a> -->
-                      <button class="d-none ms-16 btn btn-outline-main c-btn" id="btnCancel" type="button">取消</button>
-                      <button class="ms-16 btn btn-outline-main c-btn" id="btnModify" type="button">編輯</button>
-                      <input type="submit" class="d-none ms-16 btn btn-main c-btn" id="btnSave" value="儲存"></button>
+    <!-- 我的紀錄 - 情緒故事 -->
+    <div class="d-none" id="areaEmoStory">
+      <div class="" id="top"></div>
+        <header class="header h-logined mb-12">
+            <div class="container py-16 d-flex justify-content-between align-items-center">
+                <h1>
+                    <a href="index.html" data-bs-toggle="tooltip" data-bs-placement="bottom" title="回到首頁">浪潮情緒卡</a>
+                </h1>
+                <div class="d-lg-none position-relative">
+                    <button class="px-8 py-4 btn btn-outline-main rounded-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        <i class="bi bi-list"></i>
+                    </button>
+                    <div class="collapse" style="position: absolute; right: 0; top: 40px; z-index: 10000;" id="collapseExample">
+                        <div class="p-0 card card-body rounded-2 border-2 border-main-tint01" style="width: 160px;">
+                            <ul>
+                                <li>
+                                    <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="aboutEmotions.html">認識情緒</a>
+                                </li>
+                                <li>
+                                    <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="findMyEmotions.html">探索情緒</a>
+                                </li>
+                                <li>
+                                    <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="myRecords.html">我的紀錄</a>
+                                </li>
+                                <!-- <li>
+                                    <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="sharedByOthers.html">他人的分享</a>
+                                </li> -->
+                                <li>
+                                    <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="account.html">我的帳戶</a>
+                                </li>
+                                <li>
+                                    <div class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" data-bs-toggle="modal" data-bs-target="#modalLogout" style="cursor: pointer;">登出</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <ul class="d-none d-lg-flex justify-content-between align-items-center mb-0 ps-0">
+                    <li>
+                        <a href="aboutEmotions.html" class="px-4 py-8" data-bs-toggle="tooltip" data-bs-placement="bottom" title="認識情緒與情緒卡">認識情緒</a>
+                    </li>
+                    <li class="ms-16">
+                        <a href="findMyEmotions.html" class="px-4 py-8" data-bs-toggle="tooltip" data-bs-placement="bottom" title="選擇情緒卡與紀錄情緒">探索情緒</a>
+                    </li>
+                    <li class="ms-16">
+                        <a href="myRecords.html" class="px-4 py-8" data-bs-toggle="tooltip" data-bs-placement="bottom" title="觀看我的紀錄與分析">我的紀錄</a>
+                    </li>
+                    <!-- <li class="ms-16">
+                        <a href="sharedByOthers.html" class="px-4 py-8" data-bs-toggle="tooltip" data-bs-placement="bottom" title="觀看他人分享的情緒紀錄">他人的分享</a> -->
+                    </li>
+                    <li class="ms-16">
+                        <a href="account.html" class="profile" data-bs-toggle="tooltip" data-bs-placement="bottom" title="管理我的帳戶">
+                            <i class="bi bi-person-fill"></i>
+                            <i class="bi bi-person-fill-gear"></i>
+                        </a>
+                    </li>
+                    <li class="ms-16">
+                        <a class="logout btn p-0 border-0" id="btnLogout" data-bs-toggle="tooltip" data-bs-placement="bottom" title="登出">
+                            <i class="bi bi-door-closed-fill"></i>
+                            <i class="bi bi-door-open-fill"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <main>
+          <!-- 標題 -->
+          <div class="sticky-top pb-8 bg-white">
+            <div class="container pt-16">
+                <div class="mb-20 pb-8 px-12 px-sm-0 border-2 border-bottom border-main-tint02 d-flex justify-content-between align-items-center">
+                    <h2 class="fs-3 d-none d-md-block">我的紀錄｜情緒故事</h2>
+                    <h2 class="fs-3 d-md-none d-flex flex-column">
+                        <span class="d-block">我的紀錄</span>
+                        <span>情緒故事</span>
+                    </h2>
+                    <div class="nav-btn d-flex justify-content-end align-items-center">
+                        <button class="rounded-pill border-0 fs-5 c-btn-icon" id="btnDelete">
+                            <i class="bi bi-trash3"></i>
+                        </button>
+                        <!-- <a class="ms-12 btn btn-outline-main c-btn d-flex justify-content-center align-items-center" id="btnBack" href="myRecords.html">返回</a> -->
+                        <button class="ms-12 btn btn-outline-main c-btn d-flex justify-content-center align-items-center" id="btnBack">返回</button>
+                        <!-- <a class="ms-16 btn btn-outline-main c-btn" href="#shared">分享清單</a> -->
+                        <!-- <a class="ms-16 btn btn-main c-btn d-flex justify-content-center align-items-center" href="myRecordsEmoStoryModify.html">編輯</a> -->
+                        <button class="d-none ms-16 btn btn-outline-main c-btn" id="btnCancel" type="button">取消</button>
+                        <button class="ms-16 btn btn-outline-main c-btn" id="btnModify" type="button">編輯</button>
+                        <input type="submit" class="d-none ms-16 btn btn-main c-btn" id="btnSave" value="儲存"></button>
+                    </div>
+                </div>
+                <!-- 分享、刪除 -->
+                <!-- <div class="d-flex justify-content-end align-items-center">
+                    <button class="me-16 rounded-pill border-0 fs-5 c-btn-icon">
+                    <i class="bi bi-trash3"></i>
+                    </button>
+                    <button class="rounded-pill border-0 fs-5 c-btn-icon">
+                    <i class="bi bi-share"></i>
+                    </button>
+                </div> -->
+            </div>
+          </div>
+
+          <div class="container">
+              <!-- 第 1 區 日期與情緒 -->
+              <div class="row mb-16 mb-md-8 px-12 px-sm-0">
+                  <div class="col-lg-3">
+                      <div class="px-12 py-8 bg-main text-white rounded-1 text-nowrap fs-7">日期</div>
+                  </div>
+                  <div class="col-lg-9">
+                      <div class="px-12 py-8 text-nowrap fs-7 rounded-1 bg-content-gray-200" id="storyDate">2023 / 03 / 14</div>
                   </div>
               </div>
-              <!-- 分享、刪除 -->
-              <!-- <div class="d-flex justify-content-end align-items-center">
+              <div class="row mb-16 mb-md-8 px-12 px-sm-0">
+                  <div class="col-lg-3">
+                      <div class="px-12 py-8 bg-main text-white rounded-1 text-nowrap fs-7">情緒強度｜第一次</div>
+                  </div>
+                  <div class="col-lg-9">
+                      <div class="px-12 py-8 bg-gray-200 rounded-1 fs-7" id="storyEmotions1st">快樂 5・幸福 4・安心 3</div>
+                  </div>
+              </div>
+              <div class="row mb-24 px-12 px-sm-0">
+                  <div class="col-lg-3">
+                      <div class="px-12 py-8 bg-main text-white rounded-1 text-nowrap fs-7">情緒強度｜第二次</div>
+                  </div>
+                  <div class="col-lg-9">
+                      <div class="px-12 py-8 fs-7 rounded-1 bg-content-gray-200" id="storyEmotions2nd">快樂 5・幸福 4・安心 3</div>
+                  </div>
+              </div>
+              <!-- 第 2 區 情緒故事｜背景篇 -->
+              <div class="row mb-16 px-12 px-sm-0">
+                  <div class="px-8 py-4 border border-start-0 border-end-0 border-top-0 border-2 border-main-tint02 text-main fw-bold fs-4">情緒故事｜背景篇</div>
+              </div>
+              <div class="row mb-24 px-12 px-sm-0 align-items-md-stretch">
+                  <div class="col-lg-3 h-100">
+                      <div class="h-100 px-12 py-8 d-flex align-items-center bg-main-tint02 rounded-1 fs-7">情緒的背景</div>
+                  </div>
+                  <div class="col-lg-9" id="background">
+                      <div class="px-12 py-8 fs-7 rounded-1 bg-content-gray-200" id="storyBackground">同學誇獎我總是很貼心，做事也很細心。說我是她很重要的朋友。</div>
+                  </div>
+                  <div class="d-none col-lg-9" id="formBackground">
+                      <div class="px-12 fs-7">
+                          <textarea class="w-100 py-8 ps-8 border border-main-tint02 rounded-1" value="同學誇獎我總是很貼心，做事也很細心。說我是她很重要的朋友。" id="storyBackgroundTextarea"></textarea>
+                      </div>
+                  </div>
+              </div>
+              <!-- 第 3 區 情緒故事｜行動篇 -->
+              <div class="row mb-16 px-12 px-sm-0">
+                  <div class="col px-8 py-4 border border-start-0 border-end-0 border-top-0 border-2 border-main-tint02 text-main fw-bold fs-4">情緒故事｜行動篇</div>
+              </div>
+              <div class="row mb-16 mb-md-8 px-12 px-sm-0 align-items-md-stretch">
+                  <div class="col-lg-3">
+                      <div class="px-12 py-8 d-flex align-items-center bg-main-tint02 rounded-1 fs-7">情緒後做的反應</div>
+                  </div>
+                  <div class="col-lg-9" id="action">
+                      <div class="px-12 py-8 fs-7 rounded-1 bg-content-gray-200" id="storyAction">我很開心地跑去和同學Ｂ說。</div>
+                  </div>
+                  <div class="d-none col-lg-9" id="formAction">
+                      <div class="px-12 fs-7">
+                          <textarea class="w-100 py-8 ps-8 border border-main-tint02 rounded-1" value="我很開心地跑去和同學Ｂ說。" id="storyActionTextarea"></textarea>
+                      </div>
+                  </div>
+              </div>
+              <div class="row mb-16 mb-md-8 px-12 px-sm-0 align-items-md-stretch">
+                  <div class="col-lg-3">
+                      <div class="px-12 py-8 d-flex align-items-center bg-main-tint02 rounded-1 fs-7">反應後的結果</div>
+                  </div>
+                  <div class="col-lg-9" id="result">
+                      <div class="px-12 py-8 bg-gray-200 rounded-1 fs-7" id="storyResult">同學Ｂ聽完後很開心地說他也要跟我們一起出去玩！</div>
+                  </div>
+                  <div class="d-none col-lg-9" id="formResult">
+                      <div class="px-12 fs-7">
+                          <textarea class="w-100 py-8 ps-8 border border-main-tint02 rounded-1" value="同學Ｂ聽完後很開心地說他也要跟我們一起出去玩！" id="storyResultTextarea"></textarea>
+                      </div>
+                  </div>
+              </div>
+              <div class="row mb-16 mb-md-8 px-12 px-sm-0 align-items-md-stretch">
+                  <div class="col-lg-3">
+                      <div class="px-12 py-8 d-flex align-items-center bg-main-tint02 rounded-1 fs-7">結果帶給我的感受</div>
+                  </div>
+                  <div class="col-lg-9" id="feeling">
+                      <div class="px-12 py-8 fs-7 rounded-1 bg-content-gray-200" id="storyFeeling">我很開心！</div>
+                  </div>
+                  <div class="d-none col-lg-9" id="formFeeling">
+                      <div class="px-12 fs-7">
+                          <textarea class="w-100 py-8 ps-8 border border-main-tint02 rounded-1" value="我很開心！" id="storyFeelingTextarea"></textarea>
+                      </div>
+                  </div>
+              </div>
+              <div class="row mb-16 mb-md-8 px-12 px-sm-0 align-items-md-stretch">
+                  <div class="col-lg-3">
+                      <div class="px-12 py-8 d-flex align-items-center bg-main-tint02 rounded-1 fs-7">結果是否是我所期待的？</div>
+                  </div>
+                  <div class="col-lg-9">
+                      <div class="h-100 px-12 py-8 bg-gray-200 rounded-1 fs-7 d-flex align-items-center" id="storyIsGoodResult">是</div>
+                  </div>
+              </div>
+              <div class="row mb-72 px-12 px-sm-0 align-items-md-stretch">
+                  <div class="col-lg-3">
+                      <div class="px-12 py-8 d-flex flex-column justify-content-center bg-main-tint02 rounded-1 fs-7">
+                          <p>下次可以怎麼做？</p>
+                          <p>以及我想肯定自己的地方</p>
+                      </div>
+                  </div>
+                  <div class="col-lg-9" id="next">
+                      <div class="h-100 px-12 py-8 rounded-1 fs-7 bg-content-gray-200 d-flex align-items-center" id="storyNext"></div>
+                  </div>
+                  <div class="d-none col-lg-9" id="formNext">
+                      <div class="px-12 fs-7">
+                          <textarea class="w-100 py-8 ps-8 border border-main-tint02 rounded-1" value="" id="storyNextTextarea"></textarea>
+                      </div>
+                  </div>
+              </div>
+              <!-- 第 4 區 分享清單 -->
+              <!-- <div class="mb-24 pt-32 pb-8 d-flex justify-content-between align-items-center border-2 border-bottom border-main-tint02" id="shared">
+                  <h2 class="fs-3">我的紀錄｜分享清單</h2> 
                   <button class="me-16 rounded-pill border-0 fs-5 c-btn-icon">
-                  <i class="bi bi-trash3"></i>
+                      <i class="bi bi-trash3"></i>
                   </button>
-                  <button class="rounded-pill border-0 fs-5 c-btn-icon">
-                  <i class="bi bi-share"></i>
-                  </button>
-              </div> -->
+              </div>
+              <table class="mb-24 table table-hover c-table-border">
+                  <thead>
+                      <tr class="table-main-tint01 text-center">
+                          <th scope="col"></th>
+                          <th scope="col">日期</th>
+                          <th scope="col">對象</th>
+                          <th scope="col">身份</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr class="text-center">
+                          <th scope="row">
+                          <input type="checkbox" id="">
+                          </th>
+                          <td>2023 / 03 / 14</td>
+                          <td>陳鳳香</td>
+                          <td>教師</td>
+                      </tr>
+                      <tr class="text-center table-main-tint03">
+                          <th scope="row">
+                          <input type="checkbox" id="">
+                          </th>
+                          <td>2023 / 03 / 15</td>
+                          <td>林凱翔</td>
+                          <td>學生</td>
+                      </tr>
+                  </tbody>
+              </table> -->
           </div>
-        </div>
-
-        <div class="container">
-            <!-- 第 1 區 日期與情緒 -->
-            <div class="row mb-16 mb-md-8 px-12 px-sm-0">
-                <div class="col-lg-3">
-                    <div class="px-12 py-8 bg-main text-white rounded-1 text-nowrap fs-7">日期</div>
-                </div>
-                <div class="col-lg-9">
-                    <div class="px-12 py-8 text-nowrap fs-7 rounded-1 bg-content-gray-200">2023 / 03 / 14</div>
-                </div>
-            </div>
-            <div class="row mb-16 mb-md-8 px-12 px-sm-0">
-                <div class="col-lg-3">
-                    <div class="px-12 py-8 bg-main text-white rounded-1 text-nowrap fs-7">情緒強度｜第一次</div>
-                </div>
-                <div class="col-lg-9">
-                    <div class="px-12 py-8 bg-gray-200 rounded-1 fs-7">快樂 5・幸福 4・安心 3</div>
-                </div>
-            </div>
-            <div class="row mb-24 px-12 px-sm-0">
-                <div class="col-lg-3">
-                    <div class="px-12 py-8 bg-main text-white rounded-1 text-nowrap fs-7">情緒強度｜第二次</div>
-                </div>
-                <div class="col-lg-9">
-                    <div class="px-12 py-8 fs-7 rounded-1 bg-content-gray-200">快樂 5・幸福 4・安心 3</div>
-                </div>
-            </div>
-            <!-- 第 2 區 情緒故事｜背景篇 -->
-            <div class="row mb-16 px-12 px-sm-0">
-                <div class="px-8 py-4 border border-start-0 border-end-0 border-top-0 border-2 border-main-tint02 text-main fw-bold fs-4">情緒故事｜背景篇</div>
-            </div>
-            <div class="row mb-24 px-12 px-sm-0 align-items-md-stretch">
-                <div class="col-lg-3 h-100">
-                    <div class="h-100 px-12 py-8 d-flex align-items-center bg-main-tint02 rounded-1 fs-7">情緒的背景</div>
-                </div>
-                <div class="col-lg-9" id="background">
-                    <div class="px-12 py-8 fs-7 rounded-1 bg-content-gray-200">同學誇獎我總是很貼心，做事也很細心。說我是她很重要的朋友。</div>
-                </div>
-                <div class="d-none col-lg-9" id="formBackground">
-                    <div class="px-12 fs-7">
-                        <textarea class="w-100 py-8 ps-8 border border-main-tint02 rounded-1" value="同學誇獎我總是很貼心，做事也很細心。說我是她很重要的朋友。"></textarea>
-                    </div>
-                </div>
-            </div>
-            <!-- 第 3 區 情緒故事｜行動篇 -->
-            <div class="row mb-16 px-12 px-sm-0">
-                <div class="col px-8 py-4 border border-start-0 border-end-0 border-top-0 border-2 border-main-tint02 text-main fw-bold fs-4">情緒故事｜行動篇</div>
-            </div>
-            <div class="row mb-16 mb-md-8 px-12 px-sm-0 align-items-md-stretch">
-                <div class="col-lg-3">
-                    <div class="px-12 py-8 d-flex align-items-center bg-main-tint02 rounded-1 fs-7">情緒後做的反應</div>
-                </div>
-                <div class="col-lg-9" id="action">
-                    <div class="px-12 py-8 fs-7 rounded-1 bg-content-gray-200">我很開心地跑去和同學Ｂ說。</div>
-                </div>
-                <div class="d-none col-lg-9" id="formAction">
-                    <div class="px-12 fs-7">
-                        <textarea class="w-100 py-8 ps-8 border border-main-tint02 rounded-1" value="我很開心地跑去和同學Ｂ說。"></textarea>
-                    </div>
-                </div>
-            </div>
-            <div class="row mb-16 mb-md-8 px-12 px-sm-0 align-items-md-stretch">
-                <div class="col-lg-3">
-                    <div class="px-12 py-8 d-flex align-items-center bg-main-tint02 rounded-1 fs-7">反應後的結果</div>
-                </div>
-                <div class="col-lg-9" id="result">
-                    <div class="px-12 py-8 bg-gray-200 rounded-1 fs-7">同學Ｂ聽完後很開心地說他也要跟我們一起出去玩！</div>
-                </div>
-                <div class="d-none col-lg-9" id="formResult">
-                    <div class="px-12 fs-7">
-                        <textarea class="w-100 py-8 ps-8 border border-main-tint02 rounded-1" value="同學Ｂ聽完後很開心地說他也要跟我們一起出去玩！"></textarea>
-                    </div>
-                </div>
-            </div>
-            <div class="row mb-16 mb-md-8 px-12 px-sm-0 align-items-md-stretch">
-                <div class="col-lg-3">
-                    <div class="px-12 py-8 d-flex align-items-center bg-main-tint02 rounded-1 fs-7">結果帶給我的感受</div>
-                </div>
-                <div class="col-lg-9" id="feeling">
-                    <div class="px-12 py-8 fs-7 rounded-1 bg-content-gray-200">我很開心！</div>
-                </div>
-                <div class="d-none col-lg-9" id="formFeeling">
-                    <div class="px-12 fs-7">
-                        <textarea class="w-100 py-8 ps-8 border border-main-tint02 rounded-1" value="我很開心！"></textarea>
-                    </div>
-                </div>
-            </div>
-            <div class="row mb-16 mb-md-8 px-12 px-sm-0 align-items-md-stretch">
-                <div class="col-lg-3">
-                    <div class="px-12 py-8 d-flex align-items-center bg-main-tint02 rounded-1 fs-7">結果是否是我所期待的？</div>
-                </div>
-                <div class="col-lg-9">
-                    <div class="h-100 px-12 py-8 bg-gray-200 rounded-1 fs-7 d-flex align-items-center">是</div>
-                </div>
-            </div>
-            <div class="row mb-72 px-12 px-sm-0 align-items-md-stretch">
-                <div class="col-lg-3">
-                    <div class="px-12 py-8 d-flex flex-column justify-content-center bg-main-tint02 rounded-1 fs-7">
-                        <p>下次可以怎麼做？</p>
-                        <p>以及我想肯定自己的地方</p>
-                    </div>
-                </div>
-                <div class="col-lg-9" id="next">
-                    <div class="h-100 px-12 py-8 rounded-1 fs-7 bg-content-gray-200 d-flex align-items-center"></div>
-                </div>
-                <div class="d-none col-lg-9" id="formNext">
-                    <div class="px-12 fs-7">
-                        <textarea class="w-100 py-8 ps-8 border border-main-tint02 rounded-1" value=""></textarea>
-                    </div>
-                </div>
-            </div>
-            <!-- 第 4 區 分享清單 -->
-            <!-- <div class="mb-24 pt-32 pb-8 d-flex justify-content-between align-items-center border-2 border-bottom border-main-tint02" id="shared">
-                <h2 class="fs-3">我的紀錄｜分享清單</h2> 
-                <button class="me-16 rounded-pill border-0 fs-5 c-btn-icon">
-                    <i class="bi bi-trash3"></i>
-                </button>
-            </div>
-            <table class="mb-24 table table-hover c-table-border">
-                <thead>
-                    <tr class="table-main-tint01 text-center">
-                        <th scope="col"></th>
-                        <th scope="col">日期</th>
-                        <th scope="col">對象</th>
-                        <th scope="col">身份</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="text-center">
-                        <th scope="row">
-                        <input type="checkbox" id="">
-                        </th>
-                        <td>2023 / 03 / 14</td>
-                        <td>陳鳳香</td>
-                        <td>教師</td>
-                    </tr>
-                    <tr class="text-center table-main-tint03">
-                        <th scope="row">
-                        <input type="checkbox" id="">
-                        </th>
-                        <td>2023 / 03 / 15</td>
-                        <td>林凱翔</td>
-                        <td>學生</td>
-                    </tr>
-                </tbody>
-            </table> -->
-        </div>
-      </div>
-    </main>
+        </main>
+    </div>
     
     <!-- 浮動按鈕 -->
     <div class="me-12 mb-12 floatButton">
@@ -512,6 +577,80 @@
     <script src="./js/toolTips.js"></script>
     <script src="./js/pages/logout.js"></script>
     <script>
+      // 切換 一覽表 & 情緒故事
+      const areaRecordsTable = document.querySelector('#areaRecordsTable');
+      const areaEmoStory = document.querySelector('#areaEmoStory');
+      const storyDate = document.querySelector('#storyDate');
+      const storyEmotions1st = document.querySelector('#storyEmotions1st');
+      const storyEmotions2nd = document.querySelector('#storyEmotions2nd');
+      const storyBackground = document.querySelector('#storyBackground');
+      const storyBackgroundTextarea = document.querySelector('#storyBackgroundTextarea');
+      const storyAction = document.querySelector('#storyAction');
+      const storyActionTextarea = document.querySelector('#storyActionTextarea');
+      const storyResult = document.querySelector('#storyResult');
+      const storyResultTextarea = document.querySelector('#storyResultTextarea');
+      const storyFeeling = document.querySelector('#storyFeeling');
+      const storyFeelingTextarea = document.querySelector('#storyFeelingTextarea');
+      const storyIsGoodResult = document.querySelector('#storyIsGoodResult');
+      const storyNext = document.querySelector('#storyNext');
+      const storyNextTextarea = document.querySelector('#storyNextTextarea');
+      // 情緒故事的編輯按鈕切換
+      const btnModify = document.querySelector('#btnModify');
+      const btnCancel = document.querySelector('#btnCancel');
+      const btnSave = document.querySelector('#btnSave');
+      const btnBack = document.querySelector('#btnBack');
+      const btnDelete = document.querySelector('#btnDelete');
+      const background = document.querySelector('#background');
+      const action = document.querySelector('#action');
+      const result = document.querySelector('#result');
+      const feeling = document.querySelector('#feeling');
+      const next = document.querySelector('#next');
+      const formBackground = document.querySelector('#formBackground');
+      const formAction = document.querySelector('#formAction');
+      const formResult = document.querySelector('#formResult');
+      const formFeeling = document.querySelector('#formFeeling');
+      const formNext = document.querySelector('#formNext');
+
+      btnModify.addEventListener("click", function(){
+          btnModify.classList.add("d-none");
+          btnBack.classList.add("d-none");
+          btnDelete.classList.add("d-none");
+          btnCancel.classList.remove("d-none");
+          btnSave.classList.remove("d-none");
+          background.classList.add("d-none");
+          action.classList.add("d-none");
+          result.classList.add("d-none");
+          feeling.classList.add("d-none");
+          next.classList.add("d-none");
+          formBackground.classList.remove("d-none");
+          formAction.classList.remove("d-none");
+          formResult.classList.remove("d-none");
+          formFeeling.classList.remove("d-none");
+          formNext.classList.remove("d-none");
+      })
+
+      btnCancel.addEventListener('click',function(){
+          let confirmResult = confirm("執行取消的話，您的修改將不會被儲存喔！\r您確定要離開嗎？");
+          if (confirmResult) {
+              btnModify.classList.remove("d-none");
+              btnBack.classList.remove("d-none");
+              btnDelete.classList.remove("d-none");
+              btnCancel.classList.add("d-none");
+              btnSave.classList.add("d-none");
+              background.classList.remove("d-none");
+              action.classList.remove("d-none");
+              result.classList.remove("d-none");
+              feeling.classList.remove("d-none");
+              next.classList.remove("d-none");
+              formBackground.classList.add("d-none");
+              formAction.classList.add("d-none");
+              formResult.classList.add("d-none");
+              formFeeling.classList.add("d-none");
+              formNext.classList.add("d-none");
+          } else {
+              return
+          }
+      })
       // 搜尋區域
       // 處理搜尋內容
       const dateStart = document.querySelector("#dateStart");
@@ -575,13 +714,14 @@
       })
 
       function pagination(resultData, dateEndValue, startYear, startMonth, startDay, endYear, endMonth, endDay, arySearchText, goPage, aryData, objetRecordData) {
-        axios.get(`https://api.wavemocards.com/emotions?user_name=${account}&limit=30`,
+        axios.get(`https://api.wavemocards.com/emotions?user_name=${account}`,
         { headers: {"Authorization": `Bearer ${token}`} })
         .then (function(response){
           let allData = response.data.message;
           resultData = [];
           objetRecordData = {};
-          // 取得該筆紀錄的資料
+
+          // 取出該筆紀錄的資料
           getRecordData(allData, aryData, startYear, dateEndValue, startMonth, startDay, endYear, endMonth, endDay, arySearchText, resultData, objetRecordData);
 
           if (resultData==""){
@@ -627,7 +767,6 @@
           // let pageNo = 1;
           displayData(recordPageData, aryData);
           pageBtn(page);
-
           // btnPage 換頁監聽事件
           btnPages = document.querySelectorAll("#btnPage");
           btnPages.forEach(function(btnPage, i){
@@ -646,9 +785,7 @@
               // 處理 搜尋日期
               dateStartValue = dateStart.value;
               dateEndValue = dateEnd.value;
-              // if(dateStartValue=="" && dateEndValue=="" && searchValue==""){
-              //   return
-              // }
+
               if(dateStartValue!=""){
                 startYear = parseInt(dateStartValue[0]+dateStartValue[1]+dateStartValue[2]+dateStartValue[3]);
                 startMonth = parseInt(dateStartValue[5]+dateStartValue[6]);
@@ -662,7 +799,6 @@
               // 處理 關鍵字
               searchValue = searchText.value.trim();  // 將串前後空白刪除
               arySearchText = searchValue.split(' '); // 將關鍵字區隔，並放入陣列中
-              // 確定關鍵字不是空白
               // 將資料印到畫面中
               pagination(resultData, dateEndValue, startYear, startMonth, startDay, endYear, endMonth, endDay, arySearchText, '1', aryData, objetRecordData);
             }
@@ -754,11 +890,97 @@
           // 監聽 由此進入 按鈕點擊事件
           const btnEmoStories = document.querySelectorAll("#btnEmoStory");
           btnEmoStories.forEach(function(btn, i){
-            let recordId = btn.childNodes[1].textContent;
             btn.addEventListener("click", function(){
-
+              // 取得該資料的ID
+              let recordId = btn.childNodes[1].textContent;
+              // 取得該紀錄的詳細資料
+              let objetRecordData = {};
+              allData.forEach(function(data, i){
+                if(data.emo_ID==recordId){
+                  let time = data.create_time;
+                  objetRecordData.date = time[0]+time[1]+time[2]+time[3]+time[4]+time[5]+time[6]+time[7]+time[8]+time[9];
+                  objetRecordData.cardId_1 = data.emotion_card_1;
+                  objetRecordData.cardId_2 = data.emotion_card_2;
+                  objetRecordData.cardId_3 = data.emotion_card_3;
+                  objetRecordData.card_1_Name = "";
+                  objetRecordData.card_2_Name = "";
+                  objetRecordData.card_3_Name = "";
+                  aryData.forEach(function(data, i){
+                    if(data.ID == objetRecordData.cardId_1){
+                      objetRecordData.card_1_Name = data.name;
+                    }
+                    if(data.ID == objetRecordData.cardId_2){
+                      objetRecordData.card_2_Name = data.name;
+                    }
+                    if(data.ID == objetRecordData.cardId_3){
+                      objetRecordData.card_3_Name = data.name;
+                    }
+                  })
+                  objetRecordData.card_1_strength1st = data.before_emo_level_1;
+                  objetRecordData.card_2_strength1st = data.before_emo_level_2;
+                  objetRecordData.card_3_strength1st = data.before_emo_level_3;
+                  objetRecordData.card_1_strength2nd = data.after_emo_level_1;
+                  objetRecordData.card_2_strength2nd = data.after_emo_level_2;
+                  objetRecordData.card_3_strength2nd = data.after_emo_level_3;
+                  objetRecordData.background = data.story;
+                  objetRecordData.action = data.actions;
+                  objetRecordData.result = data.results;
+                  objetRecordData.feeling = data.feelings;
+                  if(data.expect==1){
+                    objetRecordData.isItYourExcept = "是";
+                  } else if (data.expect==2) {
+                    objetRecordData.isItYourExcept = "否";
+                  } else if (data.expect==3) {
+                    objetRecordData.isItYourExcept = "不清楚";
+                  }
+                  objetRecordData.nextAction = data.reaction;
+                }
+              })
+              // 將資料寫入html
+              storyDate.textContent = objetRecordData.date;
+              if (objetRecordData.card_2_Name=="" && objetRecordData.card_3_Name=="") {
+                storyEmotions1st.textContent = objetRecordData.card_1_Name+" "+objetRecordData.card_1_strength1st;
+              } else if (objetRecordData.card_2_Name!="" && objetRecordData.card_3_Name=="") {
+                storyEmotions1st.textContent = objetRecordData.card_1_Name+" "+objetRecordData.card_1_strength1st+"・"+objetRecordData.card_2_Name+" "+objetRecordData.card_2_strength1st;
+              } else {
+                storyEmotions1st.textContent = objetRecordData.card_1_Name+" "+objetRecordData.card_1_strength1st+"・"+objetRecordData.card_2_Name+" "+objetRecordData.card_2_strength1st+"・"+objetRecordData.card_3_Name+" "+objetRecordData.card_3_strength1st;
+              }
+              if (objetRecordData.card_1_strength2nd!=null && objetRecordData.card_2_strength2nd!=null && objetRecordData.card_3_strength2nd!=null) {
+                storyEmotions2nd.textContent = objetRecordData.card_1_Name+" "+objetRecordData.card_1_strength2nd+"・"+objetRecordData.card_2_Name+" "+objetRecordData.card_2_strength2nd+"・"+objetRecordData.card_3_Name+" "+objetRecordData.card_3_strength2nd;
+              } else if(objetRecordData.card_1_strength2nd!=null && objetRecordData.card_2_strength2nd!=null && objetRecordData.card_3_strength2nd==null){
+                storyEmotions2nd.textContent = objetRecordData.card_1_Name+" "+objetRecordData.card_1_strength2nd+"・"+objetRecordData.card_2_Name+" "+objetRecordData.card_2_strength2nd;
+              } else if (objetRecordData.card_1_strength2nd!=null && objetRecordData.card_2_strength2nd==null && objetRecordData.card_3_strength2nd==null) {
+                storyEmotions2nd.textContent = objetRecordData.card_1_Name+" "+objetRecordData.card_1_strength2nd;
+              } else if (objetRecordData.card_1_strength2nd==null && objetRecordData.card_2_strength2nd!=null && objetRecordData.card_3_strength2nd!=null) {
+                storyEmotions2nd.textContent = objetRecordData.card_2_Name+" "+objetRecordData.card_2_strength2nd+"・"+objetRecordData.card_3_Name+" "+objetRecordData.card_3_strength2nd;
+              } else if (objetRecordData.card_1_strength2nd==null && objetRecordData.card_2_strength2nd!=null && objetRecordData.card_3_strength2nd==null) {
+                storyEmotions2nd.textContent = objetRecordData.card_2_Name+" "+objetRecordData.card_2_strength2nd;
+              } else if (objetRecordData.card_1_strength2nd!=null && objetRecordData.card_2_strength2nd==null && objetRecordData.card_3_strength2nd!=null) {
+                storyEmotions2nd.textContent = objetRecordData.card_1_Name+" "+objetRecordData.card_1_strength2nd+"・"+objetRecordData.card_3_Name+" "+objetRecordData.card_3_strength2nd;
+              } else if (objetRecordData.card_1_strength2nd==null && objetRecordData.card_2_strength2nd==null && objetRecordData.card_3_strength2nd!=null) {
+                storyEmotions2nd.textContent = objetRecordData.card_3_Name+" "+objetRecordData.card_3_strength2nd;
+              }
+              storyBackground.textContent = objetRecordData.background;
+              storyBackgroundTextarea.textContent = objetRecordData.background;
+              storyAction.textContent = objetRecordData.action;
+              storyActionTextarea.textContent = objetRecordData.action;
+              storyResult.textContent = objetRecordData.result;
+              storyResultTextarea.textContent = objetRecordData.result;
+              storyFeeling.textContent = objetRecordData.feeling;
+              storyFeelingTextarea.textContent = objetRecordData.feeling;
+              storyIsGoodResult.textContent = objetRecordData.isItYourExcept;
+              storyNext.textContent = objetRecordData.nextAction;
+              storyNextTextarea.textContent = objetRecordData.nextAction;
+              areaEmoStory.classList.remove("d-none");
+              areaRecordsTable.classList.add("d-none");
+              
+              // 情緒故事頁面 點選 返回
+              btnBack.addEventListener("click", function(){
+                areaEmoStory.classList.add("d-none");
+                areaRecordsTable.classList.remove("d-none");
+                pagination(resultData, dateEndValue, startYear, startMonth, startDay, endYear, endMonth, endDay, arySearchText, "1", aryData, objetRecordData);
+              })
             })
-            
           })
         })
         .catch(function(error){
@@ -1023,78 +1245,79 @@
     
       // 取得所有符合搜尋條件的資料
       function getRecordData(allData, aryData, startYear, dateEndValue, startMonth, startDay, endYear, endMonth, endDay, arySearchText, resultData, objetRecordData){
-            allData.forEach(function(data, i){
-              objetRecordData.cardId_1 = data.emotion_card_1;
-              objetRecordData.cardId_2 = data.emotion_card_2;
-              objetRecordData.cardId_3 = data.emotion_card_3;
-              objetRecordData.card_1_Name = "";
-              objetRecordData.card_2_Name = "";
-              objetRecordData.card_3_Name = "";
-              aryData.forEach(function(data, i){
-                let dataName = data.name;
-                let dataId = data.ID;
-                if(dataId == objetRecordData.cardId_1){
-                  objetRecordData.card_1_Name = dataName;
-                }
-                if(dataId == objetRecordData.cardId_2){
-                  objetRecordData.card_2_Name = dataName;
-                }
-                if(dataId == objetRecordData.cardId_3){
-                  objetRecordData.card_3_Name = dataName;
-                }
-              })
-              objetRecordData.card_1_strength1st = data.before_emo_level_1;
-              objetRecordData.card_2_strength1st = data.before_emo_level_2;
-              objetRecordData.card_3_strength1st = data.before_emo_level_3;
-              objetRecordData.card_1_strength2nd = data.after_emo_level_1;
-              objetRecordData.card_2_strength2nd = data.after_emo_level_2;
-              objetRecordData.card_3_strength2nd = data.after_emo_level_3;
-              objetRecordData.background = data.story;
-              objetRecordData.action = data.actions;
-              objetRecordData.result = data.results;
-              objetRecordData.feeling = data.feelings;
-              if(data.expect==1){
-                objetRecordData.isItYourExcept = "是";
-              } else if (data.expect==2) {
-                objetRecordData.isItYourExcept = "否";
-              } else if (data.expect==3) {
-                objetRecordData.isItYourExcept = "不清楚";
-              }
-              objetRecordData.nextAction = data.reaction;
-              
-              let time = data.create_time;
-              let year = time[0]+time[1]+time[2]+time[3];
-              let month = time[5]+time[6];
-              let day = time[8]+time[9];
-              // 將符合日期限制的資料裝進 resultData
-              if(startYear!==undefined){
-                // 確定有輸入時間的狀態
-                if (dateEndValue=="" && year>=startYear && month>=startMonth && day>=startDay) {
-                  // 確認有關鍵字
-                  if(arySearchText!=""){
-                    // 核對關鍵字
-                    matchText(arySearchText, objetRecordData, resultData, data)
-                  } else {
-                    resultData.push(data);
-                  }
-                } else if (year>=startYear && month>=startMonth && day>=startDay && year<=endYear && month<=endMonth && day<=endDay){
-                  // 確認有關鍵字
-                  if(arySearchText!=""){
-                    // 核對關鍵字
-                    matchText(arySearchText, objetRecordData, resultData, data)
-                  } else {
-                    resultData.push(data);
-                  }
-                }
-              } else if(arySearchText!="") {
-                // 沒有輸入時間，但有輸入關鍵字
-                matchText(arySearchText, objetRecordData, resultData, data);
+        // allData -> 撈出的所有紀錄的資料
+        allData.forEach(function(data, i){
+          objetRecordData.cardId_1 = data.emotion_card_1;
+          objetRecordData.cardId_2 = data.emotion_card_2;
+          objetRecordData.cardId_3 = data.emotion_card_3;
+          objetRecordData.card_1_Name = "";
+          objetRecordData.card_2_Name = "";
+          objetRecordData.card_3_Name = "";
+          aryData.forEach(function(data, i){
+            let dataName = data.name;
+            let dataId = data.ID;
+            if(dataId == objetRecordData.cardId_1){
+              objetRecordData.card_1_Name = dataName;
+            }
+            if(dataId == objetRecordData.cardId_2){
+              objetRecordData.card_2_Name = dataName;
+            }
+            if(dataId == objetRecordData.cardId_3){
+              objetRecordData.card_3_Name = dataName;
+            }
+          })
+          objetRecordData.card_1_strength1st = data.before_emo_level_1;
+          objetRecordData.card_2_strength1st = data.before_emo_level_2;
+          objetRecordData.card_3_strength1st = data.before_emo_level_3;
+          objetRecordData.card_1_strength2nd = data.after_emo_level_1;
+          objetRecordData.card_2_strength2nd = data.after_emo_level_2;
+          objetRecordData.card_3_strength2nd = data.after_emo_level_3;
+          objetRecordData.background = data.story;
+          objetRecordData.action = data.actions;
+          objetRecordData.result = data.results;
+          objetRecordData.feeling = data.feelings;
+          if(data.expect==1){
+            objetRecordData.isItYourExcept = "是";
+          } else if (data.expect==2) {
+            objetRecordData.isItYourExcept = "否";
+          } else if (data.expect==3) {
+            objetRecordData.isItYourExcept = "不清楚";
+          }
+          objetRecordData.nextAction = data.reaction;
+          
+          let time = data.create_time;
+          let year = time[0]+time[1]+time[2]+time[3];
+          let month = time[5]+time[6];
+          let day = time[8]+time[9];
+          // 將符合日期限制的資料裝進 resultData
+          if(startYear!==undefined){
+            // 確定有輸入時間的狀態
+            if (dateEndValue=="" && year>=startYear && month>=startMonth && day>=startDay) {
+              // 確認有關鍵字
+              if(arySearchText!=""){
+                // 核對關鍵字
+                matchText(arySearchText, objetRecordData, resultData, data)
               } else {
-                // 沒有輸入時間的狀態，就將全部資料放進 resultData
                 resultData.push(data);
               }
-            })
+            } else if (year>=startYear && month>=startMonth && day>=startDay && year<=endYear && month<=endMonth && day<=endDay){
+              // 確認有關鍵字
+              if(arySearchText!=""){
+                // 核對關鍵字
+                matchText(arySearchText, objetRecordData, resultData, data)
+              } else {
+                resultData.push(data);
+              }
+            }
+          } else if(arySearchText!="") {
+            // 沒有輸入時間，但有輸入關鍵字
+            matchText(arySearchText, objetRecordData, resultData, data);
+          } else {
+            // 沒有輸入時間的狀態，就將全部資料放進 resultData
+            resultData.push(data);
           }
+        })
+      }
     </script>
   </body>
 </html>
