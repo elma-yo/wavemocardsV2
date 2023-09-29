@@ -394,7 +394,7 @@
         axios.get(`https://api.wavemocards.com/emotions?user_name=${account}&limit=30`,
         { headers: {"Authorization": `Bearer ${token}`} })
         .then (function(response){
-          let allData = response.data;
+          let allData = response.data.message;
           resultData = [];
           allData.forEach(function(data, i){
             let cardId_1 = data.emotion_card_1;
@@ -549,7 +549,7 @@
               arySearchText = searchValue.split(' '); // 將關鍵字區隔，並放入陣列中
               // 確定關鍵字不是空白
               // 將資料印到畫面中
-              pagination(resultData, dateEndValue, startYear, startMonth, startDay, endYear, endMonth, endDay, arySearchText, "1", aryData);
+              pagination(resultData, dateEndValue, startYear, startMonth, startDay, endYear, endMonth, endDay, arySearchText, '1', aryData);
             }
           })
 
