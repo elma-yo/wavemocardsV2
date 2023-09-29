@@ -348,7 +348,6 @@
                 storageData = [{cards:[]}];
                 storageCards = storageData[0].cards;
             }
-            console.log(storageData);
             axios.get("https://api.wavemocards.com/emoinfo/cards/")
             .then(function(response){
                 let aryData = Object.values(response.data); // 轉成「陣列」

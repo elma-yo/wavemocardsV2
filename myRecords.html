@@ -563,95 +563,27 @@
       const btnBackPage = document.querySelector('#btnBackPage');
       const liNextPage = document.querySelector('#liNextPage');
       const btnNextPage = document.querySelector('#btnNextPage');
-      let resultData = [];
+      let resultData = [];  // 紀錄所有符合搜尋條件的紀錄的資料
+      let objetRecordData;  // 紀錄該筆紀錄的資料
 
       axios.get("https://api.wavemocards.com/emoinfo/cards/")
       .then(function(response){
         aryData = Object.values(response.data);
 
         // 處理分頁 與 table 資料顯示
-        pagination(resultData, dateEndValue, startYear, startMonth, startDay, endYear, endMonth, endDay, arySearchText, "1", aryData);
+        pagination(resultData, dateEndValue, startYear, startMonth, startDay, endYear, endMonth, endDay, arySearchText, "1", aryData, objetRecordData);
       })
 
-      function pagination(resultData, dateEndValue, startYear, startMonth, startDay, endYear, endMonth, endDay, arySearchText, goPage, aryData) {
+      function pagination(resultData, dateEndValue, startYear, startMonth, startDay, endYear, endMonth, endDay, arySearchText, goPage, aryData, objetRecordData) {
         axios.get(`https://api.wavemocards.com/emotions?user_name=${account}&limit=30`,
         { headers: {"Authorization": `Bearer ${token}`} })
         .then (function(response){
           let allData = response.data.message;
           resultData = [];
-          allData.forEach(function(data, i){
-            let cardId_1 = data.emotion_card_1;
-            let cardId_2 = data.emotion_card_2;
-            let cardId_3 = data.emotion_card_3;
-            let card_1_Name = "";
-            let card_2_Name = "";
-            let card_3_Name = "";
-            let card_1_strength1st = data.before_emo_level_1;
-            let card_2_strength1st = data.before_emo_level_2;
-            let card_3_strength1st = data.before_emo_level_3;
-            let card_1_strength2nd = data.after_emo_level_1;
-            let card_2_strength2nd = data.after_emo_level_2;
-            let card_3_strength2nd = data.after_emo_level_3;
-            let background = data.story;
-            let action = data.actions;
-            let result = data.results;
-            let feeling = data.feelings;
-            let isItYourExcept
-            if(data.expect==1){
-              isItYourExcept = "是";
-            } else if (data.expect==2) {
-              isItYourExcept = "否";
-            } else if (data.expect==3) {
-              isItYourExcept = "不清楚";
-            }
-            let nextAction = data.reaction;
-            aryData.forEach(function(data, i){
-              let dataName = data.name;
-              let dataId = data.ID;
-              if(dataId == cardId_1){
-                card_1_Name = dataName;
-              }
-              if(dataId == cardId_2){
-                card_2_Name = dataName;
-              }
-              if(dataId == cardId_3){
-                card_3_Name = dataName;
-              }
-            })
+          objetRecordData = {};
+          // 取得該筆紀錄的資料
+          getRecordData(allData, aryData, startYear, dateEndValue, startMonth, startDay, endYear, endMonth, endDay, arySearchText, resultData, objetRecordData);
 
-            let time = data.create_time;
-            let year = time[0]+time[1]+time[2]+time[3];
-            let month = time[5]+time[6];
-            let day = time[8]+time[9];
-            // 將符合日期限制的資料裝進 resultData
-            if(startYear!==undefined){
-              // 確定有輸入時間的狀態
-              if (dateEndValue=="" && year>=startYear && month>=startMonth && day>=startDay) {
-                // 確認有關鍵字
-                if(arySearchText!=""){
-                  // 核對關鍵字
-                  matchText(arySearchText, card_1_Name, card_2_Name, card_3_Name, card_1_strength1st, card_2_strength1st, card_3_strength1st, card_1_strength2nd, card_2_strength2nd, card_3_strength2nd, background, action, result, feeling, isItYourExcept, nextAction, resultData, data)
-                } else {
-                  resultData.push(data);
-                }
-              } else if (year>=startYear && month>=startMonth && day>=startDay && year<=endYear && month<=endMonth && day<=endDay){
-                // 確認有關鍵字
-                if(arySearchText!=""){
-                  // 核對關鍵字
-                  matchText(arySearchText, card_1_Name, card_2_Name, card_3_Name, card_1_strength1st, card_2_strength1st, card_3_strength1st, card_1_strength2nd, card_2_strength2nd, card_3_strength2nd, background, action, result, feeling, isItYourExcept, nextAction, resultData, data)
-                } else {
-                  resultData.push(data);
-                }
-              }
-            } else if(arySearchText.length>0) {
-              // 沒有輸入時間，但有輸入關鍵字
-              matchText(arySearchText, card_1_Name, card_2_Name, card_3_Name, card_1_strength1st, card_2_strength1st, card_3_strength1st, card_1_strength2nd, card_2_strength2nd, card_3_strength2nd, background, action, result, feeling, isItYourExcept, nextAction, resultData, data)
-            } else {
-              // 沒有輸入時間的狀態，就將全部資料放進 resultData
-              resultData.push(data);
-            }
-          })
-          
           if (resultData==""){
             btnSearchResult.click();
           }
@@ -702,7 +634,7 @@
             btnPage.addEventListener("click", function(e){
               if(e.target.nodeName !== 'A') return;
               let goPage = btnPage.childNodes[0].textContent;
-              pagination(resultData, dateEndValue, startYear, startMonth, startDay, endYear, endMonth, endDay, arySearchText, goPage, aryData);
+              pagination(resultData, dateEndValue, startYear, startMonth, startDay, endYear, endMonth, endDay, arySearchText, goPage, aryData, objetRecordData);
             })
           })
 
@@ -732,7 +664,7 @@
               arySearchText = searchValue.split(' '); // 將關鍵字區隔，並放入陣列中
               // 確定關鍵字不是空白
               // 將資料印到畫面中
-              pagination(resultData, dateEndValue, startYear, startMonth, startDay, endYear, endMonth, endDay, arySearchText, '1', aryData);
+              pagination(resultData, dateEndValue, startYear, startMonth, startDay, endYear, endMonth, endDay, arySearchText, '1', aryData, objetRecordData);
             }
           })
 
@@ -790,14 +722,14 @@
               axios.delete(`https://api.wavemocards.com/emotions/delete/${id}`,
               { headers: {"Authorization": `Bearer ${token}`} })
               .then (function(response){
-                if(response.data.message==`The emotion recard ${id} was deleted.`) {
+                if(response.data.message==`The emotion ${id} was deleted.`) {
                   modalDeleteResultTitle.textContent = "刪除成功";
                   modalDeleteResultText.classList.add("d-none");
                   modalDeleteResultText2.classList.add("d-none");
                   modalDeleteResultImg.src = "./images/addCardSuccess.svg";
                   modalDeleteResultClose.classList.add("btn-main");
                   modalDeleteResultClose.classList.remove("btn-pink");
-                  pagination(resultData, dateEndValue, startYear, startMonth, startDay, endYear, endMonth, endDay, arySearchText, goPage, aryData);
+                  pagination(resultData, dateEndValue, startYear, startMonth, startDay, endYear, endMonth, endDay, arySearchText, goPage, aryData, objetRecordData);
                 } else {
                   modalDeleteResultTitle.textContent = "刪除失敗";
                   modalDeleteResultText.classList.remove("d-none");
@@ -1027,61 +959,61 @@
       }
       
       // 查核是否符合關鍵字
-      function matchText(arySearchText, card_1_Name, card_2_Name, card_3_Name, card_1_strength1st, card_2_strength1st, card_3_strength1st, card_1_strength2nd, card_2_strength2nd, card_3_strength2nd, background, action, result, feeling, isItYourExcept, nextAction, resultData, data){
+      function matchText(arySearchText, objetRecordData, resultData, data){
         arySearchText.forEach(function(text, i){
-          let matchCardName_1 = card_1_Name.match(text);
+          let matchCardName_1 = objetRecordData.card_1_Name.match(text);
           let matchCardName_2 = null
-          if(card_2_Name!=undefined){
-            matchCardName_2 = card_2_Name.match(text);
+          if(objetRecordData.card_2_Name!=undefined){
+            matchCardName_2 = objetRecordData.card_2_Name.match(text);
           }
           let matchCardName_3 = null
-          if(card_3_Name!=undefined){
-            matchCardName_3 = card_3_Name.match(text);
+          if(objetRecordData.card_3_Name!=undefined){
+            matchCardName_3 = objetRecordData.card_3_Name.match(text);
           }
-          let matchCard_1_Strength1st = card_1_strength1st.toString().match(text);
+          let matchCard_1_Strength1st = objetRecordData.card_1_strength1st.toString().match(text);
           let matchCard_2_Strength1st = null
-          if(card_2_strength1st!=null){
-            matchCard_2_Strength1st = card_2_strength1st.toString().match(text);
+          if(objetRecordData.card_2_strength1st!=null){
+            matchCard_2_Strength1st = objetRecordData.card_2_strength1st.toString().match(text);
           }
           let matchCard_3_Strength1st = null
-          if(card_3_strength1st!=null){
-            matchCard_3_Strength1st = card_3_strength1st.toString().match(text);
+          if(objetRecordData.card_3_strength1st!=null){
+            matchCard_3_Strength1st = objetRecordData.card_3_strength1st.toString().match(text);
           }
           let matchCard_1_strength2nd = null
-          if(card_1_strength2nd!=null){
-            matchCard_1_strength2nd = card_1_strength2nd.toString().match(text);
+          if(objetRecordData.card_1_strength2nd!=null){
+            matchCard_1_strength2nd = objetRecordData.card_1_strength2nd.toString().match(text);
           }
           let matchCard_2_Strength2nd = null
-          if(card_2_strength2nd!=null){
-            matchCard_2_Strength2nd = card_2_strength2nd.toString().match(text);
+          if(objetRecordData.card_2_strength2nd!=null){
+            matchCard_2_Strength2nd = objetRecordData.card_2_strength2nd.toString().match(text);
           }
           let matchCard_3_Strength2nd = null
-          if(card_3_strength2nd!=null){
-            matchCard_3_Strength2nd = card_3_strength2nd.toString().match(text);
+          if(objetRecordData.card_3_strength2nd!=null){
+            matchCard_3_Strength2nd = objetRecordData.card_3_strength2nd.toString().match(text);
           }
           let matchBackground = null
-          if (background!=""){
-            matchBackground = background.match(text);
+          if (objetRecordData.background!=""){
+            matchBackground = objetRecordData.background.match(text);
           }
           let matchAction = null
-          if (action!=""){
-            matchAction = action.match(text);
+          if (objetRecordData.action!=""){
+            matchAction = objetRecordData.action.match(text);
           }
           let matchResult = null
-          if (result!=""){
-            matchResult = result.match(text);
+          if (objetRecordData.result!=""){
+            matchResult = objetRecordData.result.match(text);
           }
           let matchFeeling = null
-          if (feeling!=""){
-            matchFeeling = feeling.match(text);
+          if (objetRecordData.feeling!=""){
+            matchFeeling = objetRecordData.feeling.match(text);
           }
           let matchIsItYourExcept = null
-          if (isItYourExcept!=""){
-            matchIsItYourExcept = isItYourExcept.match(text);
+          if (objetRecordData.isItYourExcept!=""){
+            matchIsItYourExcept = objetRecordData.isItYourExcept.match(text);
           }
           let matchNextAction = null
-          if (nextAction!=""){
-            matchNextAction = nextAction.match(text);
+          if (objetRecordData.nextAction!=""){
+            matchNextAction = objetRecordData.nextAction.match(text);
           }
           if (matchCardName_1!=null || matchCardName_2!=null || matchCardName_3!=null || matchCard_1_Strength1st!=null || matchCard_2_Strength1st!=null || matchCard_3_Strength1st!=null || matchCard_1_strength2nd!=null || matchCard_2_Strength2nd!=null || matchCard_3_Strength2nd!=null || matchBackground!=null || matchAction!=null || matchResult!=null || matchFeeling!=null || matchIsItYourExcept!=null || matchNextAction!=null){
             resultData.push(data);
@@ -1089,7 +1021,80 @@
         })
       }
     
-      
+      // 取得所有符合搜尋條件的資料
+      function getRecordData(allData, aryData, startYear, dateEndValue, startMonth, startDay, endYear, endMonth, endDay, arySearchText, resultData, objetRecordData){
+            allData.forEach(function(data, i){
+              objetRecordData.cardId_1 = data.emotion_card_1;
+              objetRecordData.cardId_2 = data.emotion_card_2;
+              objetRecordData.cardId_3 = data.emotion_card_3;
+              objetRecordData.card_1_Name = "";
+              objetRecordData.card_2_Name = "";
+              objetRecordData.card_3_Name = "";
+              aryData.forEach(function(data, i){
+                let dataName = data.name;
+                let dataId = data.ID;
+                if(dataId == objetRecordData.cardId_1){
+                  objetRecordData.card_1_Name = dataName;
+                }
+                if(dataId == objetRecordData.cardId_2){
+                  objetRecordData.card_2_Name = dataName;
+                }
+                if(dataId == objetRecordData.cardId_3){
+                  objetRecordData.card_3_Name = dataName;
+                }
+              })
+              objetRecordData.card_1_strength1st = data.before_emo_level_1;
+              objetRecordData.card_2_strength1st = data.before_emo_level_2;
+              objetRecordData.card_3_strength1st = data.before_emo_level_3;
+              objetRecordData.card_1_strength2nd = data.after_emo_level_1;
+              objetRecordData.card_2_strength2nd = data.after_emo_level_2;
+              objetRecordData.card_3_strength2nd = data.after_emo_level_3;
+              objetRecordData.background = data.story;
+              objetRecordData.action = data.actions;
+              objetRecordData.result = data.results;
+              objetRecordData.feeling = data.feelings;
+              if(data.expect==1){
+                objetRecordData.isItYourExcept = "是";
+              } else if (data.expect==2) {
+                objetRecordData.isItYourExcept = "否";
+              } else if (data.expect==3) {
+                objetRecordData.isItYourExcept = "不清楚";
+              }
+              objetRecordData.nextAction = data.reaction;
+              
+              let time = data.create_time;
+              let year = time[0]+time[1]+time[2]+time[3];
+              let month = time[5]+time[6];
+              let day = time[8]+time[9];
+              // 將符合日期限制的資料裝進 resultData
+              if(startYear!==undefined){
+                // 確定有輸入時間的狀態
+                if (dateEndValue=="" && year>=startYear && month>=startMonth && day>=startDay) {
+                  // 確認有關鍵字
+                  if(arySearchText!=""){
+                    // 核對關鍵字
+                    matchText(arySearchText, objetRecordData, resultData, data)
+                  } else {
+                    resultData.push(data);
+                  }
+                } else if (year>=startYear && month>=startMonth && day>=startDay && year<=endYear && month<=endMonth && day<=endDay){
+                  // 確認有關鍵字
+                  if(arySearchText!=""){
+                    // 核對關鍵字
+                    matchText(arySearchText, objetRecordData, resultData, data)
+                  } else {
+                    resultData.push(data);
+                  }
+                }
+              } else if(arySearchText!="") {
+                // 沒有輸入時間，但有輸入關鍵字
+                matchText(arySearchText, objetRecordData, resultData, data);
+              } else {
+                // 沒有輸入時間的狀態，就將全部資料放進 resultData
+                resultData.push(data);
+              }
+            })
+          }
     </script>
   </body>
 </html>
