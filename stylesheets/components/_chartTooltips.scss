@@ -22,6 +22,14 @@
             }
         }
 
+        &:hover {
+            z-index: 99;
+
+            span {
+                background-color: map.get($theme-colors, "white");
+            }
+        }
+
         &[data-position="left"] {
             left: 0;
 

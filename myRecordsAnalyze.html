@@ -402,7 +402,16 @@
                                         display: false
                                     },
                                     tooltip: {
-                                        enabled: false
+                                        bodyFont: {
+                                            size: 16
+                                        },
+                                        callbacks: {
+                                            title: () => '',
+                                            label: (context) => {
+                                                const { label, formattedValue } = context
+                                                return `${label}: ${formattedValue} %`
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -427,6 +436,18 @@
                                 plugins: {
                                     legend: {
                                         display: false
+                                    },
+                                    tooltip: {
+                                        bodyFont: {
+                                            size: 16
+                                        },
+                                        callbacks: {
+                                            title: () => '',
+                                            label: (context) => {
+                                                const { label, formattedValue } = context
+                                                return `${label}: ${formattedValue} 次`
+                                            },
+                                        },
                                     }
                                 },
                                 scales: {
@@ -447,7 +468,8 @@
                                             stepSize: 1,
                                             font: {
                                                 size: barLabelFontSize
-                                            }
+                                            },
+                                            callback: (value) => `${value.toString()} (次)`
                                         }
                                     }
                                 }
@@ -537,11 +559,10 @@
                 const radianArray = getRadianArray(Object.values(data))
                 const percentageArray = getPercentageArray(Object.values(data))
 
-                Object.entries(data).forEach((each, index) => {
+                Object.keys(data).forEach((key, index) => {
                     const NINETY_DEGREE_RADIAN = 0.25
-                    const [key, value] = each
-
-                    if (value !== 0) {
+                    
+                    if (percentageArray[index] > 10) {
                         const radian = radianArray[index] - NINETY_DEGREE_RADIAN
                         const tooltip = document.createElement("DIV")
                         const content = `

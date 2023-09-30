@@ -22865,6 +22865,12 @@ input[type=search]::placeholder {
     font-size: 0.75rem;
   }
 }
+.custom-tooltip[data-chart=doughnut]:hover {
+  z-index: 99;
+}
+.custom-tooltip[data-chart=doughnut]:hover span {
+  background-color: #fff;
+}
 .custom-tooltip[data-chart=doughnut][data-position=left] {
   left: 0;
 }
