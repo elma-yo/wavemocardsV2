@@ -58,8 +58,8 @@
                         <a href="myRecords.html" class="px-4 py-8" data-bs-toggle="tooltip" data-bs-placement="bottom" title="觀看我的紀錄與分析">我的紀錄</a>
                     </li>
                     <!-- <li class="ms-16">
-                        <a href="sharedByOthers.html" class="px-4 py-8" data-bs-toggle="tooltip" data-bs-placement="bottom" title="觀看他人分享的情緒紀錄">他人的分享</a> -->
-                    </li>
+                        <a href="sharedByOthers.html" class="px-4 py-8" data-bs-toggle="tooltip" data-bs-placement="bottom" title="觀看他人分享的情緒紀錄">他人的分享</a>
+                    </li> -->
                     <li class="ms-16">
                         <a href="account.html" class="profile" data-bs-toggle="tooltip" data-bs-placement="bottom" title="管理我的帳戶">
                             <i class="bi bi-person-fill"></i>
@@ -76,8 +76,8 @@
             </div>
         </header>
 
-        <main>
-            <div class="container py-16 pt-112" id="top">
+        <main class="bg-white">
+            <div class="container py-16 pt-112">
                 <!-- 標題 -->
                 <div class="mb-20 pb-8 px-12 px-sm-0 border-2 border-bottom border-main-tint02 d-flex justify-content-between align-items-center">
                     <h2 class="fs-3">我的紀錄｜分析</h2>
@@ -91,12 +91,12 @@
                 <!-- 搜尋條 & 分享 -->
                 <form action="" method="get">
                     <!-- 搜尋條 -->
-                    <div class="mb-24 px-12 px-sm-0 d-flex flex-column flex-md-row justify-content-sm-between align-items-center" id="areaSearch">
-                        <div class="box-analyze d-flex flex-column flex-md-row align-items-center">
+                    <div class="mb-md-24 px-12 px-sm-0 d-flex flex-column flex-md-row justify-content-sm-between align-items-center" id="areaSearch">
+                        <div class="box-analyze d-flex flex-column flex-md-row align-items-center" >
                             <div class="box-date-analyze d-flex flex-column flex-sm-row align-items-center mb-16 mb-md-0">
-                                <input type="date" class="input-date-analyze d-block px-2 px-sm-16 py-6 border border-main-tint02 border-2 rounded-pill text-main-tint01 text-center">
+                                <input type="date" class="input-date-analyze d-block px-2 px-sm-16 py-6 border border-main-tint02 border-2 rounded-pill text-main-tint01 text-center" id="start_day" required />
                                 <span class="mx-8 text-main-tint01">～</span>
-                                <input type="date" class="input-date-analyze d-block me-md-12 px-2 px-sm-16 py-6 border border-main-tint02 border-2 rounded-pill text-main-tint01 text-center">
+                                <input type="date" class="input-date-analyze d-block me-md-12 px-2 px-sm-16 py-6 border border-main-tint02 border-2 rounded-pill text-main-tint01 text-center" id="end_day" required />
                             </div>
                             <div class="box-btn-analyze">
                                 <button type="submit" class="w-100 btn btn-main c-btn px-24 py-8 border-0 text-nowrap" id="btnAnalyze">分析</button>
@@ -104,7 +104,7 @@
                         </div>
                         <!-- 分享 -->
                         <div class="d-none box-btn-analyze d-flex justify-content-end" id="btnDownload">
-                            <button class="mt-12 mt-md-0 rounded-pill border-0 fs-4 c-btn-icon">
+                            <button type="button" class="mt-12 mt-md-0 rounded-pill border-0 fs-4 c-btn-icon">
                                 <i class="bi bi-box-arrow-down"></i>
                             </button>
                         </div>
@@ -117,33 +117,35 @@
                         <h3 class="mb-8 py-4 fs-5 fw-bold text-main border-bottom border-main-tint02">情緒類組次數</h3>
                         <p class="mb-24 text-gray-550">下圖為您在此期間記錄的情緒卡，在以下分類中所出現的次數的長條圖。</p>
                         <div class="py-8 d-flex justify-content-center align-items-center">
-                            <!-- 暫時用假資料 -->
-                            <img src="./images/fakeCharts/BarChart.svg" alt="bar chart">
+                            <canvas id="barChart"></canvas>
                         </div>
                     </div>
                     <div class="box-47">
                         <h3 class="mb-8 py-4 fs-5 fw-bold text-main border-bottom border-main-tint02">情緒類組比例</h3>
                         <p class="mb-24 text-gray-550">下圖為您在此期間記錄的情緒卡，在以下分類中所出現的次數比例的圖餅圖。</p>
-                        <div class="py-8 d-flex justify-content-center align-items-center">
-                            <!-- 暫時用假資料 -->
-                            <img src="./images/fakeCharts/PieChart.svg" alt="pie chart">
+                        <div class="py-8 d-flex justify-content-center align-items-center position-relative">
+                            <canvas id="doughnutChart" class="w-50 h-50"></canvas>
                         </div>
                     </div>
                 </div>
 
+                <div class="fs-1 text-center d-none" id="no-data">這段期間沒有資料</div>
+
                 <!-- 插畫 -->
-                <div class="px-12 px-sm-0 d-flex justify-content-end">
-                    <img src="./images/lime-analyze.svg" alt="analyze">
-                </div>
-                <!-- 圖片引用來源 -->
-                <div class="px-12 px-sm-0 text-end mb-48">
-                    <span class="text-gray-500 fs-11">
-                        Illustration by <a class="link-gray-500" href="https://icons8.com/illustrations/author/iAdLsFJOKDrk" target="_blank">Tanya Krasutska</a> from <a class="link-gray-500" href="https://icons8.com/illustrations" target="_blank">Ouch!</a>
-                    </span>
+                <div id="analyze-img">
+                    <div class="px-12 px-sm-0 d-flex justify-content-end">
+                        <img src="./images/lime-analyze.svg" alt="analyze" />
+                    </div>
+                    <!-- 圖片引用來源 -->
+                    <div class="px-12 px-sm-0 text-end mb-48">
+                        <span class="text-gray-500 fs-11">
+                            Illustration by <a class="link-gray-500" href="https://icons8.com/illustrations/author/iAdLsFJOKDrk" target="_blank">Tanya Krasutska</a> from <a class="link-gray-500" href="https://icons8.com/illustrations" target="_blank">Ouch!</a>
+                        </span>
+                    </div>
                 </div>
             </div>
         </main>
-        
+
         <!-- 浮動按鈕 -->
         <div class="me-12 mb-12 floatButton">
             <a href="#top" type="button" class="btn btn-main-tint01 rounded-circle shadow d-flex flex-column justify-content-center align-items-center">
@@ -229,21 +231,452 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
         <!-- axios CDN -->
         <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
-        <!-- toolTips on header -->
-        <script src="./js/toolTips.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/downloadjs/1.4.8/download.min.js"></script>
         <script>
-            const btnAnalyze = document.querySelector('#btnAnalyze');
-            const btnDownload = document.querySelector('#btnDownload');
-            const areaSearch = document.querySelector('#areaSearch');
-            const areaGraph = document.querySelector('#areaGraph');
+            const authenticationTools = getTokenAndAccount()
 
-            btnAnalyze.addEventListener('click', function(){
-                event.preventDefault();
-                btnDownload.classList.remove('d-none');
-                areaGraph.classList.remove('d-none');
-                areaSearch.classList.remove('mb-24');
-                areaSearch.classList.add('mb-md-24');
+            if (
+                authenticationTools.token === "" ||
+                authenticationTools.account === ""
+            ) {
+                logout()
+            }
+
+            const BASE_URL = "https://api.wavemocards.com"
+
+            const btnAnalyze = document.querySelector("#btnAnalyze")
+            const btnDownload = document.querySelector("#btnDownload")
+            const areaSearch = document.querySelector("#areaSearch")
+            const areaGraph = document.querySelector("#areaGraph")
+            const analyzeImg = document.getElementById("analyze-img")
+            const noData = document.getElementById("no-data")
+
+            const startDayInput = document.getElementById("start_day")
+            const endDayInput = document.getElementById("end_day")
+
+            const doughnutChartCTX = document.getElementById("doughnutChart")
+            const barChartCTX = document.getElementById("barChart")
+            const resizeObserver = new ResizeObserver(entries => {
+                for (let entry of entries) {
+                    if (entry.contentBoxSize[0].inlineSize <= 576) {
+                        barThickness = 20
+                        barLabelFontSize = 14
+                    } else {
+                        barThickness = 28
+                        barLabelFontSize = 16
+                    }
+                }
+            });
+
+            resizeObserver.observe(document.documentElement);
+
+            const main = document.querySelector("main")
+
+            const idCardsLookupTable = {}
+
+            let hasIdCardsLookupTableSettled = false
+            let previousData = ""
+            let currentData = null
+            let correspondBackgroundColors = null
+            let barThickness = 28
+            let barLabelFontSize = 16
+
+            const COLOR_LOOKUP_TABLE = {
+                快樂: "#FFE589",
+                期待: "#F8C18F",
+                安心: "#CEE5AF",
+                不安: "#C1A1A1",
+                驚訝: "#B4B9E7",
+                低落: "#C5DDE8",
+                討厭: "#C0B3A6",
+                生氣: "#E0AEAE",
+                其他: "#EBEBEB"
+            }
+
+            let barChart = null
+            let doughnutChart = null
+
+            btnAnalyze.addEventListener("click", async function () {
+                event.preventDefault()
+
+                if (!validateDateInput({
+                    inputElement: startDayInput, 
+                    errorMessage: "請輸入起使日期",
+                    errorStyleClass: "border-pink-dark"
+                })) {
+                    return
+                }
+
+                if (!validateDateInput({
+                    inputElement: endDayInput, 
+                    errorMessage: "請輸入結束日期",
+                    errorStyleClass: "border-pink-dark"
+                })) {
+                    return
+                }
+
+                if (
+                    new Date(startDayInput.value) > new Date(endDayInput.value)
+                ) {
+                    startDayInput.classList.add("border-pink-dark")
+                    endDayInput.classList.add("border-pink-dark")
+                    alert("開始時間不可晚於結束時間")
+                    return
+                } else {
+                    startDayInput.classList.remove("border-pink-dark")
+                    endDayInput.classList.remove("border-pink-dark")
+                }
+
+                try {
+                    btnAnalyze.disabled = true
+                    btnAnalyze.textContent = "讀取"
+
+                    if (!hasIdCardsLookupTableSettled) {
+                        await fetchIdCardsLookupTable()
+                        hasIdCardsLookupTableSettled = true
+                    }
+
+                    const fetchedData = await fetchAnalyzeResult({
+                        start_day: startDayInput.value,
+                        end_day: endDayInput.value
+                    })
+
+                    btnAnalyze.disabled = false
+                    btnAnalyze.textContent = "分析"
+
+                    if (JSON.stringify(fetchedData) !== previousData) {
+                        previousData = JSON.stringify(fetchedData)
+
+                        if (fetchedData.message) {
+                            noData.classList.remove("d-none")
+                            areaGraph.classList.add("d-none")
+                            analyzeImg.classList.remove("d-none")
+                            return
+                        }
+
+                        noData.classList.add("d-none")
+                        currentData = arrangeData(
+                            fetchedData,
+                            idCardsLookupTable
+                        )
+                        correspondBackgroundColors = Object.keys(
+                            currentData
+                        ).map((each) => COLOR_LOOKUP_TABLE[each])
+                        console.log(previousData)
+
+                        resetChart(barChart)
+                        resetChart(doughnutChart)
+                        resetCustomTooltips(doughnutChartCTX)
+
+                        if (btnDownload.classList.contains("d-none")) {
+                            btnDownload.classList.remove("d-none")
+                        }
+
+                        if (areaGraph.classList.contains("d-none")) {
+                            areaGraph.classList.remove("d-none")
+                        }
+
+                        if (!analyzeImg.classList.contains("d-none")) {
+                            analyzeImg.classList.add("d-none")
+                        }
+
+                        doughnutChart = new Chart(doughnutChartCTX, {
+                            type: "doughnut",
+                            data: {
+                                labels: Object.keys(currentData),
+                                datasets: [
+                                    {
+                                        data: getPercentageArray(
+                                            Object.values(currentData)
+                                        ),
+                                        backgroundColor:
+                                            correspondBackgroundColors,
+                                        cutout: "65%"
+                                    }
+                                ]
+                            },
+                            options: {
+                                plugins: {
+                                    legend: {
+                                        display: false
+                                    },
+                                    tooltip: {
+                                        enabled: false
+                                    }
+                                }
+                            }
+                        })
+
+                        barChart = new Chart(barChartCTX, {
+                            type: "bar",
+                            data: {
+                                labels: Object.keys(currentData),
+                                datasets: [
+                                    {
+                                        label: "情緒類組次數",
+                                        data: Object.values(currentData),
+                                        backgroundColor:
+                                            correspondBackgroundColors,
+                                        borderRadius: 50,
+                                        barThickness
+                                    }
+                                ]
+                            },
+                            options: {
+                                plugins: {
+                                    legend: {
+                                        display: false
+                                    }
+                                },
+                                scales: {
+                                    x: {
+                                        ticks: {
+                                            font: {
+                                                size: barLabelFontSize,
+                                                weight: 700
+                                            }
+                                        },
+                                        grid: {
+                                            display: false
+                                        }
+                                    },
+                                    y: {
+                                        beginAtZero: true,
+                                        ticks: {
+                                            stepSize: 1,
+                                            font: {
+                                                size: barLabelFontSize
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        })
+
+                        createTooltipsForDoughnutChart(
+                            currentData,
+                            doughnutChart
+                        )
+                    }
+                } catch (error) {
+                    console.error(error)
+                    alert(error)
+                }
             })
+
+            btnDownload.addEventListener("click", function () {
+                btnDownload.disabled = true
+                htmlToImage.toPng(main).then((dataUrl) => {
+                    download(dataUrl, "my-analyze.png")
+                    btnDownload.disabled = false
+                })
+            })
+
+            function getTokenAndAccount() {
+                const token = localStorage.getItem("token")
+                const account = localStorage.getItem("account")
+                if (!token || !account) {
+                    logout({ token, account })
+                    return
+                }
+                return { token, account }
+            }
+
+            function logout({ token, account }) {
+                localStorage.removeItem(token)
+                localStorage.removeItem(account)
+                location.href = "login.html"
+            }
+
+            function validateDateInput({inputElement, errorMessage = '', errorStyleClass = ''}) {
+                const { value } = inputElement
+                if (value === '') {
+                    inputElement.classList.add(errorStyleClass)
+                    alert(errorMessage)
+                    return false
+                } else {
+                    inputElement.classList.remove(errorStyleClass)
+                    return true
+                }
+            }
+
+            function getPercentageArray(integerArray) {
+                const total = integerArray.reduce(
+                    (accumulation, current) => (accumulation += current),
+                    0
+                )
+                const resultArray = integerArray.map((num) => {
+                    const decimal = (num / total) * 100
+                    return Number(decimal.toFixed(2))
+                })
+                return resultArray
+            }
+
+            function getRadianArray(integerArray) {
+                const total = integerArray.reduce(
+                    (accumulation, current) => (accumulation += current),
+                    0
+                )
+                let previousRadian = 0
+                let returnRadian = 0
+                const resultArray = integerArray.map((num) => {
+                    const radian = num / total
+                    returnRadian = Number(
+                        (previousRadian + radian / 2).toFixed(2)
+                    )
+                    previousRadian += radian
+                    return returnRadian
+                })
+                return resultArray
+            }
+
+            function createTooltipsForDoughnutChart(data, targetDoughnutChart) {
+                const parentWidth =
+                    targetDoughnutChart.canvas.parentElement.offsetWidth
+                const radianArray = getRadianArray(Object.values(data))
+                const percentageArray = getPercentageArray(Object.values(data))
+
+                Object.entries(data).forEach((each, index) => {
+                    const NINETY_DEGREE_RADIAN = 0.25
+                    const [key, value] = each
+
+                    if (value !== 0) {
+                        const radian = radianArray[index] - NINETY_DEGREE_RADIAN
+                        const tooltip = document.createElement("DIV")
+                        const content = `
+                            <p>
+                                <span class="fw-700 me-2">${key}</span>
+                                <span class="text-gray-550">${
+                                    percentageArray[index].toString() + "%"
+                                }</span>
+                            </p>
+                        `
+                        tooltip.classList.add("custom-tooltip")
+                        tooltip.dataset.chart = "doughnut"
+
+                        if (determineWhichHalf(radian) === "LEFT") {
+                            tooltip.dataset.position = "left"
+                        } else {
+                            tooltip.dataset.position = "right"
+                        }
+
+                        const radius =
+                            targetDoughnutChart.canvas.offsetWidth / 2
+
+                        const x = Math.floor(
+                            Math.abs(
+                                radius * 0.825 * Math.cos(radian * 2 * Math.PI)
+                            ) +
+                                parentWidth / 2
+                        )
+
+                        const y = Math.floor(
+                            radius * 0.825 * Math.sin(radian * 2 * Math.PI)
+                        )
+
+                        tooltip.style.transform = `translateY(calc(-100% + ${y}px))`
+
+                        if (determineWhichHalf(radian) === "LEFT") {
+                            tooltip.style.right = `${Math.abs(x)}px`
+                        } else {
+                            tooltip.style.left = `${x}px`
+                        }
+
+                        tooltip.insertAdjacentHTML("beforeend", content)
+                        targetDoughnutChart.canvas.parentElement.insertAdjacentElement(
+                            "beforeend",
+                            tooltip
+                        )
+                    }
+                })
+            }
+
+            function resetChart(chartVariable) {
+                if (chartVariable !== null && chartVariable instanceof Chart) {
+                    chartVariable.destroy()
+                    chartVariable = null
+                }
+            }
+
+            function resetCustomTooltips(chartCTX) {
+                const tooltips =
+                    chartCTX.parentElement.querySelectorAll(".custom-tooltip")
+                if (tooltips.length !== 0) {
+                    tooltips.forEach((tooltip) => {
+                        tooltip.remove()
+                    })
+                }
+            }
+
+            function determineWhichHalf(radian) {
+                const ONE_FOURTH = 0.25
+                const THREE_FOURTHS = 0.75
+                return radian > ONE_FOURTH && radian <= THREE_FOURTHS
+                    ? "LEFT"
+                    : "RIGHT"
+            }
+
+            function arrangeData(fetchedData, lookupTable) {
+                const returnData = {}
+                Object.entries(fetchedData).map((each) => {
+                    const [key, value] = each
+                    if (returnData[lookupTable[key]] === undefined) {
+                        returnData[lookupTable[key]] = value
+                    } else {
+                        returnData[lookupTable[key]] += value
+                    }
+                })
+                return returnData
+            }
+
+            async function fetchIdCardsLookupTable() {
+                try {
+                    const response = await axios.get(
+                        `${BASE_URL}/emoinfo/cards`
+                    )
+                    const { data } = response
+                    if (data.error) {
+                        throw new Error(data.error)
+                    }
+                    Object.entries(data).map((each) => {
+                        const [key, value] = each
+                        const { category } = value
+                        idCardsLookupTable[key] = category
+                    })
+                } catch (error) {
+                    alert(`錯誤訊息： ${error.message}。建議諮詢伺服器管理員`)
+                }
+            }
+
+            async function fetchAnalyzeResult({
+                start_day = "",
+                end_day = ""
+            }) {
+                const { token, account: user_name } = getTokenAndAccount()
+                try {
+                    const response = await axios(
+                        `${BASE_URL}/emotions/analysis`,
+                        {
+                            headers: { Authorization: `Bearer ${token}` },
+                            params: {
+                                user_name,
+                                start_day,
+                                end_day
+                            }
+                        }
+                    )
+                    if (response.status === 200) {
+                        return response.data
+                    } else {
+                        throw new Error(response.data)
+                    }
+                } catch (error) {
+                    alert(`錯誤訊息： ${error.message}。
+          請確認是否有輸入錯誤，或者是諮詢伺服器管理員`)
+                }
+            }
         </script>
     </body>
 </html>
