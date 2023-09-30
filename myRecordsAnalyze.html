@@ -364,7 +364,6 @@
                         correspondBackgroundColors = Object.keys(
                             currentData
                         ).map((each) => COLOR_LOOKUP_TABLE[each])
-                        console.log(previousData)
 
                         resetChart(barChart)
                         resetChart(doughnutChart)
@@ -673,8 +672,7 @@
                         throw new Error(response.data)
                     }
                 } catch (error) {
-                    alert(`錯誤訊息： ${error.message}。
-          請確認是否有輸入錯誤，或者是諮詢伺服器管理員`)
+                    alert(`錯誤訊息： ${error.message}。請確認是否有輸入錯誤，或者是諮詢伺服器管理員`)
                 }
             }
         </script>
