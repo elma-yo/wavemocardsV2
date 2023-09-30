@@ -77,9 +77,9 @@
         </header>
 
         <main>
+            <!-- 標題 -->
             <div class="sticky-top pb-8 bg-white">
                 <div class="container pt-16">
-                    <!-- 標題 -->
                     <div class="mb-20 pb-8 px-12 px-sm-0 border-2 border-bottom border-main-tint02 d-flex justify-content-between align-items-center">
                         <h2 class="fs-3 d-none d-md-block">我的紀錄｜情緒故事</h2>
                         <h2 class="fs-3 d-md-none d-flex flex-column">
@@ -87,16 +87,16 @@
                             <span>情緒故事</span>
                         </h2>
                         <div class="nav-btn d-flex justify-content-end align-items-center">
-                            <button class="rounded-pill border-0 fs-5 c-btn-icon" id="btnDelete">
+                            <button class="rounded-pill border-0 fs-5 c-btn-icon" id="btnDelete" data-bs-toggle="modal" data-bs-target="#modalDelete">
                                 <i class="bi bi-trash3"></i>
                             </button>
-                            <a class="ms-12 btn btn-outline-main c-btn d-flex justify-content-center align-items-center" id="btnBack" href="myRecords.html">返回</a>
+                            <!-- <a class="ms-12 btn btn-outline-main c-btn d-flex justify-content-center align-items-center" id="btnBack" href="myRecords.html">返回</a> -->
+                            <button class="ms-12 btn btn-outline-main c-btn d-flex justify-content-center align-items-center" id="btnBack">返回</button>
                             <!-- <a class="ms-16 btn btn-outline-main c-btn" href="#shared">分享清單</a> -->
                             <!-- <a class="ms-16 btn btn-main c-btn d-flex justify-content-center align-items-center" href="myRecordsEmoStoryModify.html">編輯</a> -->
                             <button class="d-none ms-16 btn btn-outline-main c-btn" id="btnCancel" type="button">取消</button>
                             <button class="ms-16 btn btn-outline-main c-btn" id="btnModify" type="button">編輯</button>
-                <form action="#" method="">
-                            <input type="submit" class="d-none ms-16 btn btn-main c-btn" id="btnSave" value="儲存"></button>
+                            <button type="button" class="d-none ms-16 px-24 btn btn-main c-btn border-2 border-main" id="btnSave" data-bs-toggle="modal" data-bs-target="#modalSaveResult">儲存</button>
                         </div>
                     </div>
                     <!-- 分享、刪除 -->
@@ -109,16 +109,17 @@
                         </button>
                     </div> -->
                 </div>
-            </div>
-
-            <div class="container">
-                <!-- 第 1 區 日期與情緒 -->
-                <div class="row mb-16 mb-md-8 px-12 px-sm-0">
+                </div>
+    
+                <div class="container">
+                    <!-- 第 1 區 日期與情緒 -->
+                    <div class="row mb-16 mb-md-8 px-12 px-sm-0">
+                    <div class="d-none" id="emo_Id"></div>
                     <div class="col-lg-3">
                         <div class="px-12 py-8 bg-main text-white rounded-1 text-nowrap fs-7">日期</div>
                     </div>
                     <div class="col-lg-9">
-                        <div class="px-12 py-8 text-nowrap fs-7 rounded-1 bg-content-gray-200">2023 / 03 / 14</div>
+                        <div class="px-12 py-8 text-nowrap fs-7 rounded-1 bg-content-gray-200" id="storyDate"></div>
                     </div>
                 </div>
                 <div class="row mb-16 mb-md-8 px-12 px-sm-0">
@@ -126,7 +127,7 @@
                         <div class="px-12 py-8 bg-main text-white rounded-1 text-nowrap fs-7">情緒強度｜第一次</div>
                     </div>
                     <div class="col-lg-9">
-                        <div class="px-12 py-8 bg-gray-200 rounded-1 fs-7">快樂 5・幸福 4・安心 3</div>
+                        <div class="px-12 py-8 bg-gray-200 rounded-1 fs-7" id="storyEmotions1st"></div>
                     </div>
                 </div>
                 <div class="row mb-24 px-12 px-sm-0">
@@ -134,7 +135,7 @@
                         <div class="px-12 py-8 bg-main text-white rounded-1 text-nowrap fs-7">情緒強度｜第二次</div>
                     </div>
                     <div class="col-lg-9">
-                        <div class="px-12 py-8 fs-7 rounded-1 bg-content-gray-200">快樂 5・幸福 4・安心 3</div>
+                        <div class="px-12 py-8 fs-7 rounded-1 bg-content-gray-200" id="storyEmotions2nd"></div>
                     </div>
                 </div>
                 <!-- 第 2 區 情緒故事｜背景篇 -->
@@ -146,11 +147,11 @@
                         <div class="h-100 px-12 py-8 d-flex align-items-center bg-main-tint02 rounded-1 fs-7">情緒的背景</div>
                     </div>
                     <div class="col-lg-9" id="background">
-                        <div class="px-12 py-8 fs-7 rounded-1 bg-content-gray-200">同學誇獎我總是很貼心，做事也很細心。說我是她很重要的朋友。</div>
+                        <div class="h-100 px-12 py-8 fs-7 rounded-1 bg-content-gray-200" id="storyBackground"></div>
                     </div>
                     <div class="d-none col-lg-9" id="formBackground">
-                        <div class="px-12 fs-7">
-                            <textarea class="w-100 py-8 ps-8 border border-main-tint02 rounded-1" value="同學誇獎我總是很貼心，做事也很細心。說我是她很重要的朋友。"></textarea>
+                        <div class="h-100 px-12 fs-7">
+                            <textarea class="h-100 w-100 py-8 ps-8 border border-main-tint02 rounded-1" value="" id="storyBackgroundTextarea"></textarea>
                         </div>
                     </div>
                 </div>
@@ -160,69 +161,64 @@
                 </div>
                 <div class="row mb-16 mb-md-8 px-12 px-sm-0 align-items-md-stretch">
                     <div class="col-lg-3">
-                        <div class="px-12 py-8 d-flex align-items-center bg-main-tint02 rounded-1 fs-7">情緒後做的反應</div>
+                        <div class="h-100 px-12 py-8 d-flex align-items-center bg-main-tint02 rounded-1 fs-7">情緒後做的反應</div>
                     </div>
                     <div class="col-lg-9" id="action">
-                        <div class="px-12 py-8 fs-7 rounded-1 bg-content-gray-200">我很開心地跑去和同學Ｂ說。</div>
+                        <div class="h-100 px-12 py-8 fs-7 rounded-1 bg-content-gray-200" id="storyAction"></div>
                     </div>
-                    <div class="d-none col-lg-9" id="formAction">
-                        <div class="px-12 fs-7">
-                            <textarea class="w-100 py-8 ps-8 border border-main-tint02 rounded-1" value="我很開心地跑去和同學Ｂ說。"></textarea>
+                    <div class="h-100 d-none col-lg-9" id="formAction">
+                        <div class="h-100 px-12 fs-7">
+                            <textarea class="h-100 w-100 py-8 ps-8 border border-main-tint02 rounded-1" value="" id="storyActionTextarea"></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="row mb-16 mb-md-8 px-12 px-sm-0 align-items-md-stretch">
                     <div class="col-lg-3">
-                        <div class="px-12 py-8 d-flex align-items-center bg-main-tint02 rounded-1 fs-7">反應後的結果</div>
+                        <div class="h-100 px-12 py-8 d-flex align-items-center bg-main-tint02 rounded-1 fs-7">反應後的結果</div>
                     </div>
                     <div class="col-lg-9" id="result">
-                        <div class="px-12 py-8 bg-gray-200 rounded-1 fs-7">同學Ｂ聽完後很開心地說他也要跟我們一起出去玩！</div>
+                        <div class="h-100 px-12 py-8 bg-gray-200 rounded-1 fs-7" id="storyResult"></div>
                     </div>
-                    <div class="d-none col-lg-9" id="formResult">
-                        <div class="px-12 fs-7">
-                            <textarea class="w-100 py-8 ps-8 border border-main-tint02 rounded-1" value="同學Ｂ聽完後很開心地說他也要跟我們一起出去玩！"></textarea>
+                    <div class="h-100 d-none col-lg-9" id="formResult">
+                        <div class="h-100 px-12 fs-7">
+                            <textarea class="h-100 w-100 py-8 ps-8 border border-main-tint02 rounded-1" value="" id="storyResultTextarea"></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="row mb-16 mb-md-8 px-12 px-sm-0 align-items-md-stretch">
                     <div class="col-lg-3">
-                        <div class="px-12 py-8 d-flex align-items-center bg-main-tint02 rounded-1 fs-7">結果帶給我的感受</div>
+                        <div class="h-100 px-12 py-8 d-flex align-items-center bg-main-tint02 rounded-1 fs-7">結果帶給我的感受</div>
                     </div>
                     <div class="col-lg-9" id="feeling">
-                        <div class="px-12 py-8 fs-7 rounded-1 bg-content-gray-200">我很開心！</div>
+                        <div class="h-100 px-12 py-8 fs-7 rounded-1 bg-content-gray-200" id="storyFeeling"></div>
                     </div>
                     <div class="d-none col-lg-9" id="formFeeling">
-                        <div class="px-12 fs-7">
-                            <textarea class="w-100 py-8 ps-8 border border-main-tint02 rounded-1" value="我很開心！"></textarea>
+                        <div class="h-100 px-12 fs-7">
+                            <textarea class="h-100 w-100 py-8 ps-8 border border-main-tint02 rounded-1" value="" id="storyFeelingTextarea"></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="row mb-16 mb-md-8 px-12 px-sm-0 align-items-md-stretch">
                     <div class="col-lg-3">
-                        <div class="px-12 py-8 d-flex align-items-center bg-main-tint02 rounded-1 fs-7">結果是否是我所期待的？</div>
+                        <div class="h-100 px-12 py-8 d-flex align-items-center bg-main-tint02 rounded-1 fs-7">結果是否是我所期待的？</div>
                     </div>
                     <div class="col-lg-9">
-                        <div class="h-100 px-12 py-8 bg-gray-200 rounded-1 fs-7 d-flex align-items-center">是</div>
+                        <div class="h-100 px-12 py-8 bg-gray-200 rounded-1 fs-7 d-flex align-items-center" id="storyIsGoodResult"></div>
                     </div>
                 </div>
-        </form>
-                <!-- <div class="row mb-16 mb-md-8">
-                    <div class="col-lg-3 px-12 py-8 d-flex align-items-center bg-main-tint02 rounded-1 fs-7">是否感到後悔</div>
-                    <div class="col-lg-9 px-12 py-8 fs-7">否</div>
-                </div> -->
                 <div class="row mb-72 px-12 px-sm-0 align-items-md-stretch">
                     <div class="col-lg-3">
-                        <div class="px-12 py-8 d-flex flex-column justify-content-center bg-main-tint02 rounded-1 fs-7">
+                        <div class="h-100 px-12 py-8 d-flex flex-column justify-content-center bg-main-tint02 rounded-1 fs-7">
                             <p>下次可以怎麼做？</p>
-                            <p>或是，我想肯定自己的地方</p>
+                            <p>以及我想肯定自己的地方</p>
                         </div>
                     </div>
                     <div class="col-lg-9" id="next">
-                        <div class="h-100 px-12 py-8 rounded-1 fs-7 bg-content-gray-200 d-flex align-items-center"></div>
+                        <div class="h-100 px-12 py-8 rounded-1 fs-7 bg-content-gray-200 d-flex align-items-center" id="storyNext"></div>
                     </div>
                     <div class="d-none col-lg-9" id="formNext">
-                        <div class="px-12 fs-7">
-                            <textarea class="w-100 py-8 ps-8 border border-main-tint02 rounded-1" value=""></textarea>
+                        <div class="h-100 px-12 fs-7">
+                            <textarea class="h-100 w-100 py-8 ps-8 border border-main-tint02 rounded-1" value="" id="storyNextTextarea"></textarea>
                         </div>
                     </div>
                 </div>
@@ -262,7 +258,7 @@
                     </tbody>
                 </table> -->
             </div>
-        </main>
+          </main>
         <!-- 浮動按鈕 -->
         <div class="me-12 mb-12 floatButton">
             <a href="#top" type="button" class="btn btn-main-tint01 rounded-circle shadow d-flex flex-column justify-content-center align-items-center">
@@ -343,6 +339,70 @@
             </div>
         </footer>
 
+        <!-- 確認刪除 Modal -->
+        <div class="modal fade" id="modalDelete" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content rounded-4">
+                    <div class="modal-body d-flex flex-column align-items-center px-48 pt-24 pb-16">
+                        <p id="modalDeleteTitle" class="mb-12 fs-3 fw-bold text-pink">確定要刪除嗎？</p>
+                        <p id="modalDeleteText" class="mb-12 fs-7 text-gray-700">刪除後便<span class="ps-2 text-pink">不可再復原</span>，確定要刪除嗎？</p>
+                        <div style="width: 45%;">
+                            <img class="w-100 pt-24 pb-2" src="./images/sureToDelete.svg" alt="img" id="modalDeleteImg">
+                        </div>
+                        <span class="text-gray-400 fs-11">Illustration by <a class="link-gray-400" href="https://blush.design/artists/RyUTVuP8G4QeAAEEQgug/pablo-stanley">Pablo Stanley</a> from <a class="link-gray-400" href="https://blush.design/">blush design</a></span>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button type="button" id="modalDeleteClose" class="me-16 c-btn-outline-pink-tint01 fs-6" data-bs-dismiss="modal">取消</button>
+                        <button type="button" id="modalDeleteSure" class="btn btn-pink c-btn px-24 py-8 link-white fs-6 rounded-pill" data-bs-target="#modalDeleteResult" data-bs-toggle="modal">確定刪除</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- 刪除 成功/失敗 Modal -->
+        <div class="modal fade" id="modalDeleteResult" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4">
+                <div class="modal-body d-flex flex-column align-items-center px-48 py-36">
+                    <p id="modalDeleteResultTitle" class="fs-4 fw-bold">刪除成功</p>
+                    <p id="modalDeleteResultText" class="d-none mt-12 fs-7 text-gray-700">請重新嘗試刪除資料。</p>
+                    <p id="modalDeleteResultText2" class="d-none mt-12 fs-7 text-gray-700">
+                        若無法排除問題，請 
+                        <a class="link-pink" href="mailto:info@wavemocards.com">與我們聯繫</a>
+                    </p>
+                    <div style="width: 45%; height: 45%;">
+                        <img class="w-100" src="./images/addCardSuccess.svg" alt="興奮" id="modalDeleteResultImg">
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button type="button" id="modalDeleteResultClose" class="btn c-btn px-36 py-8 link-white fs-6 fw-bold" data-bs-dismiss="modal">我知道了</button>
+                </div>
+            </div>
+            </div>
+        </div>
+    
+        <!-- 儲存 成功/失敗 Modal -->
+        <div class="modal fade" id="modalSaveResult" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4">
+                <div class="modal-body d-flex flex-column align-items-center px-48 py-36">
+                    <p id="modalSaveResultTitle" class="fs-4 fw-bold">儲存成功</p>
+                    <p id="modalSaveResultText" class="d-none mt-12 fs-7 text-gray-700">請重新嘗試儲存資料。</p>
+                    <p id="modalSaveResultText2" class="d-none mt-12 fs-7 text-gray-700">
+                        若無法排除問題，請 
+                        <a class="link-pink" href="mailto:info@wavemocards.com">與我們聯繫</a>
+                    </p>
+                    <div style="width: 45%; height: 45%;">
+                        <img class="w-100" src="./images/addCardSuccess.svg" alt="img" id="modalSaveResultImg">
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button type="button" id="modalSaveResultClose" class="btn btn-main c-btn px-36 py-8 link-white fs-6 fw-bold" data-bs-dismiss="modal">我知道了</button>
+                </div>
+            </div>
+            </div>
+        </div>
+
         <!--  Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
@@ -352,6 +412,10 @@
         <script src="./js/toolTips.js"></script>
         <script type="text/javascript" src="./js/beforeunload.js"></script>
         <script>
+            // 預防頁面跳轉
+            window.onbeforeunload = function () {
+                return "Are you really sure?";
+            }
             const btnModify = document.querySelector('#btnModify');
             const btnCancel = document.querySelector('#btnCancel');
             const btnSave = document.querySelector('#btnSave');
@@ -367,7 +431,119 @@
             const formResult = document.querySelector('#formResult');
             const formFeeling = document.querySelector('#formFeeling');
             const formNext = document.querySelector('#formNext');
+            // 確認刪除 & 刪除成功/失敗 Modal
+            const modalDeleteSure = document.querySelector('#modalDeleteSure');
+            const modalDeleteClose = document.querySelector('#modalDeleteClose');
+            const modalDeleteResultTitle = document.querySelector('#modalDeleteResultTitle');
+            const modalDeleteResultText = document.querySelector('#modalDeleteResultText');
+            const modalDeleteResultText2 = document.querySelector('#modalDeleteResultText2');
+            const modalDeleteResultImg = document.querySelector('#modalDeleteResultImg');
+            const modalDeleteResultClose = document.querySelector('#modalDeleteResultClose');
+            // 儲存成功/失敗 modal
+            const modalSaveResultTitle = document.querySelector('#modalSaveResultTitle');
+            const modalSaveResultText = document.querySelector('#modalSaveResultText');
+            const modalSaveResultText2 = document.querySelector('#modalSaveResultText2');
+            const modalSaveResultImg = document.querySelector('#modalSaveResultImg');
+            const modalSaveResultClose = document.querySelector('#modalSaveResultClose');
+            // 取得該資料的id
+            const recordId = localStorage.getItem("recordId");
+            const account = localStorage.getItem("account");
+            const token = localStorage.getItem("token");
+            let resultData = JSON.parse(localStorage.getItem("resultData"));
+            
+            let objetRecordData = {};
 
+            axios.get("https://api.wavemocards.com/emoinfo/cards/")
+            .then(function(response){
+                aryData = Object.values(response.data);
+
+                axios.get(`https://api.wavemocards.com/emotions?user_name=${account}`,
+                { headers: {"Authorization": `Bearer ${token}`} })
+                .then (function(response){
+                    let allData = response.data.message;
+                    allData.forEach(function(data, i){
+                    if(data.emo_ID==recordId){
+                    objetRecordData.emo_Id = data.emo_ID;
+                    let time = data.create_time;
+                    objetRecordData.date = time[0]+time[1]+time[2]+time[3]+time[4]+time[5]+time[6]+time[7]+time[8]+time[9];
+                    objetRecordData.cardId_1 = data.emotion_card_1;
+                    objetRecordData.cardId_2 = data.emotion_card_2;
+                    objetRecordData.cardId_3 = data.emotion_card_3;
+                    objetRecordData.card_1_Name = "";
+                    objetRecordData.card_2_Name = "";
+                    objetRecordData.card_3_Name = "";
+                    aryData.forEach(function(data, i){
+                        if(data.ID == objetRecordData.cardId_1){
+                        objetRecordData.card_1_Name = data.name;
+                        }
+                        if(data.ID == objetRecordData.cardId_2){
+                        objetRecordData.card_2_Name = data.name;
+                        }
+                        if(data.ID == objetRecordData.cardId_3){
+                        objetRecordData.card_3_Name = data.name;
+                        }
+                    })
+                    objetRecordData.card_1_strength1st = data.before_emo_level_1;
+                    objetRecordData.card_2_strength1st = data.before_emo_level_2;
+                    objetRecordData.card_3_strength1st = data.before_emo_level_3;
+                    objetRecordData.card_1_strength2nd = data.after_emo_level_1;
+                    objetRecordData.card_2_strength2nd = data.after_emo_level_2;
+                    objetRecordData.card_3_strength2nd = data.after_emo_level_3;
+                    objetRecordData.background = data.story;
+                    objetRecordData.action = data.actions;
+                    objetRecordData.result = data.results;
+                    objetRecordData.feeling = data.feelings;
+                    if(data.expect==1){
+                        objetRecordData.isItYourExcept = "是";
+                    } else if (data.expect==2) {
+                        objetRecordData.isItYourExcept = "否";
+                    } else if (data.expect==3) {
+                        objetRecordData.isItYourExcept = "不清楚";
+                    }
+                    objetRecordData.nextAction = data.reaction;
+                    }
+                })
+
+                // 將資料寫入html
+                emo_Id.textContent = objetRecordData.emo_Id;
+                storyDate.textContent = objetRecordData.date;
+                if (objetRecordData.card_2_Name=="" && objetRecordData.card_3_Name=="") {
+                    storyEmotions1st.textContent = objetRecordData.card_1_Name+" "+objetRecordData.card_1_strength1st;
+                } else if (objetRecordData.card_2_Name!="" && objetRecordData.card_3_Name=="") {
+                    storyEmotions1st.textContent = objetRecordData.card_1_Name+" "+objetRecordData.card_1_strength1st+"・"+objetRecordData.card_2_Name+" "+objetRecordData.card_2_strength1st;
+                } else {
+                    storyEmotions1st.textContent = objetRecordData.card_1_Name+" "+objetRecordData.card_1_strength1st+"・"+objetRecordData.card_2_Name+" "+objetRecordData.card_2_strength1st+"・"+objetRecordData.card_3_Name+" "+objetRecordData.card_3_strength1st;
+                }
+                if (objetRecordData.card_1_strength2nd!=null && objetRecordData.card_2_strength2nd!=null && objetRecordData.card_3_strength2nd!=null) {
+                    storyEmotions2nd.textContent = objetRecordData.card_1_Name+" "+objetRecordData.card_1_strength2nd+"・"+objetRecordData.card_2_Name+" "+objetRecordData.card_2_strength2nd+"・"+objetRecordData.card_3_Name+" "+objetRecordData.card_3_strength2nd;
+                } else if(objetRecordData.card_1_strength2nd!=null && objetRecordData.card_2_strength2nd!=null && objetRecordData.card_3_strength2nd==null){
+                    storyEmotions2nd.textContent = objetRecordData.card_1_Name+" "+objetRecordData.card_1_strength2nd+"・"+objetRecordData.card_2_Name+" "+objetRecordData.card_2_strength2nd;
+                } else if (objetRecordData.card_1_strength2nd!=null && objetRecordData.card_2_strength2nd==null && objetRecordData.card_3_strength2nd==null) {
+                    storyEmotions2nd.textContent = objetRecordData.card_1_Name+" "+objetRecordData.card_1_strength2nd;
+                } else if (objetRecordData.card_1_strength2nd==null && objetRecordData.card_2_strength2nd!=null && objetRecordData.card_3_strength2nd!=null) {
+                    storyEmotions2nd.textContent = objetRecordData.card_2_Name+" "+objetRecordData.card_2_strength2nd+"・"+objetRecordData.card_3_Name+" "+objetRecordData.card_3_strength2nd;
+                } else if (objetRecordData.card_1_strength2nd==null && objetRecordData.card_2_strength2nd!=null && objetRecordData.card_3_strength2nd==null) {
+                    storyEmotions2nd.textContent = objetRecordData.card_2_Name+" "+objetRecordData.card_2_strength2nd;
+                } else if (objetRecordData.card_1_strength2nd!=null && objetRecordData.card_2_strength2nd==null && objetRecordData.card_3_strength2nd!=null) {
+                    storyEmotions2nd.textContent = objetRecordData.card_1_Name+" "+objetRecordData.card_1_strength2nd+"・"+objetRecordData.card_3_Name+" "+objetRecordData.card_3_strength2nd;
+                } else if (objetRecordData.card_1_strength2nd==null && objetRecordData.card_2_strength2nd==null && objetRecordData.card_3_strength2nd!=null) {
+                    storyEmotions2nd.textContent = objetRecordData.card_3_Name+" "+objetRecordData.card_3_strength2nd;
+                }
+                storyBackground.textContent = objetRecordData.background;
+                storyBackgroundTextarea.textContent = objetRecordData.background;
+                storyAction.textContent = objetRecordData.action;
+                storyActionTextarea.textContent = objetRecordData.action;
+                storyResult.textContent = objetRecordData.result;
+                storyResultTextarea.textContent = objetRecordData.result;
+                storyFeeling.textContent = objetRecordData.feeling;
+                storyFeelingTextarea.textContent = objetRecordData.feeling;
+                storyIsGoodResult.textContent = objetRecordData.isItYourExcept;
+                storyNext.textContent = objetRecordData.nextAction;
+                storyNextTextarea.textContent = objetRecordData.nextAction;
+                })
+            })
+
+            // 編輯
             btnModify.addEventListener("click", function(){
                 btnModify.classList.add("d-none");
                 btnBack.classList.add("d-none");
@@ -385,10 +561,10 @@
                 formFeeling.classList.remove("d-none");
                 formNext.classList.remove("d-none");
             })
-
+            let btnCancelDefault = true;
             btnCancel.addEventListener('click',function(){
                 let confirmResult = confirm("執行取消的話，您的修改將不會被儲存喔！\r您確定要離開嗎？");
-                if (confirmResult) {
+                if (confirmResult==undefined || confirmResult==true) {
                     btnModify.classList.remove("d-none");
                     btnBack.classList.remove("d-none");
                     btnDelete.classList.remove("d-none");
@@ -407,6 +583,109 @@
                 } else {
                     return
                 }
+            })
+
+            // 刪除
+            modalDeleteSure.addEventListener("click", function(){
+                modalDeleteClose.click()
+                axios.delete(`https://api.wavemocards.com/emotions/delete/${recordId}`,
+                { headers: {"Authorization": `Bearer ${token}`} })
+                .then (function(response){
+                    if(response.data.message==`The emotion ${recordId} was deleted.`) {
+                    modalDeleteResultTitle.textContent = "刪除成功";
+                    modalDeleteResultText.classList.add("d-none");
+                    modalDeleteResultText2.classList.add("d-none");
+                    modalDeleteResultImg.src = "./images/addCardSuccess.svg";
+                    modalDeleteResultClose.classList.add("btn-main");
+                    modalDeleteResultClose.classList.remove("btn-pink");
+                    } else {
+                    modalDeleteResultTitle.textContent = "刪除失敗";
+                    modalDeleteResultText.classList.remove("d-none");
+                    modalDeleteResultText2.classList.remove("d-none");
+                    modalDeleteResultImg.src = "./images/addCardFail.svg";
+                    modalDeleteResultClose.classList.add("btn-pink");
+                    modalDeleteResultClose.classList.remove("btn-main");
+                    }
+                })
+                .catch(function(error){
+                    modalDeleteResultTitle.textContent = "刪除失敗";
+                    modalDeleteResultText.classList.remove("d-none");
+                    modalDeleteResultText2.classList.remove("d-none");
+                    modalDeleteResultImg.src = "./images/addCardFail.svg";
+                    modalDeleteResultClose.classList.add("btn-pink");
+                    modalDeleteResultClose.classList.remove("btn-main");
+                    console.log(error);
+                })
+            })
+            modalDeleteResultClose.addEventListener("click", function(){
+                if(modalDeleteResultTitle.textContent=="刪除成功"){
+                    resultData.forEach(function(data, i){
+                        if(data.emo_ID==recordId) {
+                            resultData.splice(i,1);
+                        }
+                    })
+                    localStorage.setItem("resultData", JSON.stringify(resultData));
+                    window.onbeforeunload = false;
+                    location.href = "myRecords.html";
+                }
+            })
+
+            // 儲存 -> post 資料 -> 回應儲存結果
+            btnSave.addEventListener("click", function(){
+                // 取得 textarea 資料
+                let postData = {
+                    "emo_ID": parseInt(emo_Id.textContent),
+                    "story": storyBackgroundTextarea.value,
+                    "actions": storyActionTextarea.value,
+                    "results": storyResultTextarea.value,
+                    "feelings": storyFeelingTextarea.value,
+                    "reaction": storyNextTextarea.value,
+                    };
+                axios.put("https://api.wavemocards.com/emotions/update",
+                postData, { headers: {"Authorization": `Bearer ${token}`} })
+                .then (function(response){
+                if(response.data.message=="No data is changed." || response.data.message=="The emotion was updated successfully.") {
+                    modalSaveResultTitle.textContent = "儲存成功";
+                    modalSaveResultTitle.classList.add("text-main");
+                    modalSaveResultTitle.classList.remove("text-pink");
+                    modalSaveResultText.classList.add("d-none");
+                    modalSaveResultText2.classList.add("d-none");
+                    modalSaveResultImg.src = "./images/addCardSuccess.svg";
+                    modalSaveResultClose.classList.add("btn-main");
+                    modalSaveResultClose.classList.remove("btn-pink");
+                } else {
+                    modalSaveResultTitle.textContent = "儲存失敗";
+                    modalSaveResultTitle.classList.add("text-pink");
+                    modalSaveResultTitle.classList.remove("text-main");
+                    modalSaveResultText.classList.remove("d-none");
+                    modalSaveResultText2.classList.remove("d-none");
+                    modalSaveResultImg.src = "./images/addCardFail.svg";
+                    modalSaveResultClose.classList.remove("btn-main");
+                    modalSaveResultClose.classList.add("btn-pink");
+                }
+                })
+                .catch(function(error){
+                    console.log(error);
+                    modalSaveResultTitle.textContent = "儲存失敗";
+                    modalSaveResultTitle.classList.add("text-pink");
+                    modalSaveResultTitle.classList.remove("text-main");
+                    modalSaveResultText.classList.remove("d-none");
+                    modalSaveResultText2.classList.remove("d-none");
+                    modalSaveResultImg.src = "./images/addCardFail.svg";
+                    modalSaveResultClose.classList.remove("btn-main");
+                    modalSaveResultClose.classList.add("btn-pink");
+                    
+                })
+            })
+            modalSaveResultClose.addEventListener("click", function(){
+                window.onbeforeunload = false;
+                location.href = "myRecordsEmoStory.html";
+            })
+
+            // 返回
+            btnBack.addEventListener("click", function(){
+                window.onbeforeunload = false;
+                location.href = "myRecords.html";
             })
         </script>
     </body>
