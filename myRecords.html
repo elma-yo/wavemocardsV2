@@ -157,10 +157,10 @@
             <button type="button" class="d-none" id="btnMakeSureToDelete" data-bs-toggle="modal" data-bs-target="#modalDelete"></button>
           </div>
         </main>
-      </div>
+    </div>
 
     <!-- 我的紀錄 - 情緒故事 -->
-    <div class="d-none" id="areaEmoStory">
+    <!-- <div class="d-none" id="areaEmoStory">
       <div class="" id="top"></div>
         <header class="header h-logined mb-12">
             <div class="container py-16 d-flex justify-content-between align-items-center">
@@ -183,9 +183,9 @@
                                 <li>
                                     <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="myRecords.html">我的紀錄</a>
                                 </li>
-                                <!-- <li>
+                                <li>
                                     <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="sharedByOthers.html">他人的分享</a>
-                                </li> -->
+                                </li>
                                 <li>
                                     <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="account.html">我的帳戶</a>
                                 </li>
@@ -206,8 +206,8 @@
                     <li class="ms-16">
                         <a href="myRecords.html" class="px-4 py-8" data-bs-toggle="tooltip" data-bs-placement="bottom" title="觀看我的紀錄與分析">我的紀錄</a>
                     </li>
-                    <!-- <li class="ms-16">
-                        <a href="sharedByOthers.html" class="px-4 py-8" data-bs-toggle="tooltip" data-bs-placement="bottom" title="觀看他人分享的情緒紀錄">他人的分享</a> -->
+                    <li class="ms-16">
+                        <a href="sharedByOthers.html" class="px-4 py-8" data-bs-toggle="tooltip" data-bs-placement="bottom" title="觀看他人分享的情緒紀錄">他人的分享</a>
                     </li>
                     <li class="ms-16">
                         <a href="account.html" class="profile" data-bs-toggle="tooltip" data-bs-placement="bottom" title="管理我的帳戶">
@@ -225,7 +225,6 @@
             </div>
         </header>
         <main>
-          <!-- 標題 -->
           <div class="sticky-top pb-8 bg-white">
             <div class="container pt-16">
                 <div class="mb-20 pb-8 px-12 px-sm-0 border-2 border-bottom border-main-tint02 d-flex justify-content-between align-items-center">
@@ -238,29 +237,16 @@
                         <button class="rounded-pill border-0 fs-5 c-btn-icon" id="btnDelete">
                             <i class="bi bi-trash3"></i>
                         </button>
-                        <!-- <a class="ms-12 btn btn-outline-main c-btn d-flex justify-content-center align-items-center" id="btnBack" href="myRecords.html">返回</a> -->
                         <button class="ms-12 btn btn-outline-main c-btn d-flex justify-content-center align-items-center" id="btnBack">返回</button>
-                        <!-- <a class="ms-16 btn btn-outline-main c-btn" href="#shared">分享清單</a> -->
-                        <!-- <a class="ms-16 btn btn-main c-btn d-flex justify-content-center align-items-center" href="myRecordsEmoStoryModify.html">編輯</a> -->
                         <button class="d-none ms-16 btn btn-outline-main c-btn" id="btnCancel" type="button">取消</button>
                         <button class="ms-16 btn btn-outline-main c-btn" id="btnModify" type="button">編輯</button>
                         <button type="button" class="d-none ms-16 px-24 btn btn-main c-btn border-2 border-main" id="btnSave" data-bs-toggle="modal" data-bs-target="#modalSaveResult">儲存</button>
                     </div>
                 </div>
-                <!-- 分享、刪除 -->
-                <!-- <div class="d-flex justify-content-end align-items-center">
-                    <button class="me-16 rounded-pill border-0 fs-5 c-btn-icon">
-                    <i class="bi bi-trash3"></i>
-                    </button>
-                    <button class="rounded-pill border-0 fs-5 c-btn-icon">
-                    <i class="bi bi-share"></i>
-                    </button>
-                </div> -->
             </div>
           </div>
 
           <div class="container">
-              <!-- 第 1 區 日期與情緒 -->
               <div class="row mb-16 mb-md-8 px-12 px-sm-0">
                 <div class="d-none" id="emo_Id"></div>
                 <div class="col-lg-3">
@@ -286,7 +272,6 @@
                       <div class="px-12 py-8 fs-7 rounded-1 bg-content-gray-200" id="storyEmotions2nd">快樂 5・幸福 4・安心 3</div>
                   </div>
               </div>
-              <!-- 第 2 區 情緒故事｜背景篇 -->
               <div class="row mb-16 px-12 px-sm-0">
                   <div class="px-8 py-4 border border-start-0 border-end-0 border-top-0 border-2 border-main-tint02 text-main fw-bold fs-4">情緒故事｜背景篇</div>
               </div>
@@ -303,7 +288,6 @@
                       </div>
                   </div>
               </div>
-              <!-- 第 3 區 情緒故事｜行動篇 -->
               <div class="row mb-16 px-12 px-sm-0">
                   <div class="col px-8 py-4 border border-start-0 border-end-0 border-top-0 border-2 border-main-tint02 text-main fw-bold fs-4">情緒故事｜行動篇</div>
               </div>
@@ -370,44 +354,9 @@
                       </div>
                   </div>
               </div>
-              <!-- 第 4 區 分享清單 -->
-              <!-- <div class="mb-24 pt-32 pb-8 d-flex justify-content-between align-items-center border-2 border-bottom border-main-tint02" id="shared">
-                  <h2 class="fs-3">我的紀錄｜分享清單</h2> 
-                  <button class="me-16 rounded-pill border-0 fs-5 c-btn-icon">
-                      <i class="bi bi-trash3"></i>
-                  </button>
-              </div>
-              <table class="mb-24 table table-hover c-table-border">
-                  <thead>
-                      <tr class="table-main-tint01 text-center">
-                          <th scope="col"></th>
-                          <th scope="col">日期</th>
-                          <th scope="col">對象</th>
-                          <th scope="col">身份</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr class="text-center">
-                          <th scope="row">
-                          <input type="checkbox" id="">
-                          </th>
-                          <td>2023 / 03 / 14</td>
-                          <td>陳鳳香</td>
-                          <td>教師</td>
-                      </tr>
-                      <tr class="text-center table-main-tint03">
-                          <th scope="row">
-                          <input type="checkbox" id="">
-                          </th>
-                          <td>2023 / 03 / 15</td>
-                          <td>林凱翔</td>
-                          <td>學生</td>
-                      </tr>
-                  </tbody>
-              </table> -->
           </div>
         </main>
-    </div>
+    </div> -->
     
     <!-- 浮動按鈕 -->
     <div class="me-12 mb-12 floatButton">
@@ -569,7 +518,7 @@
       </div>
     </div>
 
-    <!-- 刪除 成功/失敗 Modal -->
+    <!-- 儲存 成功/失敗 Modal -->
     <div class="modal fade" id="modalSaveResult" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content rounded-4">
@@ -600,97 +549,103 @@
     <script src="./js/toolTips.js"></script>
     <script src="./js/pages/logout.js"></script>
     <script>
-      // 切換 一覽表 & 情緒故事
-      const areaRecordsTable = document.querySelector('#areaRecordsTable');
-      const areaEmoStory = document.querySelector('#areaEmoStory');
-      const emo_Id = document.querySelector('#emo_Id');
-      const storyDate = document.querySelector('#storyDate');
-      const storyEmotions1st = document.querySelector('#storyEmotions1st');
-      const storyEmotions2nd = document.querySelector('#storyEmotions2nd');
-      const storyBackground = document.querySelector('#storyBackground');
-      const storyBackgroundTextarea = document.querySelector('#storyBackgroundTextarea');
-      const storyAction = document.querySelector('#storyAction');
-      const storyActionTextarea = document.querySelector('#storyActionTextarea');
-      const storyResult = document.querySelector('#storyResult');
-      const storyResultTextarea = document.querySelector('#storyResultTextarea');
-      const storyFeeling = document.querySelector('#storyFeeling');
-      const storyFeelingTextarea = document.querySelector('#storyFeelingTextarea');
-      const storyIsGoodResult = document.querySelector('#storyIsGoodResult');
-      const storyNext = document.querySelector('#storyNext');
-      const storyNextTextarea = document.querySelector('#storyNextTextarea');
-      // 情緒故事的編輯按鈕切換
-      const btnModify = document.querySelector('#btnModify');
-      const btnCancel = document.querySelector('#btnCancel');
-      const btnSave = document.querySelector('#btnSave');
-      const btnBack = document.querySelector('#btnBack');
-      const btnDelete = document.querySelector('#btnDelete');
-      const background = document.querySelector('#background');
-      const action = document.querySelector('#action');
-      const result = document.querySelector('#result');
-      const feeling = document.querySelector('#feeling');
-      const next = document.querySelector('#next');
-      const formBackground = document.querySelector('#formBackground');
-      const formAction = document.querySelector('#formAction');
-      const formResult = document.querySelector('#formResult');
-      const formFeeling = document.querySelector('#formFeeling');
-      const formNext = document.querySelector('#formNext');
-      // 儲存成功/失敗 modal
-      const modalSaveResultTitle = document.querySelector('#modalSaveResultTitle');
-      const modalSaveResultText = document.querySelector('#modalSaveResultText');
-      const modalSaveResultText2 = document.querySelector('#modalSaveResultText2');
-      const modalSaveResultImg = document.querySelector('#modalSaveResultImg');
-      const modalSaveResultClose = document.querySelector('#modalSaveResultClose');
+      // // 切換 一覽表 & 情緒故事
+      // const areaRecordsTable = document.querySelector('#areaRecordsTable');
+      // const areaEmoStory = document.querySelector('#areaEmoStory');
+      // const emo_Id = document.querySelector('#emo_Id');
+      // const storyDate = document.querySelector('#storyDate');
+      // const storyEmotions1st = document.querySelector('#storyEmotions1st');
+      // const storyEmotions2nd = document.querySelector('#storyEmotions2nd');
+      // const storyBackground = document.querySelector('#storyBackground');
+      // const storyBackgroundTextarea = document.querySelector('#storyBackgroundTextarea');
+      // const storyAction = document.querySelector('#storyAction');
+      // const storyActionTextarea = document.querySelector('#storyActionTextarea');
+      // const storyResult = document.querySelector('#storyResult');
+      // const storyResultTextarea = document.querySelector('#storyResultTextarea');
+      // const storyFeeling = document.querySelector('#storyFeeling');
+      // const storyFeelingTextarea = document.querySelector('#storyFeelingTextarea');
+      // const storyIsGoodResult = document.querySelector('#storyIsGoodResult');
+      // const storyNext = document.querySelector('#storyNext');
+      // const storyNextTextarea = document.querySelector('#storyNextTextarea');
+      // // 情緒故事的編輯按鈕切換
+      // const btnModify = document.querySelector('#btnModify');
+      // const btnCancel = document.querySelector('#btnCancel');
+      // const btnSave = document.querySelector('#btnSave');
+      // const btnBack = document.querySelector('#btnBack');
+      // const btnDelete = document.querySelector('#btnDelete');
+      // const background = document.querySelector('#background');
+      // const action = document.querySelector('#action');
+      // const result = document.querySelector('#result');
+      // const feeling = document.querySelector('#feeling');
+      // const next = document.querySelector('#next');
+      // const formBackground = document.querySelector('#formBackground');
+      // const formAction = document.querySelector('#formAction');
+      // const formResult = document.querySelector('#formResult');
+      // const formFeeling = document.querySelector('#formFeeling');
+      // const formNext = document.querySelector('#formNext');
+      // // 儲存成功/失敗 modal
+      // const modalSaveResultTitle = document.querySelector('#modalSaveResultTitle');
+      // const modalSaveResultText = document.querySelector('#modalSaveResultText');
+      // const modalSaveResultText2 = document.querySelector('#modalSaveResultText2');
+      // const modalSaveResultImg = document.querySelector('#modalSaveResultImg');
+      // const modalSaveResultClose = document.querySelector('#modalSaveResultClose');
 
-      btnModify.addEventListener("click", function(){
-          btnModify.classList.add("d-none");
-          btnBack.classList.add("d-none");
-          btnDelete.classList.add("d-none");
-          btnCancel.classList.remove("d-none");
-          btnSave.classList.remove("d-none");
-          background.classList.add("d-none");
-          action.classList.add("d-none");
-          result.classList.add("d-none");
-          feeling.classList.add("d-none");
-          next.classList.add("d-none");
-          formBackground.classList.remove("d-none");
-          formAction.classList.remove("d-none");
-          formResult.classList.remove("d-none");
-          formFeeling.classList.remove("d-none");
-          formNext.classList.remove("d-none");
-      })
-      let btnCancelDefault = true;
-      btnCancel.addEventListener('click',function(){
-        let confirmResult;
-          if(btnCancelDefault==true){
-            confirmResult = confirm("執行取消的話，您的修改將不會被儲存喔！\r您確定要離開嗎？");
-          }
-          if (confirmResult==undefined || confirmResult==true) {
-              btnModify.classList.remove("d-none");
-              btnBack.classList.remove("d-none");
-              btnDelete.classList.remove("d-none");
-              btnCancel.classList.add("d-none");
-              btnSave.classList.add("d-none");
-              background.classList.remove("d-none");
-              action.classList.remove("d-none");
-              result.classList.remove("d-none");
-              feeling.classList.remove("d-none");
-              next.classList.remove("d-none");
-              formBackground.classList.add("d-none");
-              formAction.classList.add("d-none");
-              formResult.classList.add("d-none");
-              formFeeling.classList.add("d-none");
-              formNext.classList.add("d-none");
-          } else {
-              return
-          }
-      })
+      // btnModify.addEventListener("click", function(){
+      //     btnModify.classList.add("d-none");
+      //     btnBack.classList.add("d-none");
+      //     btnDelete.classList.add("d-none");
+      //     btnCancel.classList.remove("d-none");
+      //     btnSave.classList.remove("d-none");
+      //     background.classList.add("d-none");
+      //     action.classList.add("d-none");
+      //     result.classList.add("d-none");
+      //     feeling.classList.add("d-none");
+      //     next.classList.add("d-none");
+      //     formBackground.classList.remove("d-none");
+      //     formAction.classList.remove("d-none");
+      //     formResult.classList.remove("d-none");
+      //     formFeeling.classList.remove("d-none");
+      //     formNext.classList.remove("d-none");
+      // })
+      // let btnCancelDefault = true;
+      // btnCancel.addEventListener('click',function(){
+      //   let confirmResult;
+      //     if(btnCancelDefault==true){
+      //       // confirmResult = confirm("執行取消的話，您的修改將不會被儲存喔！\r您確定要離開嗎？");
+      //       window.onbeforeunload = function () {
+      //           return "Are you really sure?";
+      //       }
+      //     }
+      //     if (confirmResult==undefined || confirmResult==true) {
+      //         btnModify.classList.remove("d-none");
+      //         btnBack.classList.remove("d-none");
+      //         btnDelete.classList.remove("d-none");
+      //         btnCancel.classList.add("d-none");
+      //         btnSave.classList.add("d-none");
+      //         background.classList.remove("d-none");
+      //         action.classList.remove("d-none");
+      //         result.classList.remove("d-none");
+      //         feeling.classList.remove("d-none");
+      //         next.classList.remove("d-none");
+      //         formBackground.classList.add("d-none");
+      //         formAction.classList.add("d-none");
+      //         formResult.classList.add("d-none");
+      //         formFeeling.classList.add("d-none");
+      //         formNext.classList.add("d-none");
+      //     } else {
+      //         return
+      //     }
+      // })
+
       // 搜尋區域
-      // 處理搜尋內容
       const dateStart = document.querySelector("#dateStart");
       const dateEnd = document.querySelector("#dateEnd");
       const searchText = document.querySelector("#searchText");
       const btnSearch = document.querySelector("#btnSearch");
       const btnSearchResult = document.querySelector('#btnSearchResult');
+      // 撈出localStorage的搜尋紀錄
+      // let getSearchData = localStorage.getItem("searchData");
+      // let searchData = JSON.parse(getSearchData); // 將 string 資料轉為 array 資料
       let dateStartValue;
       let dateEndValue;
       let searchValue;
@@ -700,7 +655,17 @@
       let endYear;
       let endMonth;
       let endDay;
-      let arySearchText=[];
+      let arySearchText = [];
+
+      // if (searchData.dateStartValue!="" || searchData.dateStartValue!=undefined){
+      //   dateStart.value=searchData.dateStartValue;
+      // }
+      // if (searchData.dateEndValue!="" || searchData.dateEndValue!=undefined){
+      //   dateEnd.value=searchData.dateEndValue;
+      // }
+      // if (searchData.searchValue!=""){
+      //   searchText.value= searchData.searchValue;
+      // }
 
       // 1st日期 不可選填今日以後
       let date_now = new Date(); // 取得目前時間
@@ -735,7 +700,11 @@
       const btnBackPage = document.querySelector('#btnBackPage');
       const liNextPage = document.querySelector('#liNextPage');
       const btnNextPage = document.querySelector('#btnNextPage');
+      let getResultData = localStorage.getItem("resultData");
       let resultData = [];  // 紀錄所有符合搜尋條件的紀錄的資料
+      if (JSON.parse(getResultData)!=null) {
+        resultData = JSON.parse(getResultData);
+      }
       let objetRecordData;  // 紀錄該筆紀錄的資料
 
       axios.get("https://api.wavemocards.com/emoinfo/cards/")
@@ -766,15 +735,16 @@
             })
           })
           
-          resultData = [];
           objetRecordData = {};
-
-          // 取出該筆紀錄的資料
-          getRecordData(allData, aryData, startYear, dateEndValue, startMonth, startDay, endYear, endMonth, endDay, arySearchText, resultData, objetRecordData);
-
-          if (resultData==""){
-            btnSearchResult.click();
+          if ( resultData == ""){
+            // 取出該筆紀錄的資料
+            getRecordData(allData, aryData, startYear, dateEndValue, startMonth, startDay, endYear, endMonth, endDay, arySearchText, resultData, objetRecordData);
           }
+
+
+          // if (resultData==""){
+          //   btnSearchResult.click();
+          // }
 
           const dataTotal = resultData.length;
           // 要顯示在畫面上的資料數量，預設每一頁只顯示五筆資料。
@@ -848,10 +818,15 @@
               searchValue = searchText.value.trim();  // 將串前後空白刪除
               arySearchText = searchValue.split(' '); // 將關鍵字區隔，並放入陣列中
               // 將資料印到畫面中
+              resultData = [];
               pagination(resultData, dateEndValue, startYear, startMonth, startDay, endYear, endMonth, endDay, arySearchText, '1', aryData, objetRecordData);
             }
           })
-
+          let stringResultData = JSON.stringify(resultData);
+          localStorage.setItem("resultData", stringResultData);
+          // if(dateStart.value!="" || dateEnd.value!="" || searchText.value.trim()!=""){
+          //   btnSearch.click();
+          // }
           // 響應式 刪除按鈕 位置
           const body = document.querySelector('#body');
           const checkBoxes = document.querySelectorAll('#checkBox');
@@ -941,73 +916,92 @@
             btn.addEventListener("click", function(){
               // 取得該資料的ID
               let recordId = btn.childNodes[1].textContent;
+              localStorage.setItem("recordId", recordId);
+              // 取得搜尋欄填入的項目
+              let searchValue = searchText.value.trim();
+              let arySearchText = [];
+              arySearchText = searchValue.split(' ');
+              let searchData = {};
+              searchData = {
+                dateStartValue: dateStart.value,
+                startYear: parseInt(dateStart.value[0]+dateStart.value[1]+dateStart.value[2]+dateStart.value[3]),
+                startMonth: parseInt(dateStart.value[5]+dateStart.value[6]),
+                startDay: parseInt(dateStart.value[8]+dateStart.value[9]),
+                dateEndValue: dateEnd.value,
+                endYear: parseInt(dateEnd.value[0]+dateEnd.value[1]+dateEnd.value[2]+dateEnd.value[3]),
+                endMonth: parseInt(dateEnd.value[5]+dateEnd.value[6]),
+                endDay: parseInt(dateEnd.value[8]+dateEnd.value[9]),
+                searchValue: searchValue,
+                arySearchText: arySearchText,
+              }
+              // let stringSearchData = JSON.stringify(searchData);
+              // localStorage.setItem("searchData", stringSearchData);
+              location.href = "myRecordsEmoStory.html";
               // 取得該紀錄的詳細資料
-              let objetRecordData = {};
-              displayEmoStory(allData, recordId, emo_Id, storyDate, storyBackground, storyAction, storyActionTextarea, storyResult, storyResultTextarea, storyFeeling, storyFeelingTextarea, storyNext, storyNextTextarea);
+              // let objetRecordData = {};
+              // displayEmoStory(allData, recordId, emo_Id, storyDate, storyBackground, storyAction, storyActionTextarea, storyResult, storyResultTextarea, storyFeeling, storyFeelingTextarea, storyNext, storyNextTextarea);
               
               // 監聽 btnBack 情緒故事頁面 點選 返回
-              btnBack.addEventListener("click", function(){
-                areaEmoStory.classList.add("d-none");
-                areaRecordsTable.classList.remove("d-none");
-                pagination(resultData, dateEndValue, startYear, startMonth, startDay, endYear, endMonth, endDay, arySearchText, "1", aryData, objetRecordData);
-              })
+              // btnBack.addEventListener("click", function(){
+              //   areaEmoStory.classList.add("d-none");
+              //   areaRecordsTable.classList.remove("d-none");
+              //   pagination(resultData, dateEndValue, startYear, startMonth, startDay, endYear, endMonth, endDay, arySearchText, "1", aryData, objetRecordData);
+              // })
 
               // 監聽 btnSave 儲存 -> post 資料 -> 回應儲存結果
-              btnSave.addEventListener("click", function(){
-                let token = localStorage.getItem("token");
-                console.log(token)
-                // 取得 textarea 資料
-                let postData = {
-                  "emo_ID": parseInt(emo_Id.textContent),
-                  "story": storyBackgroundTextarea.value,
-                  "actions": storyActionTextarea.value,
-                  "results": storyResultTextarea.value,
-                  "feelings": storyFeelingTextarea.value,
-                  "reaction": storyNextTextarea.value,
-                };
-                axios.put("https://api.wavemocards.com/emotions/update",
-                postData, { headers: {"Authorization": `Bearer ${token}`} })
-                .then (function(response){
-                  console.log(response.data.message)
-                  if(response.data.message=="No data is changed." || response.data.message=="The emotion was updated successfully.") {
-                    modalSaveResultTitle.textContent = "儲存成功";
-                    modalSaveResultTitle.classList.add("text-main");
-                    modalSaveResultTitle.classList.remove("text-pink");
-                    modalSaveResultText.classList.add("d-none");
-                    modalSaveResultText2.classList.add("d-none");
-                    modalSaveResultImg.src = "./images/addCardSuccess.svg";
-                    modalSaveResultClose.classList.add("btn-main");
-                    modalSaveResultClose.classList.remove("btn-pink");
-                  } else {
-                    modalSaveResultTitle.textContent = "儲存失敗";
-                    modalSaveResultTitle.classList.add("text-pink");
-                    modalSaveResultTitle.classList.remove("text-main");
-                    modalSaveResultText.classList.remove("d-none");
-                    modalSaveResultText2.classList.remove("d-none");
-                    modalSaveResultImg.src = "./images/addCardFail.svg";
-                    modalSaveResultClose.classList.remove("btn-main");
-                    modalSaveResultClose.classList.add("btn-pink");
-                  }
-                })
-                .catch(function(error){
-                    console.log(error);
-                    modalSaveResultTitle.textContent = "儲存失敗";
-                    modalSaveResultTitle.classList.add("text-pink");
-                    modalSaveResultTitle.classList.remove("text-main");
-                    modalSaveResultText.classList.remove("d-none");
-                    modalSaveResultText2.classList.remove("d-none");
-                    modalSaveResultImg.src = "./images/addCardFail.svg";
-                    modalSaveResultClose.classList.remove("btn-main");
-                    modalSaveResultClose.classList.add("btn-pink");
+              // btnSave.addEventListener("click", function(){
+              //   let token = localStorage.getItem("token");
+              //   // 取得 textarea 資料
+              //   let postData = {
+              //     "emo_ID": parseInt(emo_Id.textContent),
+              //     "story": storyBackgroundTextarea.value,
+              //     "actions": storyActionTextarea.value,
+              //     "results": storyResultTextarea.value,
+              //     "feelings": storyFeelingTextarea.value,
+              //     "reaction": storyNextTextarea.value,
+              //   };
+              //   axios.put("https://api.wavemocards.com/emotions/update",
+              //   postData, { headers: {"Authorization": `Bearer ${token}`} })
+              //   .then (function(response){
+              //     if(response.data.message=="No data is changed." || response.data.message=="The emotion was updated successfully.") {
+              //       modalSaveResultTitle.textContent = "儲存成功";
+              //       modalSaveResultTitle.classList.add("text-main");
+              //       modalSaveResultTitle.classList.remove("text-pink");
+              //       modalSaveResultText.classList.add("d-none");
+              //       modalSaveResultText2.classList.add("d-none");
+              //       modalSaveResultImg.src = "./images/addCardSuccess.svg";
+              //       modalSaveResultClose.classList.add("btn-main");
+              //       modalSaveResultClose.classList.remove("btn-pink");
+              //     } else {
+              //       modalSaveResultTitle.textContent = "儲存失敗";
+              //       modalSaveResultTitle.classList.add("text-pink");
+              //       modalSaveResultTitle.classList.remove("text-main");
+              //       modalSaveResultText.classList.remove("d-none");
+              //       modalSaveResultText2.classList.remove("d-none");
+              //       modalSaveResultImg.src = "./images/addCardFail.svg";
+              //       modalSaveResultClose.classList.remove("btn-main");
+              //       modalSaveResultClose.classList.add("btn-pink");
+              //     }
+              //   })
+              //   .catch(function(error){
+              //       console.log(error);
+              //       modalSaveResultTitle.textContent = "儲存失敗";
+              //       modalSaveResultTitle.classList.add("text-pink");
+              //       modalSaveResultTitle.classList.remove("text-main");
+              //       modalSaveResultText.classList.remove("d-none");
+              //       modalSaveResultText2.classList.remove("d-none");
+              //       modalSaveResultImg.src = "./images/addCardFail.svg";
+              //       modalSaveResultClose.classList.remove("btn-main");
+              //       modalSaveResultClose.classList.add("btn-pink");
                     
-                })
-              })
-              modalSaveResultClose.addEventListener("click", function(){
-                displayEmoStory(allData, recordId, emo_Id, storyDate, storyBackground, storyAction, storyActionTextarea, storyResult, storyResultTextarea, storyFeeling, storyFeelingTextarea, storyNext, storyNextTextarea);
-                // 介面恢復成非編輯狀態（點擊取消）
-                btnCancelDefault=false;
-                btnCancel.click();
-              })
+              //   })
+              // })
+              // modalSaveResultClose.addEventListener("click", function(){
+              //   displayEmoStory(allData, recordId, emo_Id, storyDate, storyBackground, storyAction, storyActionTextarea, storyResult, storyResultTextarea, storyFeeling, storyFeelingTextarea, storyNext, storyNextTextarea);
+              //   // 介面恢復成非編輯狀態（點擊取消）
+              //   btnCancelDefault=false;
+              //   btnCancel.click();
+              // })
             })
           })
         })
@@ -1015,6 +1009,84 @@
           console.log(error);
         })
       }
+      // 取得所有符合搜尋條件的資料
+      function getRecordData(allData, aryData, startYear, dateEndValue, startMonth, startDay, endYear, endMonth, endDay, arySearchText, resultData, objetRecordData){
+        // allData -> 撈出的所有紀錄的資料
+        objetRecordData = {};
+        allData.forEach(function(data, i){
+          objetRecordData.cardId_1 = data.emotion_card_1;
+          objetRecordData.cardId_2 = data.emotion_card_2;
+          objetRecordData.cardId_3 = data.emotion_card_3;
+          objetRecordData.card_1_Name = "";
+          objetRecordData.card_2_Name = "";
+          objetRecordData.card_3_Name = "";
+          aryData.forEach(function(data, i){
+            let dataName = data.name;
+            let dataId = data.ID;
+            if(dataId == objetRecordData.cardId_1){
+              objetRecordData.card_1_Name = dataName;
+            }
+            if(dataId == objetRecordData.cardId_2){
+              objetRecordData.card_2_Name = dataName;
+            }
+            if(dataId == objetRecordData.cardId_3){
+              objetRecordData.card_3_Name = dataName;
+            }
+          })
+          objetRecordData.card_1_strength1st = data.before_emo_level_1;
+          objetRecordData.card_2_strength1st = data.before_emo_level_2;
+          objetRecordData.card_3_strength1st = data.before_emo_level_3;
+          objetRecordData.card_1_strength2nd = data.after_emo_level_1;
+          objetRecordData.card_2_strength2nd = data.after_emo_level_2;
+          objetRecordData.card_3_strength2nd = data.after_emo_level_3;
+          objetRecordData.background = data.story;
+          objetRecordData.action = data.actions;
+          objetRecordData.result = data.results;
+          objetRecordData.feeling = data.feelings;
+          if(data.expect==1){
+            objetRecordData.isItYourExcept = "是";
+          } else if (data.expect==2) {
+            objetRecordData.isItYourExcept = "否";
+          } else if (data.expect==3) {
+            objetRecordData.isItYourExcept = "不清楚";
+          } else {
+            objetRecordData.isItYourExcept = "";
+          }
+          objetRecordData.nextAction = data.reaction;
+          let time = data.create_time;
+          let year = time[0]+time[1]+time[2]+time[3];
+          let month = time[5]+time[6];
+          let day = time[8]+time[9];
+          // 將符合日期限制的資料裝進 resultData
+          if(startYear!==undefined){
+            // 確定有輸入時間的狀態
+            if (dateEndValue=="" && year>=startYear && month>=startMonth && day>=startDay) {
+              // 確認有關鍵字
+              if(arySearchText!=""){
+                // 核對關鍵字
+                matchText(arySearchText, objetRecordData, resultData, data)
+              } else {
+                resultData.push(data);
+              }
+            } else if (year>=startYear && month>=startMonth && day>=startDay && year<=endYear && month<=endMonth && day<=endDay){
+              // 確認有關鍵字
+              if(arySearchText!=""){
+                // 核對關鍵字
+                matchText(arySearchText, objetRecordData, resultData, data)
+              } else {
+                resultData.push(data);
+              }
+            }
+          } else if(arySearchText!="") {
+            // 沒有輸入時間，但有輸入關鍵字
+            matchText(arySearchText, objetRecordData, resultData, data);
+          } else {
+            // 沒有輸入時間的狀態，就將全部資料放進 resultData
+            resultData.push(data);
+          }
+        })
+      }
+    
       function displayData(recordPageData, aryData) {
         let strTable="";
         recordPageData.forEach(function(data, i){
@@ -1034,7 +1106,16 @@
           let action = data.actions;
           let result = data.results;
           let feeling = data.feelings;
-          let isItYourExcept = data.expect;
+          let isItYourExcept;
+          if(data.expect==1){
+            isItYourExcept = "是";
+          } else if (data.expect==2) {
+            isItYourExcept = "否";
+          } else if (data.expect==3) {
+            isItYourExcept = "不清楚";
+          } else {
+            isItYourExcept = "";
+          }
           let nextAction = data.reaction;
           
           let card_1_Name;
@@ -1271,172 +1352,98 @@
         })
       }
     
-      // 取得所有符合搜尋條件的資料
-      function getRecordData(allData, aryData, startYear, dateEndValue, startMonth, startDay, endYear, endMonth, endDay, arySearchText, resultData, objetRecordData){
-        // allData -> 撈出的所有紀錄的資料
-        allData.forEach(function(data, i){
-          objetRecordData.cardId_1 = data.emotion_card_1;
-          objetRecordData.cardId_2 = data.emotion_card_2;
-          objetRecordData.cardId_3 = data.emotion_card_3;
-          objetRecordData.card_1_Name = "";
-          objetRecordData.card_2_Name = "";
-          objetRecordData.card_3_Name = "";
-          aryData.forEach(function(data, i){
-            let dataName = data.name;
-            let dataId = data.ID;
-            if(dataId == objetRecordData.cardId_1){
-              objetRecordData.card_1_Name = dataName;
-            }
-            if(dataId == objetRecordData.cardId_2){
-              objetRecordData.card_2_Name = dataName;
-            }
-            if(dataId == objetRecordData.cardId_3){
-              objetRecordData.card_3_Name = dataName;
-            }
-          })
-          objetRecordData.card_1_strength1st = data.before_emo_level_1;
-          objetRecordData.card_2_strength1st = data.before_emo_level_2;
-          objetRecordData.card_3_strength1st = data.before_emo_level_3;
-          objetRecordData.card_1_strength2nd = data.after_emo_level_1;
-          objetRecordData.card_2_strength2nd = data.after_emo_level_2;
-          objetRecordData.card_3_strength2nd = data.after_emo_level_3;
-          objetRecordData.background = data.story;
-          objetRecordData.action = data.actions;
-          objetRecordData.result = data.results;
-          objetRecordData.feeling = data.feelings;
-          if(data.expect==1){
-            objetRecordData.isItYourExcept = "是";
-          } else if (data.expect==2) {
-            objetRecordData.isItYourExcept = "否";
-          } else if (data.expect==3) {
-            objetRecordData.isItYourExcept = "不清楚";
-          }
-          objetRecordData.nextAction = data.reaction;
-          
-          let time = data.create_time;
-          let year = time[0]+time[1]+time[2]+time[3];
-          let month = time[5]+time[6];
-          let day = time[8]+time[9];
-          // 將符合日期限制的資料裝進 resultData
-          if(startYear!==undefined){
-            // 確定有輸入時間的狀態
-            if (dateEndValue=="" && year>=startYear && month>=startMonth && day>=startDay) {
-              // 確認有關鍵字
-              if(arySearchText!=""){
-                // 核對關鍵字
-                matchText(arySearchText, objetRecordData, resultData, data)
-              } else {
-                resultData.push(data);
-              }
-            } else if (year>=startYear && month>=startMonth && day>=startDay && year<=endYear && month<=endMonth && day<=endDay){
-              // 確認有關鍵字
-              if(arySearchText!=""){
-                // 核對關鍵字
-                matchText(arySearchText, objetRecordData, resultData, data)
-              } else {
-                resultData.push(data);
-              }
-            }
-          } else if(arySearchText!="") {
-            // 沒有輸入時間，但有輸入關鍵字
-            matchText(arySearchText, objetRecordData, resultData, data);
-          } else {
-            // 沒有輸入時間的狀態，就將全部資料放進 resultData
-            resultData.push(data);
-          }
-        })
-      }
-    
-      // 顯示 情緒故事 內容
-      function displayEmoStory(allData, recordId, emo_Id, storyDate, storyBackground, storyAction, storyActionTextarea, storyResult, storyResultTextarea, storyFeeling, storyFeelingTextarea, storyNext, storyNextTextarea, objetRecordData){
-        objetRecordData={}
-        // 重新抓一次 我的紀錄 的資料，因為編輯儲存後需要更新資料
-        axios.get(`https://api.wavemocards.com/emotions?user_name=${account}`,
-        { headers: {"Authorization": `Bearer ${token}`} })
-        .then (function(response){
-          let allData = response.data.message;
-          allData.forEach(function(data, i){
-            if(data.emo_ID==recordId){
-              objetRecordData.emo_Id = data.emo_ID;
-              let time = data.create_time;
-              objetRecordData.date = time[0]+time[1]+time[2]+time[3]+time[4]+time[5]+time[6]+time[7]+time[8]+time[9];
-              objetRecordData.cardId_1 = data.emotion_card_1;
-              objetRecordData.cardId_2 = data.emotion_card_2;
-              objetRecordData.cardId_3 = data.emotion_card_3;
-              objetRecordData.card_1_Name = "";
-              objetRecordData.card_2_Name = "";
-              objetRecordData.card_3_Name = "";
-              aryData.forEach(function(data, i){
-                if(data.ID == objetRecordData.cardId_1){
-                  objetRecordData.card_1_Name = data.name;
-                }
-                if(data.ID == objetRecordData.cardId_2){
-                  objetRecordData.card_2_Name = data.name;
-                }
-                if(data.ID == objetRecordData.cardId_3){
-                  objetRecordData.card_3_Name = data.name;
-                }
-              })
-              objetRecordData.card_1_strength1st = data.before_emo_level_1;
-              objetRecordData.card_2_strength1st = data.before_emo_level_2;
-              objetRecordData.card_3_strength1st = data.before_emo_level_3;
-              objetRecordData.card_1_strength2nd = data.after_emo_level_1;
-              objetRecordData.card_2_strength2nd = data.after_emo_level_2;
-              objetRecordData.card_3_strength2nd = data.after_emo_level_3;
-              objetRecordData.background = data.story;
-              objetRecordData.action = data.actions;
-              objetRecordData.result = data.results;
-              objetRecordData.feeling = data.feelings;
-              if(data.expect==1){
-                objetRecordData.isItYourExcept = "是";
-              } else if (data.expect==2) {
-                objetRecordData.isItYourExcept = "否";
-              } else if (data.expect==3) {
-                objetRecordData.isItYourExcept = "不清楚";
-              }
-              objetRecordData.nextAction = data.reaction;
-            }
-          })
-          // 將資料寫入html
-          emo_Id.textContent = objetRecordData.emo_Id;
-          storyDate.textContent = objetRecordData.date;
-          if (objetRecordData.card_2_Name=="" && objetRecordData.card_3_Name=="") {
-            storyEmotions1st.textContent = objetRecordData.card_1_Name+" "+objetRecordData.card_1_strength1st;
-          } else if (objetRecordData.card_2_Name!="" && objetRecordData.card_3_Name=="") {
-            storyEmotions1st.textContent = objetRecordData.card_1_Name+" "+objetRecordData.card_1_strength1st+"・"+objetRecordData.card_2_Name+" "+objetRecordData.card_2_strength1st;
-          } else {
-            storyEmotions1st.textContent = objetRecordData.card_1_Name+" "+objetRecordData.card_1_strength1st+"・"+objetRecordData.card_2_Name+" "+objetRecordData.card_2_strength1st+"・"+objetRecordData.card_3_Name+" "+objetRecordData.card_3_strength1st;
-          }
-          if (objetRecordData.card_1_strength2nd!=null && objetRecordData.card_2_strength2nd!=null && objetRecordData.card_3_strength2nd!=null) {
-            storyEmotions2nd.textContent = objetRecordData.card_1_Name+" "+objetRecordData.card_1_strength2nd+"・"+objetRecordData.card_2_Name+" "+objetRecordData.card_2_strength2nd+"・"+objetRecordData.card_3_Name+" "+objetRecordData.card_3_strength2nd;
-          } else if(objetRecordData.card_1_strength2nd!=null && objetRecordData.card_2_strength2nd!=null && objetRecordData.card_3_strength2nd==null){
-            storyEmotions2nd.textContent = objetRecordData.card_1_Name+" "+objetRecordData.card_1_strength2nd+"・"+objetRecordData.card_2_Name+" "+objetRecordData.card_2_strength2nd;
-          } else if (objetRecordData.card_1_strength2nd!=null && objetRecordData.card_2_strength2nd==null && objetRecordData.card_3_strength2nd==null) {
-            storyEmotions2nd.textContent = objetRecordData.card_1_Name+" "+objetRecordData.card_1_strength2nd;
-          } else if (objetRecordData.card_1_strength2nd==null && objetRecordData.card_2_strength2nd!=null && objetRecordData.card_3_strength2nd!=null) {
-            storyEmotions2nd.textContent = objetRecordData.card_2_Name+" "+objetRecordData.card_2_strength2nd+"・"+objetRecordData.card_3_Name+" "+objetRecordData.card_3_strength2nd;
-          } else if (objetRecordData.card_1_strength2nd==null && objetRecordData.card_2_strength2nd!=null && objetRecordData.card_3_strength2nd==null) {
-            storyEmotions2nd.textContent = objetRecordData.card_2_Name+" "+objetRecordData.card_2_strength2nd;
-          } else if (objetRecordData.card_1_strength2nd!=null && objetRecordData.card_2_strength2nd==null && objetRecordData.card_3_strength2nd!=null) {
-            storyEmotions2nd.textContent = objetRecordData.card_1_Name+" "+objetRecordData.card_1_strength2nd+"・"+objetRecordData.card_3_Name+" "+objetRecordData.card_3_strength2nd;
-          } else if (objetRecordData.card_1_strength2nd==null && objetRecordData.card_2_strength2nd==null && objetRecordData.card_3_strength2nd!=null) {
-            storyEmotions2nd.textContent = objetRecordData.card_3_Name+" "+objetRecordData.card_3_strength2nd;
-          }
-          storyBackground.textContent = objetRecordData.background;
-          storyBackgroundTextarea.textContent = objetRecordData.background;
-          storyAction.textContent = objetRecordData.action;
-          storyActionTextarea.textContent = objetRecordData.action;
-          storyResult.textContent = objetRecordData.result;
-          storyResultTextarea.textContent = objetRecordData.result;
-          storyFeeling.textContent = objetRecordData.feeling;
-          storyFeelingTextarea.textContent = objetRecordData.feeling;
-          storyIsGoodResult.textContent = objetRecordData.isItYourExcept;
-          storyNext.textContent = objetRecordData.nextAction;
-          storyNextTextarea.textContent = objetRecordData.nextAction;
-          areaEmoStory.classList.remove("d-none");
-          areaRecordsTable.classList.add("d-none");
-        })
-      }
+      
+      // // 顯示 情緒故事 內容
+      // function displayEmoStory(allData, recordId, emo_Id, storyDate, storyBackground, storyAction, storyActionTextarea, storyResult, storyResultTextarea, storyFeeling, storyFeelingTextarea, storyNext, storyNextTextarea, objetRecordData){
+      //   objetRecordData={}
+      //   // 重新抓一次 我的紀錄 的資料，因為編輯儲存後需要更新資料
+      //   axios.get(`https://api.wavemocards.com/emotions?user_name=${account}`,
+      //   { headers: {"Authorization": `Bearer ${token}`} })
+      //   .then (function(response){
+      //     let allData = response.data.message;
+      //     allData.forEach(function(data, i){
+      //       if(data.emo_ID==recordId){
+      //         objetRecordData.emo_Id = data.emo_ID;
+      //         let time = data.create_time;
+      //         objetRecordData.date = time[0]+time[1]+time[2]+time[3]+time[4]+time[5]+time[6]+time[7]+time[8]+time[9];
+      //         objetRecordData.cardId_1 = data.emotion_card_1;
+      //         objetRecordData.cardId_2 = data.emotion_card_2;
+      //         objetRecordData.cardId_3 = data.emotion_card_3;
+      //         objetRecordData.card_1_Name = "";
+      //         objetRecordData.card_2_Name = "";
+      //         objetRecordData.card_3_Name = "";
+      //         aryData.forEach(function(data, i){
+      //           if(data.ID == objetRecordData.cardId_1){
+      //             objetRecordData.card_1_Name = data.name;
+      //           }
+      //           if(data.ID == objetRecordData.cardId_2){
+      //             objetRecordData.card_2_Name = data.name;
+      //           }
+      //           if(data.ID == objetRecordData.cardId_3){
+      //             objetRecordData.card_3_Name = data.name;
+      //           }
+      //         })
+      //         objetRecordData.card_1_strength1st = data.before_emo_level_1;
+      //         objetRecordData.card_2_strength1st = data.before_emo_level_2;
+      //         objetRecordData.card_3_strength1st = data.before_emo_level_3;
+      //         objetRecordData.card_1_strength2nd = data.after_emo_level_1;
+      //         objetRecordData.card_2_strength2nd = data.after_emo_level_2;
+      //         objetRecordData.card_3_strength2nd = data.after_emo_level_3;
+      //         objetRecordData.background = data.story;
+      //         objetRecordData.action = data.actions;
+      //         objetRecordData.result = data.results;
+      //         objetRecordData.feeling = data.feelings;
+      //         if(data.expect==1){
+      //           objetRecordData.isItYourExcept = "是";
+      //         } else if (data.expect==2) {
+      //           objetRecordData.isItYourExcept = "否";
+      //         } else if (data.expect==3) {
+      //           objetRecordData.isItYourExcept = "不清楚";
+      //         }
+      //         objetRecordData.nextAction = data.reaction;
+      //       }
+      //     })
+      //     // 將資料寫入html
+      //     emo_Id.textContent = objetRecordData.emo_Id;
+      //     storyDate.textContent = objetRecordData.date;
+      //     if (objetRecordData.card_2_Name=="" && objetRecordData.card_3_Name=="") {
+      //       storyEmotions1st.textContent = objetRecordData.card_1_Name+" "+objetRecordData.card_1_strength1st;
+      //     } else if (objetRecordData.card_2_Name!="" && objetRecordData.card_3_Name=="") {
+      //       storyEmotions1st.textContent = objetRecordData.card_1_Name+" "+objetRecordData.card_1_strength1st+"・"+objetRecordData.card_2_Name+" "+objetRecordData.card_2_strength1st;
+      //     } else {
+      //       storyEmotions1st.textContent = objetRecordData.card_1_Name+" "+objetRecordData.card_1_strength1st+"・"+objetRecordData.card_2_Name+" "+objetRecordData.card_2_strength1st+"・"+objetRecordData.card_3_Name+" "+objetRecordData.card_3_strength1st;
+      //     }
+      //     if (objetRecordData.card_1_strength2nd!=null && objetRecordData.card_2_strength2nd!=null && objetRecordData.card_3_strength2nd!=null) {
+      //       storyEmotions2nd.textContent = objetRecordData.card_1_Name+" "+objetRecordData.card_1_strength2nd+"・"+objetRecordData.card_2_Name+" "+objetRecordData.card_2_strength2nd+"・"+objetRecordData.card_3_Name+" "+objetRecordData.card_3_strength2nd;
+      //     } else if(objetRecordData.card_1_strength2nd!=null && objetRecordData.card_2_strength2nd!=null && objetRecordData.card_3_strength2nd==null){
+      //       storyEmotions2nd.textContent = objetRecordData.card_1_Name+" "+objetRecordData.card_1_strength2nd+"・"+objetRecordData.card_2_Name+" "+objetRecordData.card_2_strength2nd;
+      //     } else if (objetRecordData.card_1_strength2nd!=null && objetRecordData.card_2_strength2nd==null && objetRecordData.card_3_strength2nd==null) {
+      //       storyEmotions2nd.textContent = objetRecordData.card_1_Name+" "+objetRecordData.card_1_strength2nd;
+      //     } else if (objetRecordData.card_1_strength2nd==null && objetRecordData.card_2_strength2nd!=null && objetRecordData.card_3_strength2nd!=null) {
+      //       storyEmotions2nd.textContent = objetRecordData.card_2_Name+" "+objetRecordData.card_2_strength2nd+"・"+objetRecordData.card_3_Name+" "+objetRecordData.card_3_strength2nd;
+      //     } else if (objetRecordData.card_1_strength2nd==null && objetRecordData.card_2_strength2nd!=null && objetRecordData.card_3_strength2nd==null) {
+      //       storyEmotions2nd.textContent = objetRecordData.card_2_Name+" "+objetRecordData.card_2_strength2nd;
+      //     } else if (objetRecordData.card_1_strength2nd!=null && objetRecordData.card_2_strength2nd==null && objetRecordData.card_3_strength2nd!=null) {
+      //       storyEmotions2nd.textContent = objetRecordData.card_1_Name+" "+objetRecordData.card_1_strength2nd+"・"+objetRecordData.card_3_Name+" "+objetRecordData.card_3_strength2nd;
+      //     } else if (objetRecordData.card_1_strength2nd==null && objetRecordData.card_2_strength2nd==null && objetRecordData.card_3_strength2nd!=null) {
+      //       storyEmotions2nd.textContent = objetRecordData.card_3_Name+" "+objetRecordData.card_3_strength2nd;
+      //     }
+      //     storyBackground.textContent = objetRecordData.background;
+      //     storyBackgroundTextarea.textContent = objetRecordData.background;
+      //     storyAction.textContent = objetRecordData.action;
+      //     storyActionTextarea.textContent = objetRecordData.action;
+      //     storyResult.textContent = objetRecordData.result;
+      //     storyResultTextarea.textContent = objetRecordData.result;
+      //     storyFeeling.textContent = objetRecordData.feeling;
+      //     storyFeelingTextarea.textContent = objetRecordData.feeling;
+      //     storyIsGoodResult.textContent = objetRecordData.isItYourExcept;
+      //     storyNext.textContent = objetRecordData.nextAction;
+      //     storyNextTextarea.textContent = objetRecordData.nextAction;
+      //     areaEmoStory.classList.remove("d-none");
+      //     areaRecordsTable.classList.add("d-none");
+      //   })
+      // }
+
     </script>
   </body>
 </html>
