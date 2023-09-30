@@ -493,7 +493,12 @@
                             modalResultClose.classList.add("btn-outline-main-tint01", "c-btn-outline-main-tint01");
                             btnAdd.setAttribute("data-bs-toggle", "modal");
                             btnAdd.setAttribute("data-bs-target", "#modalResult");
-                            btnAdd.classList.add("d-none");
+                            btnAdds.forEach(function(btn,i){
+                                if(btn.textContent==id){
+                                    btn.classList.add("d-none")
+                                    console.log(btn.textContent)
+                                }
+                            })
                             aryData.forEach(function(data, i){
                                 let dataId = data.ID;
                                 if(dataId==id){
