@@ -397,6 +397,11 @@
                                 ]
                             },
                             options: {
+                                animation: {
+                                    onComplete: () => {
+                                       doughnutChart.options.animation = false
+                                    }
+                                },
                                 plugins: {
                                     legend: {
                                         display: false
@@ -412,7 +417,7 @@
                                                 return `${label}: ${formattedValue} %`
                                             }
                                         },
-                                        animation: false
+                                        // animation: false
                                     }
                                 }
                             }
