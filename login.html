@@ -146,7 +146,7 @@
                 </div>
             </div>
             <div class="modal-footer d-flex justify-content-center">
-                <a href="index.html" id="modalResultLink" class="btn btn-main px-16 py-8 link-white fs-6 fw-bold">前往首頁</a>
+                <a href="index.html" id="modalResultLink" class="btn btn-main c-btn px-16 py-8 link-white fs-6 fw-bold">前往首頁</a>
                 <button type="button" id="modalResultClose" class="d-none btn btn-pink c-btn px-36 py-8 link-white fs-6 fw-bold" data-bs-dismiss="modal">重新登入</button>
             </div>
         </div>
@@ -187,14 +187,30 @@
                     .then(function(response){
                         if(response.data.access_token!=undefined) {
                             // 登入成功
+                            let objStartTime = new Date();
+                            let startTime = {
+                                year: objStartTime.getFullYear(),
+                                month: objStartTime.getMonth()+ 1,
+                                day: objStartTime.getDate(),
+                                hour: objStartTime.getHours(),
+                                min: objStartTime.getMinutes(),
+                                sec: objStartTime.getSeconds()
+                            }
+                            let stringStartTime = JSON.stringify(startTime);
+                            localStorage.setItem("startTime", stringStartTime);
                             token = response.data.access_token;
                             localStorage.setItem("token", token);
                             localStorage.setItem("account", account.value);
                             // document.cookie = `token=${token}`;
                             // document.cookie = `token=${token}; max-age=10; path=/`;
                             window.onbeforeunload = false;
+                            modalResultText.textContent = "登入成功";
                             modalResultText.classList.add("text-main");
+                            modalResultText2.classList.add("d-none");
+                            modalResultText3.classList.add("d-none");
                             modalResultImg.src="./images/emoCards/5.svg";
+                            modalResultLink.classList.remove("d-none");
+                            modalResultClose.classList.add('d-none');
                             btnSubmit.setAttribute("data-bs-toggle", "modal");
                             btnSubmit.setAttribute("data-bs-target", "#modalResult");
                             btnSubmit.click();

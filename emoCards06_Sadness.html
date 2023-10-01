@@ -230,6 +230,26 @@
                 </div>
             </div>
         </div>
+
+        <!-- 使用期限到期，請重新登入 Modal -->
+        <button type="button" id="btnTimeOut" class="d-none" data-bs-toggle="modal" data-bs-target="#modalTimeOut"></button>
+        <div class="modal fade" id="modalTimeOut" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content rounded-4">
+                    <div class="modal-body d-flex flex-column align-items-center px-48 pt-24 pb-16">
+                        <p id="modalTimeOutTitle" class="mb-12 fs-3 fw-bold text-pink">登入期限到期</p>
+                        <p id="modalTimeOutText" class="mb-12 mt-12 fs-7 text-gray-700">不好意思，您的登入期限已到期，若想繼續使用，請重新登入。</p>
+                        <div style="width: 45%;">
+                            <img class="w-100 pt-24 pb-2" src="./images/addCardFail.svg" alt="img" id="modalTimeOutImg">
+                        </div>
+                        <span class="text-gray-400 fs-11">Illustration by <a class="link-gray-400" href="https://blush.design/artists/RyUTVuP8G4QeAAEEQgug/pablo-stanley">Pablo Stanley</a> from <a class="link-gray-400" href="https://blush.design/">blush design</a></span>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <a href="login.html" id="modalTimeOutLink" class="btn btn-pink c-btn px-16 py-8 link-white fs-6 fw-bold">我知道了</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     
         <!--  Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
@@ -250,6 +270,18 @@
             } else {
                 headerLoggedIn.classList.add("d-none");
                 headerNotLogin.classList.remove("d-none");
+                // token 期限設定
+                const btnTimeOut = document.querySelector("#btnTimeOut");
+                let objStartTime = JSON.parse(localStorage.getItem("startTime"));
+                let startTime = new Date(`${objStartTime.year}-${objStartTime.month}-${objStartTime.day}`);
+                startTime.setHours(objStartTime.hour, objStartTime.min, objStartTime.sec);
+                let nowTime = new Date();
+                let costTime = (nowTime-startTime) / 1000; // 秒
+                if(costTime>=21600){
+                    // 大於 21600 秒（6小時），token到期，清空localStorage，出現使用期限到期請重新登入
+                    localStorage.clear();
+                    btnTimeOut.click();
+                }
             }
 
             const cards = document.querySelector('#sadnessCards');
