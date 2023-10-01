@@ -98,27 +98,7 @@
                     </a>
                     <div class="or mb-32">或</div> -->
 
-                    <!-- process bar -->
-                    <div class="d-flex mb-24 justify-content-center">
-                        <div class="progressBar mb-8 px-12" style="width: 90%;">
-                            <div class="position-relative m-4">
-                                <div class="progress bg-gray-300" style="height: 2px;">
-                                    <div class="progress-bar bg-main-tint01" role="progressbar" style="width: 0%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" id="progressBar"></div>
-                                </div>
-                                <div class="p-num position-absolute top-0 start-0 translate-middle btn btn-sm btn-outline-main-tint01 border-2 rounded-pill d-flex justify-content-center align-items-center" id="progressBar_1">
-                                    <span class="d-block">1</span>
-                                </div>
-                                <div class="p-num position-absolute top-0 start-50 translate-middle btn btn-sm btn-outline-gray-450 rounded-pill d-flex justify-content-center align-items-center" id="progressBar_2">
-                                    <span class="d-block">2</span>
-                                </div>
-                                <div class="p-num position-absolute top-0 start-100 translate-middle btn btn-sm btn-outline-gray-450 rounded-pill d-flex justify-content-center align-items-center" id="progressBar_3">
-                                    <span class="d-block">3</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mb-16" id="areaEmail">
+                    <div class="mb-16">
                         <!-- email -->
                         <label for="email" class="form-label  d-flex justify-content-between">
                             E-mail
@@ -128,28 +108,25 @@
                             <input type="email" class="form-control rounded-pill mb-8 mb-sm-0 px-20" id="email" placeholder="wavemocards@mail.com" required>
                             <div class="d-flex justify-content-between">
                                 <div class="d-sm-none mt-4 ms-12 fs-9" id="emailCmt"></div>
-                                <!-- <button type="button" class="ms-8 px-12 btn btn-outline-main c-btn c-btn-outline-main fs-8 text-nowrap" id="btnVerify">驗證</button> -->
+                                <button type="button" class="ms-8 px-12 btn btn-outline-main c-btn c-btn-outline-main fs-8 text-nowrap" id="btnVerify">驗證</button>
                             </div>
                         </div>
                         <!-- email驗證結果 -->
                         <div class="d-none d-sm-block mt-4 ms-24 fs-9" id="emailCmt"></div>
                     </div>
-                    <div class="mb-32" id="areaAccount">
+                    <div class="mb-20">
                         <label for="account" class="form-label  d-flex justify-content-between">
                             帳號
                             <span class="text-pink-tint02 fs-9">*必填</span>
                         </label>
                         <div class="d-flex flex-column flex-sm-row">
                             <input type="text" class="form-control rounded-pill px-20" id="account" placeholder="wavemocards" required>
-                            <!-- <button type="button" class="ms-8 px-12 btn btn-outline-main c-btn c-btn-outline-main fs-8 text-nowrap" id="btnVerifyAccount">驗證</button> -->
+                            <button type="button" class="ms-8 px-12 btn btn-outline-main c-btn c-btn-outline-main fs-8 text-nowrap" id="btnVerifyAccount">驗證</button>
                         </div>
                         <div class="mt-4 ms-12 ms-sm-24 fs-9" id="accountCmt"></div>
                     </div>
-                    <button type="button" class="w-100 px-12 btn btn-pink c-btn fs-7 text-nowrap" id="btnVerify">驗證</button>
-                    <button type="button" class="d-none w-100 px-12 btn btn-pink c-btn fs-7 text-nowrap" id="btnNextToPwd">下一步</button>
-
                     <!-- passWord -->
-                    <div class="mb-16" id="areaPwd">
+                    <div class="mb-16">
                         <label for="pwd" class="form-label d-flex justify-content-between">
                             密碼
                             <span class="text-pink-tint02 fs-9">*必填</span>
@@ -175,7 +152,7 @@
                         </div>
                     </div>
                     <!-- passWord 2 -->
-                    <div class="mb-32" id="areaPwd2">
+                    <div class="mb-16">
                         <label for="pwd2" class="form-label  d-flex justify-content-between">
                             確認密碼
                             <span class="text-pink-tint02 fs-9">*必填</span>
@@ -184,14 +161,9 @@
                         <!-- 雙重密碼驗證結果 -->
                         <div class="mt-4 ms-12 ms-sm-24 fs-9" id="pwd2Cmt"></div>
                     </div>
-                    <div class="d-flex justify-content-end align-items-center">
-                        <button type="button" class="d-none px-16 btn c-btn-outline-pink-tint01 fs-7 fw-normal border-2 py-4 text-nowrap" id="btnBackToFirst">上一步</button>
-                        <button type="button" class="d-none w-100 ms-12 px-12 btn btn-gray-550 c-btn fs-7 text-nowrap text-white cursor-disable" id="btnNextToLastDisabled" disabled>請輸入上方欄位資料</button>
-                        <button type="button" class="d-none w-100 ms-12 px-12 btn btn-pink c-btn fs-7 text-nowrap" id="btnNextToLast">下一步</button>
-                    </div>
                     
                     <!-- lastName & firstName -->
-                    <div class="mb-20 row" id="areaName">
+                    <div class="mb-20 row">
                         <div class="col-6">
                             <label for="lastName" class="form-label  d-flex justify-content-between">
                                 姓
@@ -209,8 +181,7 @@
                             <div class="mt-4 ms-12 ms-sm-24 fs-9" id="firstNameCmt"></div>
                         </div>
                     </div>
-
-                    <div class="mb-24 row" id="areaBirthAndTitle">
+                    <div class="mb-24 row">
                         <div class="col-6">
                             <label for="birthday" class="form-label d-flex justify-content-between">
                                 生日
@@ -233,7 +204,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="mb-32" id="areaAgree">
+                    <div class="mb-32">
                         <input type="checkbox" id="agree" required>
                                 <label class="ms-4" for="agree">
                                     我已經詳讀並同意
@@ -242,11 +213,8 @@
                         <!-- error msg -->
                         <div class="mt-4 ms-12 ms-sm-24 fs-9" id="agreeCmt"></div>
                     </div>
-                    <div class="d-flex justify-content-end align-items-center">
-                        <button type="button" class="d-none px-16 btn c-btn-outline-pink-tint01 fs-7 fw-normal border-2 py-4 text-nowrap" id="btnBackToPwd">上一步</button>
-                        <button class="w-100 ms-12 py-8 btn btn-pink c-btn" id="btnSubmit" type="button">註冊</button>
-                    </div>
-                    <a class=" mt-48 mb-16 d-block clickMeToLogin" href="login.html">已經有帳號了嗎？ 點我登入</a>
+                    <button class="w-100 mb-32 py-8 btn btn-pink c-btn" id="btnSubmit" type="button">註冊</button>
+                    <a class="mb-16 d-block clickMeToLogin" href="login.html">已經有帳號了嗎？ 點我登入</a>
                 </div>
             </div>
         </main>
@@ -442,24 +410,8 @@
         <script type="text/javascript" src="./js/formValidation.js"></script>
         <script type="text/javascript" src="./js/beforeunload.js"></script>
         <script>
-            const progressBar = document.querySelector("#progressBar");
-            const progressBar_1 = document.querySelector("#progressBar_1");
-            const progressBar_2 = document.querySelector("#progressBar_2");
-            const progressBar_3 = document.querySelector("#progressBar_3");
-            const areaEmail = document.querySelector("#areaEmail");
-            const areaAccount = document.querySelector("#areaAccount");
-            const areaPwd = document.querySelector("#areaPwd");
-            const areaPwd2 = document.querySelector("#areaPwd2");
-            const areaName = document.querySelector("#areaName");
-            const areaBirthAndTitle = document.querySelector("#areaBirthAndTitle");
-            const areaAgree = document.querySelector("#areaAgree");
             const btnVerify = document.querySelector('#btnVerify');
-            const btnBackToFirst = document.querySelector('#btnBackToFirst');
-            const btnNextToLastDisabled = document.querySelector('#btnNextToLastDisabled');
-            const btnNextToPwd = document.querySelector('#btnNextToPwd');
-            const btnNextToLast = document.querySelector('#btnNextToLast');
-            const btnBackToPwd = document.querySelector('#btnBackToPwd');
-            // const btnVerifyAccount = document.querySelector('#btnVerifyAccount');
+            const btnVerifyAccount = document.querySelector('#btnVerifyAccount');
             const email = document.querySelector('#email');
             const emailCmt = document.querySelectorAll('#emailCmt');
             const account = document.querySelector('#account');
@@ -485,146 +437,91 @@
             const modalResultImg = document.querySelector('#modalResultImg');
             const modalResultLink = document.querySelector('#modalResultLink');
             const modalResultClose = document.querySelector('#modalResultClose');
-            areaPwd.classList.add("d-none");
-            areaPwd2.classList.add("d-none");
-            areaName.classList.add("d-none");
-            areaBirthAndTitle.classList.add("d-none");
-            areaAgree.classList.add("d-none");
-            btnSubmit.classList.add("d-none");
-            
+
             // 驗證 email 
-            let emailFrontEndVerified = false;
-            let emailBackEndVerified = false;
+            let emailVerified = false;
             let emailValue;
             let finalEmail;
-            // 驗證 帳號名稱
-            let accountFrontEndVerified = false;
-            let accountBackEndVerified = false;
-            let finalAccount;
-            let regex = /^[a-zA-Z\d]\w{3,19}[a-zA-Z\d]$/;
-            // 後端 驗證 email & account
-            let emailAndAccountFrontEndVerified = false;
             email.addEventListener("keyup", function(){
-                emailValue = email.value;
-                if(finalEmail==undefined || finalEmail!=emailValue) {
-                    let correct = IsEmail(emailValue);
-                    if (correct==false) {
-                        emailCmt.forEach(function(cmt, index){
-                            cmt.textContent = "請輸入正確的 Email 格式";
-                            cmt.classList.add("text-pink");
-                            emailFrontEndVerified = false;
-                        })
-                    } else {
-                        emailCmt.forEach(function(cmt, index){
-                            cmt.textContent = "";
-                            emailFrontEndVerified = true;
-                        })
-                    }
-                }
-            })
-            email.addEventListener("click", function(){
-                emailValue = email.value;
-                emailValue = email.value;
-                if(finalEmail==undefined || finalEmail!=emailValue) {
-                    let correct = IsEmail(emailValue);
-                    if (correct==false) {
-                        emailCmt.forEach(function(cmt, index){
-                            cmt.textContent = "請輸入正確的 Email 格式";
-                            cmt.classList.add("text-pink");
-                            emailFrontEndVerified = false;
-                        })
-                    } else {
-                        emailCmt.forEach(function(cmt, index){
-                            cmt.textContent = "";
-                            emailFrontEndVerified = true;
-                        })
-                    }
-                }
-            })
-            account.addEventListener("keyup", function(){
-                // 5-20個字符，只能是字母、數字、底線，不能以下劃線開頭和結尾
-                if (finalAccount==undefined || finalAccount!=accountValue) {
-                    if(!regex.test(account.value)){
-                        accountCmt.textContent = "帳號規定：5~20字，只能使用英文字母、數字、底線，且開頭不可為底線。";
-                        accountCmt.style.color = "#C37979";
-                        accountFrontEndVerified = false;
-                    } else {
-                        accountCmt.textContent = "";
-                        accountFrontEndVerified = true;
-                    }
-                }
-            })
-            account.addEventListener("click", function(){
-                if (finalAccount==undefined || finalAccount!=accountValue) {
-                    if(!regex.test(account.value)){
-                        accountCmt.textContent = "帳號規定：5~20字，只能使用英文字母、數字、底線，且開頭不可為底線。";
-                        accountCmt.style.color = "#C37979";
-                        accountFrontEndVerified = false;
-                    } else {
-                        accountCmt.textContent = "";
-                        accountFrontEndVerified = true;
-                    }
+                let correct = IsEmail(emailValue);
+                if (correct==false) {
+                    emailCmt.forEach(function(cmt, index){
+                        cmt.textContent = "請輸入正確的 Email 格式";
+                        cmt.classList.add("text-pink");
+                    })
+                } else {
+                    emailCmt.forEach(function(cmt, index){
+                        cmt.textContent = "請點擊右方的「驗證」按鈕";
+                        cmt.style.color = "#C37979";
+                    })
                 }
             })
             btnVerify.addEventListener('click', function(){
-                accountValue = account.value;
                 emailValue = email.value;
-                // post email
-                if(emailFrontEndVerified==true && accountFrontEndVerified==true){
-                    let postData = {
-                        "email": emailValue,
-                        "user_name": accountValue
-                    }
-                    axios.post("https://api.wavemocards.com/user/checking", postData)
-                    .then(function(response){
-                        if (response.data.message.email==false) {
-                            emailCmt.forEach(function(cmt, index){
-                                cmt.innerHTML = `<i class="me-4 bi bi-check-circle-fill"></i><span>驗證成功，您可使用此Email</span>`;
-                                cmt.classList.remove("text-pink");
-                                cmt.classList.add("text-main");
-                            })
-                            emailBackEndVerified = true;
-                            finalEmail=emailValue;
-                        } else {
-                            emailCmt.forEach(function(cmt, index){
-                                cmt.textContent = "驗證失敗，該Email已被註冊，請使用其他的Email";
-                                cmt.classList.add("text-pink");
-                            })
-                            emailBackEndVerified = false;
-                        }
-                        if (response.data.message.user_name==false) {
-                            // 可使用此帳號
-                            accountCmt.textContent = "";
-                            accountCmt.innerHTML = `<i class="me-4 bi bi-check-circle-fill"></i><span>驗證成功，您可使用此帳號</span>`;
-                            accountCmt.style.color = "#3C9DAE";
-                            finalAccount = accountValue;
-                            accountBackEndVerified = true;
-                            finalAccount=accountValue;
-                        } else {
-                            accountCmt.textContent = "驗證失敗，該帳號已被註冊，請使用其他的帳號";
-                            accountCmt.style.color = "#C37979";
-                            accountBackEndVerified = false;
-                        }
-                        if(emailBackEndVerified==true && accountBackEndVerified==true){
-                            btnVerify.classList.add("d-none");
-                            // btnNextToPwd.classList.remove("d-none");
-                            areaEmail.classList.add("d-none");
-                            areaAccount.classList.add("d-none");
-                            areaPwd.classList.remove("d-none");
-                            areaPwd2.classList.remove("d-none");
-                            btnBackToFirst.classList.remove("d-none");
-                            btnNextToLastDisabled.classList.remove("d-none");
-                            progressBar.style.width = "50%";
-                            progressBar_1.classList.remove("btn-outline-main-tint01");
-                            progressBar_1.classList.add("btn-main-tint01");
-                            progressBar_2.classList.remove("btn-outline-gray-450");
-                            progressBar_2.classList.add("btn-outline-main-tint01");
-                            progressBar_2.classList.add("border-2");
-                        } else {
-                            btnVerify.classList.remove("d-none");
-                            btnNextToPwd.classList.add("d-none");
-                        }
+                // 前端驗證 email 是否符合格式
+                if(emailValue==""){
+                    emailCmt.forEach(function(cmt, index){
+                        cmt.textContent = "請先輸入Email";
+                        cmt.classList.add("text-pink");
                     })
+                } else {
+                    let correct = IsEmail(emailValue);
+                    if (correct==false) {
+                        emailCmt.forEach(function(cmt, index){
+                            cmt.textContent = "請輸入正確的 Email 格式";
+                            cmt.classList.add("text-pink");
+                        })
+                    } else {
+                        // post email
+                        let postData = {"email": emailValue}
+                        axios.post("https://api.wavemocards.com/user/checking", postData)
+                        .then(function(response){
+                            if (response.data.message!=true) {
+                                emailVerified=true;
+                                finalEmail = emailValue;
+                            } else {
+                                emailVerified=false;
+                            }
+                            if(emailVerified==true) {
+                                emailCmt.forEach(function(cmt, index){
+                                    cmt.innerHTML = `<i class="me-4 bi bi-check-circle-fill"></i><span>驗證成功，您可使用此Email</span>`;
+                                    cmt.classList.remove("text-pink");
+                                    cmt.classList.add("text-main");
+                                })
+                                btnVerify.classList.add('d-none');
+                            } else {
+                                emailCmt.forEach(function(cmt, index){
+                                    cmt.textContent = "驗證失敗，該Email已被註冊，請使用其他的Email";
+                                    cmt.classList.add("text-pink");
+                                })
+                            }
+                            //  若使用者有修改 email 須重新驗證
+                            if (emailVerified==true){
+                                email.addEventListener("keyup", function(){
+                                    emailValue = email.value;
+                                    if(finalEmail!=emailValue){
+                                        btnVerify.classList.remove('d-none');
+                                        emailVerified = false;
+                                        emailCmt.forEach(function(cmt, index){
+                                            cmt.textContent = "您的Email已更改，請重新驗證";
+                                            cmt.classList.add("text-pink");
+                                        })
+                                    }
+                                })
+                                email.addEventListener("click", function(){
+                                    emailValue = email.value;
+                                    if(finalEmail!=emailValue){
+                                        btnVerify.classList.remove('d-none');
+                                        emailVerified = false;
+                                        emailCmt.forEach(function(cmt, index){
+                                            cmt.textContent = "您的Email已更改，請重新驗證";
+                                            cmt.classList.add("text-pink");
+                                        })
+                                    }
+                                })
+                            }
+                        })
+                    }
                 }
             })
             function IsEmail(email) {
@@ -636,20 +533,75 @@
                 }
             }
 
-            btnNextToPwd.addEventListener("click", function() {
-                areaEmail.classList.add("d-none");
-                areaAccount.classList.add("d-none");
-                areaPwd.classList.remove("d-none");
-                areaPwd2.classList.remove("d-none");
-                btnNextToPwd.classList.add("d-none");
-                btnBackToFirst.classList.remove("d-none");
-                btnNextToLastDisabled.classList.remove("d-none");
-                progressBar.style.width = "50%";
-                progressBar_1.classList.remove("btn-outline-main-tint01");
-                progressBar_1.classList.add("btn-main-tint01");
-                progressBar_2.classList.remove("btn-outline-gray-450");
-                progressBar_2.classList.add("btn-outline-main-tint01");
-                progressBar_2.classList.add("border-2");
+            // 驗證 帳號名稱
+            let accountCorrect = false;
+            let finalAccount;
+            // let accountFrontCorrect = false;
+            let regex = /^[a-zA-Z\d]\w{3,19}[a-zA-Z\d]$/;
+            account.addEventListener("keyup", function(){
+                // 5-20個字符，只能是字母、數字、底線，不能以下劃線開頭和結尾
+                if(!regex.test(account.value)){
+                    accountCmt.textContent = "帳號規定：5~20字，只能使用英文字母、數字、底線，且開頭不可為底線。";
+                    accountCmt.style.color = "#C37979";
+                    accountCorrect = false;
+                } else {
+                    accountCmt.textContent = "請點擊右方的「驗證」按鈕";
+                    accountCmt.style.color = "#C37979";
+                }
+            })
+            btnVerifyAccount.addEventListener("click", function(){
+                accountValue = account.value;
+                // 前端驗證 5-20個字符，只能是字母、數字、底線，不能以下劃線開頭和結尾
+                if(accountValue==""){
+                    accountCmt.textContent = "請先輸入Email";
+                    accountCmt.style.color = "#C37979";
+                    accountCorrect = false;
+                } else if(!regex.test(account.value)){
+                    accountCmt.textContent = "帳號規定：5~20字，只能使用英文字母、數字、底線，且開頭不可為底線。";
+                    accountCmt.style.color = "#C37979";
+                    accountFrontCorrect = false;
+                } else {
+                    accountFrontCorrect = true;
+                    // post 
+                    let postData = {"user_name": accountValue}
+                    axios.post("https://api.wavemocards.com/user/checking", postData)
+                    .then(function(response){
+                        if (response.data.message.user_name!=true) {
+                            // 可使用此帳號
+                            accountCorrect=true;
+                            accountCmt.textContent = "";
+                            accountCmt.innerHTML = `<i class="me-4 bi bi-check-circle-fill"></i><span>驗證成功，您可使用此帳號</span>`;
+                            accountCmt.style.color = "#3C9DAE";
+                            finalAccount = accountValue;
+                            btnVerifyAccount.classList.add('d-none');
+                        } else {
+                            accountCorrect=false;
+                            accountCmt.textContent = "驗證失敗，該帳號已被註冊，請使用其他的帳號";
+                            accountCmt.style.color = "#C37979";
+                        }
+                        //  若使用者有修改  須重新驗證
+                        if (accountCorrect==true){
+                            account.addEventListener("keyup", function(){
+                                accountValue = account.value;
+                                if(finalAccount!=accountValue){
+                                    btnVerifyAccount.classList.remove('d-none');
+                                    accountCorrect = false;
+                                    accountCmt.textContent = "您的 帳戶 已更改，請重新驗證";
+                                    accountCmt.style.color = "#C37979";
+                                }
+                            })
+                            account.addEventListener("click", function(){
+                                accountValue = account.value;
+                                if(finalAccount!=accountValue){
+                                    btnVerifyAccount.classList.remove('d-none');
+                                    accountCorrect = false;
+                                    accountCmt.textContent = "您的 帳戶 已更改，請重新驗證";
+                                    accountCmt.style.color = "#C37979";
+                                }
+                            })
+                        }
+                    })
+                }
             })
 
             let pwdCorrect = false;
@@ -684,84 +636,7 @@
                     pwd2Cmt.textContent = "";
                     pwd2Correct = false;
                 } 
-                if(pwd2Correct==true){
-                    btnNextToLastDisabled.classList.add("d-none");
-                    btnNextToLast.classList.remove("d-none");
-                } else {
-                    btnNextToLastDisabled.classList.remove("d-none");
-                    btnNextToLast.classList.add("d-none");
-                }
             }
-
-            btnBackToFirst.addEventListener("click", function(){
-                areaPwd.classList.add("d-none");
-                areaPwd2.classList.add("d-none");
-                btnBackToFirst.classList.add("d-none");
-                btnNextToLastDisabled.classList.add("d-none");
-                areaEmail.classList.remove("d-none");
-                areaAccount.classList.remove("d-none");
-                if(emailBackEndVerified==true && accountBackEndVerified==true){
-                    btnVerify.classList.add("d-none");
-                    btnNextToPwd.classList.remove("d-none");
-                } else {
-                    btnVerify.classList.remove("d-none");
-                    // btnNextToPwd.classList.add("d-none");
-                }
-                pwd.value = "";
-                pwd2.value = "";
-                pwdCmt.textContent = "";
-                pwdCorrect = false;
-                pwd2Cmt.textContent = "";
-                pwd2Correct = false;
-                progressBar.style.width = "0";
-                progressBar_1.classList.add("btn-outline-main-tint01");
-                progressBar_1.classList.remove("btn-main-tint01");
-                progressBar_2.classList.add("btn-outline-gray-450");
-                progressBar_2.classList.remove("btn-outline-main-tint01");
-                progressBar_2.classList.remove("border-2");
-            })
-
-            btnNextToLast.addEventListener("click", function(){
-                areaPwd.classList.add("d-none");
-                areaPwd2.classList.add("d-none");
-                btnBackToFirst.classList.add("d-none");
-                btnNextToLast.classList.add("d-none");
-                areaName.classList.remove("d-none");
-                areaBirthAndTitle.classList.remove("d-none");
-                areaAgree.classList.remove("d-none");
-                btnSubmit.classList.remove("d-none");
-                btnBackToPwd.classList.remove("d-none");
-                progressBar.style.width = "100%";
-                progressBar_2.classList.remove("btn-outline-main-tint01");
-                progressBar_2.classList.add("btn-main-tint01");
-                progressBar_3.classList.remove("btn-outline-gray-450");
-                progressBar_3.classList.add("btn-outline-main-tint01");
-                progressBar_3.classList.add("border-2");
-            })
-
-            btnBackToPwd.addEventListener("click", function(){
-                pwd.value = "";
-                pwd2.value = "";
-                pwdCmt.textContent = "";
-                pwdCorrect = false;
-                pwd2Cmt.textContent = "";
-                pwd2Correct = false;
-                areaPwd.classList.remove("d-none");
-                areaPwd2.classList.remove("d-none");
-                btnBackToFirst.classList.remove("d-none");
-                btnNextToLastDisabled.classList.remove("d-none");
-                areaName.classList.add("d-none");
-                areaBirthAndTitle.classList.add("d-none");
-                areaAgree.classList.add("d-none");
-                btnSubmit.classList.add("d-none");
-                btnBackToPwd.classList.add("d-none");
-                progressBar.style.width = "50%";
-                progressBar_2.classList.add("btn-outline-main-tint01");
-                progressBar_2.classList.remove("btn-main-tint01");
-                progressBar_3.classList.add("btn-outline-gray-450");
-                progressBar_3.classList.remove("btn-outline-main-tint01");
-                progressBar_3.classList.remove("border-2");
-            })
 
             // 驗證 姓、名 是否有填寫
             let lastNameCorrect = false;
@@ -836,7 +711,7 @@
                 btnSubmitClickNum++;
                 if(btnSubmitClickNum%2!=0){
                     // 驗證是否已填寫所有必填內容
-                    if(emailBackEndVerified==true &&  pwdCorrect==true && pwd2Correct==true && accountBackEndVerified==true && lastNameCorrect==true && firstNameCorrect==true && agreeChecked==true){
+                    if(emailVerified==true &&  pwdCorrect==true && pwd2Correct==true && accountCorrect==true && lastNameCorrect==true && firstNameCorrect==true && agreeChecked==true){
                         let postData;
                         if(birthday.value==""){
                             postData = {
@@ -898,60 +773,22 @@
                             btnSubmit.click();
                         })
                     } else {
-                        if (emailBackEndVerified!=true) {
-                            areaEmail.classList.remove("d-none");
-                            areaAccount.classList.remove("d-none");
-                            btnVerify.classList.remove("-d-none");
-                            areaName.classList.add("d-none");
-                            areaBirthAndTitle.classList.add("d-none");
-                            areaAgree.classList.add("d-none");
-                            btnBackToPwd.classList.add("d-none");
-                            btnSubmit.classList.add("d-none");
-                            emailCmt.forEach(function(cmt, index){
-                                cmt.textContent = "請 驗證 您的email是否正確";
-                                cmt.classList.add("text-pink");
-                            })
-                            btnVerify.classList.remove('d-none');
+                        if (emailVerified!=true) {
+                        emailCmt.forEach(function(cmt, index){
+                            cmt.textContent = "請 驗證 您的email是否正確";
+                            cmt.classList.add("text-pink");
+                        })
+                        btnVerify.classList.remove('d-none');
                         }
                         if (pwdCorrect!=true) {
-                            pwd.value = "";
-                            pwd2.value = "";
-                            areaPwd.classList.remove("d-none");
-                            areaPwd2.classList.remove("d-none");
-                            btnBackToFirst.classList.remove("-d-none");
-                            btnNextToLastDisabled.classList.remove("-d-none");
-                            areaName.classList.add("d-none");
-                            areaBirthAndTitle.classList.add("d-none");
-                            areaAgree.classList.add("d-none");
-                            btnBackToPwd.classList.add("d-none");
-                            btnSubmit.classList.add("d-none");
                             pwdCmt.textContent = "您的密碼不符合密碼規則，請重設密碼";
                             pwdCmt.style.color = "#C37979";
                         }
                         if (pwd2Correct!=true) {
-                            pwd.value = "";
-                            pwd2.value = "";
-                            areaPwd.classList.remove("d-none");
-                            areaPwd2.classList.remove("d-none");
-                            btnBackToFirst.classList.remove("-d-none");
-                            btnNextToLastDisabled.classList.remove("-d-none");
-                            areaName.classList.add("d-none");
-                            areaBirthAndTitle.classList.add("d-none");
-                            areaAgree.classList.add("d-none");
-                            btnBackToPwd.classList.add("d-none");
-                            btnSubmit.classList.add("d-none");
                             pwd2Cmt.textContent = "您尚未完成二次確認密碼，請再次填寫相同密碼";
                             pwd2Cmt.style.color = "#C37979";
                         }
-                        if (accountBackEndVerified!=true) {
-                            areaEmail.classList.remove("d-none");
-                            areaAccount.classList.remove("d-none");
-                            btnVerify.classList.remove("-d-none");
-                            areaName.classList.add("d-none");
-                            areaBirthAndTitle.classList.add("d-none");
-                            areaAgree.classList.add("d-none");
-                            btnBackToPwd.classList.add("d-none");
-                            btnSubmit.classList.add("d-none");
+                        if (accountCorrect!=true) {
                             accountCmt.textContent = "請 驗證 您的 帳戶 是否正確";
                             accountCmt.style.color = "#C37979";
                         }
