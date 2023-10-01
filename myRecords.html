@@ -658,15 +658,17 @@
       //     }
       // })
 
+      // 重新進到此畫面時，移除resultData紀錄
+      window.onbeforeunload = function () {
+          localStorage.removeItem("resultData");
+      }
+
       // 搜尋區域
       const dateStart = document.querySelector("#dateStart");
       const dateEnd = document.querySelector("#dateEnd");
       const searchText = document.querySelector("#searchText");
       const btnSearch = document.querySelector("#btnSearch");
       const btnSearchResult = document.querySelector('#btnSearchResult');
-      // 撈出localStorage的搜尋紀錄
-      // let getSearchData = localStorage.getItem("searchData");
-      // let searchData = JSON.parse(getSearchData); // 將 string 資料轉為 array 資料
       let dateStartValue;
       let dateEndValue;
       let searchValue;
@@ -677,16 +679,6 @@
       let endMonth;
       let endDay;
       let arySearchText = [];
-
-      // if (searchData.dateStartValue!="" || searchData.dateStartValue!=undefined){
-      //   dateStart.value=searchData.dateStartValue;
-      // }
-      // if (searchData.dateEndValue!="" || searchData.dateEndValue!=undefined){
-      //   dateEnd.value=searchData.dateEndValue;
-      // }
-      // if (searchData.searchValue!=""){
-      //   searchText.value= searchData.searchValue;
-      // }
 
       // 1st日期 不可選填今日以後
       let date_now = new Date(); // 取得目前時間
@@ -755,17 +747,11 @@
               }
             })
           })
-          
-          objetRecordData = {};
-          if ( resultData == ""){
+          if ( resultData == "" || resultData.length<1){
             // 取出該筆紀錄的資料
+            resultData=[];
             getRecordData(allData, aryData, startYear, dateEndValue, startMonth, startDay, endYear, endMonth, endDay, arySearchText, resultData, objetRecordData);
           }
-
-
-          // if (resultData==""){
-          //   btnSearchResult.click();
-          // }
 
           const dataTotal = resultData.length;
           // 要顯示在畫面上的資料數量，預設每一頁只顯示五筆資料。
@@ -824,7 +810,6 @@
               // 處理 搜尋日期
               dateStartValue = dateStart.value;
               dateEndValue = dateEnd.value;
-
               if(dateStartValue!=""){
                 startYear = parseInt(dateStartValue[0]+dateStartValue[1]+dateStartValue[2]+dateStartValue[3]);
                 startMonth = parseInt(dateStartValue[5]+dateStartValue[6]);
@@ -845,9 +830,7 @@
           })
           let stringResultData = JSON.stringify(resultData);
           localStorage.setItem("resultData", stringResultData);
-          // if(dateStart.value!="" || dateEnd.value!="" || searchText.value.trim()!=""){
-          //   btnSearch.click();
-          // }
+
           // 響應式 刪除按鈕 位置
           const body = document.querySelector('#body');
           const checkBoxes = document.querySelectorAll('#checkBox');
@@ -882,9 +865,10 @@
           }
           
           let recordIds = [];
+          let deleteNum = 0;
           btnTrash.addEventListener("click", function(){
             recordIds = [];
-            let deleteNum = 0;
+            deleteNum=0;
             checkBoxes.forEach(function(box, i){
               if(box.checked==true){
                 recordIds.push(box.name);
@@ -909,6 +893,22 @@
                   modalDeleteResultImg.src = "./images/addCardSuccess.svg";
                   modalDeleteResultClose.classList.add("btn-main");
                   modalDeleteResultClose.classList.remove("btn-pink");
+                  // 將要被刪除的checkbox移除checked，避免在夜未被更新前，又被抓到是checked狀態
+                  checkBoxes.forEach(function(box, i){
+                    if(box.checked==true){
+                      box.checked=false;
+                    }
+                  })
+                  resultData.forEach(function(data, i){
+                    if(data.emo_ID==id){
+                      resultData.splice(i,1);
+                    }
+                  })
+                  if(resultData.length<1){
+                    resultData= [];
+                  }
+                  let stringResultData = JSON.stringify(resultData);
+                  localStorage.setItem("resultData", stringResultData);
                   pagination(resultData, dateEndValue, startYear, startMonth, startDay, endYear, endMonth, endDay, arySearchText, goPage, aryData, objetRecordData);
                 } else {
                   modalDeleteResultTitle.textContent = "刪除失敗";
@@ -1074,28 +1074,55 @@
             objetRecordData.isItYourExcept = "";
           }
           objetRecordData.nextAction = data.reaction;
+
           let time = data.create_time;
-          let year = time[0]+time[1]+time[2]+time[3];
-          let month = time[5]+time[6];
-          let day = time[8]+time[9];
+          let year = parseInt(time[0]+time[1]+time[2]+time[3]);
+          let month = parseInt(time[5]+time[6]);
+          let day = parseInt(time[8]+time[9]);
           // 將符合日期限制的資料裝進 resultData
           if(startYear!==undefined){
             // 確定有輸入時間的狀態
-            if (dateEndValue=="" && year>=startYear && month>=startMonth && day>=startDay) {
-              // 確認有關鍵字
-              if(arySearchText!=""){
-                // 核對關鍵字
-                matchText(arySearchText, objetRecordData, resultData, data)
-              } else {
-                resultData.push(data);
+            if (dateEndValue=="" && year>=startYear && month>=startMonth) {
+              // 如果是與起始月份相同月份，日期要比起始日期大
+              if(month==startMonth && day>=startDay){
+                // 確認有關鍵字
+                if(arySearchText!=""){
+                  // 核對關鍵字
+                  matchText(arySearchText, objetRecordData, resultData, data)
+                } else {
+                  resultData.push(data);
+                }
               }
-            } else if (year>=startYear && month>=startMonth && day>=startDay && year<=endYear && month<=endMonth && day<=endDay){
-              // 確認有關鍵字
-              if(arySearchText!=""){
-                // 核對關鍵字
-                matchText(arySearchText, objetRecordData, resultData, data)
-              } else {
-                resultData.push(data);
+              // 如果月份比起始月份大，則全部日期皆可
+              if(month>startMonth){
+                // 確認有關鍵字
+                if(arySearchText!=""){
+                  // 核對關鍵字
+                  matchText(arySearchText, objetRecordData, resultData, data)
+                } else {
+                  resultData.push(data);
+                }
+              }
+            } else if (year>=startYear && month>=startMonth && year<=endYear && month<=endMonth){
+              // 月份等於開始月份的話，日期要比開始日大
+              if(month==startMonth && day>=startDay){
+                // 確認有關鍵字
+                if(arySearchText!=""){
+                  // 核對關鍵字
+                  matchText(arySearchText, objetRecordData, resultData, data)
+                } else {
+                  resultData.push(data);
+                }
+              }
+              // 月份大於開始月份的話，日期要比結束日小
+              if(month>startMonth && day<=endDay){
+                // 確認有關鍵字
+                if(arySearchText!=""){
+                  // 核對關鍵字
+                  matchText(arySearchText, objetRecordData, resultData, data)
+                } else {
+                  resultData.push(data);
+                }
               }
             }
           } else if(arySearchText!="") {
@@ -1372,8 +1399,7 @@
           }
         })
       }
-    
-      
+
       // // 顯示 情緒故事 內容
       // function displayEmoStory(allData, recordId, emo_Id, storyDate, storyBackground, storyAction, storyActionTextarea, storyResult, storyResultTextarea, storyFeeling, storyFeelingTextarea, storyNext, storyNextTextarea, objetRecordData){
       //   objetRecordData={}

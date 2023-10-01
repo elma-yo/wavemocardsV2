@@ -612,6 +612,7 @@
                     before_emo_level_2 = parseInt(storageData[0].cards[1].strength1);
                     before_emo_level_3 = parseInt(storageData[0].cards[2].strength1);
                 }
+
                 if(storageData[0].cards[0].strength2!=undefined){
                     after_emo_level_1 = parseInt(storageData[0].cards[0].strength2);
                 }
@@ -637,6 +638,8 @@
                     postData.before_emo_level_2 = before_emo_level_2;
                 }
                 if(cardsNum==3){
+                    postData.emotion_card_2 = card_2_Id;
+                    postData.before_emo_level_2 = before_emo_level_2;
                     postData.emotion_card_3 = card_3_Id;
                     postData.before_emo_level_3 = before_emo_level_3;
                 }
@@ -653,6 +656,7 @@
                     isGoodResult = parseInt(storageData[1].isGoodResult);
                     postData.expect=isGoodResult;
                 }
+
                 axios.post("https://api.wavemocards.com/emotions/add",
                 postData, { headers: {"Authorization": `Bearer ${token}`} })
                 .then (function(response){

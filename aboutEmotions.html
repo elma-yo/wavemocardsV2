@@ -316,6 +316,8 @@
         <script src="./js/toolTips.js"></script>
         <script src="./js/pages/logout.js"></script>
         <script>
+            // 清除 我的紀錄 搜尋紀錄
+            localStorage.removeItem("resultData");
             const headerNotLogin = document.querySelector('#headerNotLogin');
             const headerLoggedIn = document.querySelector('#headerLoggedIn');
             let token = localStorage.getItem("token");

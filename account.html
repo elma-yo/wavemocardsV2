@@ -278,6 +278,8 @@
         <script src="./js/timeOut.js"></script>
         <script type="text/javascript" src="./js/beforeunload.js"></script>
         <script>
+            // 清除 我的紀錄 搜尋紀錄
+            localStorage.removeItem("resultData");
             // 取得 userInfo，並寫入畫面中
             let userInfo = JSON.parse(localStorage.getItem("userInfo"));
             const email = document.querySelector("#email");

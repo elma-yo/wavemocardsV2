@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- 手機版網頁 CSS Reset 螢幕解析度 Reset -->
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <title>浪潮情緒卡｜重設密碼</title>
+    <!-- Bootstrap icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- Bootstrap css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  </head>
+  <body>
+    <main  class="login d-flex justify-content-center align-items-stretch">
+
+        <div class="box-resetPwd-text py-32 px-24 d-flex flex-column align-items-center">
+            <div class="form">
+                <div class="mb-20 text-main d-flex flex-column align-items-center">
+                    <i class="bi bi-person-circle profile"></i>
+                </div>
+                <h2 class="mb-32">重設密碼</h2>
+
+                <!-- 尚未填入 action 內容 -->
+                <form action="#" method="post" class="needs-validation" novalidate>
+                    <div class="mb-32">
+                        <label for="loginAcount" class="form-label  d-flex justify-content-between">
+                            Email
+                            <span class="text-pink-tint02 fs-9">*必填</span>
+                        </label>
+                        <input type="text" class="form-control rounded-pill px-20" id="loginAcount" placeholder="wavemocards@mail.com" required>
+                        <div class="invalid-feedback">
+                            請輸入正確的 e-mail 帳號
+                        </div>
+                    </div>
+                    <button class="w-100 mb-32 py-8 btn btn-main c-btn" type="submit" data-bs-toggle="modal" data-bs-target="#staticBackdrop">重設密碼</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content rounded-3">
+            <div class="modal-header">
+            <h5 class="modal-title px-8 fs-5" id="staticBackdropLabel">請查看你的電子信箱</h5>
+            </div>
+            <div class="modal-body px-24">
+                <p>我們已經發送一封重設密碼通知信到</p>
+                <p class="text-main fs-7 fw-bold">elmaspy@gmail.com</p>
+                <p>請點擊信件中的連結進行修改密碼，如果沒有收到，請檢查你的垃圾郵件或再試一次忘記密碼！</p>
+            </div>
+            <div class="modal-footer">
+            <a class="btn btn-main link-white" href="login.html">重新登入</a>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!--  Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <!-- axios -->
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <script type="text/javascript" src="../assets/js/formValidation.js"></script>
+  </body>
+</html>

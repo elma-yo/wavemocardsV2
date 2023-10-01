@@ -122,7 +122,7 @@
                 <h2 class="pt-56 text-white text-nowrap text-center text-md-start">找尋自我</h2>
                 <h2 class="text-white text-nowrap text-center text-md-end mb-32">情緒的浪潮</h2>
                 <div class="d-flex justify-content-center w-100" id="btnStatToSignUp">
-                    <a class="btn btn-pink c-btn c-btn-xl" href="signup.html">前往註冊</a>
+                    <a class="btn btn-pink c-btn c-btn-xl" href="signUp.html">前往註冊</a>
                 </div>
                 <div class="d-none d-flex justify-content-center w-100" id="btnStarToFindEmo">
                     <a class="px-48 btn btn-pink c-btn c-btn-xl" style="border: 5px solid white;" href="aboutEmotions.html">認識情緒</a>
@@ -183,6 +183,9 @@
             const headerLoggedIn = document.querySelector('#headerLoggedIn');
             const btnStatToSignUp = document.querySelector("#btnStatToSignUp");
             const btnStarToFindEmo = document.querySelector("#btnStarToFindEmo");
+
+            // 清除 我的紀錄 搜尋紀錄
+            localStorage.removeItem("resultData");
 
             // 驗證有無token，變換登入前後的樣式
             let token = localStorage.getItem("token");
