@@ -22824,6 +22824,37 @@ label {
   color: #3C9DAE;
 }
 
+.clickMeToBack {
+  position: relative;
+  text-align: center;
+  font-weight: bold;
+  color: #85C5D6;
+}
+
+.clickMeToBack::before {
+  width: 40%;
+  height: 2px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  content: "";
+  background-color: #B1DBE5;
+}
+
+.clickMeToBack::after {
+  position: absolute;
+  content: "";
+  width: 40%;
+  height: 2px;
+  top: 50%;
+  right: 0;
+  background-color: #B1DBE5;
+}
+
+.clickMeToBack:hover {
+  color: #3C9DAE;
+}
+
 .emoForm {
   max-width: 600px;
   margin: 0 auto;
