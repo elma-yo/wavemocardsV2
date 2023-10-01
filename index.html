@@ -14,42 +14,45 @@
     </head>
     <body>
         <header class="header sticky-top" id="headerNotLogin">
-        <div class="container py-16 d-flex justify-content-between align-items-center">
-            <h1 id="home">
-                <a href="index.html" data-bs-toggle="tooltip" data-bs-placement="bottom" id="aHeader" title="回到首頁">浪潮情緒卡</a>
-            </h1>
-            <ul class="d-flex justify-content-end justify-content-md-between align-items-center mb-0 ps-0">
-                <li class="d-none d-md-block " data-bs-toggle="tooltip" data-bs-placement="bottom" title="認識情緒與情緒卡">
-                    <a href="aboutEmotions.html" class="px-4 py-8 link-gray-550" id="aHeader">認識情緒</a>
-                </li>
-                <li class="d-none d-md-block ms-20 text-nowrap" data-bs-toggle="tooltip" data-bs-placement="bottom" title="登入">
-                    <a href="login.html" class="btn btn-main c-btn" id="aHeader">登入</a>
-                </li>
-                <li class="d-none d-md-block ms-16" data-bs-toggle="tooltip" data-bs-placement="bottom" title="註冊">
-                    <a href="signUp.html" class="btn btn-pink c-btn" id="aHeader">註冊</a>
-                </li>
-                <li class="d-md-none position-relative">
-                    <button class="px-8 py-4 btn btn-outline-main rounded-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                        <i class="bi bi-list"></i>
-                    </button>
-                    <div class="collapse" style="position: absolute; right: 0; top: 40px;" id="collapseExample">
-                        <div class="p-0 card card-body rounded-2 border border-main-tint01" style="width: 120px;">
-                            <ul>
-                                <li>
-                                    <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="login.html">登入</a>
-                                </li>
-                                <li>
-                                    <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="signUp.html">註冊</a>
-                                </li>
-                                <li>
-                                    <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="aboutEmotions.html">認識情緒</a>
-                                </li>
-                            </ul>
+            <div class="container py-16 d-flex justify-content-between align-items-center">
+                <h1 id="home">
+                    <a href="index.html" data-bs-toggle="tooltip" data-bs-placement="bottom" id="aHeader" title="回到首頁">浪潮情緒卡</a>
+                </h1>
+                <ul class="d-flex justify-content-end justify-content-md-between align-items-center mb-0 ps-0">
+                    <li class="d-none d-md-block " data-bs-toggle="tooltip" data-bs-placement="bottom" title="認識情緒與情緒卡">
+                        <a href="aboutEmotions.html" class="px-4 py-8 link-gray-550" id="aHeader">認識情緒</a>
+                    </li>
+                    <li class="d-none d-md-block ms-20 text-nowrap" data-bs-toggle="tooltip" data-bs-placement="bottom" title="登入">
+                        <a href="login.html" class="btn btn-main c-btn" id="aHeader">登入</a>
+                    </li>
+                    <li class="d-none d-md-block ms-16" data-bs-toggle="tooltip" data-bs-placement="bottom" title="註冊">
+                        <a href="signUp.html" class="btn btn-pink c-btn" id="aHeader">註冊</a>
+                    </li>
+                    <li class="d-md-none">
+                        <a href="login.html" class="link-main" id="aHeader">登入</a>
+                    </li>
+                    <li class="d-md-none ms-20 position-relative">
+                        <button class="px-8 py-4 btn btn-outline-main rounded-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                            <i class="bi bi-list"></i>
+                        </button>
+                        <div class="collapse" style="position: absolute; right: 0; top: 40px;" id="collapseExample">
+                            <div class="p-0 card card-body rounded-2 border border-main-tint01" style="width: 120px;">
+                                <ul>
+                                    <!-- <li>
+                                        <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="login.html">登入</a>
+                                    </li> -->
+                                    <li>
+                                        <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="signUp.html">註冊</a>
+                                    </li>
+                                    <li>
+                                        <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="aboutEmotions.html">認識情緒</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
+                    </li>
+                </ul>
+            </div>
         </header>
         <header class="d-none header h-logined fixed-top" id="headerLoggedIn">
             <div class="container py-16 d-flex justify-content-between align-items-center">

@@ -40,7 +40,7 @@
                                     <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="account.html">我的帳戶</a>
                                 </li>
                                 <li>
-                                  <div class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" data-bs-toggle="modal" data-bs-target="#modalLogout" style="cursor: pointer;">登出</div>
+                                    <div class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" data-bs-toggle="modal" data-bs-target="#modalLogout" style="cursor: pointer;">登出</div>
                                 </li>
                             </ul>
                         </div>
@@ -66,10 +66,10 @@
                         </a>
                     </li>
                     <li class="ms-16">
-                      <a class="logout btn p-0 border-0" id="btnLogout" data-bs-toggle="tooltip" data-bs-placement="bottom" title="登出">
-                          <i class="bi bi-door-closed-fill"></i>
-                          <i class="bi bi-door-open-fill"></i>
-                      </a>
+                        <a class="logout btn p-0 border-0" id="btnLogout" data-bs-toggle="tooltip" data-bs-placement="bottom" title="登出">
+                            <i class="bi bi-door-closed-fill"></i>
+                            <i class="bi bi-door-open-fill"></i>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -102,7 +102,7 @@
                     </div>
                     <div class="box-account-text">
                         <span class="mb-8 text-gray-700">Email</span>
-                        <p class="ms-4 mb-24 fs-6 fw-bold">wavemo@gmail.com</p>
+                        <p class="ms-4 mb-24 fs-6 fw-bold" id="email">wavemo@gmail.com</p>
                         <span class="mb-8 text-gray-700">密碼</span>
                         <div class="d-flex justify-content-between">
                             <p class="ms-4 mb-24 fs-6 fw-bold">********</p>
@@ -110,7 +110,7 @@
                         </div>
                         <span class="mb-8 text-gray-700">帳號</span>
                         <p class="ms-4 mb-24 fs-6 fw-bold" id="accountName">wavemo</p>
-                        <input type="text" class="d-none form-control w-100 mb-24 px-20 rounded-pill" id="formAccount" value="wavemo">
+                        <!-- <input type="text" class="d-none form-control w-100 mb-24 px-20 rounded-pill" id="formAccount" value="wavemo"> -->
                         <div class="row">
                             <div class="col-md-6">
                                 <span class="mb-8 text-gray-700">姓</span>
@@ -126,18 +126,19 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <span class="mb-8 text-gray-700">生日</span>
-                                <p class="ms-4 mb-24 fs-6 fw-bold">2023 / 01 / 15</p>
+                                <p class="ms-4 mb-24 fs-6 fw-bold" id="birthday">2023 / 01 / 15</p>
+                                <input type="date" class="d-none form-control rounded-pill px-20" id="formBirthday">
                             </div>
                             <div class="col-md-6">
                                 <span class="mb-8 text-gray-700">身份</span>
                                 <p class="ms-4 mb-24 fs-6 fw-bold" id="title">學生</p>
                                 <select class="d-none form-select px-20 rounded-pill" aria-label="Default select example" id="formTitle">
-                                    <option value="學生">學生</option>
-                                    <option value="教師">教師</option>
-                                    <option value="教師">輔導教師</option>
+                                    <option value="Student">學生</option>
+                                    <option value="Teacher">教師</option>
+                                    <!-- <option value="教師">輔導教師</option>
                                     <option value="諮商師">諮商師</option>
-                                    <option value="醫生">醫生</option>
-                                    <option value="其他">其他</option>
+                                    <option value="醫生">醫生</option> -->
+                                    <option value="Null">其他</option>
                                 </select>
                             </div>
                         </div>
@@ -277,49 +278,85 @@
         <script src="./js/timeOut.js"></script>
         <script type="text/javascript" src="./js/beforeunload.js"></script>
         <script>
+            // 取得 userInfo，並寫入畫面中
+            let userInfo = JSON.parse(localStorage.getItem("userInfo"));
+            const email = document.querySelector("#email");
             const btnModify = document.querySelector('#btnModify');
             const btnCancel = document.querySelector('#btnCancel');
             const btnSave = document.querySelector('#btnSave');
             const accountName = document.querySelector('#accountName');
             const lastName = document.querySelector('#lastName');
             const firstName = document.querySelector('#firstName');
+            const birthday = document.querySelector('#birthday');
             const title = document.querySelector('#title');
-            const formAccount = document.querySelector('#formAccount');
+            // const formAccount = document.querySelector('#formAccount');
             const formLastName = document.querySelector('#formLastName');
             const formFirstName = document.querySelector('#formFirstName');
+            const formBirthday = document.querySelector('#formBirthday');
             const formTitle = document.querySelector('#formTitle');
 
+            email.textContent = userInfo.email;
+            accountName.textContent = userInfo.user_name;
+            lastName.textContent = userInfo.last_name;
+            firstName.textContent = userInfo.first_name;
+            formLastName.value = userInfo.last_name;
+            formFirstName.value = userInfo.first_name;
+            if(userInfo.day_of_birth != null) {
+                birthday.textContent = userInfo.day_of_birth;
+                formBirthday.value = userInfo.day_of_birth;
+            } else {
+                birthday.textContent = "";
+                formBirthday.value = "";
+            }
+            if (userInfo.title == "Student") {
+                title.textContent = "學生";
+                formTitle.value = "Student";
+            } else if (userInfo.title == "Teacher") {
+                title.textContent = "教師";
+                formTitle.value = "Teacher"
+            } else {
+                title.textContent = "其他";
+                formTitle.value = "Null";
+            }
+
+            // 編輯按鈕
             btnModify.addEventListener("click", function(){
                 btnModify.classList.add("d-none");
                 btnCancel.classList.remove("d-none");
                 btnSave.classList.remove("d-none");
-                accountName.classList.add("d-none");
+                // accountName.classList.add("d-none");
                 lastName.classList.add("d-none");
                 firstName.classList.add("d-none");
                 title.classList.add("d-none");
-                formAccount.classList.remove("d-none");
+                // formAccount.classList.remove("d-none");
                 formLastName.classList.remove("d-none");
                 formFirstName.classList.remove("d-none");
                 formTitle.classList.remove("d-none");
             })
 
+            // 取消按鈕
             btnCancel.addEventListener('click',function(){
                 let confirmResult = confirm("執行取消的話，您的修改將不會被儲存喔！\r您確定要離開嗎？");
                 if (confirmResult) {
                     btnModify.classList.remove("d-none");
                     btnCancel.classList.add("d-none");
                     btnSave.classList.add("d-none");
-                    accountName.classList.remove("d-none");
+                    // accountName.classList.remove("d-none");
                     lastName.classList.remove("d-none");
                     firstName.classList.remove("d-none");
                     title.classList.remove("d-none");
-                    formAccount.classList.add("d-none");
+                    // formAccount.classList.add("d-none");
                     formLastName.classList.add("d-none");
                     formFirstName.classList.add("d-none");
                     formTitle.classList.add("d-none");
                 } else {
                     return
                 }
+            })
+
+            // 儲存
+            btnSave.addEventListener("click", function(){
+                
             })
         </script>
     </body>

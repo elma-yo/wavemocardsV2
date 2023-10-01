@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="./stylesheets/all.css">
   </head>
   <body>
-    <header class="header fixed-top" id="headerNotLogin">
+    <header class="header sticky-top" id="headerNotLogin">
       <div class="container py-16 d-flex justify-content-between align-items-center">
           <h1 id="home">
               <a href="index.html" data-bs-toggle="tooltip" data-bs-placement="bottom" id="aHeader" title="回到首頁">浪潮情緒卡</a>
@@ -28,16 +28,19 @@
               <li class="d-none d-md-block ms-16" data-bs-toggle="tooltip" data-bs-placement="bottom" title="註冊">
                   <a href="signUp.html" class="btn btn-pink c-btn" id="aHeader">註冊</a>
               </li>
-              <li class="d-md-none position-relative">
+              <li class="d-md-none">
+                  <a href="login.html" class="link-main" id="aHeader">登入</a>
+              </li>
+              <li class="d-md-none ms-20 position-relative">
                   <button class="px-8 py-4 btn btn-outline-main rounded-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                       <i class="bi bi-list"></i>
                   </button>
                   <div class="collapse" style="position: absolute; right: 0; top: 40px;" id="collapseExample">
                       <div class="p-0 card card-body rounded-2 border border-main-tint01" style="width: 120px;">
                           <ul>
-                              <li>
+                              <!-- <li>
                                   <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="login.html">登入</a>
-                              </li>
+                              </li> -->
                               <li>
                                   <a class="d-block px-16 py-12 link-gray-600 btn-hover-main-tint02 rounded-2" href="signUp.html">註冊</a>
                               </li>
@@ -50,7 +53,7 @@
               </li>
           </ul>
       </div>
-    </header>
+  </header>
     <header class="d-none header h-logined fixed-top" id="headerLoggedIn">
         <div class="container py-16 d-flex justify-content-between align-items-center">
             <h1>
