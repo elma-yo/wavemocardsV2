@@ -311,6 +311,10 @@
 
             const doughnutChartCTX = document.getElementById("doughnutChart")
             const barChartCTX = document.getElementById("barChart")
+
+            let prevDoughnutCanvasWidth = 0
+            let currentDoughtCanvasWidth = 0
+
             const resizeObserver = new ResizeObserver(entries => {
                 for (let entry of entries) {
                     if (entry.contentBoxSize[0].inlineSize <= 576) {
@@ -324,6 +328,33 @@
             });
 
             resizeObserver.observe(document.documentElement);
+
+            const doughnutChartReviseObserver = new ResizeObserver(entries => {
+                for (let entry of entries) {
+                    if (prevDoughnutCanvasWidth !== currentDoughtCanvasWidth) {
+                        resetCustomTooltips(doughnutChartCTX)
+                        prevDoughnutCanvasWidth = currentDoughtCanvasWidth
+                    } 
+                    if (currentData !== null && doughnutChart !== null) {
+                        currentDoughtCanvasWidth = Math.floor(entry.contentRect.width)
+                        createTooltipsForDoughnutChart(
+                            currentData,
+                            doughnutChart,
+                            currentDoughtCanvasWidth
+                        )
+                    }
+                }
+            });
+
+            doughnutChartReviseObserver.observe(doughnutChartCTX);
+
+            const barChartReviseObserver = new ResizeObserver(entries => {
+                for (let entry of entries) {
+                    console.log(entry)
+                }
+            });
+
+            barChartReviseObserver.observe(barChartCTX.parentElement);
 
             const main = document.querySelector("main")
 
@@ -350,6 +381,7 @@
 
             let barChart = null
             let doughnutChart = null
+            let doughnutCanvasWidth = 0
 
             btnAnalyze.addEventListener("click", async function () {
                 event.preventDefault()
@@ -420,7 +452,6 @@
 
                         resetChart(barChart)
                         resetChart(doughnutChart)
-                        resetCustomTooltips(doughnutChartCTX)
 
                         if (btnDownload.classList.contains("d-none")) {
                             btnDownload.classList.remove("d-none")
@@ -552,11 +583,6 @@
                                 }
                             }
                         })
-
-                        createTooltipsForDoughnutChart(
-                            currentData,
-                            doughnutChart
-                        )
                     }
                 } catch (error) {
                     console.error(error)
@@ -630,7 +656,7 @@
                 return resultArray
             }
 
-            function createTooltipsForDoughnutChart(data, targetDoughnutChart) {
+            function createTooltipsForDoughnutChart(data, targetDoughnutChart, canvasWidth) {
                 const parentWidth =
                     targetDoughnutChart.canvas.parentElement.offsetWidth
                 const radianArray = getRadianArray(Object.values(data))
@@ -659,8 +685,7 @@
                             tooltip.dataset.position = "right"
                         }
 
-                        const radius =
-                            targetDoughnutChart.canvas.offsetWidth / 2
+                        const radius = canvasWidth / 2
 
                         const x = Math.floor(
                             Math.abs(
