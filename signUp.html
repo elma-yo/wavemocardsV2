@@ -217,7 +217,7 @@
                         <div class="col-6">
                             <label for="birthday" class="form-label d-flex justify-content-between">
                                 生日
-                                <!-- <span class="text-pink-tint02 fs-9">*必填</span> -->
+                                <span class="text-pink-tint02 fs-9">*必填</span>
                             </label>
                             <input type="date" class="form-control rounded-pill px-20" id="birthday">
                             <div class="mt-4 ms-12 ms-sm-24 fs-9" id="birthdayCmt"></div>
@@ -807,15 +807,15 @@
             let date = date_now.getDate() < 10 ? "0"+date_now.getDate() : date_now.getDate(); // 取得今天日期
             birthday.setAttribute("max", year+"-"+month+"-"+date); // 設置生日input標籤的max值
             // 在滑鼠離開後 驗證生日是否已選填
-            // birthday.addEventListener("mouseout", function(){
-            //     if(birthday.value=="") {
-            //         birthdayCmt.textContent = "此欄為必填";
-            //         birthdayCmt.style.color = "#C37979";
-            //     } else {
-            //         birthdayCmt.innerHTML = `<i class="bi bi-check-circle-fill"></i>`;
-            //         birthdayCmt.style.color = "#3C9DAE";
-            //     }
-            // })
+            birthday.addEventListener("mouseout", function(){
+                if(birthday.value=="") {
+                    birthdayCmt.textContent = "此欄為必填";
+                    birthdayCmt.style.color = "#C37979";
+                } else {
+                    birthdayCmt.innerHTML = `<i class="bi bi-check-circle-fill"></i>`;
+                    birthdayCmt.style.color = "#3C9DAE";
+                }
+            })
 
             // 是否已勾選 我同意
             let agreeChecked = false;
@@ -839,7 +839,7 @@
                 btnSubmitClickNum++;
                 if(btnSubmitClickNum%2!=0){
                     // 驗證是否已填寫所有必填內容
-                    if(emailBackEndVerified==true &&  pwdCorrect==true && pwd2Correct==true && accountBackEndVerified==true && lastNameCorrect==true && firstNameCorrect==true && agreeChecked==true){
+                    if(emailBackEndVerified==true &&  pwdCorrect==true && pwd2Correct==true && accountBackEndVerified==true && lastNameCorrect==true && firstNameCorrect==true && agreeChecked==true && birthday.value!=""){
                         let postData;
                         if(birthday.value==""){
                             postData = {
@@ -972,10 +972,10 @@
                             firstNameCmt.textContent = "最少填入 1 個中/英文字";
                             firstNameCmt.style.color = "#C37979";
                         }
-                        // if (birthday.value=="") {
-                        //     birthdayCmt.textContent = "此選填您的生日";
-                        //     birthdayCmt.style.color = "#C37979";
-                        // }
+                        if (birthday.value=="") {
+                            birthdayCmt.textContent = "此選填您的生日";
+                            birthdayCmt.style.color = "#C37979";
+                        }
                         if (agreeChecked!=true){
                             agreeCmt.textContent = "您必須勾選同意才能進行註冊";
                             agreeCmt.style.color = "#C37979";
