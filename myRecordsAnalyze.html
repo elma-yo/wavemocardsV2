@@ -58,8 +58,8 @@
                         <a href="myRecords.html" class="px-4 py-8" data-bs-toggle="tooltip" data-bs-placement="bottom" title="觀看我的紀錄與分析">我的紀錄</a>
                     </li>
                     <!-- <li class="ms-16">
-                        <a href="sharedByOthers.html" class="px-4 py-8" data-bs-toggle="tooltip" data-bs-placement="bottom" title="觀看他人分享的情緒紀錄">他人的分享</a> -->
-                    </li>
+                        <a href="sharedByOthers.html" class="px-4 py-8" data-bs-toggle="tooltip" data-bs-placement="bottom" title="觀看他人分享的情緒紀錄">他人的分享</a>
+                    </li> -->
                     <li class="ms-16">
                         <a href="account.html" class="profile" data-bs-toggle="tooltip" data-bs-placement="bottom" title="管理我的帳戶">
                             <i class="bi bi-person-fill"></i>
@@ -117,16 +117,17 @@
                         <h3 class="mb-8 py-4 fs-5 fw-bold text-main border-bottom border-main-tint02">情緒類組次數</h3>
                         <p class="mb-4 text-gray-550">下圖為您在此期間記錄的情緒卡，在以下分類中所出現的次數的長條圖。</p>
                         <p class="mb-24 text-gray-550">若您想看該類別出現的次數，您可將游標停留在該類別的長條上。</p>
-                        <div class="py-8 d-flex justify-content-center align-items-center">
+                        <div class="py-8 d-flex justify-content-center align-items-center position-relative">
                             <canvas id="barChart"></canvas>
+                            <div class="position-absolute start-0 top-0 translate-middle-y">(次)</div>
                         </div>
                     </div>
                     <div class="box-47">
                         <h3 class="mb-8 py-4 fs-5 fw-bold text-main border-bottom border-main-tint02">情緒類組比例</h3>
                         <p class="mb-4 text-gray-550">下圖為您在此期間記錄的情緒卡，在以下分類中所出現的次數比例的圖餅圖。</p>
-                        <p class="mb-24 text-gray-550">若您想看該類別所佔的比例，您可將游標停留在圓餅圖中該類別的色塊上。</p>
-                        <div class="py-8 d-flex justify-content-center align-items-center position-relative">
-                            <canvas id="doughnutChart" class="w-50 h-50"></canvas>
+                        <p class="text-gray-550">若您想看該類別所佔的比例，您可將游標停留在圓餅圖中該類別的色塊上。</p>
+                        <div class="d-flex justify-content-center align-items-center position-relative">
+                            <canvas id="doughnutChart" class="w-50 h-50 py-24"></canvas>
                         </div>
                     </div>
                 </div>
@@ -460,8 +461,15 @@
                                                 const { label, formattedValue } = context
                                                 return `${label}: ${formattedValue} %`
                                             }
-                                        },
+                                        }
                                     }
+                                },
+                                onHover(event, chartArray) {
+                                    if (chartArray.length !== 0 && event.type === "mousemove") {
+                                        doughnutChartCTX.style.zIndex = "99"
+                                        return
+                                    }
+                                    doughnutChartCTX.style.zIndex = "auto"
                                 }
                             }
                         })
@@ -509,6 +517,11 @@
                                         },
                                         grid: {
                                             display: false
+                                        },
+                                        border: {
+                                            color: "#313131",
+                                            width: 2,
+                                            z: 1
                                         }
                                     },
                                     y: {
@@ -518,7 +531,14 @@
                                             font: {
                                                 size: barLabelFontSize
                                             },
-                                            callback: (value) => `${value.toString()} (次)`
+                                            padding: 4
+                                        },
+                                        border: {
+                                            display: false
+                                        },
+                                        drawTicks: true,
+                                        grid: {
+                                            drawTicks: false
                                         }
                                     }
                                 }
