@@ -252,6 +252,7 @@
                     <a class="mt-48 mb-16 d-block clickMeToLogin" href="login.html">已經有帳號了嗎？ 點我登入</a>
                 </div>
             </div>
+            <button type="button" class="d-none" id="btnSubmitResult" data-bs-toggle="modal" data-bs-target="#modalResult"></button>
         </main>
 
         <!-- Scrollable modal 隱私權保護政策 -->
@@ -481,6 +482,7 @@
             const agree = document.querySelector('#agree');
             const agreeCmt = document.querySelector('#agreeCmt');
             const btnSubmit = document.querySelector('#btnSubmit');
+            const btnSubmitResult = document.querySelector('#btnSubmitResult');
             const modalResult = document.querySelector('#modalResult');
             const modalResultText = document.querySelector('#modalResultText');
             const modalResultText2 = document.querySelector('#modalResultText2');
@@ -836,10 +838,10 @@
             })
 
             // 註冊內容驗證
-            let btnSubmitClickNum = 0;
+            // let btnSubmitClickNum = 0;
             btnSubmit.addEventListener('click', function(){
-                btnSubmitClickNum++;
-                if(btnSubmitClickNum%2!=0){
+                // btnSubmitClickNum++;
+                // if(btnSubmitClickNum%2!=0){
                     // 驗證是否已填寫所有必填內容
                     if(emailBackEndVerified==true &&  pwdCorrect==true && pwd2Correct==true && accountBackEndVerified==true && lastNameCorrect==true && firstNameCorrect==true && agreeChecked==true && birthday.value!=""){
                         let postData;
@@ -870,22 +872,26 @@
                             if(response.data.message == "The user was successfully registered."){
                                 // 註冊成功
                                 window.onbeforeunload = false;
+                                modalResultText.textContent = "註冊成功";
                                 modalResultText.classList.add("text-main");
+                                modalResultText.classList.remove("text-pink");
+                                modalResultText2.classList.add("d-none");
+                                modalResultText3.classList.add("d-none");
                                 modalResultImg.src="./images/emoCards/5.svg";
-                                btnSubmit.setAttribute("data-bs-toggle", "modal");
-                                btnSubmit.setAttribute("data-bs-target", "#modalResult");
-                                btnSubmit.click(); // 設定該按鈕被點擊
+                                modalResultLink.classList.remove("d-none");
+                                modalResultClose.classList.add('d-none');
+                                btnSubmitResult.click(); // 設定該按鈕被點擊
                             } else if (response.data.message == ""){
                                 modalResultText.textContent = "註冊失敗";
                                 modalResultText.classList.add("text-pink");
+                                modalResultText.classList.remove("text-main");
                                 modalResultText2.classList.remove("d-none");
                                 modalResultText3.classList.remove("d-none");
                                 modalResultText2.innerHTML = `很抱歉，本次註冊失敗，請嘗試重新註冊。`;
                                 modalResultImg.src="./images/emoCards/58.svg";
                                 modalResultLink.classList.add("d-none");
                                 modalResultClose.classList.remove('d-none');
-                                btnSubmit.setAttribute("data-bs-toggle", "modal");
-                                btnSubmit.setAttribute("data-bs-target", "#modalResult");
+                                btnSubmitResult.click();
                             } else {
                                 // 註冊失敗 帳號已被使用
                                 modalResultText.textContent = "註冊失敗";
@@ -896,8 +902,7 @@
                                 modalResultImg.src="./images/emoCards/58.svg";
                                 modalResultLink.classList.add("d-none");
                                 modalResultClose.classList.remove('d-none');
-                                btnSubmit.setAttribute("data-bs-toggle", "modal");
-                                btnSubmit.setAttribute("data-bs-target", "#modalResult");
+                                btnSubmitResult.click();
                             }
                         })
                         .catch(function(err){
@@ -910,9 +915,7 @@
                             modalResultImg.src="./images/emoCards/58.svg";
                             modalResultLink.classList.add("d-none");
                             modalResultClose.classList.remove('d-none');
-                            btnSubmit.setAttribute("data-bs-toggle", "modal");
-                            btnSubmit.setAttribute("data-bs-target", "#modalResult");
-                            btnSubmit.click();
+                            btnSubmitResult.click();
                         })
                     } else {
                         if (emailBackEndVerified!=true) {
@@ -996,7 +999,7 @@
                         }
                         btnSubmitClickNum=0;
                     }
-                }
+                // }
             })
         </script>
     </body>

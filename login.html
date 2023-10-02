@@ -178,10 +178,10 @@
         // 登入內容驗證
         let token;
         let user_info;
-        let btnSubmitClickNum = 0;
+        // let btnSubmitClickNum = 0;
         btnSubmit.addEventListener('click', function(){
-            btnSubmitClickNum++;
-            if(btnSubmitClickNum%2!=0){
+            // btnSubmitClickNum++;
+            // if(btnSubmitClickNum%2!=0){
                 if(account.value!="" && pwd.value!=""){
                     let postData;
                     postData = {
@@ -265,7 +265,7 @@
                     }
                     btnSubmitClickNum=0;
                 }
-            }
+            // }
         })
     </script>
   </body>
