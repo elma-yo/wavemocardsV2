@@ -128,9 +128,9 @@
             <div class="container pb-112">
                 <!-- 導覽 -->
                 <ul  class="ms-4 mt-12 mb-36 px-12 px-sm-0 text-gray-550 fs-7">
-                    <li class="mb-4 text-gray-550 fs-7">謝謝親愛的ＯＯ努力地找尋到屬於自己的情緒卡。</li>
+                    <li class="mb-4 text-gray-550 fs-7">謝謝親愛的<span class="px-2" id="textName"></span>努力地找尋到屬於自己的情緒卡。</li>
                     <li class="mb-4 text-gray-550 fs-7">
-                        在進入下一步前，想邀請ＯＯ，再次 <span class="text-main fw-500">閉上眼睛，深呼吸～吐氣～</span></li>
+                        在進入下一步前，想邀請<span class="px-2" id="textName"></span>，再次 <span class="text-main fw-500">閉上眼睛，深呼吸～吐氣～</span></li>
                     <li class="mb-40 text-gray-550 fs-7">
                         並在深呼吸的過程中，感受心中的自己，<span class="text-main fw-500">挑選的情緒，其強度分別如何呢？</span><span class="fs-8">（ 1分代表最為微弱，5分代表最為強烈 ）</span></li>
                 </ul>
@@ -217,7 +217,7 @@
                         </a>
                       </div>
                       <div>
-                        <a href="https://forms.gle/22Db5CkKZKr32pAZ9"  target="_blank">
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdiAQt45Pzuha3aj9OYdS-2-ljOcEcwEDwZjjls_ufdXHkQNw/viewform?usp=sharing"  target="_blank">
                             <h3 class="mb-16 fs-5">回報問題</h3>
                             <span class="fs-8">點我填寫回報問題表單</span>
                         </a>
@@ -308,6 +308,11 @@
             const strengthArea =document.querySelector('#strengthArea');
             const listModal = document.querySelector('.listModal');
             const tooltip = document.querySelector('#tooltip');
+            const textNames = document.querySelectorAll("#textName");
+            let userInfo = JSON.parse(localStorage.getItem("userInfo"));
+            textNames.forEach(function(name, i){
+                name.textContent = userInfo.first_name;
+            })
             // 預防頁面跳轉
             window.onbeforeunload = function () {
                 return "Are you really sure?";
