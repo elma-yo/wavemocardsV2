@@ -131,6 +131,7 @@
                 <a class="d-block click-me" href="signUp.html">尚未有帳號嗎？ 點我註冊</a>
             </div>
         </div>
+        <button type="button" class="d-none" id="btnLoginResult" data-bs-toggle="modal" data-bs-target="#modalResult"></button>
     </main>
 
     <!-- 成功/失敗 Modal -->
@@ -172,6 +173,7 @@
         const accountCmt = document.querySelector('#accountCmt');
         const pwdCmt = document.querySelector('#pwdCmt');
         const btnSubmit = document.querySelector('#btnSubmit');
+        const btnLoginResult = document.querySelector('#btnLoginResult');
 
         // 登入內容驗證
         let token;
@@ -216,9 +218,9 @@
                             modalResultImg.src="./images/emoCards/5.svg";
                             modalResultLink.classList.remove("d-none");
                             modalResultClose.classList.add('d-none');
-                            btnSubmit.setAttribute("data-bs-toggle", "modal");
-                            btnSubmit.setAttribute("data-bs-target", "#modalResult");
-                            btnSubmit.click();
+                            // btnSubmit.setAttribute("data-bs-toggle", "modal");
+                            // btnSubmit.setAttribute("data-bs-target", "#modalResult");
+                            btnLoginResult.click();
                         }
                         if (response.data.error == "Wrong login details!"){
                             // 帳號密碼有誤
@@ -231,9 +233,9 @@
                             modalResultImg.src="./images/emoCards/58.svg";
                             modalResultLink.classList.add("d-none");
                             modalResultClose.classList.remove('d-none');
-                            btnSubmit.setAttribute("data-bs-toggle", "modal");
-                            btnSubmit.setAttribute("data-bs-target", "#modalResult");
-                            btnSubmit.click();
+                            // btnSubmit.setAttribute("data-bs-toggle", "modal");
+                            // btnSubmit.setAttribute("data-bs-target", "#modalResult");
+                            btnLoginResult.click();
                         }
                     })
                     .catch(function(err){
@@ -246,9 +248,9 @@
                         modalResultImg.src="./images/emoCards/58.svg";
                         modalResultLink.classList.add("d-none");
                         modalResultClose.classList.remove('d-none');
-                        btnSubmit.setAttribute("data-bs-toggle", "modal");
-                        btnSubmit.setAttribute("data-bs-target", "#modalResult");
-                        btnSubmit.click();
+                        // btnSubmit.setAttribute("data-bs-toggle", "modal");
+                        // btnSubmit.setAttribute("data-bs-target", "#modalResult");
+                        btnLoginResult.click();
                     })
                 } else {
                     if(account.value==""){

@@ -127,7 +127,7 @@
                 <!-- <div class="row">
                     <div class="col-9"> -->
                         <ul  class="mb-8 ms-4 mt-12 mb-36 px-12 px-sm-0 mb-lg-0 text-gray-550">
-                            <li class="mb-4 text-gray-550 fs-5">親愛的ＯＯ，</li>
+                            <li class="mb-4 text-gray-550 fs-5" id="textWithName">親愛的ＯＯ，</li>
                             <li class="mb-4 text-gray-550 fs-5">謝謝你為了自己花了時間、心思，做覺察、紀錄與省思。</li>
                             <li class="mb-12 text-gray-550 fs-5">想邀請你對自己說：</li>
                             <li class="mb-4 text-main fs-5 fw-500">我想謝謝自己，</li>
@@ -287,5 +287,10 @@
         <script src="./js/toolTips.js"></script>
         <script src="./js/pages/logout.js"></script>
         <script src="./js/timeOut.js"></script>
+        <script>
+            let userInfo = JSON.parse(localStorage.getItem("userInfo"));
+            const textWithName = document.querySelector("#textWithName");
+            textWithName.innerHTML = `<li class="mb-4 text-gray-550 fs-5" id="textWithName">親愛的<span class="ps-2"> ${userInfo.first_name}</span>，</li>`;
+        </script>
     </body>
 </html>

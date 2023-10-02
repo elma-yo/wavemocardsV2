@@ -705,10 +705,9 @@
                     modalSaveResultClose.classList.remove("btn-pink");
                     resultData.forEach(function(data, i){
                         if(data.emo_ID==recordId) {
-                            console.log(data)
                             data.story = storyBackgroundTextarea.value;
                             data.actions = storyActionTextarea.value;
-                            date.results = storyResultTextarea.value;
+                            data.results = storyResultTextarea.value;
                             data.feelings = storyFeelingTextarea.value;
                             data.reaction = storyNextTextarea.value;
                         }

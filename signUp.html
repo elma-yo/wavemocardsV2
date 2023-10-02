@@ -639,6 +639,7 @@
                 }
             }
 
+
             btnNextToPwd.addEventListener("click", function() {
                 areaEmail.classList.add("d-none");
                 areaAccount.classList.add("d-none");
@@ -701,6 +702,7 @@
                 areaPwd2.classList.add("d-none");
                 btnBackToFirst.classList.add("d-none");
                 btnNextToLastDisabled.classList.add("d-none");
+                btnNextToLast.classList.add("d-none");
                 areaEmail.classList.remove("d-none");
                 areaAccount.classList.remove("d-none");
                 if(emailBackEndVerified==true && accountBackEndVerified==true){
@@ -847,7 +849,6 @@
                                 "first_name": firstName.value,
                                 "last_name": lastName.value,
                                 "password": pwd2.value,
-                                "title": title.value,
                                 "user_name": account.value
                             };
                         } else {
@@ -857,9 +858,11 @@
                                 "first_name": firstName.value,
                                 "last_name": lastName.value,
                                 "password": pwd2.value,
-                                "title": title.value,
                                 "user_name": account.value
                             };
+                        }
+                        if(title.value!="Null"){
+                            postData.title = title.value;
                         }
                         // post 給後端確認
                         axios.post("https://api.wavemocards.com/user/signup", postData)
@@ -872,6 +875,17 @@
                                 btnSubmit.setAttribute("data-bs-toggle", "modal");
                                 btnSubmit.setAttribute("data-bs-target", "#modalResult");
                                 btnSubmit.click(); // 設定該按鈕被點擊
+                            } else if (response.data.message == ""){
+                                modalResultText.textContent = "註冊失敗";
+                                modalResultText.classList.add("text-pink");
+                                modalResultText2.classList.remove("d-none");
+                                modalResultText3.classList.remove("d-none");
+                                modalResultText2.innerHTML = `很抱歉，本次註冊失敗，請嘗試重新註冊。`;
+                                modalResultImg.src="./images/emoCards/58.svg";
+                                modalResultLink.classList.add("d-none");
+                                modalResultClose.classList.remove('d-none');
+                                btnSubmit.setAttribute("data-bs-toggle", "modal");
+                                btnSubmit.setAttribute("data-bs-target", "#modalResult");
                             } else {
                                 // 註冊失敗 帳號已被使用
                                 modalResultText.textContent = "註冊失敗";
@@ -887,7 +901,7 @@
                             }
                         })
                         .catch(function(err){
-                            console.log(err);
+                            // console.log(err);
                             modalResultText.textContent = "註冊失敗";
                             modalResultText.classList.add("text-pink");
                             modalResultText2.classList.remove("d-none");

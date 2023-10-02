@@ -109,7 +109,7 @@
                         <span class="mb-8 text-gray-700">密碼</span>
                         <div class="mb-24 d-flex justify-content-between align-items-center">
                             <p class="ms-4 fs-6 fw-bold">********</p>
-                            <a class="d-block btn btn-pink-tint01 c-btn px-16 py-4 border-0" style="line-height: auto;" href="resetPassword.html">重設密碼</a>
+                            <a class="d-block btn btn-pink-tint01 c-btn px-16 py-4 border-0" style="line-height: auto;" href="resetPassword.html" id="btnResetPwd">重設密碼</a>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
@@ -342,6 +342,7 @@
             const btnModify = document.querySelector('#btnModify');
             const btnCancel = document.querySelector('#btnCancel');
             const btnSave = document.querySelector('#btnSave');
+            const btnResetPwd = document.querySelector('#btnResetPwd');
             const accountName = document.querySelector('#accountName');
             const lastName = document.querySelector('#lastName');
             const firstName = document.querySelector('#firstName');
@@ -423,15 +424,16 @@
             // 編輯按鈕
             btnModify.addEventListener("click", function(){
                 btnModify.classList.add("d-none");
+                btnResetPwd.classList.add("d-none");
                 btnCancel.classList.remove("d-none");
                 btnSave.classList.remove("d-none");
                 // accountName.classList.add("d-none");
-                // birthday.classList.add("d-none");
+                birthday.classList.add("d-none");
                 lastName.classList.add("d-none");
                 firstName.classList.add("d-none");
                 title.classList.add("d-none");
                 // formAccount.classList.remove("d-none");
-                // formBirthday.classList.remove("d-none");
+                formBirthday.classList.remove("d-none");
                 formLastName.classList.remove("d-none");
                 formFirstName.classList.remove("d-none");
                 formTitle.classList.remove("d-none");
@@ -440,15 +442,16 @@
             // 取消按鈕
             modalCancelSure.addEventListener('click',function(){
                 btnModify.classList.remove("d-none");
+                btnResetPwd.classList.remove("d-none");
                 btnCancel.classList.add("d-none");
                 btnSave.classList.add("d-none");
                 // accountName.classList.remove("d-none");
-                // birthday.classList.remove("d-none");
+                birthday.classList.remove("d-none");
                 lastName.classList.remove("d-none");
                 firstName.classList.remove("d-none");
                 title.classList.remove("d-none");
                 // formAccount.classList.add("d-none");
-                // formBirthday.classList.add("d-none");
+                formBirthday.classList.add("d-none");
                 formLastName.classList.add("d-none");
                 formFirstName.classList.add("d-none");
                 formTitle.classList.add("d-none");
@@ -460,12 +463,15 @@
                 let postData = {
                     "first_name": formFirstName.value,
                     "last_name": formLastName.value,
-                    "title": formTitle.value,
+                    "day_of_birth": formBirthday.value,
+                }
+                if (formTitle.value!="Null"){
+                    postData.title = formTitle.value;
                 }
                 axios.put("https://api.wavemocards.com/user/info",
                 postData, { headers: {"Authorization": `Bearer ${token}`} })
                 .then(function(response){
-                    if(response.data.message == "The info was successfully updated.") {
+                    if(response.data.message == "The info was successfully updated." || response.data.message == "Nothing changed.") {
                         modalSaveResultTitle.textContent="儲存成功"
                         modalSaveResultTitle.classList.add("text-main");
                         modalSaveResultTitle.classList.remove("text-pink");
