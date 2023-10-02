@@ -432,10 +432,18 @@
                 </div>
                 <!-- Contact -->
                 <div class="footer-text-box mb-48 mb-lg-0 me-lg-56">
+                  <div class="mb-48">
                     <a href="mailto:info@wavemocards.com">
                         <h3 class="mb-16 fs-5">聯絡我們</h3>
-                        <span>info@wavemocards.com</span>
+                        <span class="fs-8">點我寄信聯絡浪潮服務小組</span>
                     </a>
+                  </div>
+                  <div>
+                    <a href="https://forms.gle/22Db5CkKZKr32pAZ9"  target="_blank">
+                        <h3 class="mb-16 fs-5">回報問題</h3>
+                        <span class="fs-8">點我填寫回報問題表單</span>
+                    </a>
+                  </div>
                 </div>
             </div>
         </div>
@@ -591,7 +599,6 @@
       let endDay;
       let arySearchText = [];
       let searchData = JSON.parse(localStorage.getItem("searchData"));
-      console.log(searchData);
       if (searchData!=null){
         dateStart.value = searchData.dateStartValue;
         dateEnd.value = searchData.dateEndValue;
@@ -677,7 +684,7 @@
           // page 按鈕總數量公式 總資料數量 / 每一頁要顯示的資料
           // 這邊要注意，因為有可能會出現餘數，所以要無條件進位。
           const pageTotal = Math.ceil(dataTotal / perPage);
-          console.log(`全部資料:${dataTotal} 每一頁顯示:${perPage}筆 總頁數:${pageTotal}`);
+          // console.log(`全部資料:${dataTotal} 每一頁顯示:${perPage}筆 總頁數:${pageTotal}`);
           // 顯示搜尋結果為0
           if(dataTotal==0){
             btnSearchResult.click();
@@ -755,6 +762,10 @@
 
           // 按鈕 重整
           btnReset.addEventListener("click", function(){
+            dateStart.value = "";
+            dateEnd.value = "";
+            searchText.value = "";
+            localStorage.removeItem("searchData");
             localStorage.removeItem("resultData");
             location.href = "myRecords.html";
           })

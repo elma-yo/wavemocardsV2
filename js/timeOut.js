@@ -5,7 +5,6 @@ let startTime = new Date(`${objStartTime.year}-${objStartTime.month}-${objStartT
 startTime.setHours(objStartTime.hour, objStartTime.min, objStartTime.sec);
 let nowTime = new Date();
 let costTime = (nowTime-startTime) / 1000; // 秒
-console.log(costTime)
 if(costTime>=21590){
     // 大於 21600 秒（6小時），token到期，清空localStorage，出現使用期限到期請重新登入
     localStorage.clear();
