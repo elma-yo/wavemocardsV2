@@ -87,10 +87,10 @@
                                 <div class="progress bg-gray-300" style="height: 2px;">
                                     <div class="progress-bar bg-main-tint01" role="progressbar" style="width: 40%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
-                                <a class="p-num position-absolute top-0 start-0 translate-middle btn btn-sm btn-main-tint01 rounded-pill d-flex justify-content-center align-items-center" id="tooltip" href="findEmoCardsHolder.html" data-bs-toggle="tooltip" data-bs-placement="bottom" title="我的情緒卡夾">
+                                <a class="p-num position-absolute top-0 start-0 translate-middle btn btn-sm btn-main-tint01 rounded-pill d-flex justify-content-center align-items-center cursor-pointer" id="tooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title="我的情緒卡夾">
                                     <span class="d-block" style="cursor: pointer;">1</span>
                                 </a>
-                                <a class="p-num position-absolute top-0 start-20 translate-middle btn btn-sm btn-main-tint01 rounded-pill d-flex justify-content-center align-items-center" id="tooltip" href="findEmoStrength1st.html" data-bs-toggle="tooltip" data-bs-placement="bottom" title="1st情緒強度">
+                                <a class="p-num position-absolute top-0 start-20 translate-middle btn btn-sm btn-main-tint01 rounded-pill d-flex justify-content-center align-items-center cursor-pointer" id="tooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title="1st情緒強度">
                                     <span class="d-block" style="cursor: pointer;">2</span>
                                 </a>
                                 <div class="p-num position-absolute top-0 start-40 translate-middle btn btn-sm btn-outline-main-tint01 border-2 rounded-pill d-flex justify-content-center align-items-center" data-bs-toggle="tooltip" data-bs-placement="bottom" title="背景篇">
@@ -307,15 +307,7 @@
             const WhatHappenedLabel = document.querySelector('#WhatHappenedLabel');
             const whatHappened = document.querySelector('#whatHappened');
             const tooltips = document.querySelectorAll('#tooltip');
-            // 預防頁面跳轉
-            window.onbeforeunload = function () {
-                return "Are you really sure?";
-            }
-            tooltips.forEach(function(tooltip, i){
-                tooltip.addEventListener('click',function(){
-                    window.onbeforeunload = false;
-                })
-            })
+            
             // 取得local storage 資料
             let storageData;
             let storageCards;
@@ -394,6 +386,28 @@
                 location.href = "findEmoStoryAction.html";
             })
             
+            // 預防頁面跳轉
+            window.onbeforeunload = function () {
+                return "Are you really sure?";
+            }
+            tooltips.forEach(function(tooltip, i){
+                tooltip.addEventListener('click',function(){
+                    let value = whatHappened.value;
+                    if(storageData[1]==undefined){
+                        storageData.push({whatHappened:value});
+                    } else {
+                        storageData[1].whatHappened=value;
+                    }
+                    let stringAddedCard = JSON.stringify(storageData);
+                    localStorage.setItem("addedCards", stringAddedCard);
+                    window.onbeforeunload = false;
+                    if (tooltip.childNodes[1].textContent == "1") {
+                        location.href = "findEmoCardsHolder.html";
+                    } else if (tooltip.childNodes[1].textContent == "2") {
+                        location.href = "findEmoStrength1st.html";
+                    }
+                })
+            })
         </script>
     </body>
 </html>
