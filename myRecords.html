@@ -590,6 +590,13 @@
       let endMonth;
       let endDay;
       let arySearchText = [];
+      let searchData = JSON.parse(localStorage.getItem("searchData"));
+      console.log(searchData);
+      if (searchData!=null){
+        dateStart.value = searchData.dateStartValue;
+        dateEnd.value = searchData.dateEndValue;
+        searchText.value = searchData.searchValue;
+      }
 
       // 1st日期 不可選填今日以後
       let date_now = new Date(); // 取得目前時間
@@ -626,7 +633,6 @@
       const btnNextPage = document.querySelector('#btnNextPage');
       let getResultData = localStorage.getItem("resultData");
       let resultData = [];  // 紀錄所有符合搜尋條件的紀錄的資料
-      console.log(JSON.parse(getResultData))
       if (JSON.parse(getResultData)!=null) {
         resultData = JSON.parse(getResultData);
       }
@@ -672,6 +678,10 @@
           // 這邊要注意，因為有可能會出現餘數，所以要無條件進位。
           const pageTotal = Math.ceil(dataTotal / perPage);
           console.log(`全部資料:${dataTotal} 每一頁顯示:${perPage}筆 總頁數:${pageTotal}`);
+          // 顯示搜尋結果為0
+          if(dataTotal==0){
+            btnSearchResult.click();
+          }
 
           // 當前頁碼 預設為 第1頁
           let currentPage = goPage;  
@@ -868,93 +878,15 @@
               localStorage.setItem("recordId", recordId);
               // 取得 resultData，並放入localStorage中
               localStorage.setItem("resultData", JSON.stringify(resultData));
-              console.log(resultData)
+              // 紀錄搜尋欄的內容
+              let searchData = {
+                dateStartValue: dateStart.value,
+                dateEndValue: dateEnd.value,
+                searchValue: searchText.value.trim(),
+              }
+              let stringSearchData = JSON.stringify(searchData);
+              localStorage.setItem("searchData", stringSearchData);
               location.href = "myRecordsEmoStory.html";
-              // 取得搜尋欄填入的項目
-              // let searchValue = searchText.value.trim();
-              // let arySearchText = [];
-              // arySearchText = searchValue.split(' ');
-              // let searchData = {};
-              // searchData = {
-              //   dateStartValue: dateStart.value,
-              //   startYear: parseInt(dateStart.value[0]+dateStart.value[1]+dateStart.value[2]+dateStart.value[3]),
-              //   startMonth: parseInt(dateStart.value[5]+dateStart.value[6]),
-              //   startDay: parseInt(dateStart.value[8]+dateStart.value[9]),
-              //   dateEndValue: dateEnd.value,
-              //   endYear: parseInt(dateEnd.value[0]+dateEnd.value[1]+dateEnd.value[2]+dateEnd.value[3]),
-              //   endMonth: parseInt(dateEnd.value[5]+dateEnd.value[6]),
-              //   endDay: parseInt(dateEnd.value[8]+dateEnd.value[9]),
-              //   searchValue: searchValue,
-              //   arySearchText: arySearchText,
-              // }
-              // let stringSearchData = JSON.stringify(searchData);
-              // localStorage.setItem("searchData", stringSearchData);
-              // location.href = "myRecordsEmoStory.html";
-              // 取得該紀錄的詳細資料
-              // let objetRecordData = {};
-              // displayEmoStory(allData, recordId, emo_Id, storyDate, storyBackground, storyAction, storyActionTextarea, storyResult, storyResultTextarea, storyFeeling, storyFeelingTextarea, storyNext, storyNextTextarea);
-              
-              // 監聽 btnBack 情緒故事頁面 點選 返回
-              // btnBack.addEventListener("click", function(){
-              //   areaEmoStory.classList.add("d-none");
-              //   areaRecordsTable.classList.remove("d-none");
-              //   pagination(resultData, dateEndValue, startYear, startMonth, startDay, endYear, endMonth, endDay, arySearchText, "1", aryData, objetRecordData);
-              // })
-
-              // 監聽 btnSave 儲存 -> post 資料 -> 回應儲存結果
-              // btnSave.addEventListener("click", function(){
-              //   let token = localStorage.getItem("token");
-              //   // 取得 textarea 資料
-              //   let postData = {
-              //     "emo_ID": parseInt(emo_Id.textContent),
-              //     "story": storyBackgroundTextarea.value,
-              //     "actions": storyActionTextarea.value,
-              //     "results": storyResultTextarea.value,
-              //     "feelings": storyFeelingTextarea.value,
-              //     "reaction": storyNextTextarea.value,
-              //   };
-              //   axios.put("https://api.wavemocards.com/emotions/update",
-              //   postData, { headers: {"Authorization": `Bearer ${token}`} })
-              //   .then (function(response){
-              //     if(response.data.message=="No data is changed." || response.data.message=="The emotion was updated successfully.") {
-              //       modalSaveResultTitle.textContent = "儲存成功";
-              //       modalSaveResultTitle.classList.add("text-main");
-              //       modalSaveResultTitle.classList.remove("text-pink");
-              //       modalSaveResultText.classList.add("d-none");
-              //       modalSaveResultText2.classList.add("d-none");
-              //       modalSaveResultImg.src = "./images/addCardSuccess.svg";
-              //       modalSaveResultClose.classList.add("btn-main");
-              //       modalSaveResultClose.classList.remove("btn-pink");
-              //     } else {
-              //       modalSaveResultTitle.textContent = "儲存失敗";
-              //       modalSaveResultTitle.classList.add("text-pink");
-              //       modalSaveResultTitle.classList.remove("text-main");
-              //       modalSaveResultText.classList.remove("d-none");
-              //       modalSaveResultText2.classList.remove("d-none");
-              //       modalSaveResultImg.src = "./images/addCardFail.svg";
-              //       modalSaveResultClose.classList.remove("btn-main");
-              //       modalSaveResultClose.classList.add("btn-pink");
-              //     }
-              //   })
-              //   .catch(function(error){
-              //       console.log(error);
-              //       modalSaveResultTitle.textContent = "儲存失敗";
-              //       modalSaveResultTitle.classList.add("text-pink");
-              //       modalSaveResultTitle.classList.remove("text-main");
-              //       modalSaveResultText.classList.remove("d-none");
-              //       modalSaveResultText2.classList.remove("d-none");
-              //       modalSaveResultImg.src = "./images/addCardFail.svg";
-              //       modalSaveResultClose.classList.remove("btn-main");
-              //       modalSaveResultClose.classList.add("btn-pink");
-                    
-              //   })
-              // })
-              // modalSaveResultClose.addEventListener("click", function(){
-              //   displayEmoStory(allData, recordId, emo_Id, storyDate, storyBackground, storyAction, storyActionTextarea, storyResult, storyResultTextarea, storyFeeling, storyFeelingTextarea, storyNext, storyNextTextarea);
-              //   // 介面恢復成非編輯狀態（點擊取消）
-              //   btnCancelDefault=false;
-              //   btnCancel.click();
-              // })
             })
           })
         })
@@ -986,6 +918,71 @@
               objetRecordData.card_3_Name = dataName;
             }
           })
+          if(objetRecordData.cardId_1<=7){
+            objetRecordData.category_1 = "快樂";
+          } else if (objetRecordData.cardId_1>7 && objetRecordData.cardId_1<=11){
+            objetRecordData.category_1 = "期待";
+          } else if (objetRecordData.cardId_1>11 && objetRecordData.cardId_1<= 17){
+            objetRecordData.category_1 = "安心";
+          } else if (objetRecordData.cardId_1>17 && objetRecordData.cardId_1<=25){
+            objetRecordData.category_1 = "不安";
+          } else if (objetRecordData.cardId_1>25 && objetRecordData.cardId_1<=29){
+            objetRecordData.category_1 = "驚訝";
+          } else if (objetRecordData.cardId_1>29 && objetRecordData.cardId_1<=41){
+            objetRecordData.category_1 = "低落";
+          } else if (objetRecordData.cardId_1>41 && objetRecordData.cardId_1<=49){
+            objetRecordData.category_1 = "討厭";
+          } else if (objetRecordData.cardId_1>49 && objetRecordData.cardId_1<=54){
+            objetRecordData.category_1 = "生氣";
+          } else {
+            objetRecordData.category_1 = "其他";
+          }
+          if (objetRecordData.cardId_2 != null) {
+            if(objetRecordData.cardId_2<=7){
+              objetRecordData.category_2 = "快樂";
+            } else if (objetRecordData.cardId_2>7 && objetRecordData.cardId_2<=11){
+              objetRecordData.category_2 = "期待";
+            } else if (objetRecordData.cardId_2>11 && objetRecordData.cardId_2<= 17){
+              objetRecordData.category_2 = "安心";
+            } else if (objetRecordData.cardId_2>17 && objetRecordData.cardId_2<=25){
+              objetRecordData.category_2 = "不安";
+            } else if (objetRecordData.cardId_2>25 && objetRecordData.cardId_2<=29){
+              objetRecordData.category_2 = "驚訝";
+            } else if (objetRecordData.cardId_2>29 && objetRecordData.cardId_2<=41){
+              objetRecordData.category_2 = "低落";
+            } else if (objetRecordData.cardId_2>41 && objetRecordData.cardId_2<=49){
+              objetRecordData.category_2 = "討厭";
+            } else if (objetRecordData.cardId_2>49 && objetRecordData.cardId_2<=54){
+              objetRecordData.category_2 = "生氣";
+            } else {
+              objetRecordData.category_2 = "其他";
+            }
+          } else {
+            objetRecordData.category_2 = "";
+          }
+          if (objetRecordData.cardId_3 != null){
+            if(objetRecordData.cardId_3<=7){
+              objetRecordData.category_3 = "快樂";
+            } else if (objetRecordData.cardId_3>7 && objetRecordData.cardId_3<=11){
+              objetRecordData.category_3 = "期待";
+            } else if (objetRecordData.cardId_3>11 && objetRecordData.cardId_3<= 17){
+              objetRecordData.category_3 = "安心";
+            } else if (objetRecordData.cardId_3>17 && objetRecordData.cardId_3<=25){
+              objetRecordData.category_3 = "不安";
+            } else if (objetRecordData.cardId_3>25 && objetRecordData.cardId_3<=29){
+              objetRecordData.category_3 = "驚訝";
+            } else if (objetRecordData.cardId_3>29 && objetRecordData.cardId_3<=41){
+              objetRecordData.category_3 = "低落";
+            } else if (objetRecordData.cardId_3>41 && objetRecordData.cardId_3<=49){
+              objetRecordData.category_3 = "討厭";
+            } else if (objetRecordData.cardId_3>49 && objetRecordData.cardId_3<=54){
+              objetRecordData.category_3 = "生氣";
+            } else {
+              objetRecordData.category_3 = "其他";
+            }
+          } else {
+            objetRecordData.category_3 = "";
+          }
           objetRecordData.card_1_strength1st = data.before_emo_level_1;
           objetRecordData.card_2_strength1st = data.before_emo_level_2;
           objetRecordData.card_3_strength1st = data.before_emo_level_3;
@@ -1006,7 +1003,6 @@
             objetRecordData.isItYourExcept = "";
           }
           objetRecordData.nextAction = data.reaction;
-
           let time = data.create_time;
           let year = parseInt(time[0]+time[1]+time[2]+time[3]);
           let month = parseInt(time[5]+time[6]);
@@ -1020,7 +1016,7 @@
                 // 確認有關鍵字
                 if(arySearchText!=""){
                   // 核對關鍵字
-                  matchText(arySearchText, objetRecordData, resultData, data)
+                  matchText(arySearchText, objetRecordData, resultData, data);
                 } else {
                   resultData.push(data);
                 }
@@ -1030,7 +1026,7 @@
                 // 確認有關鍵字
                 if(arySearchText!=""){
                   // 核對關鍵字
-                  matchText(arySearchText, objetRecordData, resultData, data)
+                  matchText(arySearchText, objetRecordData, resultData, data);
                 } else {
                   resultData.push(data);
                 }
@@ -1038,22 +1034,44 @@
             } else if (year>=startYear && month>=startMonth && year<=endYear && month<=endMonth){
               // 月份等於開始月份的話，日期要比開始日大
               if(month==startMonth && day>=startDay){
-                // 確認有關鍵字
-                if(arySearchText!=""){
-                  // 核對關鍵字
-                  matchText(arySearchText, objetRecordData, resultData, data)
-                } else {
-                  resultData.push(data);
+                // 如果月份和結束月份相同的話
+                if(month==endMonth && day<=endDay){
+                  // 確認有關鍵字
+                  if(arySearchText!=""){
+                    // 核對關鍵字
+                    matchText(arySearchText, objetRecordData, resultData, data);
+                  } else {
+                    resultData.push(data);
+                  }
+                } else if (month<endMonth) {
+                  // 確認有關鍵字
+                  if(arySearchText!=""){
+                    // 核對關鍵字
+                    matchText(arySearchText, objetRecordData, resultData, data);
+                  } else {
+                    resultData.push(data);
+                  }
                 }
               }
               // 月份大於開始月份的話，日期要比結束日小
-              if(month>startMonth && day<=endDay){
-                // 確認有關鍵字
-                if(arySearchText!=""){
-                  // 核對關鍵字
-                  matchText(arySearchText, objetRecordData, resultData, data)
-                } else {
-                  resultData.push(data);
+              if(month>startMonth){
+                // 月份小於最終月份
+                if(month<endMonth){
+                  // 確認有關鍵字
+                  if(arySearchText!=""){
+                    // 核對關鍵字
+                    matchText(arySearchText, objetRecordData, resultData, data);
+                  } else {
+                    resultData.push(data);
+                  }
+                } else if (month==endMonth && day<=endDay){
+                  // 確認有關鍵字
+                  if(arySearchText!=""){
+                    // 核對關鍵字
+                    matchText(arySearchText, objetRecordData, resultData, data);
+                  } else {
+                    resultData.push(data);
+                  }
                 }
               }
             }
@@ -1272,6 +1290,17 @@
       // 查核是否符合關鍵字
       function matchText(arySearchText, objetRecordData, resultData, data){
         arySearchText.forEach(function(text, i){
+          // 類別
+          let matchCategory_1 = objetRecordData.category_1.match(text);
+          let matchCategory_2 = null;
+          if (objetRecordData.category_2!=""){
+            matchCategory_2 = objetRecordData.category_2.match(text);
+          }
+          let matchCategory_3 = null;
+          if(objetRecordData.category_3!=""){
+            matchCategory_3 = objetRecordData.category_3.match(text);
+          }
+          // 情緒卡名
           let matchCardName_1 = objetRecordData.card_1_Name.match(text);
           let matchCardName_2 = null
           if(objetRecordData.card_2_Name!=undefined){
@@ -1281,6 +1310,7 @@
           if(objetRecordData.card_3_Name!=undefined){
             matchCardName_3 = objetRecordData.card_3_Name.match(text);
           }
+          // 情緒強度 1st
           let matchCard_1_Strength1st = objetRecordData.card_1_strength1st.toString().match(text);
           let matchCard_2_Strength1st = null
           if(objetRecordData.card_2_strength1st!=null){
@@ -1326,102 +1356,11 @@
           if (objetRecordData.nextAction!=""){
             matchNextAction = objetRecordData.nextAction.match(text);
           }
-          if (matchCardName_1!=null || matchCardName_2!=null || matchCardName_3!=null || matchCard_1_Strength1st!=null || matchCard_2_Strength1st!=null || matchCard_3_Strength1st!=null || matchCard_1_strength2nd!=null || matchCard_2_Strength2nd!=null || matchCard_3_Strength2nd!=null || matchBackground!=null || matchAction!=null || matchResult!=null || matchFeeling!=null || matchIsItYourExcept!=null || matchNextAction!=null){
+          if (matchCategory_1!=null || matchCategory_2!=null || matchCategory_3!=null || matchCardName_1!=null || matchCardName_2!=null || matchCardName_3!=null || matchCard_1_Strength1st!=null || matchCard_2_Strength1st!=null || matchCard_3_Strength1st!=null || matchCard_1_strength2nd!=null || matchCard_2_Strength2nd!=null || matchCard_3_Strength2nd!=null || matchBackground!=null || matchAction!=null || matchResult!=null || matchFeeling!=null || matchIsItYourExcept!=null || matchNextAction!=null){
             resultData.push(data);
           }
         })
       }
-
-      // // 顯示 情緒故事 內容
-      // function displayEmoStory(allData, recordId, emo_Id, storyDate, storyBackground, storyAction, storyActionTextarea, storyResult, storyResultTextarea, storyFeeling, storyFeelingTextarea, storyNext, storyNextTextarea, objetRecordData){
-      //   objetRecordData={}
-      //   // 重新抓一次 我的紀錄 的資料，因為編輯儲存後需要更新資料
-      //   axios.get(`https://api.wavemocards.com/emotions?user_name=${account}`,
-      //   { headers: {"Authorization": `Bearer ${token}`} })
-      //   .then (function(response){
-      //     let allData = response.data.message;
-      //     allData.forEach(function(data, i){
-      //       if(data.emo_ID==recordId){
-      //         objetRecordData.emo_Id = data.emo_ID;
-      //         let time = data.create_time;
-      //         objetRecordData.date = time[0]+time[1]+time[2]+time[3]+time[4]+time[5]+time[6]+time[7]+time[8]+time[9];
-      //         objetRecordData.cardId_1 = data.emotion_card_1;
-      //         objetRecordData.cardId_2 = data.emotion_card_2;
-      //         objetRecordData.cardId_3 = data.emotion_card_3;
-      //         objetRecordData.card_1_Name = "";
-      //         objetRecordData.card_2_Name = "";
-      //         objetRecordData.card_3_Name = "";
-      //         aryData.forEach(function(data, i){
-      //           if(data.ID == objetRecordData.cardId_1){
-      //             objetRecordData.card_1_Name = data.name;
-      //           }
-      //           if(data.ID == objetRecordData.cardId_2){
-      //             objetRecordData.card_2_Name = data.name;
-      //           }
-      //           if(data.ID == objetRecordData.cardId_3){
-      //             objetRecordData.card_3_Name = data.name;
-      //           }
-      //         })
-      //         objetRecordData.card_1_strength1st = data.before_emo_level_1;
-      //         objetRecordData.card_2_strength1st = data.before_emo_level_2;
-      //         objetRecordData.card_3_strength1st = data.before_emo_level_3;
-      //         objetRecordData.card_1_strength2nd = data.after_emo_level_1;
-      //         objetRecordData.card_2_strength2nd = data.after_emo_level_2;
-      //         objetRecordData.card_3_strength2nd = data.after_emo_level_3;
-      //         objetRecordData.background = data.story;
-      //         objetRecordData.action = data.actions;
-      //         objetRecordData.result = data.results;
-      //         objetRecordData.feeling = data.feelings;
-      //         if(data.expect==1){
-      //           objetRecordData.isItYourExcept = "是";
-      //         } else if (data.expect==2) {
-      //           objetRecordData.isItYourExcept = "否";
-      //         } else if (data.expect==3) {
-      //           objetRecordData.isItYourExcept = "不清楚";
-      //         }
-      //         objetRecordData.nextAction = data.reaction;
-      //       }
-      //     })
-      //     // 將資料寫入html
-      //     emo_Id.textContent = objetRecordData.emo_Id;
-      //     storyDate.textContent = objetRecordData.date;
-      //     if (objetRecordData.card_2_Name=="" && objetRecordData.card_3_Name=="") {
-      //       storyEmotions1st.textContent = objetRecordData.card_1_Name+" "+objetRecordData.card_1_strength1st;
-      //     } else if (objetRecordData.card_2_Name!="" && objetRecordData.card_3_Name=="") {
-      //       storyEmotions1st.textContent = objetRecordData.card_1_Name+" "+objetRecordData.card_1_strength1st+"・"+objetRecordData.card_2_Name+" "+objetRecordData.card_2_strength1st;
-      //     } else {
-      //       storyEmotions1st.textContent = objetRecordData.card_1_Name+" "+objetRecordData.card_1_strength1st+"・"+objetRecordData.card_2_Name+" "+objetRecordData.card_2_strength1st+"・"+objetRecordData.card_3_Name+" "+objetRecordData.card_3_strength1st;
-      //     }
-      //     if (objetRecordData.card_1_strength2nd!=null && objetRecordData.card_2_strength2nd!=null && objetRecordData.card_3_strength2nd!=null) {
-      //       storyEmotions2nd.textContent = objetRecordData.card_1_Name+" "+objetRecordData.card_1_strength2nd+"・"+objetRecordData.card_2_Name+" "+objetRecordData.card_2_strength2nd+"・"+objetRecordData.card_3_Name+" "+objetRecordData.card_3_strength2nd;
-      //     } else if(objetRecordData.card_1_strength2nd!=null && objetRecordData.card_2_strength2nd!=null && objetRecordData.card_3_strength2nd==null){
-      //       storyEmotions2nd.textContent = objetRecordData.card_1_Name+" "+objetRecordData.card_1_strength2nd+"・"+objetRecordData.card_2_Name+" "+objetRecordData.card_2_strength2nd;
-      //     } else if (objetRecordData.card_1_strength2nd!=null && objetRecordData.card_2_strength2nd==null && objetRecordData.card_3_strength2nd==null) {
-      //       storyEmotions2nd.textContent = objetRecordData.card_1_Name+" "+objetRecordData.card_1_strength2nd;
-      //     } else if (objetRecordData.card_1_strength2nd==null && objetRecordData.card_2_strength2nd!=null && objetRecordData.card_3_strength2nd!=null) {
-      //       storyEmotions2nd.textContent = objetRecordData.card_2_Name+" "+objetRecordData.card_2_strength2nd+"・"+objetRecordData.card_3_Name+" "+objetRecordData.card_3_strength2nd;
-      //     } else if (objetRecordData.card_1_strength2nd==null && objetRecordData.card_2_strength2nd!=null && objetRecordData.card_3_strength2nd==null) {
-      //       storyEmotions2nd.textContent = objetRecordData.card_2_Name+" "+objetRecordData.card_2_strength2nd;
-      //     } else if (objetRecordData.card_1_strength2nd!=null && objetRecordData.card_2_strength2nd==null && objetRecordData.card_3_strength2nd!=null) {
-      //       storyEmotions2nd.textContent = objetRecordData.card_1_Name+" "+objetRecordData.card_1_strength2nd+"・"+objetRecordData.card_3_Name+" "+objetRecordData.card_3_strength2nd;
-      //     } else if (objetRecordData.card_1_strength2nd==null && objetRecordData.card_2_strength2nd==null && objetRecordData.card_3_strength2nd!=null) {
-      //       storyEmotions2nd.textContent = objetRecordData.card_3_Name+" "+objetRecordData.card_3_strength2nd;
-      //     }
-      //     storyBackground.textContent = objetRecordData.background;
-      //     storyBackgroundTextarea.textContent = objetRecordData.background;
-      //     storyAction.textContent = objetRecordData.action;
-      //     storyActionTextarea.textContent = objetRecordData.action;
-      //     storyResult.textContent = objetRecordData.result;
-      //     storyResultTextarea.textContent = objetRecordData.result;
-      //     storyFeeling.textContent = objetRecordData.feeling;
-      //     storyFeelingTextarea.textContent = objetRecordData.feeling;
-      //     storyIsGoodResult.textContent = objetRecordData.isItYourExcept;
-      //     storyNext.textContent = objetRecordData.nextAction;
-      //     storyNextTextarea.textContent = objetRecordData.nextAction;
-      //     areaEmoStory.classList.remove("d-none");
-      //     areaRecordsTable.classList.add("d-none");
-      //   })
-      // }
 
     </script>
   </body>
