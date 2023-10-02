@@ -210,6 +210,7 @@
                             window.onbeforeunload = false;
                             modalResultText.textContent = "登入成功";
                             modalResultText.classList.add("text-main");
+                            modalResultText.classList.remove("text-pink");
                             modalResultText2.classList.add("d-none");
                             modalResultText3.classList.add("d-none");
                             modalResultImg.src="./images/emoCards/5.svg";
@@ -223,6 +224,7 @@
                             // 帳號密碼有誤
                             modalResultText.textContent = "登入失敗";
                             modalResultText.classList.add("text-pink");
+                            modalResultText.classList.remove("text-main");
                             modalResultText2.classList.remove("d-none");
                             modalResultText3.classList.remove("d-none");
                             modalResultText2.textContent = `很抱歉，您填寫的內容可能有誤，請重新登入。`;

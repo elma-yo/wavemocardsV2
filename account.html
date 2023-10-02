@@ -82,9 +82,9 @@
                     <h2 class="fs-3">我的帳戶</h2>
                     <form action="" method="">
                     <div class="nav-btn d-flex justify-content-end">
-                        <button class="d-none ms-16 px-16 btn btn-outline-main c-btn" id="btnCancel" type="button">取消</button>
+                        <button class="d-none ms-16 px-16 btn btn-outline-main c-btn" id="btnCancel" type="button" data-bs-toggle="modal" data-bs-target="#modalCancel">取消</button>
                         <button class="ms-16 px-16 btn btn-outline-main c-btn" id="btnModify" type="button">編輯</button>
-                        <input type="submit" class="d-none ms-16 px-16 btn btn-main c-btn" id="btnSave" value="儲存"></button>
+                        <button type="button" class="d-none ms-16 px-32 btn btn-main c-btn" id="btnSave" data-bs-toggle="modal" data-bs-target="#modalSaveResult">儲存</button>
                         <!-- <a class="ms-16 btn btn-main c-btn d-flex justify-content-center align-items-center" href="accountMyFriends.html">好友管理</a> -->
                     </div>
                 </div>
@@ -102,36 +102,38 @@
                     </div>
                     <div class="box-account-text">
                         <span class="mb-8 text-gray-700">Email</span>
-                        <p class="ms-4 mb-24 fs-6 fw-bold" id="email">wavemo@gmail.com</p>
-                        <span class="mb-8 text-gray-700">密碼</span>
-                        <div class="d-flex justify-content-between">
-                            <p class="ms-4 mb-24 fs-6 fw-bold">********</p>
-                            <!-- <a class="link-pink-tint01" href="resetPsw.html">重設密碼</a> -->
-                        </div>
+                        <p class="ms-4 mb-24 fs-6 fw-bold" id="email"></p>
                         <span class="mb-8 text-gray-700">帳號</span>
-                        <p class="ms-4 mb-24 fs-6 fw-bold" id="accountName">wavemo</p>
+                        <p class="ms-4 mb-24 fs-6 fw-bold" id="accountName"></p>
                         <!-- <input type="text" class="d-none form-control w-100 mb-24 px-20 rounded-pill" id="formAccount" value="wavemo"> -->
+                        <span class="mb-8 text-gray-700">密碼</span>
+                        <div class="mb-24 d-flex justify-content-between align-items-center">
+                            <p class="ms-4 fs-6 fw-bold">********</p>
+                            <a class="d-block btn btn-pink-tint01 c-btn px-16 py-4 border-0" style="line-height: auto;" href="resetPassword.html">重設密碼</a>
+                        </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <span class="mb-8 text-gray-700">姓</span>
-                                <p class="ms-4 mb-24 fs-6 fw-bold" id="lastName">陳</p>
-                                <input type="text" class="d-none form-control w-100 mb-24 px-20 rounded-pill" id="formLastName" value="陳" required>
+                                <p class="ms-4 fs-6 fw-bold" id="lastName"></p>
+                                <input type="text" class="d-none form-control w-100 px-20 rounded-pill" id="formLastName" value="陳" required>
+                                <div class="mt-4 ms-12 ms-sm-24 fs-9" id="lastNameCmt"></div>
                             </div>
                             <div class="col-md-6">
                                 <span class="mb-8 text-gray-700">名</span>
-                                <p class="ms-4 mb-24 fs-6 fw-bold" id="firstName">浪潮</p>
-                                <input type="text" class="d-none form-control w-100 mb-24 px-20 rounded-pill" id="formFirstName" value="浪潮" required>
+                                <p class="ms-4 fs-6 fw-bold" id="firstName"></p>
+                                <input type="text" class="d-none form-control w-100 px-20 rounded-pill" id="formFirstName" value="浪潮" required>
+                                <div class="mt-4 ms-12 ms-sm-24 fs-9" id="firstNameCmt"></div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row mt-24">
                             <div class="col-md-6">
                                 <span class="mb-8 text-gray-700">生日</span>
-                                <p class="ms-4 mb-24 fs-6 fw-bold" id="birthday">2023 / 01 / 15</p>
+                                <p class="ms-4 mb-24 fs-6 fw-bold" id="birthday"></p>
                                 <input type="date" class="d-none form-control rounded-pill px-20" id="formBirthday">
                             </div>
                             <div class="col-md-6">
                                 <span class="mb-8 text-gray-700">身份</span>
-                                <p class="ms-4 mb-24 fs-6 fw-bold" id="title">學生</p>
+                                <p class="ms-4 mb-24 fs-6 fw-bold" id="title"></p>
                                 <select class="d-none form-select px-20 rounded-pill" aria-label="Default select example" id="formTitle">
                                     <option value="Student">學生</option>
                                     <option value="Teacher">教師</option>
@@ -267,6 +269,48 @@
             </div>
         </div>
 
+        <!-- 確認取消 編輯 Modal -->
+        <div class="modal fade" id="modalCancel" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content rounded-4">
+                    <div class="modal-body d-flex flex-column align-items-center px-48 pt-24 pb-16">
+                        <p id="modalCancelTitle" class="mb-12 fs-3 fw-bold text-pink">確定要取消編輯嗎？</p>
+                        <p id="modalCancelText" class="mb-12 fs-7 text-gray-700">取消編輯後，<span class="text-pink pe-2">將不會儲存</span>您所做的變更，確定要取消編輯嗎？</p>
+                        <div style="width: 45%;">
+                            <img class="w-100 pt-24 pb-2" src="./images/sureToDelete.svg" alt="img" id="modalCancelImg">
+                        </div>
+                        <span class="text-gray-400 fs-11">Illustration by <a class="link-gray-400" href="https://blush.design/artists/RyUTVuP8G4QeAAEEQgug/pablo-stanley">Pablo Stanley</a> from <a class="link-gray-400" href="https://blush.design/">blush design</a></span>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button type="button" id="modalCancelClose" class="me-16 c-btn-outline-pink-tint01 fs-6" data-bs-dismiss="modal">繼續編輯</button>
+                        <button type="button" id="modalCancelSure" class="btn btn-pink c-btn px-24 py-8 link-white fs-6 rounded-pill">取消編輯</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 儲存 成功/失敗 Modal -->
+        <div class="modal fade" id="modalSaveResult" data-bs-backdrop="static" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4">
+                <div class="modal-body d-flex flex-column align-items-center px-48 py-36">
+                    <p id="modalSaveResultTitle" class="fs-4 fw-bold">儲存成功</p>
+                    <p id="modalSaveResultText" class="d-none mt-12 fs-7 text-gray-700">很抱歉儲存失敗，請確認您所輸入的內容是否有無錯誤。</p>
+                    <p id="modalSaveResultText2" class="d-none mt-12 fs-7 text-gray-700">
+                        若無法排除問題，請 
+                        <a class="link-pink" href="mailto:info@wavemocards.com">與我們聯繫</a>
+                    </p>
+                    <div style="width: 45%; height: 45%;">
+                        <img class="w-100" src="./images/emoCards/5.svg" alt="img" id="modalSaveResultImg">
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button type="button" id="modalSaveResultClose" class="btn btn-main c-btn px-36 py-8 link-white fs-6 fw-bold" data-bs-dismiss="modal">我知道了</button>
+                </div>
+            </div>
+            </div>
+        </div>
+
         <!--  Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
@@ -276,10 +320,14 @@
         <script src="./js/toolTips.js"></script>
         <script src="./js/pages/logout.js"></script>
         <script src="./js/timeOut.js"></script>
-        <script type="text/javascript" src="./js/beforeunload.js"></script>
         <script>
             // 清除 我的紀錄 搜尋紀錄
             localStorage.removeItem("resultData");
+            // 追蹤頁面足跡
+            let resetPwdBackLocation = "account.html";
+            localStorage.setItem("resetPwdBackLocation", resetPwdBackLocation);
+            // 取得token
+            let token = localStorage.getItem("token");
             // 取得 userInfo，並寫入畫面中
             let userInfo = JSON.parse(localStorage.getItem("userInfo"));
             const email = document.querySelector("#email");
@@ -296,6 +344,15 @@
             const formFirstName = document.querySelector('#formFirstName');
             const formBirthday = document.querySelector('#formBirthday');
             const formTitle = document.querySelector('#formTitle');
+            const lastNameCmt = document.querySelector('#lastNameCmt');
+            const firstNameCmt = document.querySelector('#firstNameCmt');
+            const modalCancelClose = document.querySelector("#modalCancelClose");
+            const modalCancelSure = document.querySelector("#modalCancelSure");
+            const modalSaveResultTitle = document.querySelector("#modalSaveResultTitle");
+            const modalSaveResultText = document.querySelector("#modalSaveResultText");
+            const modalSaveResultText2 = document.querySelector("#modalSaveResultText2");
+            const modalSaveResultImg = document.querySelector("#modalSaveResultImg");
+            const modalSaveResultClose = document.querySelector("#modalSaveResultClose");
 
             email.textContent = userInfo.email;
             accountName.textContent = userInfo.user_name;
@@ -321,44 +378,136 @@
                 formTitle.value = "Null";
             }
 
+            // 驗證 姓、名 是否有填寫
+            let lastNameCorrect = false;
+            formLastName.addEventListener("keyup", function(){
+                if(formLastName.value=="") {
+                    lastNameCmt.textContent = "此欄為必填";
+                    lastNameCmt.style.color = "#C37979";
+                    lastNameCorrect = false;
+                } else if(formLastName.value.length<1) {
+                    lastNameCmt.textContent = "最少填入 1 個中/英文字";
+                    lastNameCmt.style.color = "#C37979";
+                    lastNameCorrect = false;
+                } else {
+                    lastNameCmt.innerHTML = `<i class="bi bi-check-circle-fill"></i>`;
+                    lastNameCmt.style.color = "#3C9DAE";
+                    lastNameCorrect = true;
+                }
+            })
+            let firstNameCorrect = false;
+            formFirstName.addEventListener("keyup", function(){
+                if(formFirstName.value=="") {
+                    firstNameCmt.textContent = "此欄為必填";
+                    firstNameCmt.style.color = "#C37979";
+                    firstNameCorrect = false;
+                } else if(formFirstName.value.length<1){
+                    firstNameCmt.textContent = "最少填入 1 個中/英文字";
+                    firstNameCmt.style.color = "#C37979";
+                    firstNameCorrect = false;
+                }else {
+                    firstNameCmt.innerHTML = `<i class="bi bi-check-circle-fill"></i>`;
+                    firstNameCmt.style.color = "#3C9DAE";
+                    firstNameCorrect = true;
+                }
+            })
+
             // 編輯按鈕
             btnModify.addEventListener("click", function(){
                 btnModify.classList.add("d-none");
                 btnCancel.classList.remove("d-none");
                 btnSave.classList.remove("d-none");
                 // accountName.classList.add("d-none");
+                // birthday.classList.add("d-none");
                 lastName.classList.add("d-none");
                 firstName.classList.add("d-none");
                 title.classList.add("d-none");
                 // formAccount.classList.remove("d-none");
+                // formBirthday.classList.remove("d-none");
                 formLastName.classList.remove("d-none");
                 formFirstName.classList.remove("d-none");
                 formTitle.classList.remove("d-none");
             })
 
             // 取消按鈕
-            btnCancel.addEventListener('click',function(){
-                let confirmResult = confirm("執行取消的話，您的修改將不會被儲存喔！\r您確定要離開嗎？");
-                if (confirmResult) {
-                    btnModify.classList.remove("d-none");
-                    btnCancel.classList.add("d-none");
-                    btnSave.classList.add("d-none");
-                    // accountName.classList.remove("d-none");
-                    lastName.classList.remove("d-none");
-                    firstName.classList.remove("d-none");
-                    title.classList.remove("d-none");
-                    // formAccount.classList.add("d-none");
-                    formLastName.classList.add("d-none");
-                    formFirstName.classList.add("d-none");
-                    formTitle.classList.add("d-none");
-                } else {
-                    return
-                }
+            modalCancelSure.addEventListener('click',function(){
+                btnModify.classList.remove("d-none");
+                btnCancel.classList.add("d-none");
+                btnSave.classList.add("d-none");
+                // accountName.classList.remove("d-none");
+                // birthday.classList.remove("d-none");
+                lastName.classList.remove("d-none");
+                firstName.classList.remove("d-none");
+                title.classList.remove("d-none");
+                // formAccount.classList.add("d-none");
+                // formBirthday.classList.add("d-none");
+                formLastName.classList.add("d-none");
+                formFirstName.classList.add("d-none");
+                formTitle.classList.add("d-none");
+                modalCancelClose.click();
             })
 
             // 儲存
             btnSave.addEventListener("click", function(){
-                
+                let postData = {
+                    "first_name": formFirstName.value,
+                    "last_name": formLastName.value,
+                    "title": formTitle.value,
+                }
+                axios.put("https://api.wavemocards.com/user/info",
+                postData, { headers: {"Authorization": `Bearer ${token}`} })
+                .then(function(response){
+                    if(response.data.message == "The info was successfully updated.") {
+                        modalSaveResultTitle.textContent="儲存成功"
+                        modalSaveResultTitle.classList.add("text-main");
+                        modalSaveResultTitle.classList.remove("text-pink");
+                        modalSaveResultText.classList.add("d-none");
+                        modalSaveResultText2.classList.add("d-none");
+                        modalSaveResultImg.src = "./images/emoCards/5.svg";
+                        modalSaveResultClose.classList.add("btn-main");
+                        modalSaveResultClose.classList.remove("btn-pink");
+                        // 將資料寫入localStorage userInfo中
+                        userInfo.last_name = postData.last_name;
+                        userInfo.first_name = postData.first_name;
+                        if(postData.day_of_birth != null || postData.day_of_birth != "" || postData.day_of_birth!=undefined) {
+                            userInfo.day_of_birth = postData.day_of_birth;
+                        } else {
+                            userInfo.day_of_birth = null;
+                        }
+                        if (postData.title == "Student") {
+                            userInfo.title = "Student";
+                        } else if (postData.title == "Teacher") {
+                            userInfo.title = "Teacher"
+                        } else {
+                            userInfo.title = "Null";
+                        }
+                        let stringUserInfo = JSON.stringify(userInfo);
+                        localStorage.setItem("userInfo", stringUserInfo);
+                        modalSaveResultClose.addEventListener("click", function(){
+                            location.href = "account.html"
+                        })
+                    } else {
+                        modalSaveResultTitle.textContent="儲存失敗"
+                        modalSaveResultTitle.classList.add("text-pink");
+                        modalSaveResultTitle.classList.remove("text-main");
+                        modalSaveResultText.classList.remove("d-none");
+                        modalSaveResultText2.classList.remove("d-none");
+                        modalSaveResultImg.src = "./images/emoCards/58.svg";
+                        modalSaveResultClose.classList.add("btn-pink");
+                        modalSaveResultClose.classList.remove("btn-main");
+                    }
+                })
+                .catch(function(error){
+                    console.log(error);
+                    modalSaveResultTitle.textContent="儲存失敗"
+                    modalSaveResultTitle.classList.add("text-pink");
+                    modalSaveResultTitle.classList.remove("text-main");
+                    modalSaveResultText.classList.remove("d-none");
+                    modalSaveResultText2.classList.remove("d-none");
+                    modalSaveResultImg.src = "./images/emoCards/58.svg";
+                    modalSaveResultClose.classList.add("btn-pink");
+                    modalSaveResultClose.classList.remove("btn-main");
+                })
             })
         </script>
     </body>

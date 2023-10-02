@@ -9,7 +9,7 @@
     width: 50%;
 }
 .box-resetPwd-text {
-    width: 50%;
+    width: 40%;
 }
 // modal card text area
 .box-bigCard-text {
@@ -40,16 +40,17 @@
     .box-bigCard-img {
         width: 45%;
     }
-}
-@media (max-width:992px){
+    .box-resetPwd-text {
+        width: 50%;
+    }
     .box-47 {
         width: 100%;
     }
-}
+} 
 // mobile
 @media(max-width:767px){
     .box-resetPwd-text {
-        width: 100%;
+        width: 80%;
     }
     .box-bigCard-text {
         width: 50%;
