@@ -695,6 +695,17 @@
                     modalSaveResultImg.src = "./images/addCardSuccess.svg";
                     modalSaveResultClose.classList.add("btn-main");
                     modalSaveResultClose.classList.remove("btn-pink");
+                    resultData.forEach(function(data, i){
+                        if(data.emo_ID==recordId) {
+                            console.log(data)
+                            data.story = storyBackgroundTextarea.value;
+                            data.actions = storyActionTextarea.value;
+                            date.results = storyResultTextarea.value;
+                            data.feelings = storyFeelingTextarea.value;
+                            data.reaction = storyNextTextarea.value;
+                        }
+                    })
+                    localStorage.setItem("resultData", JSON.stringify(resultData));
                 } else {
                     modalSaveResultTitle.textContent = "儲存失敗";
                     modalSaveResultTitle.classList.add("text-pink");

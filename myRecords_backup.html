@@ -573,6 +573,99 @@
     <script src="./js/pages/logout.js"></script>
     <script src="./js/timeOut.js"></script>
     <script>
+      // // 切換 一覽表 & 情緒故事
+      // const areaRecordsTable = document.querySelector('#areaRecordsTable');
+      // const areaEmoStory = document.querySelector('#areaEmoStory');
+      // const emo_Id = document.querySelector('#emo_Id');
+      // const storyDate = document.querySelector('#storyDate');
+      // const storyEmotions1st = document.querySelector('#storyEmotions1st');
+      // const storyEmotions2nd = document.querySelector('#storyEmotions2nd');
+      // const storyBackground = document.querySelector('#storyBackground');
+      // const storyBackgroundTextarea = document.querySelector('#storyBackgroundTextarea');
+      // const storyAction = document.querySelector('#storyAction');
+      // const storyActionTextarea = document.querySelector('#storyActionTextarea');
+      // const storyResult = document.querySelector('#storyResult');
+      // const storyResultTextarea = document.querySelector('#storyResultTextarea');
+      // const storyFeeling = document.querySelector('#storyFeeling');
+      // const storyFeelingTextarea = document.querySelector('#storyFeelingTextarea');
+      // const storyIsGoodResult = document.querySelector('#storyIsGoodResult');
+      // const storyNext = document.querySelector('#storyNext');
+      // const storyNextTextarea = document.querySelector('#storyNextTextarea');
+      // // 情緒故事的編輯按鈕切換
+      // const btnModify = document.querySelector('#btnModify');
+      // const btnCancel = document.querySelector('#btnCancel');
+      // const btnSave = document.querySelector('#btnSave');
+      // const btnBack = document.querySelector('#btnBack');
+      // const btnDelete = document.querySelector('#btnDelete');
+      // const background = document.querySelector('#background');
+      // const action = document.querySelector('#action');
+      // const result = document.querySelector('#result');
+      // const feeling = document.querySelector('#feeling');
+      // const next = document.querySelector('#next');
+      // const formBackground = document.querySelector('#formBackground');
+      // const formAction = document.querySelector('#formAction');
+      // const formResult = document.querySelector('#formResult');
+      // const formFeeling = document.querySelector('#formFeeling');
+      // const formNext = document.querySelector('#formNext');
+      // // 儲存成功/失敗 modal
+      // const modalSaveResultTitle = document.querySelector('#modalSaveResultTitle');
+      // const modalSaveResultText = document.querySelector('#modalSaveResultText');
+      // const modalSaveResultText2 = document.querySelector('#modalSaveResultText2');
+      // const modalSaveResultImg = document.querySelector('#modalSaveResultImg');
+      // const modalSaveResultClose = document.querySelector('#modalSaveResultClose');
+
+      // btnModify.addEventListener("click", function(){
+      //     btnModify.classList.add("d-none");
+      //     btnBack.classList.add("d-none");
+      //     btnDelete.classList.add("d-none");
+      //     btnCancel.classList.remove("d-none");
+      //     btnSave.classList.remove("d-none");
+      //     background.classList.add("d-none");
+      //     action.classList.add("d-none");
+      //     result.classList.add("d-none");
+      //     feeling.classList.add("d-none");
+      //     next.classList.add("d-none");
+      //     formBackground.classList.remove("d-none");
+      //     formAction.classList.remove("d-none");
+      //     formResult.classList.remove("d-none");
+      //     formFeeling.classList.remove("d-none");
+      //     formNext.classList.remove("d-none");
+      // })
+      // let btnCancelDefault = true;
+      // btnCancel.addEventListener('click',function(){
+      //   let confirmResult;
+      //     if(btnCancelDefault==true){
+      //       // confirmResult = confirm("執行取消的話，您的修改將不會被儲存喔！\r您確定要離開嗎？");
+      //       window.onbeforeunload = function () {
+      //           return "Are you really sure?";
+      //       }
+      //     }
+      //     if (confirmResult==undefined || confirmResult==true) {
+      //         btnModify.classList.remove("d-none");
+      //         btnBack.classList.remove("d-none");
+      //         btnDelete.classList.remove("d-none");
+      //         btnCancel.classList.add("d-none");
+      //         btnSave.classList.add("d-none");
+      //         background.classList.remove("d-none");
+      //         action.classList.remove("d-none");
+      //         result.classList.remove("d-none");
+      //         feeling.classList.remove("d-none");
+      //         next.classList.remove("d-none");
+      //         formBackground.classList.add("d-none");
+      //         formAction.classList.add("d-none");
+      //         formResult.classList.add("d-none");
+      //         formFeeling.classList.add("d-none");
+      //         formNext.classList.add("d-none");
+      //     } else {
+      //         return
+      //     }
+      // })
+
+      // 重新進到此畫面時，移除resultData紀錄
+      // window.onbeforeunload = function () {
+      //     localStorage.removeItem("resultData");
+      // }
+
       // 搜尋區域
       const dateStart = document.querySelector("#dateStart");
       const dateEnd = document.querySelector("#dateEnd");
@@ -753,7 +846,6 @@
           const body = document.querySelector('#body');
           const checkBoxes = document.querySelectorAll('#checkBox');
           const btnTrash = document.querySelector('#btnTrash');
-          const modalDeleteTitle = document.querySelector('#modalDeleteTitle');
           const modalDeleteText = document.querySelector('#modalDeleteText');
           const btnMakeSureToDelete = document.querySelector('#btnMakeSureToDelete');
           const modalDeleteSure = document.querySelector('#modalDeleteSure');
@@ -795,17 +887,10 @@
             })
             deleteNum = recordIds.length;
             if(deleteNum!=0){
-              modalDeleteTitle.textContent="確定要刪除嗎？";
               modalDeleteText.innerHTML = `<span>您選擇刪除<span class="px-2 text-pink">${deleteNum}筆</span>資料，刪除後便<span class="ps-2 text-pink">不可再復原</span>，確定要刪除嗎？</span>`;
-              modalDeleteSure.classList.remove("d-none");
-              modalDeleteClose.textContent = "取消";
               btnMakeSureToDelete.click();
             } else {
-              modalDeleteTitle.textContent = "請先勾選欲刪除的項目";
-              modalDeleteText.innerHTML = `<span>請先<span class="px-2 text-pink">勾選 <i class="bi bi-check2-square"></i></span>您想要刪除的項目</span>`;
-              modalDeleteSure.classList.add("d-none");
-              modalDeleteClose.textContent = "我知道了";
-              btnMakeSureToDelete.click();
+              alert("請勾選想要刪除的項目後，再點擊刪除按鈕。");
             }
           })
           modalDeleteSure.addEventListener("click", function(){
