@@ -6,6 +6,10 @@
         <!-- 手機版網頁 CSS Reset 螢幕解析度 Reset -->
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
         <title>浪潮情緒卡｜找尋我的情緒｜我的情緒強度</title>
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
         <!-- Bootstrap icon -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
         <!-- Bootstrap css -->
@@ -80,63 +84,147 @@
         <main>
             <div class="sticky-top pb-8 bg-white">
                 <div class="container">
-                    <!-- process bar -->
-                    <div class="d-flex mb-20 pt-20 justify-content-center justify-content-sm-end">
-                        <div class="progressBar mb-8 px-12">
-                            <div class="position-relative m-4">
-                                <div class="progress bg-gray-300" style="height: 2px;">
-                                    <div class="progress-bar bg-main-tint01" role="progressbar" style="width: 20%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <a class="p-num position-absolute top-0 start-0 translate-middle btn btn-sm btn-main-tint01 rounded-pill d-flex justify-content-center align-items-center cursor-pointer" id="tooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title="我的情緒卡夾">
-                                    <span class="d-block cursor-pointer" style="cursor: pointer;">1</span>
-                                </a>
-                                <div class="p-num position-absolute top-0 start-20 translate-middle btn btn-sm btn-outline-main-tint01 border-2 rounded-pill d-flex justify-content-center align-items-center" data-bs-toggle="tooltip" data-bs-placement="bottom" title="1st情緒強度">
-                                    <span class="d-block">2</span>
-                                </div>
-                                <div class="p-num position-absolute top-0 start-40 translate-middle btn btn-sm btn-outline-gray-450 rounded-pill d-flex justify-content-center align-items-center" data-bs-toggle="tooltip" data-bs-placement="bottom" title="背景篇">
-                                    <span class="d-block">3</span>
-                                </div>
-                                <div class="p-num position-absolute top-0 start-60 translate-middle btn btn-sm btn-outline-gray-450 rounded-pill d-flex justify-content-center align-items-center" data-bs-toggle="tooltip" data-bs-placement="bottom" title="行動篇">
-                                    <span class="d-block">4</span>
-                                </div>
-                                <div class="p-num position-absolute top-0 start-80 translate-middle btn btn-sm btn-outline-gray-450 rounded-pill d-flex justify-content-center align-items-center" data-bs-toggle="tooltip" data-bs-placement="bottom" title="2nd情緒強度">
-                                    <span class="d-block">5</span>
-                                </div>
-                                <div class="p-num position-absolute top-0 start-100 translate-middle btn btn-sm btn-outline-gray-450 rounded-pill d-flex justify-content-center align-items-center" data-bs-toggle="tooltip" data-bs-placement="bottom" title="感謝自我">
-                                    <span class="d-block">6</span>
+                    <div class="px-12 px-sm-0">
+                        <!-- process bar -->
+                        <div class="d-flex mb-20 pt-20 justify-content-center justify-content-sm-end">
+                            <div class="progressBar mb-8 px-12">
+                                <div class="position-relative m-4">
+                                    <div class="progress bg-gray-300" style="height: 2px;">
+                                        <div class="progress-bar bg-main-tint01" role="progressbar" style="width: 20%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <a class="p-num position-absolute top-0 start-0 translate-middle btn btn-sm btn-main-tint01 rounded-pill d-flex justify-content-center align-items-center cursor-pointer" id="tooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" title="我的情緒卡夾">
+                                        <span class="d-block cursor-pointer" style="cursor: pointer;">1</span>
+                                    </a>
+                                    <div class="p-num position-absolute top-0 start-20 translate-middle btn btn-sm btn-outline-main-tint01 border-2 rounded-pill d-flex justify-content-center align-items-center" data-bs-toggle="tooltip" data-bs-placement="bottom" title="1st情緒強度">
+                                        <span class="d-block">2</span>
+                                    </div>
+                                    <div class="p-num position-absolute top-0 start-40 translate-middle btn btn-sm btn-outline-gray-450 rounded-pill d-flex justify-content-center align-items-center" data-bs-toggle="tooltip" data-bs-placement="bottom" title="背景篇">
+                                        <span class="d-block">3</span>
+                                    </div>
+                                    <div class="p-num position-absolute top-0 start-60 translate-middle btn btn-sm btn-outline-gray-450 rounded-pill d-flex justify-content-center align-items-center" data-bs-toggle="tooltip" data-bs-placement="bottom" title="行動篇">
+                                        <span class="d-block">4</span>
+                                    </div>
+                                    <div class="p-num position-absolute top-0 start-80 translate-middle btn btn-sm btn-outline-gray-450 rounded-pill d-flex justify-content-center align-items-center" data-bs-toggle="tooltip" data-bs-placement="bottom" title="2nd情緒強度">
+                                        <span class="d-block">5</span>
+                                    </div>
+                                    <div class="p-num position-absolute top-0 start-100 translate-middle btn btn-sm btn-outline-gray-450 rounded-pill d-flex justify-content-center align-items-center" data-bs-toggle="tooltip" data-bs-placement="bottom" title="感謝自我">
+                                        <span class="d-block">6</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- title bar -->
-                    <div class="pb-8 px-12 px-sm-0 border-2 border-bottom border-main-tint02 d-flex justify-content-between align-items-center">
-                        <h2 class="fs-3 d-none d-md-block">我的情緒強度｜第一次</h2>
-                        <h2 class="fs-3 d-md-none d-flex flex-column">
-                            <span class="d-block">我的情緒強度</span>
-                            <span>第一次</span>
-                        </h2>
-                        <div class="nav-btn d-flex justify-content-end">
-                            <button type="button" class="ms-16 px-md-24 btn btn-outline-main-tint01 c-btn c-btn-outline-main-tint01 text-nowrap d-flex justify-content-center align-items-center" id="btnBack">上一步</button>
-                            <button type="button" class="ms-16 px-md-24 btn btn-main c-btn text-nowrap d-flex justify-content-center align-items-center" id="btnNext">下一步
-                            </button>
+    
+                        <!-- title bar -->
+                        <div class="pb-8 border-2 border-bottom border-main-tint02 d-flex justify-content-between align-items-center">
+                            <h2 class="fs-3 d-none d-md-block">我的情緒強度｜第一次</h2>
+                            <h2 class="fs-3 d-md-none d-flex flex-column">
+                                <span class="d-block">我的情緒強度</span>
+                                <span>第一次</span>
+                            </h2>
+                            <div class="nav-btn d-flex justify-content-end">
+                                <button type="button" class="ms-16 px-md-24 btn btn-outline-main-tint01 c-btn c-btn-outline-main-tint01 text-nowrap d-flex justify-content-center align-items-center" id="btnBack">上一步</button>
+                                <button type="button" class="ms-8 ms-sm-16 px-16 px-md-24 btn btn-main c-btn text-nowrap d-flex justify-content-center align-items-center" id="btnNext">下一步
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="container pb-112">
-                <!-- 導覽 -->
-                <ul  class="ms-4 mt-12 mb-36 px-12 px-sm-0 text-gray-550 fs-7">
-                    <li class="mb-4 text-gray-550 fs-7">謝謝親愛的<span class="px-2" id="textName"></span>努力地找尋到屬於自己的情緒卡。</li>
-                    <li class="mb-4 text-gray-550 fs-7">
-                        在進入下一步前，想邀請<span class="px-2" id="textName"></span>，再次 <span class="text-main fw-500">閉上眼睛，深呼吸～吐氣～</span></li>
-                    <li class="mb-40 text-gray-550 fs-7">
-                        並在深呼吸的過程中，感受心中的自己，<span class="text-main fw-500">挑選的情緒，其強度分別如何呢？</span><span class="fs-8">（ 1分代表最為微弱，5分代表最為強烈 ）</span></li>
-                </ul>
-            
-                <div id="strengthArea"></div>
+                <div class="px-12 px-sm-0">
+                    <!-- 導覽 -->
+                    <ul  class="ms-4 mt-12 mb-36 text-gray-550 fs-7">
+                        <li class="mb-4 text-gray-550 fs-7">謝謝親愛的<span class="px-2" id="textName"></span>努力地找尋到屬於自己的情緒卡。</li>
+                        <li class="mb-4 text-gray-550 fs-7">
+                            接下來，想邀請<span class="px-2" id="textName"></span>，再次 <span class="text-main fw-500">閉上眼睛，深呼吸～吐氣～</span></li>
+                        <li class="mb-40 text-gray-550 fs-7">
+                            在深呼吸的過程中，感受心中的自己，<span class="text-main fw-500">挑選的情緒，其強度分別如何呢？</span><span class="fs-8 text-gray-500">（ 1分代表最為微弱，5分代表最為強烈 ）</span></li>
+                    </ul>
+                
+                    <div id="strengthArea"></div>
+                </div>
             </div>
+
+            <footer class="footer py-48">
+                <div class="container">
+                    <div class="d-flex flex-column flex-lg-row align-items-center align-items-lg-start">
+                        <!-- logo -->
+                        <div class="footer-img mb-48 mb-lg-0 me-lg-96">
+                            <img class="w-100" src="./images/logo_footer.svg" alt="logo">
+                        </div>
+                        <!-- Developers -->
+                        <div class="footer-text-box mb-48 mb-lg-0 me-lg-56">
+                            <h3 class="mb-16 fs-5">開發團隊</h3>
+                            <ul>
+                                <li class="mb-8">
+                                    <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/shu-ping-yu-238655268/"  target="_blank">
+                                        <span>Project Manager</span>
+                                        <span class="mt-4 d-block text-end">Shu-Ping Yu</span>
+                                    </a>
+                                </li>
+                                <li class="mb-8">
+                                    <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/shu-ping-yu-238655268/"  target="_blank">
+                                        <span>Product Designer</span>
+                                        <span class="mt-4 d-block text-end">Shu-Ping Yu</span>
+                                    </a>
+                                </li>
+                                <li class="mb-8">
+                                    <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/shu-ping-yu-238655268/" target="_blank">
+                                        <span>Front-End Engineer</span>
+                                        <span class="mt-4 d-block text-end">Shu-Ping Yu</span>
+                                    </a>
+                                </li>
+                                <li class="mb-8">
+                                    <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/%E5%81%89%E5%87%B1-%E6%9E%97-668aaa204/" target="_blank">
+                                        <span>Front-End Consultant</span>
+                                        <span class="mt-4 d-block text-end">Wei-Kai Lin</span>
+                                    </a>
+                                </li>
+                                <li class="mb-8">
+                                    <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/techleon/" target="_blank">
+                                        <span>Database Developer</span>
+                                        <span class="mt-4 d-block text-end">Leon Wu</span>
+                                    </a>
+                                </li>
+                                <li class="mb-8">
+                                    <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/techleon/" target="_blank">
+                                        <span>Back-End Developer</span>
+                                        <span class="mt-4 d-block text-end">Leon Wu</span>
+                                    </a>
+                                </li>
+                                <li class="mb-8">
+                                    <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/techleon/" target="_blank">
+                                        <span>System Designer</span>
+                                        <span class="mt-4 d-block text-end">Leon Wu</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="d-lg-flex justify-content-between" href="https://a8607125167.wixsite.com/mysite/about"  target="_blank">
+                                        <span>Illustrator</span>
+                                        <span class="mt-4 d-block text-end">Yi-Wen Fang</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Contact -->
+                        <div class="footer-text-box mb-48 mb-lg-0 me-lg-56">
+                        <div class="mb-48">
+                            <a href="mailto:info@wavemocards.com">
+                                <h3 class="mb-16 fs-5">聯絡我們</h3>
+                                <span class="fs-8">點我寄信聯絡浪潮服務小組</span>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdiAQt45Pzuha3aj9OYdS-2-ljOcEcwEDwZjjls_ufdXHkQNw/viewform?usp=sharing"  target="_blank">
+                                <h3 class="mb-16 fs-5">回報問題</h3>
+                                <span class="fs-8">點我填寫回報問題表單</span>
+                            </a>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
         </main>
 
         <!-- 浮動按鈕 -->
@@ -146,86 +234,6 @@
                 <span class="text-white fs-9 fs-md-10 fw-bold">TOP</span>
             </a>
         </div>
-
-        <footer class="footer py-48">
-            <div class="container">
-                <div class="d-flex flex-column flex-lg-row align-items-center align-items-lg-start">
-                    <!-- logo -->
-                    <div class="footer-img mb-48 mb-lg-0 me-lg-96">
-                        <img class="w-100" src="./images/logo_footer.svg" alt="logo">
-                    </div>
-                    <!-- Developers -->
-                    <div class="footer-text-box mb-48 mb-lg-0 me-lg-56">
-                        <h3 class="mb-16 fs-5">開發團隊</h3>
-                        <ul>
-                            <li class="mb-8">
-                                <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/shu-ping-yu-238655268/"  target="_blank">
-                                    <span>Project Manager</span>
-                                    <span class="mt-4 d-block text-end">Shu-Ping Yu</span>
-                                </a>
-                            </li>
-                            <li class="mb-8">
-                                <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/shu-ping-yu-238655268/"  target="_blank">
-                                    <span>Product Designer</span>
-                                    <span class="mt-4 d-block text-end">Shu-Ping Yu</span>
-                                </a>
-                            </li>
-                            <li class="mb-8">
-                                <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/shu-ping-yu-238655268/" target="_blank">
-                                    <span>Front-End Engineer</span>
-                                    <span class="mt-4 d-block text-end">Shu-Ping Yu</span>
-                                </a>
-                            </li>
-                            <li class="mb-8">
-                                <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/%E5%81%89%E5%87%B1-%E6%9E%97-668aaa204/" target="_blank">
-                                    <span>Front-End Consultant</span>
-                                    <span class="mt-4 d-block text-end">Wei-Kai Lin</span>
-                                </a>
-                            </li>
-                            <li class="mb-8">
-                                <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/techleon/" target="_blank">
-                                    <span>Database Developer</span>
-                                    <span class="mt-4 d-block text-end">Leon Wu</span>
-                                </a>
-                            </li>
-                            <li class="mb-8">
-                                <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/techleon/" target="_blank">
-                                    <span>Back-End Developer</span>
-                                    <span class="mt-4 d-block text-end">Leon Wu</span>
-                                </a>
-                            </li>
-                            <li class="mb-8">
-                                <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/techleon/" target="_blank">
-                                    <span>System Designer</span>
-                                    <span class="mt-4 d-block text-end">Leon Wu</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="d-lg-flex justify-content-between" href="https://a8607125167.wixsite.com/mysite/about"  target="_blank">
-                                    <span>Illustrator</span>
-                                    <span class="mt-4 d-block text-end">Yi-Wen Fang</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- Contact -->
-                    <div class="footer-text-box mb-48 mb-lg-0 me-lg-56">
-                      <div class="mb-48">
-                        <a href="mailto:info@wavemocards.com">
-                            <h3 class="mb-16 fs-5">聯絡我們</h3>
-                            <span class="fs-8">點我寄信聯絡浪潮服務小組</span>
-                        </a>
-                      </div>
-                      <div>
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdiAQt45Pzuha3aj9OYdS-2-ljOcEcwEDwZjjls_ufdXHkQNw/viewform?usp=sharing"  target="_blank">
-                            <h3 class="mb-16 fs-5">回報問題</h3>
-                            <span class="fs-8">點我填寫回報問題表單</span>
-                        </a>
-                      </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
 
         <!-- modalEmoCards -->
         <ul class="listModal">

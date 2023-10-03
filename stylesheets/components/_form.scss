@@ -6,6 +6,11 @@ label {
 .form-signUp-login {
     width: 80%;
 }
+@media(max-width:576px) {
+    .form-signUp-login {
+        width: 95%;
+    }
+}
 .or {
     position: relative;
     color: $gray-500;

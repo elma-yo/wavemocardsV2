@@ -6,6 +6,10 @@
         <!-- 手機版網頁 CSS Reset 螢幕解析度 Reset -->
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
         <title>浪潮情緒卡｜探索情緒</title>
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
         <!-- Bootstrap icon -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
         <!-- Bootstrap css -->
@@ -81,240 +85,324 @@
             <!-- Title -->
             <div class="sticky-top pb-4 bg-white">
                 <div class="container pt-16">
-                    <div class="mb-16 pb-8 border-2 border-bottom border-main-tint02 d-flex justify-content-between align-items-center">
-                        <div>
-                            <div class="d-md-none" style="font-size: 32px;">
-                                <h2>探索情緒</h2>
+                    <div class="px-12 px-sm-0">
+                        <div class="mb-16 pb-8 border-2 border-bottom border-main-tint02 d-flex justify-content-between align-items-center">
+                            <div>
+                                <div class="d-md-none" style="font-size: 32px;">
+                                    <h2>探索情緒</h2>
+                                </div>
+                                <h2 class="d-none d-md-block fs-3">探索情緒｜情緒卡</h2>
                             </div>
-                            <h2 class="d-none d-md-block fs-3">探索情緒｜情緒卡</h2>
-                        </div>
-                        <div class="nav-btn d-flex flex-column flex-md-row justify-content-end align-items-end align-items-md-center">
-                            <div class="mb-12 mb-md-0 d-flex justify-content-end align-items-center">
-                                <button type="button" class="btn-disable text-nowrap" id="btnExpand" disabled>展開</button>
-                                <button type="button" class="ms-8 ms-md-12 btn btn-outline-main-tint01 c-btn c-btn-outline-main-tint01 fw-bold text-nowrap" id="btnFold">收合</button>
-                                <button type="button" class="ms-8 ms-md-12 btn btn-outline-main-tint01 c-btn c-btn-outline-main-tint01 fw-bold text-nowrap" id="btnEmoTable">情緒表</button>
+                            <div class="nav-btn d-flex flex-column flex-md-row justify-content-end align-items-end align-items-md-center">
+                                <div class="mb-12 mb-md-0 d-flex justify-content-end align-items-center">
+                                    <button type="button" class="btn-disable text-nowrap" id="btnExpand" disabled>展開</button>
+                                    <button type="button" class="ms-8 ms-md-12 btn btn-outline-main-tint01 c-btn c-btn-outline-main-tint01 fw-bold text-nowrap" id="btnFold">收合</button>
+                                    <button type="button" class="ms-8 ms-md-12 btn btn-outline-main-tint01 c-btn c-btn-outline-main-tint01 fw-bold text-nowrap" id="btnEmoTable">情緒表</button>
+                                </div>
+                                <a class="ms-24 px-16 btn btn-main c-btn btn-goToMyCards fs-7 d-flex justify-content-center align-items-center" id="myEmoCardsHolder" style="width: 100%; @media(max-width:768){width: auto;}" href="findEmoCardsHolder.html">
+                                    <i class="bi bi-folder2"></i>
+                                    <i class="bi bi-folder2-open"></i>
+                                    <span class="ms-4">我的情緒卡夾</span>
+                                </a>
                             </div>
-                            <a class="ms-24 px-16 btn btn-main c-btn btn-goToMyCards fs-7 d-flex justify-content-center align-items-center" id="myEmoCardsHolder" style="width: 100%; @media(max-width:768){width: auto;}" href="findEmoCardsHolder.html">
-                                <i class="bi bi-folder2"></i>
-                                <i class="bi bi-folder2-open"></i>
-                                <span class="ms-4">我的情緒卡夾</span>
-                            </a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="container py-16">
-                <!-- 導覽說明 -->
-                <div class="accordion mb-36" id="accordionExample">
-                    <div class="accordion-item border-2 border-main-tint02 rounded-2 bg-white">
-                        <h2 class="accordion-header rounded-2" id="headingOne">
-                            <button class="accordion-button px-16 py-12 bg-white link-main text-main fs-6 fw-bold rounded-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" id="btnAccordion">
-                            探索步驟與方法
-                            </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                            <div class="accordion-body fs-7">
-                                <h3 class="mb-4 fw-bold text-gray-700">探索步驟</h3>
-                                <ol class="ps-24 mb-24 text-gray-600" style="list-style-type: decimal">
-                                    <li class="mb-4">下滑頁面，開始瀏覽情緒卡。</li>
-                                    <li class="mb-4">點擊情緒卡右上方的「<span class="px-4 fs-6 fw-bold text-pink-tint01"> <i class="bi bi-plus-circle-fill"></i> </span>」按鈕，即可將情緒卡放進「我的情緒卡夾」中。</li>
-                                    <li>完成情緒卡挑選後，請點擊「<span class="px-4 fs-6 fw-bold text-main"> 我的情緒卡夾 </span>」按鈕，進行<span class="px-4 fw-bold text-main"> 下一步 </span>的內容。</li>
-                                </ol>
-                                <h3 class="mb-4 fw-bold text-gray-700">瀏覽情緒卡的方法</h3>
-                                <ol class="ps-24 mb-24 text-gray-600" style="list-style-type: decimal">
-                                    <li class="mb-4">點擊右上方的「<span class="px-4 fw-bold text-main"> 收合 </span>」或「<span class="px-4  fw-bold text-main"> 展開 </span>」按鈕，可以轉換情緒卡的展示方式。</li>
-                                    <li class="mb-4">點擊右上方的「<span class="px-4 fw-bold text-main"> 情緒表 </span>」，可以快速瀏覽所有情緒詞彙。</li>
-                                </ol>
-                                <p class="text-gray-600 fs-8">💬 透過點擊 標題「瀏覽情緒卡的方法」的區塊，可將此說明收合。</p>
+                <div class="px-12 px-sm-0">
+                    <!-- 導覽說明 -->
+                    <div class="accordion mb-36" id="accordionExample">
+                        <div class="accordion-item border-2 border-main-tint02 rounded-2 bg-white">
+                            <h2 class="accordion-header rounded-2" id="headingOne">
+                                <button class="accordion-button px-16 py-12 bg-white link-main text-main fs-6 fw-bold rounded-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" id="btnAccordion">
+                                探索步驟與方法
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <div class="accordion-body fs-7">
+                                    <h3 class="mb-4 fw-bold text-gray-700">探索步驟</h3>
+                                    <ol class="ps-24 mb-24 text-gray-600" style="list-style-type: decimal">
+                                        <li class="mb-4">下滑頁面，開始瀏覽情緒卡。</li>
+                                        <li class="mb-4">點擊情緒卡右上方的「<span class="px-4 fs-6 fw-bold text-pink-tint01"> <i class="bi bi-plus-circle-fill"></i> </span>」按鈕，即可將情緒卡放進「我的情緒卡夾」中。</li>
+                                        <li>完成情緒卡挑選後，請點擊「<span class="px-4 fs-6 fw-bold text-main"> 我的情緒卡夾 </span>」按鈕，進行<span class="px-4 fw-bold text-main"> 下一步 </span>的內容。</li>
+                                    </ol>
+                                    <h3 class="mb-4 fw-bold text-gray-700">瀏覽情緒卡的方法</h3>
+                                    <ol class="ps-24 mb-24 text-gray-600" style="list-style-type: decimal">
+                                        <li class="mb-4">點擊右上方的「<span class="px-4 fw-bold text-main"> 收合 </span>」或「<span class="px-4  fw-bold text-main"> 展開 </span>」按鈕，可以轉換情緒卡的展示方式。</li>
+                                        <li class="mb-4">點擊右上方的「<span class="px-4 fw-bold text-main"> 情緒表 </span>」，可以快速瀏覽所有情緒詞彙。</li>
+                                    </ol>
+                                    <p class="text-gray-600 fs-8">💬 透過點擊 標題「瀏覽情緒卡的方法」的區塊，可將此說明收合。</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-        
-                <!-- 展開 -->
-                <div id="expanded">
-                    <!-- 快樂類 -->
-                    <div class="mb-20 d-flex flex-nowrap">
-                        <a class="emoCardsHead me-16 mt-20 link-gray-900 emoCardHeadHappy" id="btnTitle" href="findEmo01_Happy.html">
-                            <span>快</span><span>樂</span>
-                        </a>
-                        <div class="d-flex overflow-auto pt-20" id="happyCards"></div>
-                    </div>
-                    <!-- 期待類 -->
-                    <div class="mb-20 d-flex flex-nowrap">
-                        <a class="emoCardsHead me-16 mt-20 link-gray-900 emoCardHeadExpectation" id="btnTitle" href="findEmo02_Expectation.html">
-                            <span>期</span><span>待</span>
-                        </a>
-                        <div class="d-flex overflow-auto pt-20" id="expectationCards"></div>
-                    </div>
-                    <!-- 安心類 -->
-                    <div class="mb-20 d-flex flex-nowrap">
-                        <a class="emoCardsHead me-16 mt-20 link-gray-900 emoCardHeadRelived" id="btnTitle" href="findEmo03_Relived.html">
-                            <span>安</span><span>心</span>
-                        </a>
-                        <div class="d-flex overflow-auto pt-20" id="relivedCards"></div>
-                    </div>
-                    <!-- 不安類 -->
-                    <div class="mb-20 d-flex flex-nowrap">
-                        <a class="emoCardsHead me-16 mt-20 link-gray-900 emoCardHeadUnstable" id="btnTitle" href="findEmo04_Unstable.html">
-                            <span>不</span><span>安</span>
-                        </a>
-                        <div class="d-flex overflow-auto pt-20" id="unstableCards"></div>
-                    </div>
-                    <!-- 驚訝類 -->
-                    <div class="mb-20 d-flex flex-nowrap">
-                        <a class="emoCardsHead me-16 mt-20 link-gray-900 emoCardHeadAmazed" id="btnTitle" href="findEmo05_Amazed.html">
-                            <span>驚</span><span>訝</span>
-                        </a>
-                        <div class="d-flex overflow-auto pt-20" id="amazedCards"></div>
-                    </div>
-                    <!-- 低落類 -->
-                    <div class="mb-20 d-flex flex-nowrap">
-                        <a class="emoCardsHead me-16 mt-20 link-gray-900 emoCardHeadSadness" id="btnTitle" href="findEmo06_Sadness.html">
-                            <span>低</span><span>落</span>
-                        </a>
-                        <div class="d-flex overflow-auto pt-20" id="sadnessCards"></div>
-                    </div>
-                    <!-- 討厭類 -->
-                    <div class="mb-20 d-flex flex-nowrap">
-                        <a class="emoCardsHead me-16 mt-20 link-gray-900 emoCardHeadHate" id="btnTitle" href="findEmo07_Hate.html">
-                            <span>討</span><span>厭</span>
-                        </a>
-                        <div class="d-flex overflow-auto pt-20" id="hateCards"></div>
-                    </div>
-                    <!-- 生氣類 -->
-                    <div class="mb-20 d-flex flex-nowrap">
-                        <a class="emoCardsHead me-16 mt-20 link-gray-900 emoCardHeadAnger" id="btnTitle" href="findEmo08_Anger.html">
-                            <span>生</span><span>氣</span>
-                        </a>
-                        <div class="d-flex overflow-auto pt-20" id="angerCards"></div>
-                    </div>
-                    <!-- 其他類 -->
-                    <div class="mb-64 d-flex flex-nowrap">
-                        <a class="emoCardsHead me-16 mt-20 link-gray-900 emoCardHeadOthers" id="btnTitle" href="findEmo09_Others.html">
-                            <span>其</span><span>他</span>
-                        </a>
-                        <div class="d-flex overflow-auto pt-20" id="othersCards"></div>
-                    </div>
-                </div>
-
-                <!-- 卡片分類 -->
-                <div class="d-none mt-24 mb-72" id="folded">
-                    <ul  class="mb-36 text-gray-550 fs-7">
-                        <li class="text-gray-550 fs-7">
-                            🔍 以下共有 9 張分類卡，點擊分類卡後，即可進入該分類的情緒卡頁。
-                        </li>
-                    </ul>
-                    <div class="d-flex flex-wrap justify-content-center justify-content-md-start">
-                        <a class="class-card me-16 bg-happy link-gray-900 class-card-happy" id="btnTitle" href="findEmo01_Happy.html">
-                        <p>快&nbsp;樂</p>
-                        <div class="img-box">
-                            <img src="./images/emoCards/2.svg" alt="快樂">
+            
+                    <!-- 展開 -->
+                    <div id="expanded">
+                        <!-- 快樂類 -->
+                        <div class="mb-20 d-flex flex-nowrap">
+                            <a class="emoCardsHead me-16 mt-20 link-gray-900 emoCardHeadHappy" id="btnTitle" href="findEmo01_Happy.html">
+                                <span>快</span><span>樂</span>
+                            </a>
+                            <div class="d-flex overflow-auto pt-20" id="happyCards"></div>
                         </div>
-                        </a>
-                        <a class="class-card me-16 bg-expectation link-gray-900 class-card-expectation" id="btnTitle" href="findEmo02_Expectation.html">
-                        <p>期&nbsp;待</p>
-                        <div class="img-box">
-                            <img src="./images/emoCards/8.svg" alt="期待">
+                        <!-- 期待類 -->
+                        <div class="mb-20 d-flex flex-nowrap">
+                            <a class="emoCardsHead me-16 mt-20 link-gray-900 emoCardHeadExpectation" id="btnTitle" href="findEmo02_Expectation.html">
+                                <span>期</span><span>待</span>
+                            </a>
+                            <div class="d-flex overflow-auto pt-20" id="expectationCards"></div>
                         </div>
-                        </a>
-                        <a class="class-card me-16 bg-relived link-gray-900 class-card-relived" id="btnTitle" href="findEmo03_Relived.html">
-                        <p>安&nbsp;心</p>
-                        <div class="img-box">
-                            <img src="./images/emoCards/15.svg" alt="安心">
+                        <!-- 安心類 -->
+                        <div class="mb-20 d-flex flex-nowrap">
+                            <a class="emoCardsHead me-16 mt-20 link-gray-900 emoCardHeadRelived" id="btnTitle" href="findEmo03_Relived.html">
+                                <span>安</span><span>心</span>
+                            </a>
+                            <div class="d-flex overflow-auto pt-20" id="relivedCards"></div>
                         </div>
-                        </a>
-                        <a class="class-card me-16 bg-unstable link-gray-900 class-card-unstable" id="btnTitle" href="findEmo04_Unstable.html">
-                        <p>不&nbsp;安</p>
-                        <div class="img-box">
-                            <img src="./images/emoCards/21.svg" alt="不安">
+                        <!-- 不安類 -->
+                        <div class="mb-20 d-flex flex-nowrap">
+                            <a class="emoCardsHead me-16 mt-20 link-gray-900 emoCardHeadUnstable" id="btnTitle" href="findEmo04_Unstable.html">
+                                <span>不</span><span>安</span>
+                            </a>
+                            <div class="d-flex overflow-auto pt-20" id="unstableCards"></div>
                         </div>
-                        </a>
-                        <a class="class-card me-16 bg-amazed link-gray-900 class-card-amazed" id="btnTitle" href="findEmo05_Amazed.html">
-                        <p>驚&nbsp;訝</p>
-                        <div class="img-box">
-                            <img src="./images/emoCards/26.svg" alt="驚訝">
+                        <!-- 驚訝類 -->
+                        <div class="mb-20 d-flex flex-nowrap">
+                            <a class="emoCardsHead me-16 mt-20 link-gray-900 emoCardHeadAmazed" id="btnTitle" href="findEmo05_Amazed.html">
+                                <span>驚</span><span>訝</span>
+                            </a>
+                            <div class="d-flex overflow-auto pt-20" id="amazedCards"></div>
                         </div>
-                        </a>
-                        <a class="class-card me-16 bg-sadness link-gray-900 class-card-sadness" id="btnTitle" href="findEmo06_Sadness.html">
-                        <p>低&nbsp;落</p>
-                        <div class="img-box">
-                            <img src="./images/emoCards/34.svg" alt="低落">
+                        <!-- 低落類 -->
+                        <div class="mb-20 d-flex flex-nowrap">
+                            <a class="emoCardsHead me-16 mt-20 link-gray-900 emoCardHeadSadness" id="btnTitle" href="findEmo06_Sadness.html">
+                                <span>低</span><span>落</span>
+                            </a>
+                            <div class="d-flex overflow-auto pt-20" id="sadnessCards"></div>
                         </div>
-                        </a>
-                        <a class="class-card me-16 bg-hate link-gray-900 class-card-hate" id="btnTitle" href="findEmo07_Hate.html">
-                        <p>討&nbsp;厭</p>
-                        <div class="img-box">
-                            <img src="./images/emoCards/44.svg" alt="討厭">
+                        <!-- 討厭類 -->
+                        <div class="mb-20 d-flex flex-nowrap">
+                            <a class="emoCardsHead me-16 mt-20 link-gray-900 emoCardHeadHate" id="btnTitle" href="findEmo07_Hate.html">
+                                <span>討</span><span>厭</span>
+                            </a>
+                            <div class="d-flex overflow-auto pt-20" id="hateCards"></div>
                         </div>
-                        </a>
-                        <a class="class-card me-16 bg-anger link-gray-900 class-card-anger" id="btnTitle" href="findEmo08_Anger.html">
-                        <p>生&nbsp;氣</p>
-                        <div class="img-box">
-                            <img src="./images/emoCards/51.svg" alt="生氣">
+                        <!-- 生氣類 -->
+                        <div class="mb-20 d-flex flex-nowrap">
+                            <a class="emoCardsHead me-16 mt-20 link-gray-900 emoCardHeadAnger" id="btnTitle" href="findEmo08_Anger.html">
+                                <span>生</span><span>氣</span>
+                            </a>
+                            <div class="d-flex overflow-auto pt-20" id="angerCards"></div>
                         </div>
-                        </a>
-                        <a class="class-card me-16 bg-others link-gray-900 class-card-others" id="btnTitle" href="findEmo09_Others.html">
-                        <p>其&nbsp;他</p>
-                        <div class="img-box">
-                            <img src="./images/emoCards/55.svg" alt="其他">
+                        <!-- 其他類 -->
+                        <div class="mb-64 d-flex flex-nowrap">
+                            <a class="emoCardsHead me-16 mt-20 link-gray-900 emoCardHeadOthers" id="btnTitle" href="findEmo09_Others.html">
+                                <span>其</span><span>他</span>
+                            </a>
+                            <div class="d-flex overflow-auto pt-20" id="othersCards"></div>
                         </div>
-                        </a>
                     </div>
-                </div>
-
-                <!-- 情緒表 -->
-                <div class="d-none mt-24 mb-72" id="emoTable">
-                    <p class="mb-32 px-4 px-md-12 text-gray-550">
-                        🔎 請點擊下方各個情緒名詞，可以展開觀看詳細的情緒資訊。
-                    </p>
-                    <!-- 快樂類 -->
-                    <div class="d-flex flex-nowrap">
-                        <a href="findEmo01_Happy.html" class="emoTableHeadFind me-12 mt-8 mt-md-12 px-4 px-md-12 py-2 btn btn-emoTable btn-happy fw-700 d-flex justify-content-center align-items-center text-md-nowrap" id="btnTitle">快樂</a>
-                        <div class="d-flex align-items-center overflow-auto pt-12 mb-4" id="buttonsHappy"></div>
+    
+                    <!-- 卡片分類 -->
+                    <div class="d-none mt-24 mb-72" id="folded">
+                        <ul  class="mb-36 text-gray-550 fs-7">
+                            <li class="text-gray-550 fs-7">
+                                🔍 以下共有 9 張分類卡，點擊分類卡後，即可進入該分類的情緒卡頁。
+                            </li>
+                        </ul>
+                        <div class="d-flex flex-wrap justify-content-center justify-content-md-start">
+                            <a class="class-card me-16 bg-happy link-gray-900 class-card-happy" id="btnTitle" href="findEmo01_Happy.html">
+                            <p>快&nbsp;樂</p>
+                            <div class="img-box">
+                                <img src="./images/emoCards/2.svg" alt="快樂">
+                            </div>
+                            </a>
+                            <a class="class-card me-16 bg-expectation link-gray-900 class-card-expectation" id="btnTitle" href="findEmo02_Expectation.html">
+                            <p>期&nbsp;待</p>
+                            <div class="img-box">
+                                <img src="./images/emoCards/8.svg" alt="期待">
+                            </div>
+                            </a>
+                            <a class="class-card me-16 bg-relived link-gray-900 class-card-relived" id="btnTitle" href="findEmo03_Relived.html">
+                            <p>安&nbsp;心</p>
+                            <div class="img-box">
+                                <img src="./images/emoCards/15.svg" alt="安心">
+                            </div>
+                            </a>
+                            <a class="class-card me-16 bg-unstable link-gray-900 class-card-unstable" id="btnTitle" href="findEmo04_Unstable.html">
+                            <p>不&nbsp;安</p>
+                            <div class="img-box">
+                                <img src="./images/emoCards/21.svg" alt="不安">
+                            </div>
+                            </a>
+                            <a class="class-card me-16 bg-amazed link-gray-900 class-card-amazed" id="btnTitle" href="findEmo05_Amazed.html">
+                            <p>驚&nbsp;訝</p>
+                            <div class="img-box">
+                                <img src="./images/emoCards/26.svg" alt="驚訝">
+                            </div>
+                            </a>
+                            <a class="class-card me-16 bg-sadness link-gray-900 class-card-sadness" id="btnTitle" href="findEmo06_Sadness.html">
+                            <p>低&nbsp;落</p>
+                            <div class="img-box">
+                                <img src="./images/emoCards/34.svg" alt="低落">
+                            </div>
+                            </a>
+                            <a class="class-card me-16 bg-hate link-gray-900 class-card-hate" id="btnTitle" href="findEmo07_Hate.html">
+                            <p>討&nbsp;厭</p>
+                            <div class="img-box">
+                                <img src="./images/emoCards/44.svg" alt="討厭">
+                            </div>
+                            </a>
+                            <a class="class-card me-16 bg-anger link-gray-900 class-card-anger" id="btnTitle" href="findEmo08_Anger.html">
+                            <p>生&nbsp;氣</p>
+                            <div class="img-box">
+                                <img src="./images/emoCards/51.svg" alt="生氣">
+                            </div>
+                            </a>
+                            <a class="class-card me-16 bg-others link-gray-900 class-card-others" id="btnTitle" href="findEmo09_Others.html">
+                            <p>其&nbsp;他</p>
+                            <div class="img-box">
+                                <img src="./images/emoCards/55.svg" alt="其他">
+                            </div>
+                            </a>
+                        </div>
                     </div>
-                    <!-- 期待類 -->
-                    <div class="d-flex flex-nowrap mt-16">
-                        <a href="findEmo02_Expectation.html" class="emoTableHeadFind me-12 mt-8 mt-md-12 px-4 px-md-12 py-2 btn btn-emoTable btn-expectation fw-700 d-flex justify-content-center align-items-center text-md-nowrap" id="btnTitle">期待</a>
-                        <div class="d-flex overflow-auto pt-12 mb-4" id="buttonsExpectation"></div>
-                    </div>
-                    <!-- 安心類 -->
-                    <div class="d-flex flex-nowrap mt-16">
-                        <a href="findEmo03_Relived.html" class="emoTableHeadFind me-12 mt-8 mt-md-12 px-4 px-md-12 py-2 btn btn-emoTable btn-relived fw-700 d-flex justify-content-center align-items-center text-md-nowrap" id="btnTitle">安心</a>
-                        <div class="d-flex overflow-auto pt-12 mb-4" id="buttonsRelived"></div>
-                    </div>
-                    <!-- 不安類 -->
-                    <div class="d-flex flex-nowrap mt-16">
-                        <a href="findEmo04_Unstable.html" class="emoTableHeadFind me-12 mt-8 mt-md-12 px-4 px-md-12 py-2 btn btn-emoTable btn-unstable fw-700 d-flex justify-content-center align-items-center text-md-nowrap" id="btnTitle">不安</a>
-                        <div class="d-flex overflow-auto pt-12 mb-4" id="buttonsUnstable"></div>
-                    </div>
-                    <!-- 驚訝類 -->
-                    <div class="d-flex flex-nowrap mt-16">
-                        <a href="findEmo05_Amazed.html" class="emoTableHeadFind me-12 mt-8 mt-md-12 px-4 px-md-12 py-2 btn btn-emoTable btn-amazed fw-700 d-flex justify-content-center align-items-center text-md-nowrap" id="btnTitle">驚訝</a>
-                        <div class="d-flex overflow-auto pt-12 mb-4" id="buttonsAmazed"></div>
-                    </div>
-                    <!-- 低落類 -->
-                    <div class="d-flex flex-nowrap mt-16">
-                        <a href="findEmo06_Sadness.html" class="emoTableHeadFind me-12 mt-8 mt-md-12 px-4 px-md-12 py-2 btn btn-emoTable btn-sadness fw-700 d-flex justify-content-center align-items-center text-md-nowrap" id="btnTitle">低落</a>
-                        <div class="d-flex overflow-auto pt-12 mb-4" id="buttonsSadness"></div>
-                    </div>
-                    <!-- 討厭類 -->
-                    <div class="d-flex flex-nowrap mt-16">
-                        <a href="findEmo07_Hate.html" class="emoTableHeadFind me-12 mt-8 mt-md-12 px-4 px-md-12 py-2 btn btn-emoTable btn-hate fw-700 d-flex justify-content-center align-items-center text-md-nowrap" id="btnTitle">討厭</a>
-                        <div class="d-flex overflow-auto pt-12 mb-4" id="buttonsHate"></div>
-                    </div>
-                    <!-- 生氣類 -->
-                    <div class="d-flex flex-nowrap mt-16">
-                        <a href="findEmo08_Anger.html" class="emoTableHeadFind me-12 mt-8 mt-md-12 px-4 px-md-12 py-2 btn btn-emoTable btn-anger fw-700 d-flex justify-content-center align-items-center text-md-nowrap" id="btnTitle">生氣</a>
-                        <div class="d-flex overflow-auto pt-12 mb-4" id="buttonsAnger"></div>
-                    </div>
-                    <!-- 其他類 -->
-                    <div class="mb-64 d-flex flex-nowrap mt-16">
-                        <a href="findEmo09_Others.html" class="emoTableHeadFind me-12 mt-8 mt-md-12 px-4 px-md-12 py-2 btn btn-emoTable btn-others fw-700 d-flex justify-content-center align-items-center text-md-nowrap" id="btnTitle">其他</a>
-                        <div class="d-flex overflow-auto pt-12 mb-4" id="buttonsOthers"></div>
+    
+                    <!-- 情緒表 -->
+                    <div class="d-none mt-24 mb-72" id="emoTable">
+                        <p class="mb-32 px-4 px-md-12 text-gray-550">
+                            🔎 請點擊下方各個情緒名詞，可以展開觀看詳細的情緒資訊。
+                        </p>
+                        <!-- 快樂類 -->
+                        <div class="d-flex flex-nowrap">
+                            <a href="findEmo01_Happy.html" class="emoTableHeadFind me-12 mt-8 mt-md-12 px-4 px-md-12 py-2 btn btn-emoTable btn-happy fw-700 d-flex justify-content-center align-items-center text-md-nowrap" id="btnTitle">快樂</a>
+                            <div class="d-flex align-items-center overflow-auto pt-12 mb-4" id="buttonsHappy"></div>
+                        </div>
+                        <!-- 期待類 -->
+                        <div class="d-flex flex-nowrap mt-16">
+                            <a href="findEmo02_Expectation.html" class="emoTableHeadFind me-12 mt-8 mt-md-12 px-4 px-md-12 py-2 btn btn-emoTable btn-expectation fw-700 d-flex justify-content-center align-items-center text-md-nowrap" id="btnTitle">期待</a>
+                            <div class="d-flex overflow-auto pt-12 mb-4" id="buttonsExpectation"></div>
+                        </div>
+                        <!-- 安心類 -->
+                        <div class="d-flex flex-nowrap mt-16">
+                            <a href="findEmo03_Relived.html" class="emoTableHeadFind me-12 mt-8 mt-md-12 px-4 px-md-12 py-2 btn btn-emoTable btn-relived fw-700 d-flex justify-content-center align-items-center text-md-nowrap" id="btnTitle">安心</a>
+                            <div class="d-flex overflow-auto pt-12 mb-4" id="buttonsRelived"></div>
+                        </div>
+                        <!-- 不安類 -->
+                        <div class="d-flex flex-nowrap mt-16">
+                            <a href="findEmo04_Unstable.html" class="emoTableHeadFind me-12 mt-8 mt-md-12 px-4 px-md-12 py-2 btn btn-emoTable btn-unstable fw-700 d-flex justify-content-center align-items-center text-md-nowrap" id="btnTitle">不安</a>
+                            <div class="d-flex overflow-auto pt-12 mb-4" id="buttonsUnstable"></div>
+                        </div>
+                        <!-- 驚訝類 -->
+                        <div class="d-flex flex-nowrap mt-16">
+                            <a href="findEmo05_Amazed.html" class="emoTableHeadFind me-12 mt-8 mt-md-12 px-4 px-md-12 py-2 btn btn-emoTable btn-amazed fw-700 d-flex justify-content-center align-items-center text-md-nowrap" id="btnTitle">驚訝</a>
+                            <div class="d-flex overflow-auto pt-12 mb-4" id="buttonsAmazed"></div>
+                        </div>
+                        <!-- 低落類 -->
+                        <div class="d-flex flex-nowrap mt-16">
+                            <a href="findEmo06_Sadness.html" class="emoTableHeadFind me-12 mt-8 mt-md-12 px-4 px-md-12 py-2 btn btn-emoTable btn-sadness fw-700 d-flex justify-content-center align-items-center text-md-nowrap" id="btnTitle">低落</a>
+                            <div class="d-flex overflow-auto pt-12 mb-4" id="buttonsSadness"></div>
+                        </div>
+                        <!-- 討厭類 -->
+                        <div class="d-flex flex-nowrap mt-16">
+                            <a href="findEmo07_Hate.html" class="emoTableHeadFind me-12 mt-8 mt-md-12 px-4 px-md-12 py-2 btn btn-emoTable btn-hate fw-700 d-flex justify-content-center align-items-center text-md-nowrap" id="btnTitle">討厭</a>
+                            <div class="d-flex overflow-auto pt-12 mb-4" id="buttonsHate"></div>
+                        </div>
+                        <!-- 生氣類 -->
+                        <div class="d-flex flex-nowrap mt-16">
+                            <a href="findEmo08_Anger.html" class="emoTableHeadFind me-12 mt-8 mt-md-12 px-4 px-md-12 py-2 btn btn-emoTable btn-anger fw-700 d-flex justify-content-center align-items-center text-md-nowrap" id="btnTitle">生氣</a>
+                            <div class="d-flex overflow-auto pt-12 mb-4" id="buttonsAnger"></div>
+                        </div>
+                        <!-- 其他類 -->
+                        <div class="mb-64 d-flex flex-nowrap mt-16">
+                            <a href="findEmo09_Others.html" class="emoTableHeadFind me-12 mt-8 mt-md-12 px-4 px-md-12 py-2 btn btn-emoTable btn-others fw-700 d-flex justify-content-center align-items-center text-md-nowrap" id="btnTitle">其他</a>
+                            <div class="d-flex overflow-auto pt-12 mb-4" id="buttonsOthers"></div>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <footer class="footer py-48">
+                <div class="container">
+                    <div class="d-flex flex-column flex-lg-row align-items-center align-items-lg-start">
+                        <!-- logo -->
+                        <div class="footer-img mb-48 mb-lg-0 me-lg-96">
+                            <img class="w-100" src="./images/logo_footer.svg" alt="logo">
+                        </div>
+                        <!-- Developers -->
+                        <div class="footer-text-box mb-48 mb-lg-0 me-lg-56">
+                            <h3 class="mb-16 fs-5">開發團隊</h3>
+                            <ul>
+                                <li class="mb-8">
+                                    <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/shu-ping-yu-238655268/"  target="_blank">
+                                        <span>Project Manager</span>
+                                        <span class="mt-4 d-block text-end">Shu-Ping Yu</span>
+                                    </a>
+                                </li>
+                                <li class="mb-8">
+                                    <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/shu-ping-yu-238655268/"  target="_blank">
+                                        <span>Product Designer</span>
+                                        <span class="mt-4 d-block text-end">Shu-Ping Yu</span>
+                                    </a>
+                                </li>
+                                <li class="mb-8">
+                                    <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/shu-ping-yu-238655268/" target="_blank">
+                                        <span>Front-End Engineer</span>
+                                        <span class="mt-4 d-block text-end">Shu-Ping Yu</span>
+                                    </a>
+                                </li>
+                                <li class="mb-8">
+                                    <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/%E5%81%89%E5%87%B1-%E6%9E%97-668aaa204/" target="_blank">
+                                        <span>Front-End Consultant</span>
+                                        <span class="mt-4 d-block text-end">Wei-Kai Lin</span>
+                                    </a>
+                                </li>
+                                <li class="mb-8">
+                                    <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/techleon/" target="_blank">
+                                        <span>Database Developer</span>
+                                        <span class="mt-4 d-block text-end">Leon Wu</span>
+                                    </a>
+                                </li>
+                                <li class="mb-8">
+                                    <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/techleon/" target="_blank">
+                                        <span>Back-End Developer</span>
+                                        <span class="mt-4 d-block text-end">Leon Wu</span>
+                                    </a>
+                                </li>
+                                <li class="mb-8">
+                                    <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/techleon/" target="_blank">
+                                        <span>System Designer</span>
+                                        <span class="mt-4 d-block text-end">Leon Wu</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="d-lg-flex justify-content-between" href="https://a8607125167.wixsite.com/mysite/about"  target="_blank">
+                                        <span>Illustrator</span>
+                                        <span class="mt-4 d-block text-end">Yi-Wen Fang</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Contact -->
+                        <div class="footer-text-box mb-48 mb-lg-0 me-lg-56">
+                        <div class="mb-48">
+                            <a href="mailto:info@wavemocards.com">
+                                <h3 class="mb-16 fs-5">聯絡我們</h3>
+                                <span class="fs-8">點我寄信聯絡浪潮服務小組</span>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdiAQt45Pzuha3aj9OYdS-2-ljOcEcwEDwZjjls_ufdXHkQNw/viewform?usp=sharing"  target="_blank">
+                                <h3 class="mb-16 fs-5">回報問題</h3>
+                                <span class="fs-8">點我填寫回報問題表單</span>
+                            </a>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
         </main>
 
         <!-- modalEmoCards -->
@@ -357,86 +445,6 @@
                 <span class="text-white fs-9 fs-md-10 fw-bold">TOP</span>
             </a>
         </div>
-
-        <footer class="footer py-48">
-            <div class="container">
-                <div class="d-flex flex-column flex-lg-row align-items-center align-items-lg-start">
-                    <!-- logo -->
-                    <div class="footer-img mb-48 mb-lg-0 me-lg-96">
-                        <img class="w-100" src="./images/logo_footer.svg" alt="logo">
-                    </div>
-                    <!-- Developers -->
-                    <div class="footer-text-box mb-48 mb-lg-0 me-lg-56">
-                        <h3 class="mb-16 fs-5">開發團隊</h3>
-                        <ul>
-                            <li class="mb-8">
-                                <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/shu-ping-yu-238655268/"  target="_blank">
-                                    <span>Project Manager</span>
-                                    <span class="mt-4 d-block text-end">Shu-Ping Yu</span>
-                                </a>
-                            </li>
-                            <li class="mb-8">
-                                <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/shu-ping-yu-238655268/"  target="_blank">
-                                    <span>Product Designer</span>
-                                    <span class="mt-4 d-block text-end">Shu-Ping Yu</span>
-                                </a>
-                            </li>
-                            <li class="mb-8">
-                                <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/shu-ping-yu-238655268/" target="_blank">
-                                    <span>Front-End Engineer</span>
-                                    <span class="mt-4 d-block text-end">Shu-Ping Yu</span>
-                                </a>
-                            </li>
-                            <li class="mb-8">
-                                <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/%E5%81%89%E5%87%B1-%E6%9E%97-668aaa204/" target="_blank">
-                                    <span>Front-End Consultant</span>
-                                    <span class="mt-4 d-block text-end">Wei-Kai Lin</span>
-                                </a>
-                            </li>
-                            <li class="mb-8">
-                                <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/techleon/" target="_blank">
-                                    <span>Database Developer</span>
-                                    <span class="mt-4 d-block text-end">Leon Wu</span>
-                                </a>
-                            </li>
-                            <li class="mb-8">
-                                <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/techleon/" target="_blank">
-                                    <span>Back-End Developer</span>
-                                    <span class="mt-4 d-block text-end">Leon Wu</span>
-                                </a>
-                            </li>
-                            <li class="mb-8">
-                                <a class="d-lg-flex justify-content-between" href="https://www.linkedin.com/in/techleon/" target="_blank">
-                                    <span>System Designer</span>
-                                    <span class="mt-4 d-block text-end">Leon Wu</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="d-lg-flex justify-content-between" href="https://a8607125167.wixsite.com/mysite/about"  target="_blank">
-                                    <span>Illustrator</span>
-                                    <span class="mt-4 d-block text-end">Yi-Wen Fang</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- Contact -->
-                    <div class="footer-text-box mb-48 mb-lg-0 me-lg-56">
-                      <div class="mb-48">
-                        <a href="mailto:info@wavemocards.com">
-                            <h3 class="mb-16 fs-5">聯絡我們</h3>
-                            <span class="fs-8">點我寄信聯絡浪潮服務小組</span>
-                        </a>
-                      </div>
-                      <div>
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdiAQt45Pzuha3aj9OYdS-2-ljOcEcwEDwZjjls_ufdXHkQNw/viewform?usp=sharing"  target="_blank">
-                            <h3 class="mb-16 fs-5">回報問題</h3>
-                            <span class="fs-8">點我填寫回報問題表單</span>
-                        </a>
-                      </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
 
         <!-- 確認登出 Modal -->
         <div class="modal fade" id="modalLogout" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
