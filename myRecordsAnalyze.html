@@ -121,7 +121,7 @@
                         <h3 class="mb-8 py-4 fs-5 fw-bold text-main border-bottom border-main-tint02">情緒類組次數</h3>
                         <p class="mb-4 text-gray-550">下圖為您在此期間記錄的情緒卡，在以下分類中所出現的次數的長條圖。</p>
                         <p class="mb-24 text-gray-550">若您想看該類別出現的次數，您可將游標停留在該類別的長條上。</p>
-                        <div class="py-8 d-flex justify-content-center align-items-center position-relative">
+                        <div class="py-8 position-relative chart__bar">
                             <canvas id="barChart"></canvas>
                             <div class="position-absolute start-0 top-0 translate-middle-y">(次)</div>
                         </div>
@@ -317,48 +317,6 @@
             const barChartCTX = document.getElementById("barChart")
 
             let prevDoughnutCanvasWidth = 0
-            let currentDoughtCanvasWidth = 0
-
-            const resizeObserver = new ResizeObserver(entries => {
-                for (let entry of entries) {
-                    if (entry.contentBoxSize[0].inlineSize <= 576) {
-                        barThickness = 20
-                        barLabelFontSize = 14
-                    } else {
-                        barThickness = 28
-                        barLabelFontSize = 16
-                    }
-                }
-            });
-
-            resizeObserver.observe(document.documentElement);
-
-            const doughnutChartReviseObserver = new ResizeObserver(entries => {
-                for (let entry of entries) {
-                    if (prevDoughnutCanvasWidth !== currentDoughtCanvasWidth) {
-                        resetCustomTooltips(doughnutChartCTX)
-                        prevDoughnutCanvasWidth = currentDoughtCanvasWidth
-                    } 
-                    if (currentData !== null && doughnutChart !== null) {
-                        currentDoughtCanvasWidth = Math.floor(entry.contentRect.width)
-                        createTooltipsForDoughnutChart(
-                            currentData,
-                            doughnutChart,
-                            currentDoughtCanvasWidth
-                        )
-                    }
-                }
-            });
-
-            doughnutChartReviseObserver.observe(doughnutChartCTX);
-
-            const barChartReviseObserver = new ResizeObserver(entries => {
-                for (let entry of entries) {
-                    console.log(entry)
-                }
-            });
-
-            barChartReviseObserver.observe(barChartCTX.parentElement);
 
             const main = document.querySelector("main")
 
@@ -368,8 +326,6 @@
             let previousData = ""
             let currentData = null
             let correspondBackgroundColors = null
-            let barThickness = 28
-            let barLabelFontSize = 16
 
             const COLOR_LOOKUP_TABLE = {
                 快樂: "#FFE589",
@@ -513,6 +469,21 @@
                                         return
                                     }
                                     doughnutChartCTX.style.zIndex = "auto"
+                                },
+                                onResize(chart, newSize) {
+                                    const currentWidth = Math.floor(newSize.width / 10) * 10
+                                    const isRevised = prevDoughnutCanvasWidth !== currentWidth
+                                    if (isRevised) {
+                                        resetCustomTooltips(doughnutChartCTX)
+                                    }
+                                    if (currentData !== null && doughnutChart !== null && isRevised) {
+                                        createTooltipsForDoughnutChart(
+                                            currentData,
+                                            doughnutChart,
+                                            currentWidth,
+                                        )
+                                        prevDoughnutCanvasWidth = currentWidth
+                                    }
                                 }
                             }
                         })
@@ -528,7 +499,6 @@
                                         backgroundColor:
                                             correspondBackgroundColors,
                                         borderRadius: 50,
-                                        barThickness
                                     }
                                 ]
                             },
@@ -554,7 +524,7 @@
                                     x: {
                                         ticks: {
                                             font: {
-                                                size: barLabelFontSize,
+                                                size: 16,
                                                 weight: 700
                                             }
                                         },
@@ -572,7 +542,7 @@
                                         ticks: {
                                             stepSize: 1,
                                             font: {
-                                                size: barLabelFontSize
+                                                size: 16
                                             },
                                             padding: 4
                                         },
@@ -584,7 +554,19 @@
                                             drawTicks: false
                                         }
                                     }
-                                }
+                                },
+                                onResize(chart, newSize) {
+                                    const { width } = newSize
+                                    if (width < 400) {
+                                        chart.data.datasets[0].barThickness = 20
+                                        chart.options.scales.y.ticks.font.size = 12
+                                        chart.options.scales.x.ticks.font.size = 12
+                                    } else {
+                                        chart.data.datasets[0].barThickness = 28
+                                        chart.options.scales.y.ticks.font.size = 16
+                                        chart.options.scales.x.ticks.font.size = 16
+                                    }
+                                },
                             }
                         })
                     }
@@ -674,7 +656,7 @@
                         const tooltip = document.createElement("DIV")
                         const content = `
                             <p>
-                                <span class="fw-700 me-2">${key}</span>
+                                <span class="fw-700">${key}</span>
                                 <span class="text-gray-550">${
                                     percentageArray[index].toString() + "%"
                                 }</span>
@@ -693,16 +675,16 @@
 
                         const x = Math.floor(
                             Math.abs(
-                                radius * 0.825 * Math.cos(radian * 2 * Math.PI)
+                                radius * 0.75 * Math.cos(radian * 2 * Math.PI)
                             ) +
                                 parentWidth / 2
                         )
 
                         const y = Math.floor(
-                            radius * 0.825 * Math.sin(radian * 2 * Math.PI)
+                            radius * 0.75 * Math.sin(radian * 2 * Math.PI)
                         )
 
-                        tooltip.style.transform = `translateY(calc(-100% + ${y}px))`
+                        tooltip.style.transform = `translateY(calc(-100% + ${y}px + 24px))`
 
                         if (determineWhichHalf(radian) === "LEFT") {
                             tooltip.style.right = `${Math.abs(x)}px`
