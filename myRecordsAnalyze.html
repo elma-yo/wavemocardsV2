@@ -6,6 +6,10 @@
         <!-- 手機版網頁 CSS Reset 螢幕解析度 Reset -->
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
         <title>浪潮情緒卡｜我的紀錄｜分析</title>
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
         <!-- Bootstrap icon -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
         <!-- Bootstrap css -->
@@ -76,14 +80,14 @@
             </div>
         </header>
 
-        <main class="bg-white">
+        <main class="bg-white px-12 px-sm-0">
             <div class="container py-16 pt-112">
                 <!-- 標題 -->
-                <div class="mb-20 pb-8 px-12 px-sm-0 border-2 border-bottom border-main-tint02 d-flex justify-content-between align-items-center">
+                <div class="mb-20 pb-8 border-2 border-bottom border-main-tint02 d-flex justify-content-between align-items-center">
                     <h2 class="fs-3">我的紀錄｜分析</h2>
                     <div class="nav-btn d-flex justify-content-end">
-                        <a class="btn btn-outline-main c-btn" href="myRecords.html">紀錄</a>
-                        <div class="ms-16 btn-disable text-nowrap">分析</div>
+                        <a class="px-16 btn btn-outline-main c-btn" href="myRecords.html">紀錄</a>
+                        <div class="ms-8 ms-sm-16 btn-disable text-nowrap">分析</div>
                     </div>
                 </div>
                 
@@ -91,7 +95,7 @@
                 <!-- 搜尋條 & 分享 -->
                 <form action="" method="get">
                     <!-- 搜尋條 -->
-                    <div class="mb-md-24 px-12 px-sm-0 d-flex flex-column flex-md-row justify-content-sm-between align-items-center" id="areaSearch">
+                    <div class="mb-md-24 d-flex flex-column flex-md-row justify-content-sm-between align-items-center" id="areaSearch">
                         <div class="box-analyze d-flex flex-column flex-md-row align-items-center" >
                             <div class="box-date-analyze d-flex flex-column flex-sm-row align-items-center mb-16 mb-md-0">
                                 <input type="date" class="input-date-analyze d-block px-2 px-sm-16 py-6 border border-main-tint02 border-2 rounded-pill text-main-tint01 text-center" id="start_day" required />
@@ -227,7 +231,7 @@
                         </a>
                       </div>
                       <div>
-                        <a href="https://forms.gle/22Db5CkKZKr32pAZ9"  target="_blank">
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdiAQt45Pzuha3aj9OYdS-2-ljOcEcwEDwZjjls_ufdXHkQNw/viewform?usp=sharing"  target="_blank">
                             <h3 class="mb-16 fs-5">回報問題</h3>
                             <span class="fs-8">點我填寫回報問題表單</span>
                         </a>
@@ -585,8 +589,8 @@
                         })
                     }
                 } catch (error) {
-                    console.error(error)
-                    alert(error)
+                    // console.error(error);
+                    alert(error);
                 }
             })
 

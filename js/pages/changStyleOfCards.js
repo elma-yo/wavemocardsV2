@@ -59,17 +59,17 @@ function btnExpanded(){
     emoTable.classList.add('d-none');
 }
 function btnFolded(){
-    btnFold.classList.remove('btn', 'btn-outline-main-tint01', 'c-btn-outline-main-tint01');
+    btnFold.classList.remove('btn', 'btn-outline-main-tint01', 'c-btn', 'c-btn-outline-main-tint01', 'fw-bold');
     btnFold.classList.add('btn-disable');
     btnFold.disabled=true;
     if(btnExpand.disabled==true){
         btnExpand.disabled=false;
-        btnExpand.classList.add('btn', 'btn-outline-main-tint01', 'c-btn-outline-main-tint01');
+        btnExpand.classList.add('btn', 'btn-outline-main-tint01', 'c-btn', 'c-btn-outline-main-tint01', 'fw-bold');
         btnExpand.classList.remove('btn-disable');
     }
     if (btnEmoTable.disabled==true){
         btnEmoTable.disabled=false;
-        btnEmoTable.classList.add('btn', 'btn-outline-main-tint01', 'c-btn-outline-main-tint01');
+        btnEmoTable.classList.add('btn', 'btn-outline-main-tint01', 'c-btn', 'c-btn-outline-main-tint01', 'fw-bold');
         btnEmoTable.classList.remove('btn-disable');
     }
     folded.classList.remove('d-none');
@@ -80,17 +80,17 @@ function btnFolded(){
     emoTable.classList.add('d-none');
 }
 function btnEmoTableOn(){
-    btnEmoTable.classList.remove('btn', 'btn-outline-main-tint01', 'c-btn-outline-main-tint01');
+    btnEmoTable.classList.remove('btn', 'btn-outline-main-tint01', 'c-btn', 'c-btn-outline-main-tint01', 'fw-bold');
     btnEmoTable.classList.add('btn-disable');
     btnEmoTable.disabled=true;
     if(btnExpand.disabled==true){
         btnExpand.disabled=false;
-        btnExpand.classList.add('btn', 'btn-outline-main-tint01', 'c-btn-outline-main-tint01');
+        btnExpand.classList.add('btn', 'btn-outline-main-tint01', 'c-btn', 'c-btn-outline-main-tint01', 'fw-bold');
         btnExpand.classList.remove('btn-disable');
     }
     if (btnFold.disabled==true){
         btnFold.disabled=false;
-        btnFold.classList.add('btn', 'btn-outline-main-tint01', 'c-btn-outline-main-tint01');
+        btnFold.classList.add('btn', 'btn-outline-main-tint01', 'c-btn', 'c-btn-outline-main-tint01', 'fw-bold');
         btnFold.classList.remove('btn-disable');
     }
     emoTable.classList.remove('d-none');
