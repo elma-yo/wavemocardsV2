@@ -173,7 +173,11 @@
                             密碼
                             <span class="text-pink-tint02 fs-9">*必填</span>
                         </label>
-                        <input type="password" class="form-control rounded-pill px-20" id="pwd" required aria-describedby="passwordHelp" placeholder="********" required>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <input type="password" class="me-12 form-control rounded-pill px-20" id="pwd" required aria-describedby="passwordHelp" placeholder="********" required>
+                            <div class="text-gray-550 fs-6" id="btnEyeClosedPwd"><i class="bi bi-eye-slash"></i></div>
+                            <div class="d-none text-gray-550 fs-6" id="btnEyeOpenPwd"><i class="bi bi-eye-fill"></i></div>
+                        </div>
                         <!-- 密碼驗證 msg -->
                         <div class="mt-4 ms-24 fs-9" id="pwdCmt"></div>
                         <button class="ms-24 p-0 fs-9 link-gray-550 bg-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePwdRules" aria-expanded="false" aria-controls="collapsePwdRules">
@@ -199,7 +203,11 @@
                             確認密碼
                             <span class="text-pink-tint02 fs-9">*必填</span>
                         </label>
-                        <input type="password" class="form-control rounded-pill px-20" id="pwd2" placeholder="請再次輸入您所欲設定的密碼" required>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <input type="password" class="me-12 form-control rounded-pill px-20" id="pwd2" placeholder="請再次輸入您所欲設定的密碼" required>
+                            <div class="text-gray-550 fs-6" id="btnEyeClosedPwd2"><i class="bi bi-eye-slash"></i></div>
+                            <div class="d-none text-gray-550 fs-6" id="btnEyeOpenPwd2"><i class="bi bi-eye-fill"></i></div>
+                        </div>
                         <!-- 雙重密碼驗證結果 -->
                         <div class="mt-4 ms-12 ms-sm-24 fs-9" id="pwd2Cmt"></div>
                     </div>
@@ -486,7 +494,11 @@
             const accountCmt = document.querySelector('#accountCmt');
             const pwd = document.querySelector('#pwd');
             const pwd2 = document.querySelector('#pwd2');
+            const btnEyeClosedPwd = document.querySelector('#btnEyeClosedPwd');
+            const btnEyeOpenPwd = document.querySelector('#btnEyeOpenPwd');
             const pwdCmt = document.querySelector('#pwdCmt');
+            const btnEyeClosedPwd2 = document.querySelector('#btnEyeClosedPwd2');
+            const btnEyeOpenPwd2 = document.querySelector('#btnEyeOpenPwd2');
             const pwd2Cmt = document.querySelector('#pwd2Cmt');
             const lastName = document.querySelector('#lastName');
             const lastNameCmt = document.querySelector('#lastNameCmt');
@@ -687,6 +699,28 @@
                 progressBar_2.classList.add("border-2");
             })
 
+            btnEyeClosedPwd.addEventListener("click", function(){
+                btnEyeOpenPwd.classList.remove("d-none");
+                btnEyeClosedPwd.classList.add("d-none");
+                pwd.type="text";
+            })
+            btnEyeOpenPwd.addEventListener("click", function(){
+                btnEyeOpenPwd.classList.add("d-none");
+                btnEyeClosedPwd.classList.remove("d-none");
+                pwd.type="password";
+            })
+
+            btnEyeClosedPwd2.addEventListener("click", function(){
+                btnEyeOpenPwd2.classList.remove("d-none");
+                btnEyeClosedPwd2.classList.add("d-none");
+                pwd2.type="text";
+            })
+            btnEyeOpenPwd2.addEventListener("click", function(){
+                btnEyeOpenPwd2.classList.add("d-none");
+                btnEyeClosedPwd2.classList.remove("d-none");
+                pwd2.type="password";
+            })
+
             let pwdCorrect = false;
             // 驗證是否符合 密碼規則
             pwd.addEventListener("keyup", function(){
@@ -816,8 +850,38 @@
                     lastNameCorrect = true;
                 }
             })
+            lastName.addEventListener("mouseout", function(){
+                if(lastName.value=="") {
+                    lastNameCmt.textContent = "此欄為必填";
+                    lastNameCmt.style.color = "#C37979";
+                    lastNameCorrect = false;
+                } else if(lastName.value.length<1) {
+                    lastNameCmt.textContent = "最少填入 1 個中/英文字";
+                    lastNameCmt.style.color = "#C37979";
+                    lastNameCorrect = false;
+                } else {
+                    lastNameCmt.innerHTML = `<i class="bi bi-check-circle-fill"></i>`;
+                    lastNameCmt.style.color = "#3C9DAE";
+                    lastNameCorrect = true;
+                }
+            })
             let firstNameCorrect = false;
             firstName.addEventListener("keyup", function(){
+                if(firstName.value=="") {
+                    firstNameCmt.textContent = "此欄為必填";
+                    firstNameCmt.style.color = "#C37979";
+                    firstNameCorrect = false;
+                } else if(firstName.value.length<1){
+                    firstNameCmt.textContent = "最少填入 1 個中/英文字";
+                    firstNameCmt.style.color = "#C37979";
+                    firstNameCorrect = false;
+                }else {
+                    firstNameCmt.innerHTML = `<i class="bi bi-check-circle-fill"></i>`;
+                    firstNameCmt.style.color = "#3C9DAE";
+                    firstNameCorrect = true;
+                }
+            })
+            firstName.addEventListener("mouseout", function(){
                 if(firstName.value=="") {
                     firstNameCmt.textContent = "此欄為必填";
                     firstNameCmt.style.color = "#C37979";
@@ -872,7 +936,7 @@
                 // btnSubmitClickNum++;
                 // if(btnSubmitClickNum%2!=0){
                     // 驗證是否已填寫所有必填內容
-                    if(emailBackEndVerified==true &&  pwdCorrect==true && pwd2Correct==true && accountBackEndVerified==true && lastNameCorrect==true && firstNameCorrect==true && agreeChecked==true && birthday.value!=""){
+                    if(emailBackEndVerified==true &&  pwdCorrect==true && pwd2Correct==true && accountBackEndVerified==true && lastName.value.length>=1 && firstName.value.length>=1 && agreeChecked==true && birthday.value!=""){
                         let postData;
                         if(birthday.value==""){
                             postData = {
@@ -950,7 +1014,7 @@
                         if (emailBackEndVerified!=true) {
                             areaEmail.classList.remove("d-none");
                             areaAccount.classList.remove("d-none");
-                            btnVerify.classList.remove("-d-none");
+                            btnVerify.classList.remove("d-none");
                             areaName.classList.add("d-none");
                             areaBirthAndTitle.classList.add("d-none");
                             areaAgree.classList.add("d-none");
@@ -967,8 +1031,8 @@
                             pwd2.value = "";
                             areaPwd.classList.remove("d-none");
                             areaPwd2.classList.remove("d-none");
-                            btnBackToFirst.classList.remove("-d-none");
-                            btnNextToLastDisabled.classList.remove("-d-none");
+                            btnBackToFirst.classList.remove("d-none");
+                            btnNextToLastDisabled.classList.remove("d-none");
                             areaName.classList.add("d-none");
                             areaBirthAndTitle.classList.add("d-none");
                             areaAgree.classList.add("d-none");
@@ -982,8 +1046,8 @@
                             pwd2.value = "";
                             areaPwd.classList.remove("d-none");
                             areaPwd2.classList.remove("d-none");
-                            btnBackToFirst.classList.remove("-d-none");
-                            btnNextToLastDisabled.classList.remove("-d-none");
+                            btnBackToFirst.classList.remove("d-none");
+                            btnNextToLastDisabled.classList.remove("d-none");
                             areaName.classList.add("d-none");
                             areaBirthAndTitle.classList.add("d-none");
                             areaAgree.classList.add("d-none");
@@ -995,7 +1059,7 @@
                         if (accountBackEndVerified!=true) {
                             areaEmail.classList.remove("d-none");
                             areaAccount.classList.remove("d-none");
-                            btnVerify.classList.remove("-d-none");
+                            btnVerify.classList.remove("d-none");
                             areaName.classList.add("d-none");
                             areaBirthAndTitle.classList.add("d-none");
                             areaAgree.classList.add("d-none");
