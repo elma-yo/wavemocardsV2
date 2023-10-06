@@ -13,12 +13,16 @@
                 font-size: 1rem;
             }
 
-            @media (max-width: 576px) {
-                font-size: 1.25rem;
+            @media (max-width: 30em) {
+                font-size: 1rem;
 
                 :last-child {
-                    font-size: 0.75rem;
+                    font-size: 0.5rem;
                 }
+            }
+
+            @media (max-width: 24em) {
+                font-size: .75rem;
             }
         }
 
@@ -32,10 +36,6 @@
 
         &[data-position="left"] {
             left: 0;
-
-            p {
-                padding-inline-start: 2px;
-            }
         }
 
         &[data-position="right"] {
@@ -43,7 +43,6 @@
 
             p {
                 text-align: right;
-                padding-inline-end: 2px;
             }
         }
 
@@ -68,7 +67,8 @@
             right: 0;
         }
 
-        animation: show-up 500ms forwards ease-in;
+        -webkit-animation: show-up 500ms forwards ease-in;
+                animation: show-up 500ms forwards ease-in;
     }
 }
 
