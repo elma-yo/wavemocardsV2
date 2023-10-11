@@ -134,6 +134,29 @@
             </div>
         </main>
 
+        <!-- 更新公告按鈕 -->
+        <button type="button" id="btnAnnouncement" class="d-none" data-bs-toggle="modal" data-bs-target="#modalAnnouncement"></button>
+        <div class="modal fade" id="modalAnnouncement" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content rounded-4">
+                    <div class="modal-body d-flex flex-column align-items-center px-48 pt-24 pb-16">
+                        <p id="modalAnnouncementTitle" class="mb-12 fs-3 fw-bold text-pink">系統維護公告</p>
+                        <div class="d-flex flex-column">
+                            <p id="modalAnnouncementText" class="mt-12 fs-7 text-gray-700">本站將於<span class="text-pink"> 10 月 7 日 22:00 至 10 月 8 日 6:00 之間</span>，進行系統維護。此期間本網站將暫時關閉無法使用。您可於10月8日早上6點之後，繼續使用本網站。</p>
+                            <p id="modalAnnouncementText" class="mb-12 fs-7 text-gray-700">若有造成不便，敬請見諒。</p>
+                        </div>
+                        <div style="width: 45%;">
+                            <img class="w-100 pt-24 pb-2" src="./images/addCardFail.svg" alt="img" id="modalAnnouncementImg">
+                        </div>
+                        <span class="text-gray-400 fs-11">Illustration by <a class="link-gray-400" href="https://blush.design/artists/RyUTVuP8G4QeAAEEQgug/pablo-stanley">Pablo Stanley</a> from <a class="link-gray-400" href="https://blush.design/">blush design</a></span>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button type="button" data-bs-dismiss="modal"  data-bs-dismiss="modal" class="btn btn-pink c-btn px-16 py-8 link-white fs-6 fw-bold">我知道了</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- 確認登出 Modal -->
         <div class="modal fade" id="modalLogout" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -154,7 +177,7 @@
         </div>
 
         <!-- 使用期限到期，請重新登入 Modal -->
-        <button type="button" id="btnTimeOut" class="d-none" data-bs-toggle="modal" data-bs-target="#modalTimeOut"></button>
+        <!-- <button type="button" id="btnTimeOut" class="d-none" data-bs-toggle="modal" data-bs-target="#modalTimeOut"></button>
         <div class="modal fade" id="modalTimeOut" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content rounded-4">
@@ -171,7 +194,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!--  Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
@@ -187,6 +210,19 @@
             const headerLoggedIn = document.querySelector('#headerLoggedIn');
             const btnStatToSignUp = document.querySelector("#btnStatToSignUp");
             const btnStarToFindEmo = document.querySelector("#btnStarToFindEmo");
+            
+            // 維修公告
+            // const btnAnnouncement = document.querySelector("#btnAnnouncement");
+            // let btnAnnouncementClicked = localStorage.getItem("announcement");
+            // console.log(btnAnnouncementClicked)
+            // if(btnAnnouncementClicked==null){
+            //     btnAnnouncementClicked = "false";
+            // }
+            // if (btnAnnouncementClicked=="false"){
+            //     btnAnnouncementClicked = "true";
+            //     localStorage.setItem("announcement", "true");
+            //     btnAnnouncement.click();
+            // }
 
             // 清除 我的紀錄 搜尋紀錄
             localStorage.removeItem("resultData");
