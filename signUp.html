@@ -623,6 +623,8 @@
                     }
                     axios.post("https://api.wavemocards.com/user/checking", postData)
                     .then(function(response){
+                        console.log(postData)
+                        console.log(response)
                         if (response.data.message.email==false) {
                             emailCmt.forEach(function(cmt, index){
                                 cmt.innerHTML = `<i class="me-4 bi bi-check-circle-fill"></i><span>驗證成功，您可使用此Email</span>`;
@@ -962,6 +964,8 @@
                         // post 給後端確認
                         axios.post("https://api.wavemocards.com/user/signup", postData)
                         .then(function(response){
+                            console.log(postData)
+                            console.log(response)
                             if(response.data.message == "The user was successfully registered."){
                                 // 註冊成功
                                 window.onbeforeunload = false;
