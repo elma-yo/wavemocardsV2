@@ -1,19 +1,27 @@
 @use "sass:map";
 
 .custom-tooltip {
-    &[data-chart="doughnut"] {
+    &__doughnut-container {
+        position: relative;
+    }
+
+    &__doughnut {
         position: absolute;
         top: 50%;
         border-bottom: 1px solid map.get($theme-colors, "gray-550");
 
-        p {
-            font-size: 1.5rem;
+        &-content {
+            font-size: 0.5rem;
 
-            :last-child {
-                font-size: 1rem;
+            &.end {
+                text-align: end;
             }
 
-            @media (max-width: 30em) {
+            @media (min-width: 24em) {
+                font-size: 0.75rem;
+            }
+
+            @media (min-width: 30em) {
                 font-size: 1rem;
 
                 :last-child {
@@ -21,28 +29,18 @@
                 }
             }
 
-            @media (max-width: 24em) {
-                font-size: .75rem;
+            @media (min-width: 48em) {
+                font-size: 1.5rem;
+
+                :last-child {
+                    font-size: 1rem;
+                }
             }
         }
 
         &:hover {
-            z-index: 99;
-
             span {
                 background-color: map.get($theme-colors, "white");
-            }
-        }
-
-        &[data-position="left"] {
-            left: 0;
-        }
-
-        &[data-position="right"] {
-            right: 0;
-
-            p {
-                text-align: right;
             }
         }
 
@@ -67,8 +65,10 @@
             right: 0;
         }
 
-        -webkit-animation: show-up 500ms forwards ease-in;
-                animation: show-up 500ms forwards ease-in;
+        .show-up {
+            -webkit-animation: show-up 200ms forwards ease-in;
+            animation: show-up 200ms forwards ease-in;
+        }
     }
 }
 

@@ -80,10 +80,10 @@
             </div>
         </header>
 
-        <main class="bg-white px-12 px-sm-0">
+        <main class="px-12 px-sm-0">
             <div class="container py-16 pt-112">
                 <!-- 標題 -->
-                <div class="mb-20 pb-8 border-2 border-bottom border-main-tint02 d-flex justify-content-between align-items-center">
+                <div class="mb-20 pb-8 border-2 border-bottom border-main-tint02 d-flex justify-content-between align-items-center" id="analyze-title">
                     <h2 class="fs-3">我的紀錄｜分析</h2>
                     <div class="nav-btn d-flex justify-content-end">
                         <a class="px-16 btn btn-outline-main c-btn" href="myRecords.html">紀錄</a>
@@ -120,22 +120,25 @@
                     <div class="box-47 mb-36 mb-lg-0">
                         <h3 class="mb-8 py-4 fs-5 fw-bold text-main border-bottom border-main-tint02">情緒類組次數</h3>
                         <p class="mb-4 text-gray-550">下圖為您在此期間記錄的情緒卡，在以下分類中所出現的次數的長條圖。</p>
-                        <p class="mb-24 text-gray-550">若您想看該類別出現的次數，您可將游標停留在該類別的長條上。</p>
-                        <div class="py-8 position-relative chart__bar">
-                            <canvas id="barChart"></canvas>
-                            <div class="position-absolute start-0 top-0 translate-middle-y">(次)</div>
+                        <p class="mb-34 mb-sm-40 text-gray-550">若您想看該類別出現的次數，您可將游標停留在該類別的長條上。</p>
+                        <div class="d-flex justify-content-center align-items-center">
+                            <div class="chart__bar-container position-relative">
+                                <canvas id="barChart"></canvas>
+                                <div class="position-absolute text-gray-550 chart__bar-unit">(次)</div>
+                            </div>
                         </div>
                     </div>
                     <div class="box-47">
                         <h3 class="mb-8 py-4 fs-5 fw-bold text-main border-bottom border-main-tint02">情緒類組比例</h3>
                         <p class="mb-4 text-gray-550">下圖為您在此期間記錄的情緒卡，在以下分類中所出現的次數比例的圖餅圖。</p>
-                        <p class="text-gray-550">若您想看該類別所佔的比例，您可將游標停留在圓餅圖中該類別的色塊上。</p>
-                        <div class="d-flex justify-content-center align-items-center position-relative">
-                            <canvas id="doughnutChart" class="w-50 h-50 pt-32"></canvas>
+                        <p class="mb-34 mb-sm-40 text-gray-550">若您想看該類別所佔的比例，您可將游標停留在圓餅圖中該類別的色塊上。</p>
+                        <div class="d-flex justify-content-center align-items-center custom-tooltip__doughnut-container">
+                            <div class="chart__doughnut-container">
+                                <canvas id="doughnutChart" class="position-relative"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="fs-1 text-center d-none" id="no-data">這段期間沒有資料</div>
 
                 <!-- 插畫 -->
@@ -289,8 +292,7 @@
         <script src="./js/pages/logout.js"></script>
         <script src="./js/timeOut.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/downloadjs/1.4.8/download.min.js"></script>
+        <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
         <script>
             const authenticationTools = getTokenAndAccount()
 
@@ -318,7 +320,9 @@
 
             let prevDoughnutCanvasWidth = 0
 
-            const main = document.querySelector("main")
+            const printArea = document.querySelector("main")
+            const printAreaCanvas = document.createElement('canvas')
+            const printAreaCanvasCtx = printAreaCanvas.getContext('2d', { willReadFrequently: true });
 
             const idCardsLookupTable = {}
 
@@ -394,10 +398,16 @@
                     if (JSON.stringify(fetchedData) !== previousData) {
                         previousData = JSON.stringify(fetchedData)
 
+                        resetChart(barChart)
+                        resetChart(doughnutChart)
+                        resetCustomTooltips(doughnutChartCTX)
+                        printAreaCanvasCtx.reset();
+
                         if (fetchedData.message) {
                             noData.classList.remove("d-none")
                             areaGraph.classList.add("d-none")
                             analyzeImg.classList.remove("d-none")
+                            btnDownload.classList.add("d-none")
                             return
                         }
 
@@ -410,9 +420,6 @@
                             currentData
                         ).map((each) => COLOR_LOOKUP_TABLE[each])
 
-                        resetChart(barChart)
-                        resetChart(doughnutChart)
-
                         if (btnDownload.classList.contains("d-none")) {
                             btnDownload.classList.remove("d-none")
                         }
@@ -424,69 +431,6 @@
                         if (!analyzeImg.classList.contains("d-none")) {
                             analyzeImg.classList.add("d-none")
                         }
-
-                        doughnutChart = new Chart(doughnutChartCTX, {
-                            type: "doughnut",
-                            data: {
-                                labels: Object.keys(currentData),
-                                datasets: [
-                                    {
-                                        data: getPercentageArray(
-                                            Object.values(currentData)
-                                        ),
-                                        backgroundColor:
-                                            correspondBackgroundColors,
-                                        cutout: "65%"
-                                    }
-                                ]
-                            },
-                            options: {
-                                animation: {
-                                    onComplete: () => {
-                                       doughnutChart.options.animation = false
-                                    }
-                                },
-                                plugins: {
-                                    legend: {
-                                        display: false
-                                    },
-                                    tooltip: {
-                                        bodyFont: {
-                                            size: 16
-                                        },
-                                        callbacks: {
-                                            title: () => '',
-                                            label: (context) => {
-                                                const { label, formattedValue } = context
-                                                return `${label}: ${formattedValue} %`
-                                            }
-                                        }
-                                    }
-                                },
-                                onHover(event, chartArray) {
-                                    if (chartArray.length !== 0 && event.type === "mousemove") {
-                                        doughnutChartCTX.style.zIndex = "99"
-                                        return
-                                    }
-                                    doughnutChartCTX.style.zIndex = "auto"
-                                },
-                                onResize(chart, newSize) {
-                                    const currentWidth = Math.floor(newSize.width / 10) * 10
-                                    const isRevised = prevDoughnutCanvasWidth !== currentWidth
-                                    if (isRevised) {
-                                        resetCustomTooltips(doughnutChartCTX)
-                                    }
-                                    if (currentData !== null && doughnutChart !== null && isRevised) {
-                                        createTooltipsForDoughnutChart(
-                                            currentData,
-                                            doughnutChart,
-                                            currentWidth,
-                                        )
-                                        prevDoughnutCanvasWidth = currentWidth
-                                    }
-                                }
-                            }
-                        })
 
                         barChart = new Chart(barChartCTX, {
                             type: "bar",
@@ -503,6 +447,8 @@
                                 ]
                             },
                             options: {
+                                responsive: true,
+                                maintainAspectRatio: true,
                                 plugins: {
                                     legend: {
                                         display: false
@@ -557,31 +503,136 @@
                                 },
                                 onResize(chart, newSize) {
                                     const { width } = newSize
+                                    const unitEle = chart.canvas.nextElementSibling
                                     if (width < 400) {
                                         chart.data.datasets[0].barThickness = 20
                                         chart.options.scales.y.ticks.font.size = 12
                                         chart.options.scales.x.ticks.font.size = 12
+                                        unitEle.style.fontSize = '12px'
                                     } else {
                                         chart.data.datasets[0].barThickness = 28
                                         chart.options.scales.y.ticks.font.size = 16
                                         chart.options.scales.x.ticks.font.size = 16
+                                        unitEle.style.fontSize = '16px'
                                     }
                                 },
                             }
                         })
+
+                        doughnutChart = new Chart(doughnutChartCTX, {
+                            type: "doughnut",
+                            data: {
+                                labels: Object.keys(currentData),
+                                datasets: [
+                                    {
+                                        data: getPercentageArray(
+                                            Object.values(currentData)
+                                        ),
+                                        backgroundColor:
+                                            correspondBackgroundColors,
+                                        cutout: "65%"
+                                    }
+                                ]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: true,
+                                animation: {
+                                    onProgress: () => {
+                                        btnDownload.firstElementChild.disabled = true
+                                        btnDownload.firstElementChild.classList.add("opacity-25")
+                                    },
+                                    onComplete: () => {
+                                        html2canvas(printArea, {
+                                            onclone: (document, printArea) => {
+                                                const viewportWidth = document.documentElement.clientWidth;
+                                                printArea.children[0].querySelector("#analyze-title").remove()
+                                                printArea.querySelectorAll(".custom-tooltip").forEach(each => {
+                                                    each.classList.remove("show-up");
+                                                    const spans = each.querySelectorAll('span')
+                                                    if (viewportWidth >= 768) {
+                                                        spans[0].style.transform = each.querySelector('p').classList.contains("end") ? 'translate(-16px, -8px)' : 'translate(0px, -8px)';
+                                                    } else if (viewportWidth >= 480) {
+                                                        spans[0].style.transform = each.querySelector('p').classList.contains("end") ? 'translate(-8px, -4px)' : 'translate(0px, -4px)';
+                                                    }
+                                                })
+                                                return printArea
+                                            }
+                                        }).then((canvas) => {
+                                            const w = canvas.width;
+                                            const h = canvas.height;
+                                            
+                                            printAreaCanvas.width = w;
+                                            printAreaCanvas.height = h;
+                                            printAreaCanvasCtx.drawImage(canvas, 0, 0, w, h, 0, 0, w, h);
+                                            btnDownload.firstElementChild.disabled = false;
+                                            btnDownload.firstElementChild.classList.remove("opacity-25")
+                                        })
+                                    }
+                                },
+                                plugins: {
+                                    legend: {
+                                        display: false
+                                    },
+                                    tooltip: {
+                                        bodyFont: {
+                                            size: 16
+                                        },
+                                        callbacks: {
+                                            title: () => '',
+                                            label: (context) => {
+                                                const { label, formattedValue } = context
+                                                return `${label}: ${formattedValue} %`
+                                            }
+                                        }
+                                    }
+                                },
+                                onHover(event, chartArray) {
+                                    if (chartArray.length !== 0 && event.type === "mousemove") {
+                                        doughnutChartCTX.style.zIndex = "1"
+                                        return
+                                    }
+                                    doughnutChartCTX.style.zIndex = "auto"
+                                },
+                                onResize(chart, newSize) {
+                                    const currentWidth = Math.floor(newSize.width / 10) * 10
+                                    const isRevised = prevDoughnutCanvasWidth !== currentWidth
+                                    if (isRevised) {
+                                        resetCustomTooltips(doughnutChartCTX)
+                                    }
+                                    if (currentData !== null && doughnutChart !== null && isRevised) {
+                                        createTooltipsForDoughnutChart(
+                                            currentData,
+                                            doughnutChart,
+                                        )
+                                        prevDoughnutCanvasWidth = currentWidth
+                                    }
+                                }
+                            }
+                        })
+
+                        createTooltipsForDoughnutChart(
+                            currentData,
+                            doughnutChart,
+                        )
+
                     }
                 } catch (error) {
-                    // console.error(error);
+                    console.log(error)
                     alert(error);
                 }
             })
 
             btnDownload.addEventListener("click", function () {
-                btnDownload.disabled = true
-                htmlToImage.toPng(main).then((dataUrl) => {
-                    download(dataUrl, "my-analyze.png")
-                    btnDownload.disabled = false
-                })
+                const strData = printAreaCanvas.toDataURL('png')
+                const save_link = document.createElement('a')
+                save_link.href = strData
+                save_link.download = 'my-analyze.png'
+                const event = new MouseEvent('click', {
+                    "bubbles": false,
+                    "cancelable":false
+                });
+                save_link.dispatchEvent(event);
             })
 
             function getTokenAndAccount() {
@@ -642,9 +693,11 @@
                 return resultArray
             }
 
-            function createTooltipsForDoughnutChart(data, targetDoughnutChart, canvasWidth) {
-                const parentWidth =
-                    targetDoughnutChart.canvas.parentElement.offsetWidth
+            function createTooltipsForDoughnutChart(data, targetDoughnutChart) {
+                if (!targetDoughnutChart.canvas) return
+                let parentWidth = targetDoughnutChart.canvas.parentElement.parentElement.offsetWidth
+                let canvasWidth = targetDoughnutChart.canvas.offsetWidth
+                
                 const radianArray = getRadianArray(Object.values(data))
                 const percentageArray = getPercentageArray(Object.values(data))
 
@@ -655,44 +708,43 @@
                         const radian = radianArray[index] - NINETY_DEGREE_RADIAN
                         const tooltip = document.createElement("DIV")
                         const content = `
-                            <p>
+                            <p class="custom-tooltip__doughnut-content">
                                 <span class="fw-700">${key}</span>
-                                <span class="text-gray-550">${
-                                    percentageArray[index].toString() + "%"
-                                }</span>
+                                <span class="text-gray-550">
+                                    ${percentageArray[index].toString() + "%"}
+                                </span>
                             </p>
                         `
-                        tooltip.classList.add("custom-tooltip")
-                        tooltip.dataset.chart = "doughnut"
-
-                        if (determineWhichHalf(radian) === "LEFT") {
-                            tooltip.dataset.position = "left"
-                        } else {
-                            tooltip.dataset.position = "right"
-                        }
+                        tooltip.insertAdjacentHTML("beforeend", content)
+                        tooltip.classList.add("custom-tooltip", "custom-tooltip__doughnut", "show-up")
 
                         const radius = canvasWidth / 2
 
-                        const x = Math.floor(
-                            Math.abs(
-                                radius * 0.75 * Math.cos(radian * 2 * Math.PI)
-                            ) +
-                                parentWidth / 2
-                        )
+                        const x = Math.floor(Math.abs(radius * 0.825 * Math.cos(radian * 2 * Math.PI)))
 
-                        const y = Math.floor(
-                            radius * 0.75 * Math.sin(radian * 2 * Math.PI)
-                        )
+                        const y = Math.floor(radius * 0.825 * Math.sin(radian * 2 * Math.PI))
 
-                        tooltip.style.transform = `translateY(calc(-100% + ${y}px + 24px))`
+                        tooltip.style.transform = `translateY(calc(-100% + ${y}px))`
 
-                        if (determineWhichHalf(radian) === "LEFT") {
-                            tooltip.style.right = `${Math.abs(x)}px`
+                        if (determineIsRight(radian)) {
+                            tooltip.firstElementChild.classList.add("end")
+                            tooltip.style.left = `${x + parentWidth * 0.5}px`
+
+                            if (parentWidth > 500) {
+                                tooltip.style.right = '10%'
+                            } else {
+                                tooltip.style.right = 0
+                            }
                         } else {
-                            tooltip.style.left = `${x}px`
+                            tooltip.style.right = `${x + parentWidth * 0.5}px`
+
+                            if (parentWidth > 500) {
+                                tooltip.style.left = '10%'
+                            } else {
+                                tooltip.style.left = 0
+                            }
                         }
 
-                        tooltip.insertAdjacentHTML("beforeend", content)
                         targetDoughnutChart.canvas.parentElement.insertAdjacentElement(
                             "beforeend",
                             tooltip
@@ -702,7 +754,7 @@
             }
 
             function resetChart(chartVariable) {
-                if (chartVariable !== null && chartVariable instanceof Chart) {
+                if (chartVariable !== null) {
                     chartVariable.destroy()
                     chartVariable = null
                 }
@@ -718,12 +770,10 @@
                 }
             }
 
-            function determineWhichHalf(radian) {
+            function determineIsRight(radian) {
                 const ONE_FOURTH = 0.25
                 const THREE_FOURTHS = 0.75
-                return radian > ONE_FOURTH && radian <= THREE_FOURTHS
-                    ? "LEFT"
-                    : "RIGHT"
+                return radian < ONE_FOURTH || radian >= THREE_FOURTHS
             }
 
             function arrangeData(fetchedData, lookupTable) {

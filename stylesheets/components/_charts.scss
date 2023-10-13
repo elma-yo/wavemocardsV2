@@ -1,6 +1,26 @@
 .chart {
+    &__doughnut-container {
+        width: 75%;
+        aspect-ratio: 1;
+
+        @media (min-width: 25em) {
+            width: min(50%, 16rem);
+        }
+    }
+
     &__bar {
-        width: 100%;
-        aspect-ratio: 497 / 277;
+        &-container {
+            width: min(100%, 31.0625rem);
+            aspect-ratio: 497 / 277;
+        }
+
+        &-unit {
+            top: -22px;
+            left: -2px;
+
+            @media (min-width: 25em) {
+                top: -28px;
+            }
+        }
     }
 }
