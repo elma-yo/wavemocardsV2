@@ -322,7 +322,7 @@
 
             const printArea = document.querySelector("main")
             const printAreaCanvas = document.createElement('canvas')
-            const printAreaCanvasCtx = printAreaCanvas.getContext('2d', { willReadFrequently: true });
+            const printAreaCanvasCtx = printAreaCanvas.getContext('2d');
 
             const idCardsLookupTable = {}
 
@@ -401,7 +401,6 @@
                         resetChart(barChart)
                         resetChart(doughnutChart)
                         resetCustomTooltips(doughnutChartCTX)
-                        printAreaCanvasCtx.reset();
 
                         if (fetchedData.message) {
                             noData.classList.remove("d-none")
